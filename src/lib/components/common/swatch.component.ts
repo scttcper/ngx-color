@@ -5,10 +5,14 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angu
   template: `
     <div
       class="swatch"
-      [ngStyle]="divStyle"
+      [ngStyle]="divStyles"
       [attr.title]="color"
       (click)="handleClick(color, $event)"
-      tab-index="0"
+      (keydown.enter)="handleClick(color, $event)"
+      (focus)="handleFocus(color)"
+      (focusout)="handleFocusOut(color)"
+      (mouseover)="handleHover(color, $event)"
+      tabindex="0"
     >
       <ng-content></ng-content>
       <color-checkboard
@@ -20,15 +24,20 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angu
 })
 export class SwatchComponent implements OnInit, OnChanges {
   @Input() color;
-  @Input() style;
+  @Input() style = {};
+  @Input() focusStyle = {};
   @Output() onClick = new EventEmitter<any>();
-  divStyle;
+  @Output() onHover = new EventEmitter<any>();
+  unfocusStyles;
+  divStyles;
+  focusStyles;
   transparent = false;
+  focus = false;
 
   constructor() { }
 
   ngOnInit() {
-    this.divStyle = {
+    this.divStyles = {
       background: this.color,
       height: '100%',
       width: '100%',
@@ -37,6 +46,21 @@ export class SwatchComponent implements OnInit, OnChanges {
       outline: 'none',
       ...this.style,
     };
+    this.focusStyles = {
+      ...this.divStyles,
+      ...this.focusStyle,
+    };
+  }
+  handleFocusOut(color) {
+    this.divStyles = this.unfocusStyles;
+  }
+  handleFocus(color) {
+    this.unfocusStyles = this.divStyles;
+    this.divStyles = this.focusStyles;
+    this.focus = true;
+  }
+  handleHover(hex, $event) {
+    this.onHover.emit({hex, $event});
   }
   handleClick(hex, $event) {
     this.onClick.emit({hex, $event});

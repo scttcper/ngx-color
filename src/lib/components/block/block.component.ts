@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import ColorWrap from '../common/color-wrap.component';
 import color from '../../helpers/color';
@@ -27,6 +27,7 @@ import color from '../../helpers/color';
       <color-block-swatches
         [colors]="colors"
         (onClick)="handleBlockChange($event)"
+        (onSwatchHover)="onSwatchHover.emit($event)"
       ></color-block-swatches>
       <color-editable-input
         [value]="hex"
@@ -52,6 +53,7 @@ export class BlockComponent extends ColorWrap {
   ];
   @Input() width: string | number = 170;
   @Input() triangle: 'top' | 'hide' = 'top';
+  @Output() onSwatchHover = new EventEmitter<any>();
   triangleBorderColor: string;
   inputStyles = {
     width: '100%',
@@ -71,16 +73,19 @@ export class BlockComponent extends ColorWrap {
   }
 
   handleValueChange(hex) {
-    this.handleBlockChange({hex, $event: null});
+    this.handleBlockChange({ hex, $event: null });
   }
 
-  handleBlockChange({hex, $event}) {
+  handleBlockChange({ hex, $event }) {
     if (color.isValidHex(hex)) {
       // this.hex = hex;
-      this.handleChange({
-        hex,
-        source: 'hex',
-      }, $event);
+      this.handleChange(
+        {
+          hex,
+          source: 'hex',
+        },
+        $event,
+      );
     }
   }
 }

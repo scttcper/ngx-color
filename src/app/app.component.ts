@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
   hex = '#37D67A';
-  changeComplete(event) {
-    console.log(event);
+
+  changeComplete({colors, $event}) {
+    this.hex = colors.hex;
   }
 }

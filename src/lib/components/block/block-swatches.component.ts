@@ -8,7 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
         *ngFor="let c of colors"
         [color]="c"
         [style]="swatchStyle"
+        [focusStyle]="focusStyle(c)"
         (onClick)="handleClick($event)"
+        (onHover)="onSwatchHover.emit($event)"
         class="swatch"
       ></color-swatch>
       <div class="clear"></div>
@@ -26,7 +28,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class BlockSwatchesComponent implements OnInit {
   @Input() colors;
   @Output() onClick = new EventEmitter<any>();
+  @Output() onSwatchHover = new EventEmitter<any>();
   swatchStyle;
+  swatchFocusStyle;
   // @Input() onClick;
   // @Input() onSwatchHover;
   constructor() {}
@@ -46,7 +50,7 @@ export class BlockSwatchesComponent implements OnInit {
   }
   focusStyle(c) {
     return {
-      'box-shadow': `0 0 4px ${ c }`,
+      'box-shadow': `${ c } 0 0 4px`,
     };
   }
 

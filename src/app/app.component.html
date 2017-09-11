@@ -1,8 +1,17 @@
 <div class="home">
-  <div style="width: 170px; position: absolute; height: 100%;">
+  <div style="width: 170px; height: 100%; padding-top: 20px">
     <color-block
       [color]="hex"
       (onChangeComplete)="changeComplete($event)"
+      (onChange)="changeComplete($event)"
+    >
+    </color-block>
+  </div>
+  <div style="width: 170px; height: 100%; padding-top: 20px">
+    <color-block
+      [color]="hex"
+      (onChangeComplete)="changeComplete($event)"
+      (onChange)="changeComplete($event)"
     >
     </color-block>
   </div>

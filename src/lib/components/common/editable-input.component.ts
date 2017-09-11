@@ -61,6 +61,7 @@ export class EditableInputComponent implements OnInit, OnChanges {
   ngOnChanges() {
     if (!this.focus) {
       this.currentValue = String(this.value).toUpperCase();
+      this.blurValue = String(this.value).toUpperCase();
     } else {
       this.blurValue = String(this.value).toUpperCase();
     }

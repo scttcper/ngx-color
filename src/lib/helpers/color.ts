@@ -1,6 +1,36 @@
 import { each } from 'lodash-es';
 import * as tinycolor from 'tinycolor2';
 
+export interface Rgb {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+}
+
+export interface Hsl {
+  h: number;
+  s: number;
+  l: number;
+  a: number;
+}
+
+export interface Hsv {
+  a: number;
+  h: number;
+  s: number;
+  v: number;
+}
+
+export interface Color {
+  hex: string;
+  rgb: Rgb;
+  hsl: Hsl;
+  hsv: Hsv;
+  oldHue: number;
+  source: string;
+}
+
 export default {
   simpleCheckForValidColor(data) {
     const keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
@@ -17,7 +47,7 @@ export default {
     return checked === passed ? data : false;
   },
 
-  toState(data, oldHue) {
+  toState(data, oldHue): Color {
     const color = data.hex ? tinycolor(data.hex) : tinycolor(data);
     const hsl = color.toHsl();
     const hsv = color.toHsv();
