@@ -1,0 +1,42 @@
+.home {
+  height: 580px;
+  position: relative;
+}
+
+.cover {
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: background-color 100ms linear;
+}
+
+.title {
+  color: #000000;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 52px;
+  padding-top: 70px;
+}
+
+.description {
+  color: #000000;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 27px;
+  padding-top: 15px;
+
+  a {
+    color: #fff;
+    color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+.white-label {
+  width: 100%;
+  font-size: 12px;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.7);
+}

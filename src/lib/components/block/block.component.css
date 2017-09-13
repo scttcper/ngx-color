@@ -1,11 +1,11 @@
-.card {
+.blockCard {
   background: #fff;
   border-radius: 6px;
   box-shadow: 0 1px rgba(0, 0, 0, .1);
   position: relative;
 }
 
-.head {
+.blockHead {
   align-items: center;
   border-radius: 6px 6px 0 0;
   display: flex;
@@ -14,11 +14,11 @@
   position: relative;
 }
 
-.body {
+.blockBody {
   padding: 10px;
 }
 
-.label {
+.blockLabel {
   font-size: 18px;
   position: relative;
 }

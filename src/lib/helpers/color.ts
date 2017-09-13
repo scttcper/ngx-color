@@ -42,12 +42,18 @@ export default {
         if (!isNaN(data[letter])) {
           passed += 1;
         }
+        if (letter === 's' || letter === 'l') {
+          const percentPatt = /^\d+%$/;
+          if (percentPatt.test(data[letter])) {
+            passed += 1;
+          }
+        }
       }
     });
     return checked === passed ? data : false;
   },
 
-  toState(data, oldHue): Color {
+  toState(data, oldHue: number) {
     const color = data.hex ? tinycolor(data.hex) : tinycolor(data);
     const hsl = color.toHsl();
     const hsv = color.toHsv();
@@ -69,7 +75,7 @@ export default {
     };
   },
 
-  isValidHex(hex) {
+  isValidHex(hex: string) {
     return tinycolor(hex).isValid();
   },
 };

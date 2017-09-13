@@ -6,24 +6,27 @@ import color from '../../helpers/color';
 @Component({
   selector: 'color-block',
   template: `
-  <div class="card block-picker">
+  <div class="blockCard block-picker">
     <div class="triangle"
       [style.border-color]="'transparent transparent ' + this.hex + ' transparent'"
       *ngIf="triangle !== 'hide'"
     >
     </div>
 
-    <div class="head" [style.background]="hex">
+    <div class="blockHead" [style.background]="hex">
       <color-checkboard
        *ngIf="hex === 'transparent'"
         borderRadius="6px 6px 0 0"
       ></color-checkboard>
-      <div class="label" [style.color]="hex === 'transparent' ? 'rgba(0, 0, 0, 0.4)' : '#fff'">
+      <div
+        class="blockLabel"
+        [style.color]="hex === 'transparent' ? 'rgba(0, 0, 0, 0.4)' : '#fff'"
+      >
         {{ hex }}
       </div>
     </div>
 
-    <div class="body">
+    <div class="blockBody">
       <color-block-swatches
         [colors]="colors"
         (onClick)="handleBlockChange($event)"
