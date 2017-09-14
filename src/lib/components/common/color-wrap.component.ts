@@ -13,17 +13,17 @@ import 'rxjs/add/observable/from';
 
 import color from '../../helpers/color';
 
-export default class ColorWrap implements OnInit, OnChanges {
-  @Output() onChange = new EventEmitter();
-  @Output() onChangeComplete = new EventEmitter();
-  @Output() onSwatchHover = new EventEmitter();
-  @Input()
-  color: any = {
+@Component({ template: '' })
+export class ColorWrap implements OnInit, OnChanges {
+  @Input() color: any = {
     h: 250,
     s: 0.5,
     l: 0.2,
     a: 1,
   };
+  @Output() onChange = new EventEmitter();
+  @Output() onChangeComplete = new EventEmitter();
+  @Output() onSwatchHover = new EventEmitter();
   oldHue;
   hsl;
   hsv;

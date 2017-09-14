@@ -16,5 +16,8 @@
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false
+  }
 }

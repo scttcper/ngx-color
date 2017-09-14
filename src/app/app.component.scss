@@ -14,14 +14,12 @@
 }
 
 .title {
-  color: #000000;
   color: rgba(0, 0, 0, 0.65);
   font-size: 52px;
   padding-top: 70px;
 }
 
 .description {
-  color: #000000;
   color: rgba(0, 0, 0, 0.6);
   font-size: 20px;
   font-weight: 300;
@@ -29,8 +27,10 @@
   padding-top: 15px;
 
   a {
-    color: #fff;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(0, 0, 0, 0.6);
+    // color: #fff;
+    // color: rgba(255, 255, 255, 0.75);
+    text-decoration: underline;
   }
 }
 

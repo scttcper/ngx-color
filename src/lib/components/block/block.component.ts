@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import ColorWrap from '../common/color-wrap.component';
+import { ColorWrap } from '../common/color-wrap.component';
 import color from '../../helpers/color';
 
 @Component({
@@ -56,7 +56,6 @@ export class BlockComponent extends ColorWrap {
   ];
   @Input() width: string | number = 170;
   @Input() triangle: 'top' | 'hide' = 'top';
-  @Output() onSwatchHover = new EventEmitter<any>();
   triangleBorderColor: string;
   inputStyles = {
     width: '100%',

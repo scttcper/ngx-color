@@ -12,8 +12,8 @@ import {
   template: `
     <div class="wrap">
       <input
-        [ngModel]="currentValue"
-        (ngModelChange)="valueChange.emit($event)"
+        [value]="currentValue"
+        (keyup)="valueChange.emit($event.target.value)"
         spellCheck="false"
         [ngStyle]="style"
         (focus)="handleFocus($event)"
