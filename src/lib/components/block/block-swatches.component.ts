@@ -29,11 +29,9 @@ export class BlockSwatchesComponent implements OnInit {
   @Input() colors;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle;
-  swatchFocusStyle;
-  // @Input() onClick;
-  // @Input() onSwatchHover;
-  constructor() {}
+  swatchStyle: any;
+
+  constructor() { }
 
   ngOnInit() {
     this.swatchStyle = {

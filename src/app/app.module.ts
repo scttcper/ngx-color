@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ColorBlockModule } from '../lib/components/block/block.module';
+import { HueModule } from '../lib/components/hue/hue.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ColorBlockModule } from '../lib/components/block/block.module';
     BrowserModule,
 
     ColorBlockModule,
+    HueModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,27 +6,26 @@ import color from '../../helpers/color';
 @Component({
   selector: 'color-block',
   template: `
-  <div class="blockCard block-picker">
-    <div class="triangle"
-      [style.border-color]="'transparent transparent ' + this.hex + ' transparent'"
+  <div class="block-card block-picker">
+    <div class="block-triangle"
       *ngIf="triangle !== 'hide'"
+      [style.border-color]="'transparent transparent ' + this.hex + ' transparent'"
     >
     </div>
 
-    <div class="blockHead" [style.background]="hex">
+    <div class="block-head" [style.background]="hex">
       <color-checkboard
        *ngIf="hex === 'transparent'"
         borderRadius="6px 6px 0 0"
       ></color-checkboard>
-      <div
-        class="blockLabel"
+      <div class="block-label"
         [style.color]="hex === 'transparent' ? 'rgba(0, 0, 0, 0.4)' : '#fff'"
       >
         {{ hex }}
       </div>
     </div>
 
-    <div class="blockBody">
+    <div class="block-body">
       <color-block-swatches
         [colors]="colors"
         (onClick)="handleBlockChange($event)"
@@ -40,7 +39,43 @@ import color from '../../helpers/color';
     </div>
   </div>
   `,
-  styleUrls: ['./block.component.css'],
+  styles: [`
+    .block-card {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px rgba(0, 0, 0, .1);
+      position: relative;
+    }
+
+    .block-head {
+      align-items: center;
+      border-radius: 6px 6px 0 0;
+      display: flex;
+      height: 110px;
+      justify-content: center;
+      position: relative;
+    }
+
+    .block-body {
+      padding: 10px;
+    }
+
+    .block-label {
+      font-size: 18px;
+      position: relative;
+    }
+
+    .block-triangle {
+      border-style: solid;
+      border-width: 0 10px 10px 10px;
+      height: 0;
+      left: 50%;
+      margin-left: -10px;
+      position: absolute;
+      top: -10px;
+      width: 0;
+    }
+  `],
 })
 export class BlockComponent extends ColorWrap {
   @Input() colors = [

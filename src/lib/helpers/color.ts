@@ -1,5 +1,7 @@
 import { each } from 'lodash-es';
-import * as tinycolor from 'tinycolor2';
+import * as _tinycolor from 'tinycolor2';
+
+const tinycolor = _tinycolor;
 
 export interface Rgb {
   r: number;

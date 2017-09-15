@@ -5,7 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot --experimental-angular-compiler --build-optimizer",
+    "build": "rimraf dist && ts-node build.ts",
+    "publish": "cd dist/packages-dist && npm publish",
+    "bundlesize": "bundlesize",
+    "ghpages": "ng build --prod --build-optimizer --experimental-angular-compiler --aot --no-progress --baseHref='/ngx-toastr/'",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -30,12 +33,13 @@
     "@angular/cli": "1.5.0-beta.0",
     "@angular/compiler-cli": "^5.0.0-beta.7",
     "@angular/language-service": "^5.0.0-beta.7",
-    "@types/jasmine": "^2.5.54",
+    "@types/jasmine": "^2.6.0",
     "@types/jasminewd2": "^2.0.3",
     "@types/lodash-es": "^4.14.6",
     "@types/node": "^8.0.28",
     "@types/tinycolor2": "^1.4.0",
     "codelyzer": "^3.2.0",
+    "copy": "^0.3.1",
     "jasmine-core": "^2.8.0",
     "jasmine-spec-reporter": "^4.2.1",
     "karma": "^1.7.1",
@@ -45,8 +49,22 @@
     "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "^5.1.2",
+    "rollup": "^0.49.3",
+    "rollup-plugin-filesize": "^1.4.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
     "typescript": "^2.5.2"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/packages-dist/toastr.umd.js",
+      "maxSize": "8 kB"
+    },
+    {
+      "path": "./dist/packages-dist/toastr.css",
+      "maxSize": "3 kB"
+    }
+  ]
 }

@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js:
+  - 8
+addons:
+  chrome: stable
+script:
+  - npm run build
+  - npm run bundlesize
+  - npm run lint
+  - ./node_modules/.bin/ng test --single-run --code-coverage --no-progress --browsers=ChromeHeadless
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - npm run ghpages
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: dist
+  github_token: $PUSH_TOKEN
+  on:
+    branch: master
