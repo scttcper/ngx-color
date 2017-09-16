@@ -11,11 +11,12 @@ import { debounce } from 'lodash-es';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/from';
 
-import color from '../../helpers/color';
+import { toState, simpleCheckForValidColor } from '../../helpers/color';
+import { HSLA, HSVA, RGBA, Color } from '../../helpers/color.interfaces';
 
 @Component({ template: '' })
 export class ColorWrap implements OnInit, OnChanges {
-  @Input() color: any = {
+  @Input() color: HSLA = {
     h: 250,
     s: 0.5,
     l: 0.2,
@@ -24,10 +25,10 @@ export class ColorWrap implements OnInit, OnChanges {
   @Output() onChange = new EventEmitter();
   @Output() onChangeComplete = new EventEmitter();
   @Output() onSwatchHover = new EventEmitter();
-  oldHue;
-  hsl;
-  hsv;
-  rgb;
+  oldHue: number;
+  hsl: HSLA;
+  hsv: HSVA;
+  rgb: RGBA;
   hex: string;
   source: string;
 
@@ -39,10 +40,10 @@ export class ColorWrap implements OnInit, OnChanges {
       );
   }
   ngOnInit() {
-    this.setState(color.toState(this.color, 0));
+    this.setState(toState(this.color, 0));
   }
   ngOnChanges() {
-    this.setState(color.toState(this.color, this.oldHue));
+    this.setState(toState(this.color, this.oldHue));
   }
   setState(data) {
     this.oldHue = data.oldHue;
@@ -53,18 +54,18 @@ export class ColorWrap implements OnInit, OnChanges {
     this.source = data.source;
   }
   handleChange(data, $event) {
-    const isValidColor = color.simpleCheckForValidColor(data);
+    const isValidColor = simpleCheckForValidColor(data);
     if (isValidColor) {
-      const colors = color.toState(data, data.h || this.oldHue);
+      const colors = toState(data, data.h || this.oldHue);
       this.setState(colors);
       this.onChange.emit({ colors, $event });
     }
   }
 
   handleSwatchHover(data, $event) {
-    const isValidColor = color.simpleCheckForValidColor(data);
+    const isValidColor = simpleCheckForValidColor(data);
     if (isValidColor) {
-      const colors = color.toState(data, data.h || this.oldHue);
+      const colors = toState(data, data.h || this.oldHue);
       this.setState(colors);
       this.onSwatchHover.emit({ colors, $event });
     }

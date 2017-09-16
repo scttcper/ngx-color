@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { ColorWrap } from '../common/color-wrap.component';
-import color from '../../helpers/color';
+import { isValidHex } from '../../helpers/color';
 
 @Component({
   selector: 'color-block',
@@ -114,7 +114,7 @@ export class BlockComponent extends ColorWrap {
   }
 
   handleBlockChange({ hex, $event }) {
-    if (color.isValidHex(hex)) {
+    if (isValidHex(hex)) {
       // this.hex = hex;
       this.handleChange(
         {

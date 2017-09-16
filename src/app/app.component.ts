@@ -7,9 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  hex = '#37D67A';
+  primaryColor = '#194D33';
+  state = {
+    h: 150,
+    s: 0.50,
+    l: 0.20,
+    a: 1,
+  };
 
   changeComplete({colors, $event}) {
-    this.hex = colors.hex;
+    this.state = colors.hsl;
+    this.primaryColor = colors.hex;
   }
 }

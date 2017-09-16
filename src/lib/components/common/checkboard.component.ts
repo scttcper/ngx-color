@@ -23,13 +23,12 @@ export class CheckboardComponent implements OnInit {
   @Input() grey = 'rgba(0,0,0,.08)';
   @Input() boxShadow: any;
   @Input() borderRadius: any;
-  @Input() renderers: any = {};
   gridStyles: {[key: string]: string};
 
   constructor() { }
 
   ngOnInit() {
-    const background = checkboard.get(this.white, this.grey, this.size, this.renderers.canvas);
+    const background = checkboard.get(this.white, this.grey, this.size);
     this.gridStyles = {
       'border-radius': this.borderRadius,
       'box-shadow': this.boxShadow,

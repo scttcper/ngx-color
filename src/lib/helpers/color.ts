@@ -1,86 +1,57 @@
 import { each } from 'lodash-es';
 import * as _tinycolor from 'tinycolor2';
 
+import { Color } from './color.interfaces';
+
 const tinycolor = _tinycolor;
 
-export interface Rgb {
-  r: number;
-  g: number;
-  b: number;
-  a: number;
-}
-
-export interface Hsl {
-  h: number;
-  s: number;
-  l: number;
-  a: number;
-}
-
-export interface Hsv {
-  a: number;
-  h: number;
-  s: number;
-  v: number;
-}
-
-export interface Color {
-  hex: string;
-  rgb: Rgb;
-  hsl: Hsl;
-  hsv: Hsv;
-  oldHue: number;
-  source: string;
-}
-
-export default {
-  simpleCheckForValidColor(data) {
-    const keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
-    let checked = 0;
-    let passed = 0;
-    each(keysToCheck, letter => {
-      if (data[letter]) {
-        checked += 1;
-        if (!isNaN(data[letter])) {
+export function simpleCheckForValidColor(data) {
+  const keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
+  let checked = 0;
+  let passed = 0;
+  each(keysToCheck, letter => {
+    if (data[letter]) {
+      checked += 1;
+      if (!isNaN(data[letter])) {
+        passed += 1;
+      }
+      if (letter === 's' || letter === 'l') {
+        const percentPatt = /^\d+%$/;
+        if (percentPatt.test(data[letter])) {
           passed += 1;
         }
-        if (letter === 's' || letter === 'l') {
-          const percentPatt = /^\d+%$/;
-          if (percentPatt.test(data[letter])) {
-            passed += 1;
-          }
-        }
       }
-    });
-    return checked === passed ? data : false;
-  },
-
-  toState(data, oldHue: number) {
-    const color = data.hex ? tinycolor(data.hex) : tinycolor(data);
-    const hsl = color.toHsl();
-    const hsv = color.toHsv();
-    const rgb = color.toRgb();
-    const hex = color.toHex();
-    if (hsl.s === 0) {
-      hsl.h = oldHue || 0;
-      hsv.h = oldHue || 0;
     }
-    const transparent = hex === '000000' && rgb.a === 0;
+  });
+  return checked === passed ? data : false;
+}
 
-    return {
-      hsl,
-      hex: transparent ? 'transparent' : `#${hex}`,
-      rgb,
-      hsv,
-      oldHue: data.h || oldHue || hsl.h,
-      source: data.source,
-    };
-  },
+export function toState(data, oldHue: number): Color {
+  const color = data.hex ? tinycolor(data.hex) : tinycolor(data);
+  const hsl = color.toHsl();
+  const hsv = color.toHsv();
+  const rgb = color.toRgb();
+  const hex = color.toHex();
+  if (hsl.s === 0) {
+    hsl.h = oldHue || 0;
+    hsv.h = oldHue || 0;
+  }
+  const transparent = hex === '000000' && rgb.a === 0;
 
-  isValidHex(hex: string) {
-    return tinycolor(hex).isValid();
-  },
-};
+  return {
+    hsl,
+    hex: transparent ? 'transparent' : `#${hex}`,
+    rgb,
+    hsv,
+    oldHue: data.h || oldHue || hsl.h,
+    source: data.source,
+  };
+}
+
+export function isValidHex(hex: string) {
+  return tinycolor(hex).isValid();
+}
+
 
 export const red = {
   hsl: { a: 1, h: 0, l: 0.5, s: 1 },

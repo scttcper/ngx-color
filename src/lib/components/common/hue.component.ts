@@ -5,10 +5,11 @@ import * as hue from '../../helpers/hue';
 @Component({
   selector: 'color-hue',
   template: `
-  <div class="color-hue" [style.border-radius]="radius">
+  <div class="color-hue">
     <div
       class="color-hue-container color-hue-{{direction}}"
       (mousedown)="handleMousedown($event)"
+      [style.border-radius.px]="radius" [style.box-shadow]="shadow"
       #container
     >
       <div class="color-hue-pointer" [style.left.%]="(hsl.h * 100) / 360">
@@ -24,11 +25,9 @@ import * as hue from '../../helpers/hue';
       bottom: 0;
       left: 0;
       right: 0;
-      borderRadius: this.props.radius;
-      boxShadow: this.props.shadow;
     }
     .color-hue-container {
-      padding: 0 2px;
+      margin: 0px 2px;
       position: relative;
       height: 100%;
     }
@@ -47,20 +46,18 @@ import * as hue from '../../helpers/hue';
     .color-hue-horizontal {
       background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0
         33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
-      background: -webkit-linear-gradient(to right, #f00 0%, #ff0
-        17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
     }
     .color-hue-vertical {
       background: linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%,
         #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
-      background: -webkit-linear-gradient(to top, #f00 0%, #ff0 17%,
-        #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
     }
   `],
 })
 export class HueComponent implements OnInit, OnChanges {
   @Input() hsl: any;
   @Input() pointer: any;
+  @Input() radius: number;
+  @Input() shadow: any;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<any>();
   @ViewChild('container') container: ElementRef;
@@ -78,7 +75,7 @@ export class HueComponent implements OnInit, OnChanges {
     // change && this.props.onChange && this.props.onChange(change, e)
   }
 
-  @HostListener('mousemove', ['$event'])
+  @HostListener('window:mousemove', ['$event'])
   handleMousemove($event: Event) {
     if (!this.active) {
       return;

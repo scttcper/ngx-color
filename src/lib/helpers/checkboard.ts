@@ -1,12 +1,10 @@
 const checkboardCache = {};
 
-export function render(c1, c2, size, serverCanvas) {
-  if (typeof document === 'undefined' && !serverCanvas) {
+export function render(c1, c2, size) {
+  if (typeof document === 'undefined') {
     return null;
   }
-  const canvas = serverCanvas
-    ? new serverCanvas()
-    : document.createElement('canvas');
+  const canvas = document.createElement('canvas');
   canvas.width = size * 2;
   canvas.height = size * 2;
   const ctx = canvas.getContext('2d');
@@ -22,9 +20,9 @@ export function render(c1, c2, size, serverCanvas) {
   return canvas.toDataURL();
 }
 
-export function get(c1, c2, size, serverCanvas) {
-  const key = `${c1}-${c2}-${size}${serverCanvas ? '-server' : ''}`;
-  const checkboard = render(c1, c2, size, serverCanvas);
+export function get(c1, c2, size) {
+  const key = `${c1}-${c2}-${size}`;
+  const checkboard = render(c1, c2, size);
 
   if (checkboardCache[key]) {
     return checkboardCache[key];

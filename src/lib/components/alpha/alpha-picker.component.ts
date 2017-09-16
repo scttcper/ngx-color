@@ -4,30 +4,32 @@ import { ColorWrap } from '../common/color-wrap.component';
 
 
 @Component({
-  selector: 'color-hue-picker',
+  selector: 'color-alpha-picker',
   template: `
-    <div class="color-hue-picker {{ className }}"
+    <div class="color-alpha-picker {{ className }}"
       [style.width.px]="width" [style.height.px]="height"
     >
-      <color-hue
+      <color-alpha class="color-alpha"
         [hsl]="hsl"
+        [rgb]="rgb"
         [pointer]="pointer"
         [direction]="direction"
-        [radius]="radius"
         (onChange)="handlePickerChange($event)"
-      ></color-hue>
+      ></color-alpha>
     </div>
   `,
   styles: [`
-    .color-hue-picker {
+    .color-alpha-picker {
       position: relative;
+    }
+    .color-alpha {
+      radius: 2px;
     }
   `],
 })
-export class HuePickerComponent extends ColorWrap implements OnInit {
-  @Input() width = 316;
-  @Input() height = 16;
-  @Input() radius = 2;
+export class AlphaPickerComponent extends ColorWrap implements OnInit {
+  width = 316;
+  height = 16;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   pointer = {
     width: '18px',
@@ -48,6 +50,6 @@ export class HuePickerComponent extends ColorWrap implements OnInit {
     }
   }
   handlePickerChange({ data, $event }) {
-    this.handleChange({ a: 1, h: data.h, l: 0.5, s: 1 }, $event);
+    this.handleChange(data, $event);
   }
 }

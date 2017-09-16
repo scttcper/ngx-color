@@ -1,5 +1,5 @@
 <div class="home">
-  <div class="cover" [style.background-color]="hex"></div>
+  <div class="cover" [style.background-color]="primaryColor"></div>
   <div class="container">
     <div class="row">
       <div class="col-md-6 text-center text-md-left">
@@ -16,7 +16,7 @@
         <div class="d-flex justify-content-center">
           <div style="width: 170px; height: 100%; padding-top: 20px">
             <color-block
-              [color]="hex"
+              [color]="state"
               (onChangeComplete)="changeComplete($event)"
               (onChange)="changeComplete($event)"
             >
@@ -29,9 +29,11 @@
   </div>
 </div>
 
+<hr>
+
 <div style="width: 170px; height: 100%; padding-top: 20px">
   <color-block
-    [color]="hex"
+    [color]="state"
     (onChangeComplete)="changeComplete($event)"
     (onChange)="changeComplete($event)"
   >
@@ -40,17 +42,12 @@
 
 <hr>
 
-<color-hue-picker [color]="hex" (onChangeComplete)="changeComplete($event)">
+<color-hue-picker [color]="state" (onChangeComplete)="changeComplete($event)">
 </color-hue-picker>
 
 <hr>
 
-<div class="hue-picker" style="position: relative; width: 316px; height: 16px;">
-  <div style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%); border-radius: 2px;">
-    <div style="margin: 0px 2px; position: relative; height: 100%;">
-      <div style="position: absolute; left: 99.7222%;">
-        <div style="width: 18px; height: 18px; border-radius: 50%; transform: translate(-9px, -1px); background-color: rgb(248, 248, 248); box-shadow: rgba(0, 0, 0, 0.37) 0px 1px 4px 0px;"></div>
-      </div>
-    </div>
-  </div>
-</div>
+<color-alpha-picker [color]="state" (onChangeComplete)="changeComplete($event)">
+</color-alpha-picker>
+
+<hr>
