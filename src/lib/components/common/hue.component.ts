@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ElementRef, ViewChild, HostListener } from '@angular/core';
 
 import * as hue from '../../helpers/hue';
+import { HSLA } from '../../helpers/color.interfaces';
 
 @Component({
   selector: 'color-hue',
@@ -54,7 +55,7 @@ import * as hue from '../../helpers/hue';
   `],
 })
 export class HueComponent implements OnInit, OnChanges {
-  @Input() hsl: any;
+  @Input() hsl: HSLA;
   @Input() pointer: any;
   @Input() radius: number;
   @Input() shadow: any;

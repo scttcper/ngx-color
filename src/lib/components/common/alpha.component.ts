@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ElementRef, ViewChild, HostListener } from '@angular/core';
 
 import * as alpha from '../../helpers/alpha';
+import { HSLA, RGBA } from '../../helpers/color.interfaces';
 
 @Component({
   selector: 'color-alpha',
@@ -67,8 +68,8 @@ import * as alpha from '../../helpers/alpha';
   `],
 })
 export class AlphaComponent implements OnInit, OnChanges {
-  @Input() hsl: ColorFormats.HSL;
-  @Input() rgb: ColorFormats.RGBA;
+  @Input() hsl: HSLA;
+  @Input() rgb: RGBA;
   @Input() pointer: any;
   @Input() shadow: string;
   @Input() radius: string;

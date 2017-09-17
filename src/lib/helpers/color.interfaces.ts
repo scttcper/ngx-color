@@ -31,8 +31,8 @@ export interface HSVA extends HSV {
 export interface Color {
   hex: string;
   rgb: RGBA;
-  hsl: HSL;
-  hsv: HSV;
+  hsl: HSLA;
+  hsv: HSVA;
   oldHue: number;
   source: string;
 }

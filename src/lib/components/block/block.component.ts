@@ -33,8 +33,8 @@ import { isValidHex } from '../../helpers/color';
       ></color-block-swatches>
       <color-editable-input
         [value]="hex"
-        (valueChange)="handleValueChange($event)"
-        [style]="inputStyles"
+        (onChange)="handleValueChange($event)"
+        [style]="{input: input}"
       ></color-editable-input>
     </div>
   </div>
@@ -92,7 +92,7 @@ export class BlockComponent extends ColorWrap {
   @Input() width: string | number = 170;
   @Input() triangle: 'top' | 'hide' = 'top';
   triangleBorderColor: string;
-  inputStyles = {
+  input = {
     width: '100%',
     'font-size': '12px',
     color: '#666',
@@ -109,8 +109,8 @@ export class BlockComponent extends ColorWrap {
     super();
   }
 
-  handleValueChange(hex) {
-    this.handleBlockChange({ hex, $event: null });
+  handleValueChange({ data, $event }) {
+    this.handleBlockChange({ hex: data, $event });
   }
 
   handleBlockChange({ hex, $event }) {

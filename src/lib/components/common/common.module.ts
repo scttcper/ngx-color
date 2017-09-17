@@ -7,6 +7,7 @@ import { ColorWrap } from './color-wrap.component';
 import { EditableInputComponent } from './editable-input.component';
 import { HueComponent } from './hue.component';
 import { SwatchComponent } from './swatch.component';
+import { SaturationComponent } from './saturation.component';
 
 const components = [
   AlphaComponent,
@@ -15,6 +16,7 @@ const components = [
   EditableInputComponent,
   HueComponent,
   SwatchComponent,
+  SaturationComponent,
 ];
 
 @NgModule({

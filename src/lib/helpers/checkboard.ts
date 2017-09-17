@@ -1,6 +1,6 @@
-const checkboardCache = {};
+const checkboardCache: {[key: string]: string} = {};
 
-export function render(c1, c2, size) {
+export function render(c1: string, c2: string, size: number) {
   if (typeof document === 'undefined') {
     return null;
   }
@@ -20,7 +20,7 @@ export function render(c1, c2, size) {
   return canvas.toDataURL();
 }
 
-export function get(c1, c2, size) {
+export function get(c1, c2, size: number) {
   const key = `${c1}-${c2}-${size}`;
   const checkboard = render(c1, c2, size);
 

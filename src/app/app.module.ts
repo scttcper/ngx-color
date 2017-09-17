@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ColorBlockModule } from '../lib/components/block/block.module';
 import { HueModule } from '../lib/components/hue/hue.module';
 import { AlphaModule } from '../lib/components/alpha/alpha.module';
+import { ColorChromeModule } from '../lib/components/chrome/chrome.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AlphaModule } from '../lib/components/alpha/alpha.module';
     ColorBlockModule,
     HueModule,
     AlphaModule,
+    ColorChromeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
