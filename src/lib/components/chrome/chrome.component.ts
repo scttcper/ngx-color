@@ -136,7 +136,6 @@ export class ChromeComponent extends ColorWrap implements OnChanges {
   }
 
   handleValueChange({data, $event}) {
-    console.log(data, $event)
     this.handleChange(data, $event);
   }
 

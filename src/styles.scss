@@ -1,5 +1,11 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+$container-max-widths: (
+  sm: 540px,
+  md: 810px,
+  lg: 810px,
+  xl: 810px
+);
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/print";
 @import "~bootstrap/scss/reboot";

@@ -33,7 +33,13 @@
     text-decoration: underline;
   }
 }
-
+.label {
+  text-align: center;
+  width: 100%;
+  color: rgba(0,0,0,.4);
+  font-size: 12px;
+  margin-top: 10px;
+}
 .white-label {
   width: 100%;
   font-size: 12px;

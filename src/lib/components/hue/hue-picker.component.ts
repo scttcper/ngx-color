@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { ColorWrap } from '../common/color-wrap.component';
 
@@ -29,6 +29,7 @@ export class HuePickerComponent extends ColorWrap implements OnInit {
   @Input() height = 16;
   @Input() radius = 2;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
+  @Input() className: string;
   pointer = {
     width: '18px',
     height: '18px',

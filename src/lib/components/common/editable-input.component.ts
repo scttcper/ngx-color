@@ -5,6 +5,7 @@ import {
   Output,
   EventEmitter,
   OnChanges,
+  HostListener,
 } from '@angular/core';
 
 @Component({
@@ -21,24 +22,24 @@ import {
         [placeholder]="placeholder"
         spellCheck="false"
       />
-      <span *ngIf="label" [ngStyle]="labelStyle">
+      <span *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
         {{ label }}
       </span>
     </div>
   `,
-  styles: [
-    `
+  styles: [`
     .wrap {
       position: relative;
     }
-  `,
-  ],
+  `],
 })
 export class EditableInputComponent implements OnInit, OnChanges {
   @Input() style: any;
   @Input() label: string;
   @Input() value: string | number;
   @Input() arrowOffset: number;
+  @Input() dragLabel: boolean;
+  @Input() dragMax: number;
   @Input() placeholder = '';
   @Output() onChange = new EventEmitter();
   currentValue: string | number;
@@ -47,13 +48,17 @@ export class EditableInputComponent implements OnInit, OnChanges {
   inputStyle: any;
   labelStyle: any;
   focus = false;
+  active = false;
 
   constructor() {}
 
   ngOnInit() {
-    this.wrapStyle = this.style && this.style.wrap ? this.style.wrap : {};
-    this.inputStyle = this.style && this.style.input ? this.style.input : {};
-    this.labelStyle = this.style && this.style.label ? this.style.label : {};
+    this.wrapStyle = this.style && this.style.wrap ? this.style.wrap : { };
+    this.inputStyle = this.style && this.style.input ? this.style.input : { };
+    this.labelStyle = this.style && this.style.label ? this.style.label : { };
+    if (this.dragLabel) {
+      this.labelStyle.cursor = 'ew-resize';
+    }
   }
   handleFocus($event) {
     this.focus = true;
@@ -119,6 +124,28 @@ export class EditableInputComponent implements OnInit, OnChanges {
       this.blurValue = String(this.value).toUpperCase();
     } else {
       this.blurValue = String(this.value).toUpperCase();
+    }
+  }
+  handleMousedown($event: Event) {
+    if (this.dragLabel) {
+      $event.preventDefault();
+      this.handleDrag($event);
+      this.active = true;
+    }
+  }
+  @HostListener('window:mousemove', ['$event'])
+  handleDrag($event) {
+    if (this.dragLabel && this.active) {
+      const newValue = Math.round(this.value + $event.movementX);
+      if (newValue >= 0 && newValue <= this.dragMax) {
+        this.onChange.emit({ data: { [this.label]: newValue }, $event });
+      }
+    }
+  }
+  @HostListener('window:mouseup', ['$event'])
+  handleMouseUp($event) {
+    if (this.dragLabel && this.active) {
+      this.active = false;
     }
   }
 }

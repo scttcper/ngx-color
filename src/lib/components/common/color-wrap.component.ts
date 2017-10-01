@@ -7,12 +7,11 @@ import {
   OnChanges,
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { debounce } from 'lodash-es';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/from';
 
 import { toState, simpleCheckForValidColor } from '../../helpers/color';
-import { HSLA, HSVA, RGBA, Color } from '../../helpers/color.interfaces';
+import { HSLA, HSVA, RGBA } from '../../helpers/color.interfaces';
 
 @Component({ template: '' })
 export class ColorWrap implements OnInit, OnChanges {
@@ -54,7 +53,6 @@ export class ColorWrap implements OnInit, OnChanges {
     this.source = data.source;
   }
   handleChange(data, $event) {
-    console.log(data)
     const isValidColor = simpleCheckForValidColor(data);
     if (isValidColor) {
       const colors = toState(data, data.h || this.oldHue);

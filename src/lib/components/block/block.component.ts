@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { ColorWrap } from '../common/color-wrap.component';
-import { isValidHex } from '../../helpers/color';
+import { isValidHex, getContrastingColor } from '../../helpers/color';
 
 @Component({
   selector: 'color-block',
@@ -19,7 +19,7 @@ import { isValidHex } from '../../helpers/color';
         borderRadius="6px 6px 0 0"
       ></color-checkboard>
       <div class="block-label"
-        [style.color]="hex === 'transparent' ? 'rgba(0, 0, 0, 0.4)' : '#fff'"
+        [style.color]="getContrastingColor(hex)"
       >
         {{ hex }}
       </div>
@@ -111,6 +111,9 @@ export class BlockComponent extends ColorWrap {
 
   handleValueChange({ data, $event }) {
     this.handleBlockChange({ hex: data, $event });
+  }
+  getContrastingColor(hex) {
+    return getContrastingColor(hex);
   }
 
   handleBlockChange({ hex, $event }) {

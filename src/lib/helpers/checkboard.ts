@@ -20,12 +20,14 @@ export function render(c1: string, c2: string, size: number) {
   return canvas.toDataURL();
 }
 
-export function get(c1, c2, size: number) {
+export function get(c1: string, c2: string, size: number) {
   const key = `${c1}-${c2}-${size}`;
-  const checkboard = render(c1, c2, size);
-
   if (checkboardCache[key]) {
     return checkboardCache[key];
+  }
+  const checkboard = render(c1, c2, size);
+  if (!checkboard) {
+    return null;
   }
   checkboardCache[key] = checkboard;
   return checkboard;

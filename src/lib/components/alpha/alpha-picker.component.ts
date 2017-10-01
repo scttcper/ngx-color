@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { ColorWrap } from '../common/color-wrap.component';
 
@@ -28,9 +28,10 @@ import { ColorWrap } from '../common/color-wrap.component';
   `],
 })
 export class AlphaPickerComponent extends ColorWrap implements OnInit {
+  @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
+  @Input() className: string;
   width = 316;
   height = 16;
-  @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   pointer = {
     width: '18px',
     height: '18px',

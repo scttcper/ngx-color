@@ -1,9 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { Shape } from '../../helpers/color.interfaces';
+
 @Component({
   selector: 'color-block-swatches',
   template: `
-    <div class="swatches">
+    <div class="block-swatches">
       <color-swatch
         *ngFor="let c of colors"
         [color]="c"
@@ -17,7 +19,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     </div>
   `,
   styles: [`
-    .swatches {
+    .block-swatches {
       margin-right: -10px;
     }
     .clear {
@@ -26,7 +28,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   `],
 })
 export class BlockSwatchesComponent implements OnInit {
-  @Input() colors;
+  @Input() colors: string[] | Shape[];
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
   swatchStyle: any;

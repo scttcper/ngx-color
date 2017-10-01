@@ -7,6 +7,7 @@ import { ColorBlockModule } from '../lib/components/block/block.module';
 import { HueModule } from '../lib/components/hue/hue.module';
 import { AlphaModule } from '../lib/components/alpha/alpha.module';
 import { ColorChromeModule } from '../lib/components/chrome/chrome.module';
+import { ColorSketchModule } from '../lib/components/sketch/sketch.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ColorChromeModule } from '../lib/components/chrome/chrome.module';
     HueModule,
     AlphaModule,
     ColorChromeModule,
+    ColorSketchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

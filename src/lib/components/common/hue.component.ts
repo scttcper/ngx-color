@@ -6,11 +6,10 @@ import { HSLA } from '../../helpers/color.interfaces';
 @Component({
   selector: 'color-hue',
   template: `
-  <div class="color-hue">
+  <div class="color-hue color-hue-{{direction}}" [style.border-radius.px]="radius" [style.box-shadow]="shadow">
     <div
-      class="color-hue-container color-hue-{{direction}}"
+      class="color-hue-container"
       (mousedown)="handleMousedown($event)"
-      [style.border-radius.px]="radius" [style.box-shadow]="shadow"
       #container
     >
       <div class="color-hue-pointer" [style.left.%]="(hsl.h * 100) / 360">
@@ -28,7 +27,7 @@ import { HSLA } from '../../helpers/color.interfaces';
       right: 0;
     }
     .color-hue-container {
-      margin: 0px 2px;
+      margin: 0 2px;
       position: relative;
       height: 100%;
     }

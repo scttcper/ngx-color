@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ElementRef, ViewChild, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from '@angular/core';
 
 import { HSLA, RGBA } from '../../helpers/color.interfaces';
 import * as color from '../../helpers/color';

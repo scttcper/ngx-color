@@ -36,3 +36,8 @@ export interface Color {
   oldHue: number;
   source: string;
 }
+
+export interface Shape {
+  color: string;
+  title: string;
+}
