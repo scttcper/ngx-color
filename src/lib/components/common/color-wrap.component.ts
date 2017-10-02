@@ -30,6 +30,7 @@ export class ColorWrap implements OnInit, OnChanges {
   rgb: RGBA;
   hex: string;
   source: string;
+  currentColor: string;
 
   constructor() {
     Observable.from(this.onChange)
@@ -40,6 +41,7 @@ export class ColorWrap implements OnInit, OnChanges {
   }
   ngOnInit() {
     this.setState(toState(this.color, 0));
+    this.currentColor = this.hex;
   }
   ngOnChanges() {
     this.setState(toState(this.color, this.oldHue));

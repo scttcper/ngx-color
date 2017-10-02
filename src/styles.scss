@@ -1,18 +1,13 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-$container-max-widths: (
-  sm: 540px,
-  md: 810px,
-  lg: 810px,
-  xl: 810px
-);
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/print";
-@import "~bootstrap/scss/reboot";
-@import "~bootstrap/scss/type";
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+$container-max-widths: (sm: 540px, md: 810px, lg: 810px, xl: 810px);
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/print';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
 // @import "~bootstrap/scss/images";
 // @import "~bootstrap/scss/code";
-@import "~bootstrap/scss/grid";
+@import '~bootstrap/scss/grid';
 // @import "~bootstrap/scss/tables";
 // @import "~bootstrap/scss/forms";
 // @import "~bootstrap/scss/buttons";
@@ -37,9 +32,10 @@ $container-max-widths: (
 // @import "~bootstrap/scss/tooltip";
 // @import "~bootstrap/scss/popover";
 // @import "~bootstrap/scss/carousel";
-@import "~bootstrap/scss/utilities";
+@import '~bootstrap/scss/utilities';
 
-html, body {
+html,
+body {
   background: #eee;
 }
 .home {

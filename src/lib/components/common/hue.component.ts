@@ -12,7 +12,7 @@ import { HSLA } from '../../helpers/color.interfaces';
       (mousedown)="handleMousedown($event)"
       #container
     >
-      <div class="color-hue-pointer" [style.left.%]="(hsl.h * 100) / 360">
+      <div class="color-hue-pointer" [style.left]="left" [style.top]="top" *ngIf="!hidePointer">
         <div class="color-hue-slider" [ngStyle]="pointer"></div>
       </div>
     </div>
@@ -58,9 +58,12 @@ export class HueComponent implements OnInit, OnChanges {
   @Input() pointer: any;
   @Input() radius: number;
   @Input() shadow: any;
+  @Input() hidePointer = false;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<any>();
   @ViewChild('container') container: ElementRef;
+  left = '0px';
+  top = '';
   private active = false;
 
   pointerLeft: any;
@@ -71,6 +74,11 @@ export class HueComponent implements OnInit, OnChanges {
     // this.pointerLeft = `${ (this.props.hsl.h * 100) / 360 }%`
   }
   ngOnChanges() {
+    if (this.direction === 'horizontal') {
+      this.left = `${ (this.hsl.h * 100) / 360 }%`;
+    } else {
+      this.top = `${ -((this.hsl.h * 100) / 360) + 100 }%`;
+    }
     // const change = hue.calculateChange(e, this, this.el.nativeElement)
     // change && this.props.onChange && this.props.onChange(change, e)
   }
