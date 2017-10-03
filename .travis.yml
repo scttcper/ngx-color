@@ -7,8 +7,8 @@ addons:
   chrome: stable
 script:
   - npm run build
-  - npm run bundlesize
-  - npm run lint
+  # - npm run bundlesize
+  # - npm run lint
   - npm run ghpages
 after_success:
   - bash <(curl -s https://codecov.io/bash)
