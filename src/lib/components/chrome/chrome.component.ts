@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 
 import { toState } from '../../helpers/color';
 import { ColorWrap } from '../common/color-wrap.component';

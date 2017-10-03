@@ -28,6 +28,9 @@ import {
     </div>
   `,
   styles: [`
+    :host {
+      display: flex;
+    }
     .wrap {
       position: relative;
     }

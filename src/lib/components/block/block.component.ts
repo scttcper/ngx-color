@@ -34,7 +34,7 @@ import { isValidHex, getContrastingColor } from '../../helpers/color';
       <color-editable-input
         [value]="hex"
         (onChange)="handleValueChange($event)"
-        [style]="{input: input}"
+        [style]="{input: input, wrap: wrap}"
       ></color-editable-input>
     </div>
   </div>
@@ -46,7 +46,6 @@ import { isValidHex, getContrastingColor } from '../../helpers/color';
       box-shadow: 0 1px rgba(0, 0, 0, .1);
       position: relative;
     }
-
     .block-head {
       align-items: center;
       border-radius: 6px 6px 0 0;
@@ -55,16 +54,13 @@ import { isValidHex, getContrastingColor } from '../../helpers/color';
       justify-content: center;
       position: relative;
     }
-
     .block-body {
       padding: 10px;
     }
-
     .block-label {
       font-size: 18px;
       position: relative;
     }
-
     .block-triangle {
       border-style: solid;
       border-width: 0 10px 10px 10px;
@@ -103,6 +99,10 @@ export class BlockComponent extends ColorWrap {
     'border-radius': '4px',
     padding: '0 7px',
     'box-sizing': 'border-box',
+  };
+  wrap = {
+    'position': 'relative',
+    'width': '100%',
   };
 
   constructor() {

@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 
+import { isValidHex } from '../../helpers/color';
+
 
 @Component({
   selector: 'color-photoshop-fields',
@@ -60,7 +62,7 @@ import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angu
     .photoshop-fields {
       padding-top: 5px;
       padding-bottom: 9px;
-      width: 80px;
+      width: 85px;
       position: relative;
     }
     .photoshop-field-symbols {
@@ -70,8 +72,8 @@ import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angu
       font-size: 13px;
     }
     .photoshop-symbol {
-      height: 26px;
-      line-height: 26px;
+      height: 24px;
+      line-height: 24px;
       padding-bottom: 7px;
     }
     .photoshop-divider {
@@ -83,9 +85,10 @@ export class PhotoshopFieldsComponent implements OnInit, OnChanges {
   @Input() rgb: any;
   @Input() hsv: any;
   @Input() hex: any;
-  @Input() RGBinput = {
-    'margin-left': '36%',
-    width: '46%',
+  @Output() onChange = new EventEmitter<any>();
+  RGBinput = {
+    'margin-left': '35%',
+    width: '40%',
     height: '22px',
     border: '1px solid rgb(136, 136, 136)',
     'box-shadow': 'rgba(0, 0, 0, 0.1) 0px 1px 1px inset, rgb(236, 236, 236) 0px 1px 0px 0px',
@@ -94,10 +97,10 @@ export class PhotoshopFieldsComponent implements OnInit, OnChanges {
     'padding-left': '3px',
     'margin-right': '10px',
   };
-  @Input() RGBwrap = {
+  RGBwrap = {
     position: 'relative',
   };
-  @Input() RGBlabel = {
+  RGBlabel = {
     left: '0px',
     width: '34px',
     'text-transform': 'uppercase',
@@ -106,7 +109,7 @@ export class PhotoshopFieldsComponent implements OnInit, OnChanges {
     'line-height': '24px',
     position: 'absolute',
   };
-  @Input() HEXinput = {
+  HEXinput = {
     'margin-left': '20%',
     width: '80%',
     height: '22px',
@@ -116,10 +119,10 @@ export class PhotoshopFieldsComponent implements OnInit, OnChanges {
     'font-size': '13px',
     'padding-left': '3px',
   };
-  @Input() HEXwrap = {
+  HEXwrap = {
     position: 'relative',
   };
-  @Input() HEXlabel = {
+  HEXlabel = {
     position: 'absolute',
     top: '0px',
     left: '0px',
@@ -140,6 +143,30 @@ export class PhotoshopFieldsComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
 
+  }
+  handleValueChange({ data, $event }) {
+    if (data['#']) {
+      if (isValidHex(data['#'])) {
+        this.onChange.emit({ data: {
+          hex: data['#'],
+          source: 'hex',
+        }, $event });
+      }
+    } else if (data.r || data.g || data.b) {
+      this.onChange.emit({ data: {
+        r: data.r || this.rgb.r,
+        g: data.g || this.rgb.g,
+        b: data.b || this.rgb.b,
+        source: 'rgb',
+      }, $event });
+    } else if (data.h || data.s || data.v) {
+      this.onChange.emit({ data: {
+        h: data.h || this.hsv.h,
+        s: data.s || this.hsv.s,
+        v: data.v || this.hsv.v,
+        source: 'hsv',
+      }, $event });
+    }
   }
 
 }

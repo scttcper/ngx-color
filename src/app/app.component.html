@@ -41,12 +41,33 @@
     <div class="row">
       <div class="col-md-3 mt-3 mt-md-5">
         <div class="d-flex justify-content-center justify-content-md-start">
-          <color-block
-            style="max-width: 170px;"
-            [color]="state"
-            (onChangeComplete)="changeComplete($event)"
-            (onChange)="changeComplete($event)"
-          ></color-block>
+          <div style="width: 170px; display: inline-block">
+            <color-block
+              [color]="state"
+              (onChangeComplete)="changeComplete($event)"
+              (onChange)="changeComplete($event)"
+            ></color-block>
+          </div>
+        </div>
+        <div class="text-center label">Block</div>
+      </div>
+      <div class="col-md-9 mt-3 mt-md-5">
+        <div class="row">
+          <div class="col-6">
+            <div class="d-flex justify-content-center">
+              <div style="width: 220px; display: inline-block">
+                <color-github
+                  [color]="state"
+                  (onChangeComplete)="changeComplete($event)"
+                  (onChange)="changeComplete($event)"
+                ></color-github>
+              </div>
+            </div>
+            <div class="text-center label">Github</div>
+          </div>
+          <div class="col-6">
+            <div class="text-center label">Hue</div>
+          </div>
         </div>
       </div>
     </div>

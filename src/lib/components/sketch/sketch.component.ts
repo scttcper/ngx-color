@@ -11,7 +11,6 @@ import { ColorWrap } from '../common/color-wrap.component';
       <color-saturation
         [hsl]="hsl"
         [hsv]="hsv"
-        [circle]="circle"
         (onChange)="handleValueChange($event)"
       >
       </color-saturation>
@@ -21,7 +20,6 @@ import { ColorWrap } from '../common/color-wrap.component';
         <div class="sketch-hue">
           <color-hue
             [hsl]="hsl"
-            [pointer]="pointer"
             (onChange)="handleValueChange($event)"
           ></color-hue>
         </div>
@@ -30,7 +28,6 @@ import { ColorWrap } from '../common/color-wrap.component';
             [radius]="2"
             [rgb]="rgb"
             [hsl]="hsl"
-            [pointer]="pointer"
             (onChange)="handleValueChange($event)"
           ></color-alpha>
         </div>

@@ -122,7 +122,6 @@ export class AlphaComponent implements OnInit, OnChanges {
     const data = alpha.calculateChange($event, this, this.container.nativeElement);
     if (data) {
       this.onChange.emit({ data, $event });
-      console.log(data);
     }
   }
 

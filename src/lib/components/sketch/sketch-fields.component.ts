@@ -74,7 +74,6 @@ import * as color from '../../helpers/color';
       flex: 2 1 0%;
     }
     .sketch-single {
-      -webkit-box-flex: 1;
       flex: 1 1 0%;
       padding-left: 6px;
     }
@@ -95,6 +94,7 @@ export class SketchFieldsComponent implements OnInit, OnChanges {
     width: '100%',
     padding: '4px 10% 3px',
     border: 'none',
+    'box-sizing': 'border-box',
     'box-shadow': 'inset 0 0 0 1px #ccc',
     'font-size': '11px',
   };

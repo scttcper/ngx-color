@@ -12,7 +12,6 @@ import { ColorWrap } from '../common/color-wrap.component';
         <color-saturation
           [hsl]="hsl"
           [hsv]="hsv"
-          [circle]="circle"
           (onChange)="handleValueChange($event)"
         ></color-saturation>
       </div>
@@ -20,7 +19,6 @@ import { ColorWrap } from '../common/color-wrap.component';
         <color-hue
           direction="vertical"
           [hsl]="hsl"
-          [pointer]="pointer"
           [hidePointer]="true"
           (onChange)="handleValueChange($event)"
         ></color-hue>
@@ -45,6 +43,7 @@ import { ColorWrap } from '../common/color-wrap.component';
               [rgb]="rgb"
               [hex]="hex"
               [hsv]="hsv"
+              (onChange)="handleValueChange($event)"
             ></color-photoshop-fields>
           </div>
         </div>

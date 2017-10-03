@@ -44,7 +44,6 @@ export class PhotoshopPreviewsComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
   ngOnChanges() {
-    console.log(this.currentColor)
     this.backgroundNew = `rgb(${ this.rgb.r },${ this.rgb.g }, ${ this.rgb.b })`;
   }
 

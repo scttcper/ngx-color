@@ -9,6 +9,7 @@ import { AlphaModule } from '../lib/components/alpha/alpha.module';
 import { ColorChromeModule } from '../lib/components/chrome/chrome.module';
 import { ColorSketchModule } from '../lib/components/sketch/sketch.module';
 import { ColorPhotoshopModule } from '../lib/components/photoshop/photoshop.module';
+import { ColorGithubModule } from '../lib/components/github/github.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ColorPhotoshopModule } from '../lib/components/photoshop/photoshop.modu
     ColorChromeModule,
     ColorSketchModule,
     ColorPhotoshopModule,
+    ColorGithubModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
