@@ -1,12 +1,14 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
   OnChanges,
-  HostListener,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'color-editable-input',
@@ -36,7 +38,7 @@ import {
     }
   `],
 })
-export class EditableInputComponent implements OnInit, OnChanges {
+export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   @Input() style: any;
   @Input() label: string;
   @Input() value: string | number;
@@ -52,6 +54,8 @@ export class EditableInputComponent implements OnInit, OnChanges {
   labelStyle: any;
   focus = false;
   active = false;
+  mousemove: Subscription;
+  mouseup: Subscription;
 
   constructor() {}
 
@@ -129,26 +133,36 @@ export class EditableInputComponent implements OnInit, OnChanges {
       this.blurValue = String(this.value).toUpperCase();
     }
   }
+  ngOnDestroy() {
+    this.unsubscribe();
+  }
+  subscribe() {
+    this.mousemove = fromEvent(document, 'mousemove')
+      .subscribe((ev: Event) => this.handleDrag(ev));
+    this.mouseup = fromEvent(document, 'mouseup')
+      .subscribe(() => this.unsubscribe());
+  }
+  unsubscribe() {
+    if (this.mousemove) {
+      this.mousemove.unsubscribe();
+    }
+    if (this.mouseup) {
+      this.mouseup.unsubscribe();
+    }
+  }
   handleMousedown($event: Event) {
     if (this.dragLabel) {
       $event.preventDefault();
       this.handleDrag($event);
-      this.active = true;
+      this.subscribe();
     }
   }
-  @HostListener('window:mousemove', ['$event'])
   handleDrag($event) {
     if (this.dragLabel && this.active) {
       const newValue = Math.round(this.value + $event.movementX);
       if (newValue >= 0 && newValue <= this.dragMax) {
         this.onChange.emit({ data: { [this.label]: newValue }, $event });
       }
-    }
-  }
-  @HostListener('window:mouseup', ['$event'])
-  handleMouseUp($event) {
-    if (this.dragLabel && this.active) {
-      this.active = false;
     }
   }
 }

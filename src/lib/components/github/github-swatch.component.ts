@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'color-github-swatch',
@@ -28,7 +28,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     }
   `],
 })
-export class GithubSwatchComponent implements OnInit {
+export class GithubSwatchComponent {
   @Input() color: string;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
@@ -36,9 +36,6 @@ export class GithubSwatchComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-
-  }
   handleClick({hex, $event}) {
     this.onClick.emit({hex, $event});
   }

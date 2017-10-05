@@ -1,6 +1,20 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter, HostListener, ElementRef, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  EventEmitter,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/throttleTime';
+
 
 import * as saturation from '../../helpers/saturation';
 import { HSLA, HSVA } from '../../helpers/color.interfaces';
@@ -60,8 +74,9 @@ import { HSLA, HSVA } from '../../helpers/color.interfaces';
       transform: translate(-2px, -2px);
     }
   `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SaturationComponent implements OnInit, OnChanges {
+export class SaturationComponent implements OnInit, OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() hsv: HSVA;
   @Input() radius: number;
@@ -80,8 +95,10 @@ export class SaturationComponent implements OnInit, OnChanges {
   @Input() circle: any;
   @Output() onChange = new EventEmitter<any>();
   @ViewChild('container') container: ElementRef;
-  private active = false;
+  mousemove: Subscription;
+  mouseup: Subscription;
   private change = new EventEmitter<any>();
+
 
   constructor() {}
 
@@ -93,30 +110,36 @@ export class SaturationComponent implements OnInit, OnChanges {
         this.onChange.emit({ data, $event });
       });
   }
-
   ngOnChanges() {
     this.background = `hsl(${this.hsl.h}, 100%, 50%)`;
     this.pointerTop = -(this.hsv.v * 100) + 100;
     this.pointerLeft = this.hsv.s * 100;
   }
-
-  @HostListener('window:mousemove', ['$event'])
-  handleMousemove($event: Event) {
-    if (!this.active) {
-      return;
+  ngOnDestroy() {
+    this.unsubscribe();
+  }
+  subscribe() {
+    this.mousemove = fromEvent(document, 'mousemove')
+      .subscribe((ev: Event) => this.handleMousemove(ev));
+    this.mouseup = fromEvent(document, 'mouseup')
+      .subscribe(() => this.unsubscribe());
+  }
+  unsubscribe() {
+    if (this.mousemove) {
+      this.mousemove.unsubscribe();
     }
+    if (this.mouseup) {
+      this.mouseup.unsubscribe();
+    }
+  }
+
+  handleMousemove($event: Event) {
     this.handleChange($event);
   }
   handleMousedown($event: Event) {
     this.handleChange($event);
-    this.active = true;
+    this.subscribe();
   }
-
-  @HostListener('window:mouseup', ['$event'])
-  handleMouseUp() {
-    this.active = false;
-  }
-
   handleChange($event: Event) {
     $event.preventDefault();
     this.change.emit($event);

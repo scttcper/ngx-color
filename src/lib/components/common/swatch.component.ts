@@ -1,40 +1,49 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  NgZone,
+} from '@angular/core';
+
 
 @Component({
   selector: 'color-swatch',
   template: `
     <div
       class="swatch"
-      [ngStyle]="divStyles"
+      [ngStyle]="(focus || inFocus) ? focusStyles : divStyles"
       [attr.title]="color"
       (click)="handleClick(color, $event)"
       (keydown.enter)="handleClick(color, $event)"
-      (focus)="handleFocus(color)"
-      (focusout)="handleFocusOut(color)"
+      (focus)="handleFocus()"
+      (focusout)="handleFocusOut()"
       (mouseover)="handleHover(color, $event)"
       tabindex="0"
     >
       <ng-content></ng-content>
       <color-checkboard
-        *ngIf="transparent"
+        *ngIf="this.color === 'transparent'"
         boxShadow="inset 0 0 0 1px rgba(0,0,0,0.1)"
       ></color-checkboard>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SwatchComponent implements OnInit, OnChanges {
+export class SwatchComponent implements OnInit {
   @Input() color;
   @Input() style = {};
   @Input() focusStyle = {};
+  @Input() focus: boolean;
   @Output() onClick = new EventEmitter<any>();
   @Output() onHover = new EventEmitter<any>();
-  unfocusStyles;
-  divStyles;
-  focusStyles;
-  transparent = false;
-  focus = false;
+  divStyles: any = {};
+  focusStyles: any = {};
+  inFocus = false;
 
-  constructor() { }
+  constructor(private ngZone: NgZone) { }
 
   ngOnInit() {
     this.divStyles = {
@@ -51,22 +60,20 @@ export class SwatchComponent implements OnInit, OnChanges {
       ...this.focusStyle,
     };
   }
-  handleFocusOut(color) {
-    this.divStyles = this.unfocusStyles;
+  handleFocusOut() {
+    this.inFocus = false;
   }
-  handleFocus(color) {
-    this.unfocusStyles = this.divStyles;
-    this.divStyles = this.focusStyles;
-    this.focus = true;
+  handleFocus() {
+    this.inFocus = true;
   }
   handleHover(hex, $event) {
-    this.onHover.emit({hex, $event});
+    this.ngZone.runOutsideAngular(() => {
+      this.onHover.emit({hex, $event});
+    });
   }
   handleClick(hex, $event) {
-    this.onClick.emit({hex, $event});
+    this.ngZone.runOutsideAngular(() => {
+      this.onClick.emit({hex, $event});
+    });
   }
-  ngOnChanges() {
-    this.transparent = this.color === 'transparent';
-  }
-
 }

@@ -1,4 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ElementRef, ViewChild, HostListener } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  OnInit,
+  OnDestroy,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Subscription } from 'rxjs/Subscription';
+
 
 import * as alpha from '../../helpers/alpha';
 import { HSLA, RGBA } from '../../helpers/color.interfaces';
@@ -66,8 +80,9 @@ import { HSLA, RGBA } from '../../helpers/color.interfaces';
       transform: translateX(-2px);
     },
   `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AlphaComponent implements OnInit, OnChanges {
+export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() rgb: RGBA;
   @Input() pointer: any;
@@ -79,11 +94,13 @@ export class AlphaComponent implements OnInit, OnChanges {
   gradient: any;
   pointerLeft: number;
   pointerTop: number;
-  private active = false;
+  mousemove: Subscription;
+  mouseup: Subscription;
 
   constructor() { }
 
   ngOnInit() {
+
   }
   ngOnChanges() {
     if (this.direction === 'vertical') {
@@ -101,22 +118,29 @@ export class AlphaComponent implements OnInit, OnChanges {
       this.pointerLeft = this.rgb.a * 100;
     }
   }
-
-  @HostListener('window:mousemove', ['$event'])
+  ngOnDestroy() {
+    this.unsubscribe();
+  }
   handleMousemove($event: Event) {
-    if (!this.active) {
-      return;
-    }
     this.handleChange($event);
   }
   handleMousedown($event: Event) {
     this.handleChange($event);
-    this.active = true;
+    this.subscribe();
   }
-
-  @HostListener('window:mouseup', ['$event'])
-  handleMouseUp() {
-    this.active = false;
+  subscribe() {
+    this.mousemove = fromEvent(document, 'mousemove')
+      .subscribe((ev: Event) => this.handleMousemove(ev));
+    this.mouseup = fromEvent(document, 'mouseup')
+      .subscribe(() => this.unsubscribe());
+  }
+  unsubscribe() {
+    if (this.mousemove) {
+      this.mousemove.unsubscribe();
+    }
+    if (this.mouseup) {
+      this.mouseup.unsubscribe();
+    }
   }
   handleChange($event: Event) {
     const data = alpha.calculateChange($event, this, this.container.nativeElement);

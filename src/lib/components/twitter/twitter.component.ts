@@ -14,6 +14,7 @@ import { isValidHex } from '../../helpers/color';
         <color-swatch
           [color]="color"
           [style]="swatchStyle"
+          [focusStyle]="focus(color)"
           (onClick)="handleBlockChange($event)"
         ></color-swatch>
       </div>
@@ -151,6 +152,10 @@ export class TwitterComponent extends ColorWrap {
 
   constructor() {
     super();
+  }
+
+  focus(color: string) {
+    return { boxShadow: `0 0 4px ${ color }` };
   }
 
   handleBlockChange({ hex, $event }) {

@@ -1,4 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ElementRef, ViewChild, HostListener } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  OnDestroy,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Subscription } from 'rxjs/Subscription';
 
 import * as hue from '../../helpers/hue';
 import { HSLA } from '../../helpers/color.interfaces';
@@ -53,7 +64,7 @@ import { HSLA } from '../../helpers/color.interfaces';
     }
   `],
 })
-export class HueComponent implements OnInit, OnChanges {
+export class HueComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() pointer: any;
   @Input() radius: number;
@@ -64,40 +75,41 @@ export class HueComponent implements OnInit, OnChanges {
   @ViewChild('container') container: ElementRef;
   left = '0px';
   top = '';
-  private active = false;
+  mousemove: Subscription;
+  mouseup: Subscription;
 
-  pointerLeft: any;
   constructor() { }
 
-  ngOnInit() {
-    // console.log(this.el.nativeElement.touches)
-    // this.pointerLeft = `${ (this.props.hsl.h * 100) / 360 }%`
-  }
   ngOnChanges() {
     if (this.direction === 'horizontal') {
       this.left = `${ (this.hsl.h * 100) / 360 }%`;
     } else {
       this.top = `${ -((this.hsl.h * 100) / 360) + 100 }%`;
     }
-    // const change = hue.calculateChange(e, this, this.el.nativeElement)
-    // change && this.props.onChange && this.props.onChange(change, e)
   }
-
-  @HostListener('window:mousemove', ['$event'])
-  handleMousemove($event: Event) {
-    if (!this.active) {
-      return;
+  ngOnDestroy() {
+    this.unsubscribe();
+  }
+  subscribe() {
+    this.mousemove = fromEvent(document, 'mousemove')
+      .subscribe((ev: Event) => this.handleMousemove(ev));
+    this.mouseup = fromEvent(document, 'mouseup')
+      .subscribe(() => this.unsubscribe());
+  }
+  unsubscribe() {
+    if (this.mousemove) {
+      this.mousemove.unsubscribe();
     }
+    if (this.mouseup) {
+      this.mouseup.unsubscribe();
+    }
+  }
+  handleMousemove($event: Event) {
     this.handleChange($event);
   }
   handleMousedown($event: Event) {
     this.handleChange($event);
-    this.active = true;
-  }
-
-  @HostListener('window:mouseup', ['$event'])
-  handleMouseUp() {
-    this.active = false;
+    this.subscribe();
   }
   handleChange($event: Event) {
     const data = hue.calculateChange($event, this, this.container.nativeElement);
@@ -105,6 +117,4 @@ export class HueComponent implements OnInit, OnChanges {
       this.onChange.emit({data, $event});
     }
   }
-
-
 }
