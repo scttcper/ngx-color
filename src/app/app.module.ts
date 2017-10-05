@@ -10,6 +10,8 @@ import { ColorChromeModule } from '../lib/components/chrome/chrome.module';
 import { ColorSketchModule } from '../lib/components/sketch/sketch.module';
 import { ColorPhotoshopModule } from '../lib/components/photoshop/photoshop.module';
 import { ColorGithubModule } from '../lib/components/github/github.module';
+import { ColorTwitterModule } from '../lib/components/twitter/twitter.module';
+import { ColorCircleModule } from '../lib/components/circle/circle.module';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { ColorGithubModule } from '../lib/components/github/github.module';
     ColorSketchModule,
     ColorPhotoshopModule,
     ColorGithubModule,
+    ColorTwitterModule,
+    ColorCircleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

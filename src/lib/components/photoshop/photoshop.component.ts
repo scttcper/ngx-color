@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { ColorWrap } from '../common/color-wrap.component';
 
@@ -116,14 +116,11 @@ import { ColorWrap } from '../common/color-wrap.component';
     }
   `],
 })
-export class PhotoshopComponent extends ColorWrap implements OnChanges, OnInit {
+export class PhotoshopComponent extends ColorWrap implements OnInit {
   @Input() header = 'Color Picker';
   currentColor: string;
   constructor() {
     super();
-  }
-
-  ngOnChanges() {
   }
 
   handleValueChange({data, $event}) {
