@@ -12,6 +12,7 @@ import { ColorWrap } from '../common/color-wrap.component';
         <color-saturation
           [hsl]="hsl"
           [hsv]="hsv"
+          [circle]="circle"
           (onChange)="handleValueChange($event)"
         ></color-saturation>
       </div>
@@ -118,7 +119,13 @@ import { ColorWrap } from '../common/color-wrap.component';
 })
 export class PhotoshopComponent extends ColorWrap implements OnInit {
   @Input() header = 'Color Picker';
-  currentColor: string;
+  circle = {
+    width: '12px',
+    height: '12px',
+    'border-radius': '6px',
+    'box-shadow': 'rgb(255, 255, 255) 0px 0px 0px 1px inset',
+    'transform': 'translate(-6px, -6px)',
+  };
   constructor() {
     super();
   }

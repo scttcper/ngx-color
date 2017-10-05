@@ -4,20 +4,17 @@ import {
   Input,
   OnChanges,
   OnDestroy,
-  OnInit,
   Output,
   EventEmitter,
   ElementRef,
   ViewChild,
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/throttleTime';
-
 
 import * as saturation from '../../helpers/saturation';
 import { HSLA, HSVA } from '../../helpers/color.interfaces';
+
 @Component({
   selector: 'color-saturation',
   template: `
@@ -76,7 +73,7 @@ import { HSLA, HSVA } from '../../helpers/color.interfaces';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SaturationComponent implements OnInit, OnChanges, OnDestroy {
+export class SaturationComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() hsv: HSVA;
   @Input() radius: number;
@@ -97,19 +94,7 @@ export class SaturationComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild('container') container: ElementRef;
   mousemove: Subscription;
   mouseup: Subscription;
-  private change = new EventEmitter<any>();
 
-
-  constructor() {}
-
-  ngOnInit() {
-    Observable.from(this.change)
-      .throttleTime(15)
-      .subscribe(($event) => {
-        const data = saturation.calculateChange($event, this, this.container.nativeElement);
-        this.onChange.emit({ data, $event });
-      });
-  }
   ngOnChanges() {
     this.background = `hsl(${this.hsl.h}, 100%, 50%)`;
     this.pointerTop = -(this.hsv.v * 100) + 100;
@@ -142,6 +127,7 @@ export class SaturationComponent implements OnInit, OnChanges, OnDestroy {
   }
   handleChange($event: Event) {
     $event.preventDefault();
-    this.change.emit($event);
+    const data = saturation.calculateChange($event, this, this.container.nativeElement);
+    this.onChange.emit({ data, $event });
   }
 }
