@@ -18,7 +18,7 @@ import * as color from '../../helpers/color';
       <color-editable-input
         [style]="{ input: input, label: label }"
         label="hex"
-        [value]="hex"
+        [value]="hex.replace('#', '')"
         (onChange)="handleChange($event)"
       ></color-editable-input>
     </div>
