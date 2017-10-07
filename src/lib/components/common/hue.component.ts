@@ -1,11 +1,12 @@
 import {
+  ChangeDetectionStrategy,
   Component,
-  Input,
-  Output,
+  ElementRef,
   EventEmitter,
+  Input,
   OnChanges,
   OnDestroy,
-  ElementRef,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
@@ -63,6 +64,7 @@ import { HSLA } from '../../helpers/color.interfaces';
         #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
     }
   `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HueComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;

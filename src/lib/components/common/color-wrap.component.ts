@@ -13,8 +13,12 @@ import 'rxjs/add/observable/from';
 import { toState, simpleCheckForValidColor } from '../../helpers/color';
 import { HSLA, HSVA, RGBA } from '../../helpers/color.interfaces';
 
-@Component({ template: '' })
+
+@Component({
+  template: '',
+})
 export class ColorWrap implements OnInit, OnChanges {
+  @Input() className: string;
   @Input() color: HSLA = {
     h: 250,
     s: 0.5,

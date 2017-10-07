@@ -4,7 +4,6 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  ChangeDetectionStrategy,
 } from '@angular/core';
 
 
@@ -36,7 +35,6 @@ import {
       transform: scale(1.2);
     }
   `],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CircleSwatchComponent implements OnChanges {
   @Input() color: string;

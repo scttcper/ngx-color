@@ -1,11 +1,12 @@
 import {
+  ChangeDetectionStrategy,
   Component,
-  Input,
-  Output,
   EventEmitter,
+  Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
 } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
@@ -37,6 +38,7 @@ import { Subscription } from 'rxjs/Subscription';
       position: relative;
     }
   `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   @Input() style: any;

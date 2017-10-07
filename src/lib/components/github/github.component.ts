@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { ColorWrap } from '../common/color-wrap.component';
 import { isValidHex } from '../../helpers/color';
@@ -17,7 +17,8 @@ import { isValidHex } from '../../helpers/color';
     ></color-github-swatch>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .github-picker {
       background: rgb(255, 255, 255);
       border: 1px solid rgba(0, 0, 0, 0.2);
@@ -65,22 +66,26 @@ import { isValidHex } from '../../helpers/color';
       top: -16px;
       right: 9px;
     }
-    bottom-right-triangle > .triangle {
+    .bottom-right-triangle > .triangle {
       top: 35px;
       right: 10px;
       transform: rotate(180deg);
     }
-    bottom-right-triangle > .triangleShadow {
+    .bottom-right-triangle > .triangleShadow {
       top: 37px;
       right: 9px;
       transform: rotate(180deg);
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GithubComponent extends ColorWrap implements OnChanges {
+export class GithubComponent extends ColorWrap {
   @Input() width = 212;
-  @Input() triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
-  @Input() colors = [
+  @Input()
+  triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
+  @Input()
+  colors = [
     '#B80000',
     '#DB3E00',
     '#FCCB00',
@@ -102,25 +107,12 @@ export class GithubComponent extends ColorWrap implements OnChanges {
   constructor() {
     super();
   }
-
-  ngOnChanges() {
-  }
   handleBlockChange({ hex, $event }) {
     if (isValidHex(hex)) {
-      // this.hex = hex;
-      this.handleChange(
-        {
-          hex,
-          source: 'hex',
-        },
-        $event,
-      );
+      this.handleChange({ hex, source: 'hex' }, $event);
     }
   }
-
-  handleValueChange({data, $event}) {
+  handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }
-
-
 }

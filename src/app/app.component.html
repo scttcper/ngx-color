@@ -40,7 +40,7 @@
         <div class="text-center label">Photoshop</div>
       </div>
     </div>
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-md-3 mt-3 mt-md-5">
         <div class="d-flex justify-content-center justify-content-md-start">
           <div style="width: 170px; display: inline-block">
@@ -108,12 +108,31 @@
           <div class="col-5 pl-0">
             <color-circle
               [color]="state"
-              triangle="top-right"
               (onChangeComplete)="changeComplete($event)"
               (onChange)="changeComplete($event)"
             ></color-circle>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-7">
+        <div style="width: 410px;">
+          <color-slider
+            [color]="state"
+            (onChangeComplete)="changeComplete($event)"
+            (onChange)="changeComplete($event)"
+          ></color-slider>
+          <div class="pt-3 text-center label">Slider</div>
+        </div>
+      </div>
+      <div class="col-5">
+        <color-swatches
+          [color]="state"
+          (onChangeComplete)="changeComplete($event)"
+          (onChange)="changeComplete($event)"
+        ></color-swatches>
+        <div class="text-center label">Swatches</div>
       </div>
     </div>
   </div>

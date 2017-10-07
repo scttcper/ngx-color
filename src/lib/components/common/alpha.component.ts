@@ -1,13 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
-  Output,
-  EventEmitter,
-  OnChanges,
-  OnInit,
-  OnDestroy,
   ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';

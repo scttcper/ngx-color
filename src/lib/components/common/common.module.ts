@@ -8,6 +8,7 @@ import { EditableInputComponent } from './editable-input.component';
 import { HueComponent } from './hue.component';
 import { SwatchComponent } from './swatch.component';
 import { SaturationComponent } from './saturation.component';
+import { RaisedComponent } from './raised.component';
 
 const components = [
   AlphaComponent,
@@ -17,6 +18,7 @@ const components = [
   HueComponent,
   SwatchComponent,
   SaturationComponent,
+  RaisedComponent,
 ];
 
 @NgModule({

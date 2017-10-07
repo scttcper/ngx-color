@@ -1,11 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnInit,
   Output,
-  EventEmitter,
-  NgZone,
 } from '@angular/core';
 
 
@@ -20,8 +19,7 @@ import {
       (keydown.enter)="handleClick(color, $event)"
       (focus)="handleFocus()"
       (focusout)="handleFocusOut()"
-      (mouseover)="handleHover(color, $event)"
-      tabindex="0"
+      (mouseover)="handleHover(color, $event)" tabindex="0"
     >
       <ng-content></ng-content>
       <color-checkboard
@@ -43,7 +41,7 @@ export class SwatchComponent implements OnInit {
   focusStyles: any = {};
   inFocus = false;
 
-  constructor(private ngZone: NgZone) { }
+  constructor() { }
 
   ngOnInit() {
     this.divStyles = {
@@ -67,13 +65,9 @@ export class SwatchComponent implements OnInit {
     this.inFocus = true;
   }
   handleHover(hex, $event) {
-    this.ngZone.runOutsideAngular(() => {
-      this.onHover.emit({hex, $event});
-    });
+    this.onHover.emit({hex, $event});
   }
   handleClick(hex, $event) {
-    this.ngZone.runOutsideAngular(() => {
-      this.onClick.emit({hex, $event});
-    });
+    this.onClick.emit({hex, $event});
   }
 }

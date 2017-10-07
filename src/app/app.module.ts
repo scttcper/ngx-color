@@ -12,6 +12,8 @@ import { ColorPhotoshopModule } from '../lib/components/photoshop/photoshop.modu
 import { ColorGithubModule } from '../lib/components/github/github.module';
 import { ColorTwitterModule } from '../lib/components/twitter/twitter.module';
 import { ColorCircleModule } from '../lib/components/circle/circle.module';
+import { ColorSliderModule } from '../lib/components/slider/slider.module';
+import { ColorSwatchesModule } from '../lib/components/swatches/swatches.module';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { ColorCircleModule } from '../lib/components/circle/circle.module';
     ColorGithubModule,
     ColorTwitterModule,
     ColorCircleModule,
+    ColorSliderModule,
+    ColorSwatchesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

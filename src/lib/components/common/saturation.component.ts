@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   Input,
   OnChanges,
@@ -71,7 +70,6 @@ import { HSLA, HSVA } from '../../helpers/color.interfaces';
       transform: translate(-2px, -2px);
     }
   `],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SaturationComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
