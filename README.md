@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/scttcper/ngx-color/master/misc/sketch-example.png" width="500" alt="Angular Color">
+  <img src="https://raw.githubusercontent.com/scttcper/ngx-color/master/misc/sketch-example.png" width="500" alt="Angular color sketch preview">
   <br>
   <h1>Angular Color</h1>
   <br>
