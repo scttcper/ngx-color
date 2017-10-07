@@ -9,7 +9,7 @@
   <a href="https://travis-ci.org/scttcper/ngx-color">
     <img src="https://travis-ci.org/scttcper/ngx-color.svg?branch=master" alt="travis"></a> 
   <a href="https://codecov.io/github/scttcper/ngx-color">
-    <img src="https://img.shields.io/codecov/c/github/scttcper/ngx-trend.svg" alt="codecov">
+    <img src="https://img.shields.io/codecov/c/github/scttcper/ngx-color.svg" alt="codecov">
   </a>
   <a href="https://greenkeeper.io/">
     <img src="https://badges.greenkeeper.io/scttcper/ngx-color.svg" alt="greenkeeper">
