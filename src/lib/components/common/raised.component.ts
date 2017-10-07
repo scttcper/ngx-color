@@ -27,7 +27,6 @@ import * as checkboard from '../../helpers/checkboard';
     .raised-content {
       position: relative;
     }
-
     .zDepth-0 {
       box-shadow: none;
     }
@@ -49,7 +48,7 @@ import * as checkboard from '../../helpers/checkboard';
   `],
 })
 export class RaisedComponent implements OnInit {
-  @Input() zDepth = 1;
+  @Input() zDepth: 0 | 1 | 2 | 3 | 4 | 5  = 1;
   @Input() radius = 1;
   @Input() background = '#fff';
 

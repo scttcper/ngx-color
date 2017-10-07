@@ -1,139 +1,139 @@
-<div class="home mb-5">
+<div class="home" style="height: 580px; width: 100%;">
   <div class="cover" [style.background-color]="primaryColor"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 text-center text-md-left">
-        <div class="title">Angular Color</div>
-        <div class="description">
-          Port of <a href="https://github.com/casesandberg/react-color">react-color</a> by casesandberg
-        </div>
-        <div class="description">
-          A Collection of Color Pickers from Sketch, Photoshop, Chrome, Github, Twitter, Material Design &amp; more
-        </div>
-        <div class="mt-4">
-          <iframe src="https://ghbtns.com/github-btn.html?user=scttcper&repo=ngx-color&type=star&count=true&size=large" scrolling="0" width="75px" height="30px" frameBorder="0"></iframe>
-        </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 text-center text-md-left">
+      <div class="title">Angular Color</div>
+      <div class="description">
+        Port of <a href="https://github.com/casesandberg/react-color">react-color</a> by casesandberg
       </div>
-      <div class="col-md-6">
-        <div class="d-flex justify-content-center justify-content-md-end mt-5">
-          <div style="padding-top: 20px; display: block">
-            <color-chrome [color]="state" (onChangeComplete)="changeComplete($event)">
-            </color-chrome>
-            <div class="text-center label">Chrome</div>
-          </div>
+      <div class="description">
+        A Collection of Color Pickers from Sketch, Photoshop, Chrome, Github, Twitter, Material Design &amp; more
+      </div>
+      <div class="mt-4">
+        <iframe src="https://ghbtns.com/github-btn.html?user=scttcper&repo=ngx-color&type=star&count=true&size=large" scrolling="0" width="75px" height="30px" frameBorder="0"></iframe>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex justify-content-center justify-content-md-end mt-5">
+        <div style="padding-top: 20px; display: block">
+          <color-chrome [color]="state" (onChangeComplete)="changeComplete($event)">
+          </color-chrome>
+          <div class="text-center label">Chrome</div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-4 mt-3">
-        <div class="d-flex justify-content-center justify-content-md-start">
-          <div style="width: 220px; display: inline-block;">
-            <color-sketch [color]="state" (onChangeComplete)="changeComplete($event)">
-            </color-sketch>
-            <div class="text-center label">Sketch</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8 mt-3 d-sm-inline d-none">
-        <color-photoshop [color]="state" (onChangeComplete)="changeComplete($event)">
-        </color-photoshop>
-        <div class="text-center label">Photoshop</div>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-md-3 mt-3 mt-md-5">
-        <div class="d-flex justify-content-center justify-content-md-start">
-          <div style="width: 170px; display: inline-block">
-            <color-block
-              [color]="state"
-              (onChangeComplete)="changeComplete($event)"
-              (onChange)="changeComplete($event)"
-            ></color-block>
-          </div>
-        </div>
-        <div class="text-center label">Block</div>
-      </div>
-      <div class="col-md-9 mt-3 mt-md-5">
-        <div class="row">
-          <div class="col-5 px-0 mb-4">
-            <div class="d-flex justify-content-center">
-              <div style="width: 220px; display: inline-block">
-                <color-github
-                  [color]="state"
-                  triangle="top-right"
-                  (onChangeComplete)="changeComplete($event)"
-                  (onChange)="changeComplete($event)"
-                ></color-github>
-              </div>
-            </div>
-            <div class="text-center label">Github</div>
-          </div>
-          <div class="col-7 px-2 pl-0">
-            <div class="d-flex justify-content-end">
-              <div style="width: 316px; display: inline-block">
-                <color-hue-picker
-                  [color]="state"
-                  (onChangeComplete)="changeComplete($event)"
-                  (onChange)="changeComplete($event)"
-                ></color-hue-picker>
-                <div class="text-center label">Hue</div>
-              </div>
-            </div>
-            <div class="d-flex justify-content-end">
-              <div style="width: 316px; display: inline-block">
-                <color-alpha-picker
-                  [color]="state"
-                  (onChangeComplete)="changeComplete($event)"
-                  (onChange)="changeComplete($event)"
-                ></color-alpha-picker>
-                <div class="text-center label">Alpha</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-7">
-            <div class="d-flex justify-content-start">
-              <div style="width: 276px; display: inline-block">
-                <color-twitter
-                  [color]="state"
-                  triangle="top-right"
-                  (onChangeComplete)="changeComplete($event)"
-                  (onChange)="changeComplete($event)"
-                ></color-twitter>
-                <div class="text-center label">Twitter</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-5 pl-0">
-            <color-circle
-              [color]="state"
-              (onChangeComplete)="changeComplete($event)"
-              (onChange)="changeComplete($event)"
-            ></color-circle>
-          </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mt-3">
+      <div class="d-flex justify-content-center justify-content-md-start">
+        <div style="width: 220px; display: inline-block;">
+          <color-sketch [color]="state" (onChangeComplete)="changeComplete($event)">
+          </color-sketch>
+          <div class="text-center label">Sketch</div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-7">
-        <div style="width: 410px;">
-          <color-slider
+    <div class="col-md-8 mt-3 d-sm-inline d-none">
+      <color-photoshop [color]="state" (onChangeComplete)="changeComplete($event)">
+      </color-photoshop>
+      <div class="text-center label">Photoshop</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-3 mt-3 mt-md-5">
+      <div class="d-flex justify-content-center justify-content-md-start">
+        <div style="width: 170px; display: inline-block">
+          <color-block
             [color]="state"
             (onChangeComplete)="changeComplete($event)"
             (onChange)="changeComplete($event)"
-          ></color-slider>
-          <div class="pt-3 text-center label">Slider</div>
+          ></color-block>
         </div>
       </div>
-      <div class="col-5">
-        <color-swatches
+      <div class="text-center label">Block</div>
+    </div>
+    <div class="col-md-9 mt-3 mt-md-5">
+      <div class="row">
+        <div class="col-5 px-0 mb-4">
+          <div class="d-flex justify-content-center">
+            <div style="width: 220px; display: inline-block">
+              <color-github
+                [color]="state"
+                triangle="top-right"
+                (onChangeComplete)="changeComplete($event)"
+                (onChange)="changeComplete($event)"
+              ></color-github>
+            </div>
+          </div>
+          <div class="text-center label">Github</div>
+        </div>
+        <div class="col-7 px-2 pl-0">
+          <div class="d-flex justify-content-end">
+            <div style="width: 316px; display: inline-block">
+              <color-hue-picker
+                [color]="state"
+                (onChangeComplete)="changeComplete($event)"
+                (onChange)="changeComplete($event)"
+              ></color-hue-picker>
+              <div class="text-center label">Hue</div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <div style="width: 316px; display: inline-block">
+              <color-alpha-picker
+                [color]="state"
+                (onChangeComplete)="changeComplete($event)"
+                (onChange)="changeComplete($event)"
+              ></color-alpha-picker>
+              <div class="text-center label">Alpha</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-7">
+          <div class="d-flex justify-content-start">
+            <div style="width: 276px; display: inline-block">
+              <color-twitter
+                [color]="state"
+                triangle="top-right"
+                (onChangeComplete)="changeComplete($event)"
+                (onChange)="changeComplete($event)"
+              ></color-twitter>
+              <div class="text-center label">Twitter</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-5 pl-0">
+          <color-circle
+            [color]="state"
+            (onChangeComplete)="changeComplete($event)"
+            (onChange)="changeComplete($event)"
+          ></color-circle>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-7">
+      <div style="width: 410px;">
+        <color-slider
           [color]="state"
           (onChangeComplete)="changeComplete($event)"
           (onChange)="changeComplete($event)"
-        ></color-swatches>
-        <div class="text-center label">Swatches</div>
+        ></color-slider>
+        <div class="pt-3 text-center label">Slider</div>
       </div>
+    </div>
+    <div class="col-5">
+      <color-swatches
+        [color]="state"
+        (onChangeComplete)="changeComplete($event)"
+        (onChange)="changeComplete($event)"
+      ></color-swatches>
+      <div class="text-center label">Swatches</div>
     </div>
   </div>
 </div>
@@ -165,15 +165,3 @@
 </color-chrome>
 
 <hr> -->
-
-
-
-
-
-
-<div class="m-5" style="width: 220px; display: inline-block;">
-  <color-sketch [color]="state" (onChangeComplete)="changeComplete($event)">
-  </color-sketch>
-</div>
-
-
