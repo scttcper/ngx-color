@@ -126,14 +126,16 @@
         ></color-slider>
         <div class="pt-3 text-center label">Slider</div>
       </div>
-      <div class="row">
+      <div class="row mt-3">
         <div class="col-8">
-          <color-compact
-            [color]="state"
-            (onChangeComplete)="changeComplete($event)"
-            (onChange)="changeComplete($event)"
-          ></color-compact>
-          <div class="pt-3 text-center label">Compact</div>
+          <div style="width: 245px">
+            <color-compact
+              [color]="state"
+              (onChangeComplete)="changeComplete($event)"
+              (onChange)="changeComplete($event)"
+            ></color-compact>
+            <div class="text-center label">Compact</div>
+          </div>
         </div>
         <div class="col-4">
 
