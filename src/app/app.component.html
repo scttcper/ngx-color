@@ -116,7 +116,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-7">
       <div style="width: 410px;">
         <color-slider
@@ -125,6 +125,20 @@
           (onChange)="changeComplete($event)"
         ></color-slider>
         <div class="pt-3 text-center label">Slider</div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <color-compact
+            [color]="state"
+            (onChangeComplete)="changeComplete($event)"
+            (onChange)="changeComplete($event)"
+          ></color-compact>
+          <div class="pt-3 text-center label">Compact</div>
+        </div>
+        <div class="col-4">
+
+          <div class="pt-3 text-center label">Material</div>
+        </div>
       </div>
     </div>
     <div class="col-5">
