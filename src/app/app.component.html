@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8 mt-3 d-sm-inline d-none">
+    <div class="col-md-8 mt-3 d-md-inline d-none">
       <color-photoshop [color]="state" (onChangeComplete)="changeComplete($event)">
       </color-photoshop>
       <div class="text-center label">Photoshop</div>
@@ -56,7 +56,7 @@
     </div>
     <div class="col-md-9 mt-3 mt-md-5">
       <div class="row">
-        <div class="col-5 px-0 mb-4">
+        <div class="col-md-5 px-0 mb-4">
           <div class="d-flex justify-content-center">
             <div style="width: 220px; display: inline-block">
               <color-github
@@ -69,8 +69,8 @@
           </div>
           <div class="text-center label">Github</div>
         </div>
-        <div class="col-7 px-2 pl-0">
-          <div class="d-flex justify-content-end">
+        <div class="col-md-7 px-2 pl-0 d-sm-inline d-none">
+          <div class="d-flex justify-content-center justify-content-md-end">
             <div style="width: 316px; display: inline-block">
               <color-hue-picker
                 [color]="state"
@@ -80,7 +80,7 @@
               <div class="text-center label">Hue</div>
             </div>
           </div>
-          <div class="d-flex justify-content-end">
+          <div class="d-flex justify-content-center justify-content-md-end">
             <div style="width: 316px; display: inline-block">
               <color-alpha-picker
                 [color]="state"
@@ -93,8 +93,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-7">
-          <div class="d-flex justify-content-start">
+        <div class="col-md-7 mt-3">
+          <div class="d-flex justify-content-center justify-content-md-start">
             <div style="width: 276px; display: inline-block">
               <color-twitter
                 [color]="state"
@@ -106,78 +106,84 @@
             </div>
           </div>
         </div>
-        <div class="col-5 pl-0">
-          <color-circle
+        <div class="col-md-5 pl-0">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <div style="display: inline-block">
+              <color-circle
+                [color]="state"
+                (onChangeComplete)="changeComplete($event)"
+                (onChange)="changeComplete($event)"
+              ></color-circle>
+              <div class="text-center label">Circle</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-7 mb-3">
+      <div class="d-flex justify-content-center justify-content-md-start">
+        <div style="width: 410px;display: inline-block">
+          <color-slider
             [color]="state"
             (onChangeComplete)="changeComplete($event)"
             (onChange)="changeComplete($event)"
-          ></color-circle>
+          ></color-slider>
+          <div class="pt-3 text-center label">Slider</div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="row mb-5">
-    <div class="col-7">
-      <div style="width: 410px;">
-        <color-slider
-          [color]="state"
-          (onChangeComplete)="changeComplete($event)"
-          (onChange)="changeComplete($event)"
-        ></color-slider>
-        <div class="pt-3 text-center label">Slider</div>
       </div>
       <div class="row mt-3">
-        <div class="col-8">
-          <div style="width: 245px">
-            <color-compact
-              [color]="state"
-              (onChangeComplete)="changeComplete($event)"
-              (onChange)="changeComplete($event)"
-            ></color-compact>
-            <div class="text-center label">Compact</div>
+        <div class="col-md-7">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <div style="width: 245px; display: inline-block">
+              <color-compact
+                [color]="state"
+                (onChangeComplete)="changeComplete($event)"
+                (onChange)="changeComplete($event)"
+              ></color-compact>
+              <div class="text-center label">Compact</div>
+            </div>
           </div>
         </div>
-        <div class="col-4">
-
-          <div class="pt-3 text-center label">Material</div>
+        <div class="col-md-5">
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <div style="display: inline-block">
+              <color-material
+                [color]="state"
+                (onChangeComplete)="changeComplete($event)"
+                (onChange)="changeComplete($event)"
+              ></color-material>
+              <div class="text-center label">Material</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-5">
-      <color-swatches
-        [color]="state"
-        (onChangeComplete)="changeComplete($event)"
-        (onChange)="changeComplete($event)"
-      ></color-swatches>
-      <div class="text-center label">Swatches</div>
+    <div class="col-md-5 d-md-inline d-none">
+      <div class="d-flex justify-content-center justify-content-md-start">
+        <div style="width: 320px;display: inline-block">
+          <color-swatches
+            [color]="state"
+            (onChangeComplete)="changeComplete($event)"
+            (onChange)="changeComplete($event)"
+          ></color-swatches>
+          <div class="text-center label">Swatches</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- <hr>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
 
-<div style="width: 170px; height: 100%; padding-top: 20px">
-  <color-block
-    [color]="state"
-    (onChangeComplete)="changeComplete($event)"
-    (onChange)="changeComplete($event)"
-  >
-  </color-block>
+
+
+    </div>
+    <div class="col-8">
+
+      </div>
+  </div>
 </div>
-
-<hr>
-
-<color-hue-picker [color]="state" (onChangeComplete)="changeComplete($event)">
-</color-hue-picker>
-
-<hr>
-
-<color-alpha-picker [color]="state" (onChangeComplete)="changeComplete($event)">
-</color-alpha-picker>
-
-<hr>
-
-<color-chrome [color]="state" (onChangeComplete)="changeComplete($event)">
-</color-chrome>
-
-<hr> -->
