@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "es2015",
+    "target": "es2015",
+    "outDir": "../../../dist/packages-dist/es2015",
+    "rootDir": ".",
+    "sourceMap": true,
+    "inlineSources": true,
+    "declaration": false,
+    "removeComments": true,
+    "lib": ["es2015", "dom"],
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "paths": {
+      "ngx-color/helpers": ["../../../dist/packages-dist/helpers"]
+    }
+  },
+  "files": [
+    "public_api.ts"
+  ],
+  "compileOnSave": false,
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableSummariesForJit": true,
+    "flatModuleOutFile": "index.js",
+    "flatModuleId": "ngx-color"
+  }
+}

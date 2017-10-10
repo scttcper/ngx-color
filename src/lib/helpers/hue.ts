@@ -1,4 +1,6 @@
-export function calculateChange(e, props, container: Element) {
+import { HSLAsource } from './color.interfaces';
+
+export function calculateHueChange(e, props, container: Element): HSLAsource {
   e.preventDefault();
   const containerWidth = container.clientWidth;
   const containerHeight = container.clientHeight;

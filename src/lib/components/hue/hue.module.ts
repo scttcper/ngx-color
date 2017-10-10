@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ColorCommonModule } from '../common/common.module';
+import { HueModule } from '../../common';
 import { HuePickerComponent } from './hue-picker.component';
 
 const components = [
@@ -11,6 +11,6 @@ const components = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, HueModule],
 })
 export class ColorHueModule { }

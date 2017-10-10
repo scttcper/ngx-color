@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
-import { getContrastingColor } from '../../helpers/color';
+import { getContrastingColor } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-swatches-color',

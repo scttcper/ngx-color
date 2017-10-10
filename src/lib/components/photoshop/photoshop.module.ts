@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ColorCommonModule } from '../common/common.module';
+import { EditableInputModule, HueModule, AlphaModule, SwatchModule, SaturationModule } from '../../common';
 import { PhotoshopComponent } from './photoshop.component';
 import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
 import { PhotoshopButtonComponent } from './photoshop-button.component';
@@ -17,6 +17,6 @@ const components = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, EditableInputModule, HueModule, AlphaModule, SwatchModule, SaturationModule],
 })
 export class ColorPhotoshopModule { }

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { HSL } from '../../helpers/color.interfaces';
+import { HSL } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-slider-swatches',

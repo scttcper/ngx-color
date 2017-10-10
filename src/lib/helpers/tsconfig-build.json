@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "es2015",
+    "target": "es5",
+    "outDir": "../../../dist/packages-dist/helpers",
+    "rootDir": ".",
+    "sourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "removeComments": true,
+    "lib": ["es2015", "dom"],
+    "skipLibCheck": true,
+    "moduleResolution": "node"
+  },
+  "files": [
+    "index.ts"
+  ],
+  "compileOnSave": false
+}

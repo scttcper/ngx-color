@@ -29,5 +29,10 @@
     "photoshop",
     "material design",
     "popup"
-  ]
+  ],
+  "devDependencies": {
+    "copy": "^0.3.1",
+    "rollup": "^0.50.0",
+    "rollup-plugin-sourcemaps": "^0.4.2"
+  }
 }

@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ColorCommonModule } from '../common/common.module';
-import { BlockComponent } from './block.component';
+import {
+  CheckboardModule,
+  EditableInputModule,
+  SwatchModule,
+} from '../../common';
 import { BlockSwatchesComponent } from './block-swatches.component';
+import { BlockComponent } from './block.component';
 
-const components = [
-  BlockComponent,
-  BlockSwatchesComponent,
-];
+const components = [BlockComponent, BlockSwatchesComponent];
 
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, CheckboardModule, SwatchModule, EditableInputModule],
 })
-export class ColorBlockModule { }
+export class ColorBlockModule {}

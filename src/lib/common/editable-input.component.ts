@@ -7,9 +7,11 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  NgModule,
 } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'color-editable-input',
@@ -168,3 +170,10 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 }
+
+@NgModule({
+  declarations: [EditableInputComponent],
+  exports: [EditableInputComponent],
+  imports: [CommonModule],
+})
+export class EditableInputModule { }

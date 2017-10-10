@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
   Input,
+  NgModule,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -13,9 +15,8 @@ import {
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 
-
-import * as alpha from '../../helpers/alpha';
-import { HSLA, RGBA } from '../../helpers/color.interfaces';
+import { HSLA, RGBA, calculateAlphaChange } from 'ngx-color/helpers';
+import { CheckboardModule } from './checkboard.component';
 
 @Component({
   selector: 'color-alpha',
@@ -143,11 +144,16 @@ export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
   handleChange($event: Event) {
-    const data = alpha.calculateChange($event, this, this.container.nativeElement);
+    const data = calculateAlphaChange($event, this, this.container.nativeElement);
     if (data) {
       this.onChange.emit({ data, $event });
     }
   }
-
-
 }
+
+@NgModule({
+  declarations: [AlphaComponent],
+  exports: [AlphaComponent],
+  imports: [CommonModule, CheckboardModule],
+})
+export class AlphaModule { }

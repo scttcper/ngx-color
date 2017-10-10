@@ -1,18 +1,28 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ColorCommonModule } from '../common/common.module';
-import { ChromeComponent } from './chrome.component';
+import {
+  AlphaModule,
+  CheckboardModule,
+  EditableInputModule,
+  HueModule,
+  SaturationModule,
+} from '../../common';
 import { ChromeFieldsComponent } from './chrome-fields.component';
+import { ChromeComponent } from './chrome.component';
 
-const components = [
-  ChromeComponent,
-  ChromeFieldsComponent,
-];
+const components = [ChromeComponent, ChromeFieldsComponent];
 
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [
+    CommonModule,
+    AlphaModule,
+    CheckboardModule,
+    EditableInputModule,
+    HueModule,
+    SaturationModule,
+  ],
 })
-export class ColorChromeModule { }
+export class ColorChromeModule {}

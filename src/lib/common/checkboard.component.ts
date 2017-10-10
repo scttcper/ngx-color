@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 
-import * as checkboard from '../../helpers/checkboard';
+import { getCheckerboard } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-checkboard',
@@ -28,12 +29,18 @@ export class CheckboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    const background = checkboard.get(this.white, this.grey, this.size);
+    const background = getCheckerboard(this.white, this.grey, this.size);
     this.gridStyles = {
       'border-radius': this.borderRadius,
       'box-shadow': this.boxShadow,
       background: `url(${ background }) center left`
     };
   }
-
 }
+
+@NgModule({
+  declarations: [CheckboardComponent],
+  exports: [CheckboardComponent],
+  imports: [CommonModule],
+})
+export class CheckboardModule { }

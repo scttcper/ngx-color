@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AlphaModule } from '../lib/components/alpha/alpha.module';
+import { ColorAlphaModule } from '../lib/components/alpha/alpha.module';
 import { ColorBlockModule } from '../lib/components/block/block.module';
 import { ColorChromeModule } from '../lib/components/chrome/chrome.module';
 import { ColorCircleModule } from '../lib/components/circle/circle.module';
@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
 
-    AlphaModule,
+    ColorAlphaModule,
     ColorBlockModule,
     ColorChromeModule,
     ColorCircleModule,

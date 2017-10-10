@@ -7,8 +7,7 @@ import {
   OnChanges,
 } from '@angular/core';
 
-import { HSLA, RGBA } from '../../helpers/color.interfaces';
-import * as color from '../../helpers/color';
+import { HSLA, RGBA, isValidHex } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-chrome-fields',
@@ -211,7 +210,7 @@ export class ChromeFieldsComponent implements OnInit, OnChanges {
   }
   handleChange({ data, $event }) {
     if (data.hex) {
-      if (color.isValidHex(data.hex)) {
+      if (isValidHex(data.hex)) {
         this.onChange.emit({ data: {
          hex: data.hex,
          source: 'hex',

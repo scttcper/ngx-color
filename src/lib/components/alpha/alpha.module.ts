@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ColorCommonModule } from '../common/common.module';
+import { AlphaModule, CheckboardModule } from 'ngx-color';
 import { AlphaPickerComponent } from './alpha-picker.component';
 
 const components = [
@@ -11,6 +11,6 @@ const components = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, AlphaModule, CheckboardModule],
 })
-export class AlphaModule { }
+export class ColorAlphaModule { }

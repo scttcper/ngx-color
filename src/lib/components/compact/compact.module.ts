@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ColorCommonModule } from '../common/common.module';
-import { CompactComponent } from './compact.component';
+import { EditableInputModule, RaisedModule, SwatchModule } from '../../common';
 import { CompactColorComponent } from './compact-color.component';
 import { CompactFieldsComponent } from './compact-fields.component';
+import { CompactComponent } from './compact.component';
 
 const components = [
   CompactComponent,
@@ -15,6 +15,6 @@ const components = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, EditableInputModule, SwatchModule, RaisedModule],
 })
-export class ColorCompactModule { }
+export class ColorCompactModule {}

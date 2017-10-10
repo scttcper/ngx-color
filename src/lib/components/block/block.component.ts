@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
-import { ColorWrap } from '../common/color-wrap.component';
-import { isValidHex, getContrastingColor } from '../../helpers/color';
+import { ColorWrap } from '../../common';
+import { isValidHex, getContrastingColor } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-block',

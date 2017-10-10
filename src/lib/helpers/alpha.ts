@@ -1,4 +1,4 @@
-export function calculateChange(e, props, container) {
+export function calculateAlphaChange(e, props, container) {
   e.preventDefault();
   const containerWidth = container.clientWidth;
   const containerHeight = container.clientHeight;

@@ -1,7 +1,6 @@
 import { Component, OnChanges, Input } from '@angular/core';
 
-import { toState, isValidHex } from '../../helpers/color';
-import { ColorWrap } from '../common/color-wrap.component';
+import { ColorWrap } from '../../common';
 
 @Component({
   selector: 'color-slider',

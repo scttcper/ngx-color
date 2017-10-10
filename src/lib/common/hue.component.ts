@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
   Input,
+  NgModule,
   OnChanges,
   OnDestroy,
   Output,
@@ -12,8 +14,7 @@ import {
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 
-import * as hue from '../../helpers/hue';
-import { HSLA } from '../../helpers/color.interfaces';
+import { HSLA, calculateHueChange } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-hue',
@@ -114,9 +115,16 @@ export class HueComponent implements OnChanges, OnDestroy {
     this.subscribe();
   }
   handleChange($event: Event) {
-    const data = hue.calculateChange($event, this, this.container.nativeElement);
+    const data = calculateHueChange($event, this, this.container.nativeElement);
     if (data) {
       this.onChange.emit({data, $event});
     }
   }
 }
+
+@NgModule({
+  declarations: [HueComponent],
+  exports: [HueComponent],
+  imports: [CommonModule],
+})
+export class HueModule { }

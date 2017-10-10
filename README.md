@@ -18,3 +18,50 @@
 
 <br>
 <br>
+
+
+* **13 Different Pickers** - Sketch, Photoshop, Chrome and many more
+
+* **Make Your Own** - Use the building block components to make your own
+
+## Installation & Usage
+
+```sh
+npm install ngx-color --save
+```
+
+### Include the Component
+
+##### import
+```ts
+import { ColorSketchModule } from 'ngx-color/sketch';
+
+@NgModule({
+  imports: [
+    ColorSketchModule, // added to imports
+  ],
+})
+class YourModule {}
+```
+
+##### use
+```html
+<color-sketch></color-sketch>
+```
+
+### Others available
+```ts
+import { ColorAlphaModule } from 'ngx-color/alpha';
+import { ColorBlockModule } from 'ngx-color/block';
+import { ColorChromeModule } from 'ngx-color/chrome';
+import { ColorCircleModule } from 'ngx-color/circle';
+import { ColorCompactModule } from 'ngx-color/compact';
+import { ColorGithubModule } from 'ngx-color/github';
+import { ColorHueModule } from 'ngx-color/hue';
+import { ColorMaterialModule } from 'ngx-color/material';
+import { ColorPhotoshopModule } from 'ngx-color/photoshop';
+import { ColorSketchModule } from 'ngx-color/sketch';
+import { ColorSliderModule } from 'ngx-color/slider';
+import { ColorSwatchesModule } from 'ngx-color/swatches';
+import { ColorTwitterModule } from 'ngx-color/twitter';
+```

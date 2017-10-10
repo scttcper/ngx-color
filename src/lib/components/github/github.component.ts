@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { ColorWrap } from '../common/color-wrap.component';
-import { isValidHex } from '../../helpers/color';
+import { ColorWrap } from '../../common';
+import { isValidHex } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-github',

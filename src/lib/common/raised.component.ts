@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-import * as checkboard from '../../helpers/checkboard';
+import { CommonModule } from '@angular/common';
+import { Component, Input, NgModule } from '@angular/core';
 
 @Component({
   selector: 'color-raised',
@@ -47,15 +46,15 @@ import * as checkboard from '../../helpers/checkboard';
     }
   `],
 })
-export class RaisedComponent implements OnInit {
+export class RaisedComponent {
   @Input() zDepth: 0 | 1 | 2 | 3 | 4 | 5  = 1;
   @Input() radius = 1;
   @Input() background = '#fff';
-
-  constructor() { }
-
-  ngOnInit() {
-
-  }
-
 }
+
+@NgModule({
+  declarations: [RaisedComponent],
+  exports: [RaisedComponent],
+  imports: [CommonModule],
+})
+export class RaisedModule { }

@@ -28,6 +28,14 @@ export interface HSVA extends HSV {
   a: number;
 }
 
+export interface HSVAsource extends HSVA {
+  source: string;
+}
+
+export interface HSLAsource extends HSLA {
+  source: string;
+}
+
 export interface Color {
   hex: string;
   rgb: RGBA;

@@ -1,18 +1,9 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnDestroy,
-  Output,
-  EventEmitter,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewChild, NgModule } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 
-import * as saturation from '../../helpers/saturation';
-import { HSLA, HSVA } from '../../helpers/color.interfaces';
+import { HSLA, HSVA, calculateSaturationChange } from 'ngx-color/helpers';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'color-saturation',
@@ -125,7 +116,14 @@ export class SaturationComponent implements OnChanges, OnDestroy {
   }
   handleChange($event: Event) {
     $event.preventDefault();
-    const data = saturation.calculateChange($event, this, this.container.nativeElement);
+    const data = calculateSaturationChange($event, this, this.container.nativeElement);
     this.onChange.emit({ data, $event });
   }
 }
+
+@NgModule({
+  declarations: [SaturationComponent],
+  exports: [SaturationComponent],
+  imports: [CommonModule],
+})
+export class SaturationModule { }

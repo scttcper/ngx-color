@@ -1,25 +1,32 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
-  OnInit,
-  Input,
-  Output,
   EventEmitter,
+  Input,
+  NgModule,
   OnChanges,
+  OnInit,
+  Output,
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/debounceTime';
 
-import { toState, simpleCheckForValidColor } from '../../helpers/color';
-import { HSLA, HSVA, RGBA } from '../../helpers/color.interfaces';
-
+import {
+  HSLA,
+  HSVA,
+  RGBA,
+  simpleCheckForValidColor,
+  toState,
+} from 'ngx-color/helpers';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   template: '',
 })
 export class ColorWrap implements OnInit, OnChanges {
   @Input() className: string;
-  @Input() color: HSLA = {
+  @Input()
+  color: HSLA = {
     h: 250,
     s: 0.5,
     l: 0.2,
@@ -40,7 +47,7 @@ export class ColorWrap implements OnInit, OnChanges {
     Observable.from(this.onChange)
       .debounceTime(100)
       .subscribe(({ colors, $event }) =>
-        this.onChangeComplete.emit({ colors, $event }),
+        this.onChangeComplete.emit({ colors, $event })
       );
   }
   ngOnInit() {
@@ -76,3 +83,10 @@ export class ColorWrap implements OnInit, OnChanges {
     }
   }
 }
+
+@NgModule({
+  declarations: [ColorWrap],
+  exports: [ColorWrap],
+  imports: [CommonModule],
+})
+export class ColorWrapModule {}

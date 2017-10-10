@@ -1,16 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ColorCommonModule } from '../common/common.module';
+import { EditableInputModule, SwatchModule } from '../../common';
 import { TwitterComponent } from './twitter.component';
 
-const components = [
-  TwitterComponent,
-];
+const components = [TwitterComponent];
 
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, SwatchModule, EditableInputModule],
 })
-export class ColorTwitterModule { }
+export class ColorTwitterModule {}

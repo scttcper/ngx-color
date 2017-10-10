@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ColorCommonModule } from '../common/common.module';
+import { HueModule, SwatchModule } from '../../common';
 import { SliderComponent } from './slider.component';
 import { SliderSwatchesComponent } from './slider-swatches.component';
 import { SliderSwatchComponent } from './slider-swatch.component';
@@ -15,6 +15,6 @@ const components = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, HueModule, SwatchModule],
 })
-export class ColorSliderModule { }
+export class ColorSliderModule {}

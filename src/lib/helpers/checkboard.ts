@@ -20,7 +20,7 @@ export function render(c1: string, c2: string, size: number) {
   return canvas.toDataURL();
 }
 
-export function get(c1: string, c2: string, size: number) {
+export function getCheckerboard(c1: string, c2: string, size: number) {
   const key = `${c1}-${c2}-${size}`;
   if (checkboardCache[key]) {
     return checkboardCache[key];

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ColorCommonModule } from '../common/common.module';
+import { SwatchModule } from '../../common';
 import { CircleComponent } from './circle.component';
 import { CircleSwatchComponent } from './circle-swatch.component';
 
@@ -13,6 +13,6 @@ const components = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, SwatchModule],
 })
 export class ColorCircleModule { }

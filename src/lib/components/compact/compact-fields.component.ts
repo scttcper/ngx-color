@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import * as color from '../../helpers/color';
-import { RGBA } from '../../helpers/color.interfaces';
+import { RGBA, isValidHex } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-compact-fields',
@@ -112,7 +111,7 @@ export class CompactFieldsComponent implements OnInit {
 
   handleChange({ data, $event }) {
     if (data.hex) {
-      if (color.isValidHex(data.hex)) {
+      if (isValidHex(data.hex)) {
         this.onChange.emit({ data: {
          hex: data.hex,
          source: 'hex',

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Shape } from '../../helpers/color.interfaces';
+import { Shape } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-block-swatches',

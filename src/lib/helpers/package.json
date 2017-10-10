@@ -1,0 +1,11 @@
+{
+  "name": "ngx-color/helpers",
+  "author": "scttcper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scttcper/ngx-color.git"
+  },
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "license": "MIT"
+}

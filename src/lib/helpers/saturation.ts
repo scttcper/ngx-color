@@ -1,4 +1,6 @@
-export function calculateChange(e, props, container: Element) {
+import { HSVAsource } from './color.interfaces';
+
+export function calculateSaturationChange(e, props, container: Element): HSVAsource {
   const {
     width: containerWidth,
     height: containerHeight,

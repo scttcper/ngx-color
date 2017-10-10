@@ -1,29 +1,33 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
+  NgModule,
   OnInit,
   Output,
 } from '@angular/core';
 
+import { CheckboardModule } from './checkboard.component';
 
 @Component({
   selector: 'color-swatch',
   template: `
     <div
       class="swatch"
-      [ngStyle]="(focus || inFocus) ? focusStyles : divStyles"
+      [ngStyle]="activeStyles()"
       [attr.title]="color"
       (click)="handleClick(color, $event)"
       (keydown.enter)="handleClick(color, $event)"
       (focus)="handleFocus()"
       (focusout)="handleFocusOut()"
-      (mouseover)="handleHover(color, $event)" tabindex="0"
+      (mouseover)="handleHover(color, $event)"
+      tabindex="0"
     >
       <ng-content></ng-content>
       <color-checkboard
-        *ngIf="this.color === 'transparent'"
+        *ngIf="color === 'transparent'"
         boxShadow="inset 0 0 0 1px rgba(0,0,0,0.1)"
       ></color-checkboard>
     </div>
@@ -41,7 +45,7 @@ export class SwatchComponent implements OnInit {
   focusStyles: any = {};
   inFocus = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.divStyles = {
@@ -58,6 +62,9 @@ export class SwatchComponent implements OnInit {
       ...this.focusStyle,
     };
   }
+  activeStyles() {
+    return this.focus || this.inFocus ? this.focusStyles : this.divStyles;
+  }
   handleFocusOut() {
     this.inFocus = false;
   }
@@ -65,9 +72,16 @@ export class SwatchComponent implements OnInit {
     this.inFocus = true;
   }
   handleHover(hex, $event) {
-    this.onHover.emit({hex, $event});
+    this.onHover.emit({ hex, $event });
   }
   handleClick(hex, $event) {
-    this.onClick.emit({hex, $event});
+    this.onClick.emit({ hex, $event });
   }
 }
+
+@NgModule({
+  declarations: [SwatchComponent],
+  exports: [SwatchComponent],
+  imports: [CommonModule, CheckboardModule],
+})
+export class SwatchModule {}

@@ -1,40 +1,98 @@
 /* tslint:disable:import-blacklist */
-// from https://github.com/angular/angularfire2/blob/master/tools/build.js
+// based on https://github.com/angular/angularfire2/blob/master/tools/build.js
 import { rollup } from 'rollup';
 import { spawn } from 'child_process';
 import { Observable } from 'rxjs';
-import { copy } from 'fs-extra';
 import * as copyfiles from 'copy';
-import * as filesize from 'rollup-plugin-filesize';
-import * as resolve from 'rollup-plugin-node-resolve';
 import * as sourcemaps from 'rollup-plugin-sourcemaps';
 
-const pkg = require(`${process.cwd()}/package.json`);
+const copyAll: ((s: string, s1: string) => any) = Observable.bindCallback(copyfiles);
 
 // Rollup globals
+const MODULE_NAMES = {
+  helpers: 'ngx-color.helpers',
+  common: 'ngx-color',
+  alpha: 'ngx-color.alpha',
+  // appinsights: 'angulartics2.appinsights',
+  // baidu: 'angulartics2.baidu',
+  // facebook: 'angulartics2.facebook',
+  // ga: 'angulartics2.ga',
+  // gtm: 'angulartics2.gtm',
+  // hubspot: 'angulartics2.hubspot',
+  // kissmetrics: 'angulartics2.kissmetrics',
+  // mixpanel: 'angulartics2.mixpanel',
+  // piwik: 'angulartics2.piwik',
+  // segment: 'angulartics2.segment',
+};
+
 const GLOBALS = {
   '@angular/core': 'ng.core',
   '@angular/common': 'ng.common',
-  '@angular/animations': 'ng.animations',
+  '@angular/router': 'ng.router',
   '@angular/platform-browser': 'ng.platformBrowser',
   'rxjs': 'Rx',
   'rxjs/Observable': 'Rx',
   'rxjs/Subject': 'Rx',
   'rxjs/Observer': 'Rx',
   'rxjs/Subscription': 'Rx',
-  'tinycolor2': 'tinycolor'
+  'rxjs/ReplaySubject': 'Rx',
+  'rxjs/observable/merge': 'Rx.Observable',
+  'rxjs/operator/share': 'Rx.Observable.prototype',
+  'rxjs/operator/filter': 'Rx.Observable.prototype',
+  'rxjs/operator/observeOn': 'Rx.Observable.prototype',
+  'rxjs/observable/of': 'Rx.Observable.prototype',
+  'rxjs/observable/fromEvent': 'Rx.Observable.prototype',
+  'rxjs/operator/combineLatest': 'Rx.Observable.prototype',
+  'rxjs/operator/merge': 'Rx.Observable.prototype',
+  'rxjs/operator/map': 'Rx.Observable.prototype',
+  'rxjs/operator/auditTime': 'Rx.Observable.prototype',
+  'rxjs/operator/switchMap': 'Rx.Observable.prototype',
+  'rxjs/operator/do': 'Rx.Observable.prototype',
+  'rxjs/operator/skip': 'Rx.Observable.prototype',
+  'rxjs/operator/take': 'Rx.Observable.prototype',
+  'rxjs/operator/toArray': 'Rx.Observable.prototype',
+  'rxjs/operator/toPromise': 'Rx.Observable.prototype',
+  // todo fix operator paths
+  'rxjs/add/operator/debounceTime': 'Rx.Observable.prototype',
+  'rxjs/add/operator/from': 'Rx.Observable.prototype',
+  'rxjs/operator': 'Rx.Observable.prototype',
+  'ngx-color': MODULE_NAMES['common'],
+  'ngx-color/helpers': MODULE_NAMES['helpers'],
 };
+
+function createEntry(name, target, type = 'common') {
+  const ENTRIES = {
+    helpers: `${process.cwd()}/dist/packages-dist/helpers/index.js`,
+    common: `${process.cwd()}/dist/packages-dist/index.js`,
+    alpha: `${process.cwd()}/dist/packages-dist/alpha/index.js`,
+    // appinsights: `${process.cwd()}/dist/packages-dist/appinsights/index.js`,
+    // baidu: `${process.cwd()}/dist/packages-dist/baidu/index.js`,
+    // facebook: `${process.cwd()}/dist/packages-dist/facebook/index.js`,
+    // ga: `${process.cwd()}/dist/packages-dist/ga/index.js`,
+    // gtm: `${process.cwd()}/dist/packages-dist/gtm/index.js`,
+    // hubspot: `${process.cwd()}/dist/packages-dist/hubspot/index.js`,
+    // kissmetrics: `${process.cwd()}/dist/packages-dist/kissmetrics/index.js`,
+    // mixpanel: `${process.cwd()}/dist/packages-dist/mixpanel/index.js`,
+    // piwik: `${process.cwd()}/dist/packages-dist/piwik/index.js`,
+    // segment: `${process.cwd()}/dist/packages-dist/segment/index.js`,
+  };
+  return ENTRIES[name];
+}
+
 
 // Constants for running typescript commands
 const NGC = './node_modules/.bin/ngc';
-const TSC_ARGS = (config = 'build') => [`-p`, `${process.cwd()}/src/lib/tsconfig-${config}.json`];
+const TSC_ARGS = (type: string, name: string, config = 'build') => {
+  if (!type) {
+    return ['-p', `${process.cwd()}/src/lib/${name}/tsconfig-${config}.json`];
+  }
+  return ['-p', `${process.cwd()}/src/lib/${type}/${name}/tsconfig-${config}.json`];
+};
 
 /**
  * Create an Observable of a spawned child process.
- * @param {string} command
- * @param {string[]} args
  */
-function spawnObservable(command, args) {
+function spawnObservable(command: string, args: string[]) {
   return Observable.create(observer => {
     const cmd = spawn(command, args);
     observer.next(''); // hack to kick things off, not every command will have a stdout
@@ -46,9 +104,7 @@ function spawnObservable(command, args) {
 
 function generateBundle(input, file, globals, name, format) {
   const plugins = [
-    resolve(),
     sourcemaps(),
-    filesize(),
   ];
   return rollup({
     input,
@@ -56,7 +112,6 @@ function generateBundle(input, file, globals, name, format) {
     file,
     plugins,
   }).then(bundle => {
-    console.log(file);
     return bundle.write({
       file,
       name,
@@ -67,87 +122,100 @@ function generateBundle(input, file, globals, name, format) {
   });
 }
 
-function createUmd(globals) {
-  const name = 'ngx-color';
-  const entry = `${process.cwd()}/dist/es5/index.js`;
+function createUmd(name: string) {
+  const moduleName = MODULE_NAMES[name];
+  const entry = createEntry(name, 'es5');
   return generateBundle(
     entry,
-    `${process.cwd()}/dist/packages-dist/color.umd.js`,
-    globals,
-    name,
+    `${process.cwd()}/dist/packages-dist/bundles/${name}.umd.js`,
+    GLOBALS,
+    moduleName,
     'umd',
   );
 }
 
-function createEs(globals, target) {
-  const name = 'ngx-color';
-  const entry = `${process.cwd()}/dist/${target}/index.js`;
+function createEs(name: string, target: string, type: string) {
+  const moduleName = MODULE_NAMES[name];
+  const entry = createEntry(name, target);
   return generateBundle(
     entry,
-    `${process.cwd()}/dist/packages-dist/color.${target}.js`,
-    globals,
-    name,
+    `${process.cwd()}/dist/packages-dist/ngx-color.${target}.js`,
+    GLOBALS,
+    moduleName,
     'es',
   );
 }
 
-function getVersions() {
-  const paths = [
-    `${process.cwd()}/dist/packages-dist/package.json`,
-  ];
-  return paths
-    .map(path => require(path))
-    .map(pkgs => pkgs.version);
+function buildHelpers() {
+  const es5$ = spawnObservable(NGC, TSC_ARGS('', 'helpers'));
+  return Observable.forkJoin(es5$);
 }
 
-function verifyVersions() {
-  const versions = getVersions();
-  console.log(versions);
-  versions.map(version => {
-    if (version !== pkg.version) {
-      throw new Error('Versions mistmatch');
+function buildModule(name: string, type: string) {
+  const es2015$ = spawnObservable(NGC, TSC_ARGS(type, name));
+  const esm$ = spawnObservable(NGC, TSC_ARGS(type, name, 'esm'));
+  return Observable.forkJoin(es2015$, esm$);
+}
+
+function createBundles(name: string, type: string) {
+  return Observable
+    .forkJoin(
+      Observable.from(createEs(name, 'es2015', type)),
+      Observable.from(createEs(name, 'es5', type)),
+    );
+}
+
+function buildModulesProviders() {
+  const observables = Object.keys(MODULE_NAMES).map((name) => {
+    if (name === 'common' || name === 'helpers') {
+      return Observable.fromPromise(Promise.resolve());
     }
+    return buildModule(name, 'components');
   });
+  return Observable.forkJoin(observables);
 }
 
-function buildModule(globals) {
-  const es2015$ = spawnObservable(NGC, TSC_ARGS());
-  const esm$ = spawnObservable(NGC, TSC_ARGS('esm'));
-  return Observable
-    .forkJoin(es2015$, esm$);
+function buildUmds() {
+  const observables = Object.keys(MODULE_NAMES).map((name) => Observable.from(createUmd(name)));
+  return Observable.forkJoin(observables);
 }
 
-function createBundles(globals) {
+function copyFilesHelpers() {
   return Observable
     .forkJoin(
-      Observable.from(createUmd(globals)),
-      Observable.from(createEs(globals, 'es2015')),
-      Observable.from(createEs(globals, 'es5')),
+      copyAll(`${process.cwd()}/*.md`, `${process.cwd()}/dist/packages-dist`),
+      copyAll(`${process.cwd()}/src/lib/helpers/package.json*`, `${process.cwd()}/dist/packages-dist/helpers`),
     );
 }
 
-function copyFiles() {
-  const copyAll: ((s: string, s1: string) => any) = Observable.bindCallback(copyfiles);
+function copyFilesCommon() {
   return Observable
     .forkJoin(
-      copyAll(`${process.cwd()}/dist/es5/**/*.d.ts`, `${process.cwd()}/dist/packages-dist`),
-      copyAll(`${process.cwd()}/dist/es5/**/*.metadata.json`, `${process.cwd()}/dist/packages-dist`),
-      Observable.from(copy(`${process.cwd()}/README.md`, `${process.cwd()}/dist/packages-dist/README.md`)),
-      Observable.from(copy(`${process.cwd()}/src/lib/package.json`, `${process.cwd()}/dist/packages-dist/package.json`)),
+      copyAll(`${process.cwd()}/*.md`, `${process.cwd()}/dist/packages-dist`),
+      copyAll(`${process.cwd()}/src/lib/common/package.json*`, `${process.cwd()}/dist/packages-dist`),
     );
-
 }
 
-function buildLibrary(globals) {
-  const modules$ = buildModule(globals);
+function copyFilesProviders() {
   return Observable
-    .forkJoin(modules$)
-    .switchMap(() => createBundles(globals))
-    .switchMap(() => copyFiles())
-    .do(() => verifyVersions());
+    .forkJoin(
+      copyAll(`${process.cwd()}/src/lib/components/**/package.json`, `${process.cwd()}/dist/packages-dist`),
+    );
 }
 
-buildLibrary(GLOBALS).subscribe(
+function buildLibrary() {
+  return Observable
+    .forkJoin(buildHelpers())
+    .switchMap(() => copyFilesHelpers())
+    .switchMap(() => buildModule('common', ''))
+    .switchMap(() => createBundles('common', 'common'))
+    .switchMap(() => copyFilesCommon())
+    .switchMap(() => buildModulesProviders())
+    .switchMap(() => buildUmds())
+    .switchMap(() => copyFilesProviders());
+}
+
+buildLibrary().subscribe(
   data => console.log('success'),
   err => console.log('err', err),
   () => console.log('complete'),

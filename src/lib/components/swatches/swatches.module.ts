@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ColorCommonModule } from '../common/common.module';
-import { SwatchesComponent } from './swatches.component';
-import { SwatchesGroupComponent } from './swatches-group.component';
+import { RaisedModule, SwatchModule } from '../../common';
 import { SwatchesColorComponent } from './swatches-color.component';
+import { SwatchesGroupComponent } from './swatches-group.component';
+import { SwatchesComponent } from './swatches.component';
 
 const components = [
   SwatchesComponent,
@@ -15,6 +15,6 @@ const components = [
 @NgModule({
   declarations: components,
   exports: components,
-  imports: [CommonModule, ColorCommonModule],
+  imports: [CommonModule, SwatchModule, RaisedModule],
 })
-export class ColorSwatchesModule { }
+export class ColorSwatchesModule {}

@@ -4,6 +4,7 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "baseUrl": "src",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -14,6 +15,10 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-color/helpers": ["./lib/helpers"],
+      "ngx-color": ["./lib/common"]
+    }
   }
 }

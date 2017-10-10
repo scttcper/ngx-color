@@ -1,8 +1,7 @@
 import { Component, OnChanges, Input } from '@angular/core';
 import * as material from 'material-colors';
 
-import { toState, isValidHex } from '../../helpers/color';
-import { ColorWrap } from '../common/color-wrap.component';
+import { ColorWrap } from '../../common';
 
 @Component({
   selector: 'color-swatches',

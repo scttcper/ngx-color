@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import * as material from 'material-colors';
 
-import { ColorWrap } from '../common/color-wrap.component';
-import { isValidHex } from '../../helpers/color';
+import { ColorWrap } from '../../common';
+import { isValidHex } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-circle',
