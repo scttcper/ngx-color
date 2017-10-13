@@ -11,7 +11,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { fromEvent } from 'rxjs/Observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 
 import { HSLA, calculateHueChange } from 'ngx-color/helpers';

@@ -12,8 +12,8 @@ import { HSLA, RGBA, isValidHex } from 'ngx-color/helpers';
 @Component({
   selector: 'color-chrome-fields',
   template: `
-    <div class="flexbox-fix chrome-wrap">
-      <div class="chrome-fields flexbox-fix">
+    <div class="chrome-wrap">
+      <div class="chrome-fields">
         <ng-template [ngIf]="view === 'hex'">
           <div class="chrome-field">
             <color-editable-input

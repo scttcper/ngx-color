@@ -1,7 +1,7 @@
 import { Component, OnChanges, Input } from '@angular/core';
 
 import { toState, isValidHex } from 'ngx-color/helpers';
-import { ColorWrap } from '../../common';
+import { ColorWrap } from 'ngx-color';
 
 @Component({
   selector: 'color-sketch',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EditableInputModule, RaisedModule } from '../../common';
+import { EditableInputModule, RaisedModule } from 'ngx-color';
 import { MaterialComponent } from './material.component';
 
 const components = [MaterialComponent];

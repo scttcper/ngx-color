@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { ColorWrap } from '../../common';
+import { ColorWrap } from 'ngx-color';
 
 
 @Component({

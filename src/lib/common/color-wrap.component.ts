@@ -5,11 +5,12 @@ import {
   Input,
   NgModule,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
 } from '@angular/core';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/debounceTime';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Subscription } from 'rxjs/Subscription';
 
 import {
   HSLA,
@@ -18,15 +19,13 @@ import {
   simpleCheckForValidColor,
   toState,
 } from 'ngx-color/helpers';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   template: '',
 })
-export class ColorWrap implements OnInit, OnChanges {
-  @Input() className: string;
-  @Input()
-  color: HSLA = {
+export class ColorWrap implements OnInit, OnChanges, OnDestroy {
+  @Input() className = '';
+  @Input() color: HSLA = {
     h: 250,
     s: 0.5,
     l: 0.2,
@@ -42,20 +41,24 @@ export class ColorWrap implements OnInit, OnChanges {
   hex: string;
   source: string;
   currentColor: string;
+  changes: Subscription;
 
-  constructor() {
-    Observable.from(this.onChange)
-      .debounceTime(100)
+  ngOnInit() {
+    this.changes = this.onChange.pipe(
+        debounceTime(100),
+        distinctUntilChanged(),
+      )
       .subscribe(({ colors, $event }) =>
         this.onChangeComplete.emit({ colors, $event })
       );
-  }
-  ngOnInit() {
     this.setState(toState(this.color, 0));
     this.currentColor = this.hex;
   }
   ngOnChanges() {
     this.setState(toState(this.color, this.oldHue));
+  }
+  ngOnDestroy() {
+    this.changes.unsubscribe();
   }
   setState(data) {
     this.oldHue = data.oldHue;

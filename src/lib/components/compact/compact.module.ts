@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { EditableInputModule, RaisedModule, SwatchModule } from '../../common';
+import { EditableInputModule, RaisedModule, SwatchModule } from 'ngx-color';
 import { CompactColorComponent } from './compact-color.component';
 import { CompactFieldsComponent } from './compact-fields.component';
 import { CompactComponent } from './compact.component';

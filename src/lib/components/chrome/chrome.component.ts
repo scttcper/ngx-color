@@ -1,7 +1,7 @@
 import { Component, OnChanges } from '@angular/core';
 
 import { toState } from 'ngx-color/helpers';
-import { ColorWrap } from '../../common';
+import { ColorWrap } from 'ngx-color';
 
 @Component({
   selector: 'color-chrome',
@@ -16,7 +16,7 @@ import { ColorWrap } from '../../common';
       ></color-saturation>
     </div>
     <div class="chrome-body">
-      <div class="chrome-controls flexbox-fix">
+      <div class="chrome-controls">
         <div class="chrome-color">
           <div class="chrome-swatch">
             <div class="chrome-active" [style.background]="activeBackground"></div>

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { RaisedModule, SwatchModule } from '../../common';
+import { RaisedModule, SwatchModule } from 'ngx-color';
 import { SwatchesColorComponent } from './swatches-color.component';
 import { SwatchesGroupComponent } from './swatches-group.component';
 import { SwatchesComponent } from './swatches.component';

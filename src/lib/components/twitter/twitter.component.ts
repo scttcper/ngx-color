@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { ColorWrap } from '../../common';
+import { ColorWrap } from 'ngx-color';
 import { isValidHex } from 'ngx-color/helpers';
 
 @Component({

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EditableInputModule, HueModule, AlphaModule, SwatchModule, SaturationModule } from '../../common';
+import { EditableInputModule, HueModule, AlphaModule, SwatchModule, SaturationModule } from 'ngx-color';
 import { PhotoshopComponent } from './photoshop.component';
 import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
 import { PhotoshopButtonComponent } from './photoshop-button.component';

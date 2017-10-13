@@ -8,7 +8,7 @@ import {
   HueModule,
   SaturationModule,
   SwatchModule,
-} from '../../common';
+} from 'ngx-color';
 import { SketchFieldsComponent } from './sketch-fields.component';
 import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
 import { SketchComponent } from './sketch.component';

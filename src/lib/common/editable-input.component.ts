@@ -9,9 +9,9 @@ import {
   Output,
   NgModule,
 } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { Subscription } from 'rxjs/Subscription';
 import { CommonModule } from '@angular/common';
+import { fromEvent } from 'rxjs/Observable/fromEvent';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'color-editable-input',
@@ -57,7 +57,6 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   inputStyle: any;
   labelStyle: any;
   focus = false;
-  active = false;
   mousemove: Subscription;
   mouseup: Subscription;
 
@@ -162,7 +161,7 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
   handleDrag($event) {
-    if (this.dragLabel && this.active) {
+    if (this.dragLabel) {
       const newValue = Math.round(this.value + $event.movementX);
       if (newValue >= 0 && newValue <= this.dragMax) {
         this.onChange.emit({ data: { [this.label]: newValue }, $event });

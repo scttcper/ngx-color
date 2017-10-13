@@ -5,7 +5,7 @@ import {
   CheckboardModule,
   EditableInputModule,
   SwatchModule,
-} from '../../common';
+} from 'ngx-color';
 import { BlockSwatchesComponent } from './block-swatches.component';
 import { BlockComponent } from './block.component';
 

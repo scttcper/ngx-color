@@ -7,7 +7,7 @@ import {
   EditableInputModule,
   HueModule,
   SaturationModule,
-} from '../../common';
+} from 'ngx-color';
 import { ChromeFieldsComponent } from './chrome-fields.component';
 import { ChromeComponent } from './chrome.component';
 

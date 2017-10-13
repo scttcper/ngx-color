@@ -1,18 +1,11 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  OnChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { HSLA, RGBA, isValidHex } from 'ngx-color/helpers';
+import { HSLA, isValidHex, RGBA } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-sketch-fields',
   template: `
-  <div class="sketch-fields flexbox-fix">
+  <div class="sketch-fields">
     <div class="sketch-double">
       <color-editable-input
         [style]="{ input: input, label: label }"
@@ -63,7 +56,8 @@ import { HSLA, RGBA, isValidHex } from 'ngx-color/helpers';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .sketch-fields {
       display: flex;
       padding-top: 4px;
@@ -81,9 +75,10 @@ import { HSLA, RGBA, isValidHex } from 'ngx-color/helpers';
       flex: 1 1 0%;
       padding-left: 6px;
     }
-  `],
+  `,
+  ],
 })
-export class SketchFieldsComponent implements OnInit, OnChanges {
+export class SketchFieldsComponent {
   @Input() hsl: HSLA;
   @Input() rgb: RGBA;
   @Input() hex: string;
@@ -106,33 +101,31 @@ export class SketchFieldsComponent implements OnInit, OnChanges {
     'padding-bottom': '4px',
     'text-transform': 'capitalize',
   };
-  constructor() { }
 
-
-  ngOnInit() {
-
-  }
-  ngOnChanges() {
-
-  }
   round(value) {
     return Math.round(value);
   }
   handleChange({ data, $event }) {
     if (data.hex) {
       if (isValidHex(data.hex)) {
-        this.onChange.emit({ data: {
-         hex: data.hex,
-         source: 'hex',
-       }, $event});
+        this.onChange.emit({
+          data: {
+            hex: data.hex,
+            source: 'hex',
+          },
+          $event,
+        });
       }
     } else if (data.r || data.g || data.b) {
-      this.onChange.emit({ data: {
-        r: data.r || this.rgb.r,
-        g: data.g || this.rgb.g,
-        b: data.b || this.rgb.b,
-        source: 'rgb',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          r: data.r || this.rgb.r,
+          g: data.g || this.rgb.g,
+          b: data.b || this.rgb.b,
+          source: 'rgb',
+        },
+        $event,
+      });
     } else if (data.a) {
       if (data.a < 0) {
         data.a = 0;
@@ -141,21 +134,26 @@ export class SketchFieldsComponent implements OnInit, OnChanges {
       }
       data.a /= 100;
 
-      this.onChange.emit({ data: {
-        h: this.hsl.h,
-        s: this.hsl.s,
-        l: this.hsl.l,
-        a: Math.round(data.a * 100) / 100,
-        source: 'rgb',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          h: this.hsl.h,
+          s: this.hsl.s,
+          l: this.hsl.l,
+          a: Math.round(data.a * 100) / 100,
+          source: 'rgb',
+        },
+        $event,
+      });
     } else if (data.h || data.s || data.l) {
-      this.onChange.emit({ data: {
-        h: data.h || this.hsl.h,
-        s: Number((data.s && data.s) || this.hsl.s),
-        l: Number((data.l && data.l) || this.hsl.l),
-        source: 'hsl',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          h: data.h || this.hsl.h,
+          s: Number((data.s && data.s) || this.hsl.s),
+          l: Number((data.l && data.l) || this.hsl.l),
+          source: 'hsl',
+        },
+        $event,
+      });
     }
   }
-
 }

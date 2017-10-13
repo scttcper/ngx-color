@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SwatchModule } from '../../common';
+import { SwatchModule } from 'ngx-color';
 import { GithubComponent } from './github.component';
 import { GithubSwatchComponent } from './github-swatch.component';
 

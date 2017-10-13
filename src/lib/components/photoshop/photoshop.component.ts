@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { ColorWrap } from '../../common';
+import { ColorWrap } from 'ngx-color';
 
 @Component({
   selector: 'color-photoshop',
