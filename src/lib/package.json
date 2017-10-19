@@ -10,9 +10,9 @@
     "tinycolor2": "^1.4.1"
   },
   "peerDependencies": {
-    "@angular/core": ">=4.3.0 <=6.0.0",
-    "@angular/common": ">=4.3.0 <=6.0.0",
-    "rxjs": "^5.4.0"
+    "@angular/core": ">=4.4.0 <=6.0.0",
+    "@angular/common": ">=4.4.0 <=6.0.0",
+    "rxjs": "^5.5.0"
   },
   "repository": "https://github.com/scttcper/ngx-color.git",
   "homepage": "https://github.com/scttcper/ngx-color",
@@ -29,10 +29,5 @@
     "photoshop",
     "material design",
     "popup"
-  ],
-  "devDependencies": {
-    "copy": "^0.3.1",
-    "rollup": "^0.50.0",
-    "rollup-plugin-sourcemaps": "^0.4.2"
-  }
+  ]
 }

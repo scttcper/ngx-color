@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 
-import { isValidHex } from '../../helpers/color';
+import { isValidHex } from 'ngx-color/helpers';
 
 
 @Component({

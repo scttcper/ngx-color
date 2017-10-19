@@ -1,6 +1,6 @@
 import { Component, OnChanges } from '@angular/core';
 
-import { isValidHex, toState } from '../../helpers/color';
+import { isValidHex, toState } from 'ngx-color/helpers';
 import { ColorWrap } from 'ngx-color';
 
 @Component({
