@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewChild, NgModule } from '@angular/core';
-import { fromEvent } from 'rxjs/Observable/fromEvent';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 
 import { HSLA, HSVA, calculateSaturationChange } from 'ngx-color/helpers';

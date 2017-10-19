@@ -10,7 +10,7 @@ import {
   NgModule,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { fromEvent } from 'rxjs/Observable/fromEvent';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({

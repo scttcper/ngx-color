@@ -37,7 +37,7 @@ const GLOBALS = {
   'rxjs/Observable': 'Rx',
   'rxjs/Subscription': 'Rx',
   'rxjs/operators': 'Rx.Observable',
-  'rxjs/Observable/fromEvent': 'Rx.Observable',
+  'rxjs/observable/fromEvent': 'Rx.Observable',
   'rxjs/add/operator/debounceTime': 'Rx.Observable.prototype',
   'rxjs/add/operator/distinctUntilChanged': 'Rx.Observable.prototype',
   'ngx-color': MODULE_NAMES['common'],

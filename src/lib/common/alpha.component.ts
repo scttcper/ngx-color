@@ -12,7 +12,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { fromEvent } from 'rxjs/Observable/fromEvent';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
 
 import { HSLA, RGBA, calculateAlphaChange } from 'ngx-color/helpers';
