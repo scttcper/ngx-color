@@ -37,7 +37,7 @@
     "@angular/language-service": "^5.0.0-rc.3",
     "@types/jasmine": "^2.6.0",
     "@types/jasminewd2": "^2.0.3",
-    "@types/node": "^8.0.45",
+    "@types/node": "^8.0.46",
     "@types/tinycolor2": "^1.4.0",
     "bundlesize": "^0.15.3",
     "codelyzer": "^3.2.1",
