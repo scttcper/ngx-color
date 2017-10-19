@@ -46,7 +46,10 @@ class YourModule {}
 
 ##### use
 ```html
-<color-sketch></color-sketch>
+<color-sketch
+  [color]="state"
+  (onChangeComplete)="changeComplete($event)"
+></color-sketch>
 ```
 
 ### Others available
