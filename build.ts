@@ -5,6 +5,7 @@ import { spawn } from 'child_process';
 import { Observable } from 'rxjs';
 import * as copyfiles from 'copy';
 import * as sourcemaps from 'rollup-plugin-sourcemaps';
+import 'rxjs/add/operator/concatAll';
 
 const copyAll: ((s: string, s1: string) => any) = Observable.bindCallback(copyfiles);
 
@@ -33,6 +34,7 @@ const GLOBALS = {
   '@angular/router': 'ng.router',
   '@angular/platform-browser': 'ng.platformBrowser',
   'tinycolor2': 'tinycolor2',
+  'material-colors': 'materialColors',
   'rxjs': 'Rx',
   'rxjs/Observable': 'Rx',
   'rxjs/Subscription': 'Rx',
@@ -96,6 +98,15 @@ function generateBundle(input, file, globals, name, format) {
     input,
     external: Object.keys(globals),
     file,
+    onwarn(warning) {
+      if (warning.code === 'THIS_IS_UNDEFINED') {
+        return;
+      }
+      if (warning.code === 'UNUSED_EXTERNAL_IMPORT') {
+        return;
+      }
+      console.log(warning.message);
+    },
     plugins,
   }).then(bundle => {
     return bundle.write({
@@ -152,18 +163,20 @@ function createBundles(name: string, type: string) {
 }
 
 function buildModulesProviders() {
-  const observables = Object.keys(MODULE_NAMES).map((name) => {
-    if (name === 'common' || name === 'helpers') {
-      return Observable.fromPromise(Promise.resolve());
-    }
-    return buildModule(name, 'components');
-  });
-  return Observable.forkJoin(observables);
+  return Observable.of(...Object.keys(MODULE_NAMES))
+    .mergeMap((name) => {
+      if (name === 'common' || name === 'helpers') {
+        return Observable.fromPromise(Promise.resolve('hello'));
+      }
+      return buildModule(name, 'components');
+    }, 2)
+    .combineAll();
 }
 
 function buildUmds() {
-  const observables = Object.keys(MODULE_NAMES).map((name) => Observable.from(createUmd(name)));
-  return Observable.forkJoin(observables);
+  return Observable.of(...Object.keys(MODULE_NAMES))
+    .mergeMap((name) => Observable.from(createUmd(name)), 2)
+    .combineAll();
 }
 
 function copyFilesHelpers() {
