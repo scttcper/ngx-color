@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
+import { toState } from 'ngx-color/helpers';
 
 
 @Component({
@@ -27,9 +28,8 @@ import { ColorWrap } from 'ngx-color';
     }
   `],
 })
-export class AlphaPickerComponent extends ColorWrap implements OnInit {
+export class AlphaPickerComponent extends ColorWrap implements OnChanges {
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
-  @Input() className: string;
   width = 316;
   height = 16;
   pointer = {
@@ -44,11 +44,11 @@ export class AlphaPickerComponent extends ColorWrap implements OnInit {
   constructor() {
     super();
   }
-
-  ngOnInit() {
+  ngOnChanges() {
     if (this.direction === 'vertical') {
       this.pointer.transform = 'translate(-3px, -9px)';
     }
+    this.setState(toState(this.color, this.oldHue));
   }
   handlePickerChange({ data, $event }) {
     this.handleChange(data, $event);
