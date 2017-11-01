@@ -16,13 +16,13 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "5.0.0-rc.8",
-    "@angular/common": "5.0.0-rc.8",
-    "@angular/compiler": "5.0.0-rc.8",
-    "@angular/core": "5.0.0-rc.8",
-    "@angular/forms": "5.0.0-rc.8",
-    "@angular/platform-browser": "5.0.0-rc.8",
-    "@angular/platform-browser-dynamic": "5.0.0-rc.8",
+    "@angular/animations": "5.0.0",
+    "@angular/common": "5.0.0",
+    "@angular/compiler": "5.0.0",
+    "@angular/core": "5.0.0",
+    "@angular/forms": "5.0.0",
+    "@angular/platform-browser": "5.0.0",
+    "@angular/platform-browser-dynamic": "5.0.0",
     "bootstrap": "4.0.0-beta.2",
     "core-js": "^2.5.1",
     "material-colors": "^1.2.5",
@@ -32,8 +32,8 @@
   },
   "devDependencies": {
     "@angular/cli": "1.5.0-rc.6",
-    "@angular/compiler-cli": "5.0.0-rc.8",
-    "@angular/language-service": "5.0.0-rc.8",
+    "@angular/compiler-cli": "5.0.0",
+    "@angular/language-service": "5.0.0",
     "@types/jasmine": "^2.6.2",
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^8.0.47",
@@ -56,7 +56,7 @@
     "rollup-plugin-sourcemaps": "^0.4.2",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0",
-    "typescript": "^2.5.3"
+    "typescript": "^2.6.1"
   },
   "bundlesize": [
     {
