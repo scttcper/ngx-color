@@ -22,7 +22,7 @@
     "@angular/core": "5.0.0",
     "@angular/forms": "5.0.0",
     "@angular/platform-browser": "5.0.0",
-    "@angular/platform-browser-dynamic": "5.0.0",
+    "@angular/platform-browser-dynamic": "5.0.1",
     "bootstrap": "4.0.0-beta.2",
     "core-js": "^2.5.1",
     "material-colors": "^1.2.5",
