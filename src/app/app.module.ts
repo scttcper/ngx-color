@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { MdoButtonModule } from '@ctrl/ngx-github-buttons';
+
 import { ColorAlphaModule } from '../lib/components/alpha/alpha.module';
 import { ColorBlockModule } from '../lib/components/block/block.module';
 import { ColorChromeModule } from '../lib/components/chrome/chrome.module';
@@ -23,6 +25,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+
+    MdoButtonModule,
 
     ColorAlphaModule,
     ColorBlockModule,
