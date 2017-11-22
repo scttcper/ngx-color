@@ -16,7 +16,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "5.0.2",
+    "@angular/animations": "5.0.3",
     "@angular/common": "5.0.2",
     "@angular/compiler": "5.0.2",
     "@angular/core": "5.0.2",
