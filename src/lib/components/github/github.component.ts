@@ -17,73 +17,70 @@ import { isValidHex } from 'ngx-color/helpers';
     ></color-github-swatch>
   </div>
   `,
-  styles: [
-    `
-    .github-picker {
-      background: rgb(255, 255, 255);
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px;
-      border-radius: 4px;
-      position: relative;
-      padding: 5px;
-      display: flex;
-      flex-wrap: wrap;
-      box-sizing: border-box;
-    }
-    .triangleShadow {
-      position: absolute;
-      border-width: 8px;
-      border-style: solid;
-      border-color: transparent transparent rgba(0, 0, 0, 0.15);
-      border-image: initial;
-    }
-    .triangle {
-      position: absolute;
-      border-width: 7px;
-      border-style: solid;
-      border-color: transparent transparent rgb(255, 255, 255);
-      border-image: initial;
-    }
-    .hide-triangle > .triangle {
-      display: none;
-    }
-    .hide-triangle > .triangleShadow {
-      display: none;
-    }
-    .top-left-triangle > .triangle {
-      top: -14px;
-      left: 10px;
-    }
-    .top-left-triangle > .triangleShadow {
-      top: -16px;
-      left: 9px;
-    }
-    .top-right-triangle > .triangle {
-      top: -14px;
-      right: 10px;
-    }
-    .top-right-triangle > .triangleShadow {
-      top: -16px;
-      right: 9px;
-    }
-    .bottom-right-triangle > .triangle {
-      top: 35px;
-      right: 10px;
-      transform: rotate(180deg);
-    }
-    .bottom-right-triangle > .triangleShadow {
-      top: 37px;
-      right: 9px;
-      transform: rotate(180deg);
-    }
-  `,
-  ],
+  styles: [`
+  .github-picker {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px;
+    border-radius: 4px;
+    position: relative;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+  .triangleShadow {
+    position: absolute;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent rgba(0, 0, 0, 0.15);
+    border-image: initial;
+  }
+  .triangle {
+    position: absolute;
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent rgb(255, 255, 255);
+    border-image: initial;
+  }
+  .hide-triangle > .triangle {
+    display: none;
+  }
+  .hide-triangle > .triangleShadow {
+    display: none;
+  }
+  .top-left-triangle > .triangle {
+    top: -14px;
+    left: 10px;
+  }
+  .top-left-triangle > .triangleShadow {
+    top: -16px;
+    left: 9px;
+  }
+  .top-right-triangle > .triangle {
+    top: -14px;
+    right: 10px;
+  }
+  .top-right-triangle > .triangleShadow {
+    top: -16px;
+    right: 9px;
+  }
+  .bottom-right-triangle > .triangle {
+    top: 35px;
+    right: 10px;
+    transform: rotate(180deg);
+  }
+  .bottom-right-triangle > .triangleShadow {
+    top: 37px;
+    right: 9px;
+    transform: rotate(180deg);
+  }
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GithubComponent extends ColorWrap {
   @Input() width = 212;
-  @Input()
-  triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
+  @Input() triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
   @Input()
   colors = [
     '#B80000',
@@ -107,6 +104,7 @@ export class GithubComponent extends ColorWrap {
   constructor() {
     super();
   }
+
   handleBlockChange({ hex, $event }) {
     if (isValidHex(hex)) {
       this.handleChange({ hex, source: 'hex' }, $event);
