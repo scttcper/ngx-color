@@ -2,11 +2,14 @@
 // based on https://github.com/angular/angularfire2/blob/master/tools/build.js
 import { spawn } from 'child_process';
 import * as copyfiles from 'copy';
+import { copy } from 'fs-extra';
 import { rollup } from 'rollup';
 import * as sourcemaps from 'rollup-plugin-sourcemaps';
 import { Observable } from 'rxjs';
 
-const copyAll: ((s: string, s1: string) => any) = Observable.bindCallback(copyfiles);
+const copyAll: ((s: string, s1: string) => any) = Observable.bindCallback(
+  copyfiles,
+);
 
 // Rollup globals
 const MODULE_NAMES = {
@@ -32,9 +35,9 @@ const GLOBALS = {
   '@angular/common': 'ng.common',
   '@angular/router': 'ng.router',
   '@angular/platform-browser': 'ng.platformBrowser',
-  'tinycolor2': 'tinycolor2',
+  tinycolor2: 'tinycolor2',
   'material-colors': 'materialColors',
-  'rxjs': 'Rx',
+  rxjs: 'Rx',
   'rxjs/Observable': 'Rx',
   'rxjs/Subscription': 'Rx',
   'rxjs/operators': 'Rx.Observable',
@@ -66,14 +69,16 @@ function createEntry(name, target, type = 'common') {
   return ENTRIES[name];
 }
 
-
 // Constants for running typescript commands
 const NGC = './node_modules/.bin/ngc';
 const TSC_ARGS = (type: string, name: string, config = 'build') => {
   if (!type) {
     return ['-p', `${process.cwd()}/src/lib/${name}/tsconfig-${config}.json`];
   }
-  return ['-p', `${process.cwd()}/src/lib/${type}/${name}/tsconfig-${config}.json`];
+  return [
+    '-p',
+    `${process.cwd()}/src/lib/${type}/${name}/tsconfig-${config}.json`,
+  ];
 };
 
 /**
@@ -83,16 +88,20 @@ function spawnObservable(command: string, args: string[]) {
   return Observable.create(observer => {
     const cmd = spawn(command, args);
     observer.next(''); // hack to kick things off, not every command will have a stdout
-    cmd.stdout.on('data', (data) => { observer.next(data.toString()); });
-    cmd.stderr.on('data', (data) => { observer.error(data.toString()); });
-    cmd.on('close', (data) => { observer.complete(); });
+    cmd.stdout.on('data', data => {
+      observer.next(data.toString());
+    });
+    cmd.stderr.on('data', data => {
+      observer.error(data.toString());
+    });
+    cmd.on('close', data => {
+      observer.complete();
+    });
   });
 }
 
 function generateBundle(input, file, globals, name, format) {
-  const plugins = [
-    sourcemaps(),
-  ];
+  const plugins = [sourcemaps()];
   return rollup({
     input,
     external: Object.keys(globals),
@@ -154,19 +163,18 @@ function buildModule(name: string, type: string) {
 }
 
 function createBundles(name: string, type: string) {
-  return Observable
-    .forkJoin(
-      Observable.from(createEs(name, 'es2015', type)),
-      Observable.from(createEs(name, 'es5', type)),
-    );
+  return Observable.forkJoin(
+    Observable.from(createEs(name, 'es2015', type)),
+    Observable.from(createEs(name, 'es5', type)),
+  );
 }
 
 function buildModulesProviders() {
-  return Observable.of(...Object.keys(MODULE_NAMES))
-    .mergeMap((name) => {
-      if (name === 'common' || name === 'helpers') {
-        return Observable.fromPromise(Promise.resolve('hello'));
-      }
+  const components = Object.keys(MODULE_NAMES).filter(
+    n => !['common', 'helpers'].includes(n),
+  );
+  return Observable.of(...components)
+    .mergeMap(name => {
       return buildModule(name, 'components');
     }, 2)
     .combineAll();
@@ -174,43 +182,57 @@ function buildModulesProviders() {
 
 function buildUmds() {
   return Observable.of(...Object.keys(MODULE_NAMES))
-    .mergeMap((name) => Observable.from(createUmd(name)), 2)
+    .mergeMap(name => Observable.from(createUmd(name)), 2)
     .combineAll();
 }
 
 function copyFilesHelpers() {
-  return Observable
-    .forkJoin(
-      copyAll(`${process.cwd()}/*.md`, `${process.cwd()}/dist/packages-dist`),
-      copyAll(`${process.cwd()}/src/lib/helpers/package.json*`, `${process.cwd()}/dist/packages-dist/helpers`),
-    );
+  return Observable.forkJoin(
+    Observable.of(
+      copy(
+        `${process.cwd()}/src/lib/helpers/package.json`,
+        `${process.cwd()}/dist/packages-dist/helpers/package.json`,
+      ),
+    ),
+  );
 }
 
 function copyFilesCommon() {
-  return Observable
-    .forkJoin(
-      copyAll(`${process.cwd()}/*.md`, `${process.cwd()}/dist/packages-dist`),
-      copyAll(`${process.cwd()}/src/lib/common/package.json*`, `${process.cwd()}/dist/packages-dist`),
-    );
+  return Observable.forkJoin(
+    Observable.of(
+      copy(
+        `${process.cwd()}/src/lib/common/package.json`,
+        `${process.cwd()}/dist/packages-dist/package.json`,
+      ),
+    ),
+  );
 }
 
 function copyFilesProviders() {
-  return Observable
-    .forkJoin(
-      copyAll(`${process.cwd()}/src/lib/components/**/package.json`, `${process.cwd()}/dist/packages-dist`),
-    );
+  const components = Object.keys(MODULE_NAMES).filter(
+    n => !['common', 'helpers'].includes(n),
+  );
+  return Observable.of(...components)
+    .mergeMap(name =>
+      Observable.of(
+        copy(
+          `${process.cwd()}/src/lib/components/${name}/package.json`,
+          `${process.cwd()}/dist/packages-dist/${name}/package.json`,
+        ),
+      ),
+    )
+    .combineAll();
 }
 
 function buildLibrary() {
-  return Observable
-    .forkJoin(buildHelpers())
-    .switchMap(() => copyFilesHelpers())
+  return Observable.forkJoin(buildHelpers())
     .switchMap(() => buildModule('common', ''))
     .switchMap(() => createBundles('common', 'common'))
-    .switchMap(() => copyFilesCommon())
     .switchMap(() => buildModulesProviders())
-    .switchMap(() => buildUmds())
-    .switchMap(() => copyFilesProviders());
+    .switchMap(() => copyFilesHelpers())
+    .switchMap(() => copyFilesCommon())
+    .switchMap(() => copyFilesProviders())
+    .switchMap(() => buildUmds());
 }
 
 buildLibrary().subscribe(
