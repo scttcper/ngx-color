@@ -11,10 +11,10 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
-import { HSLA, calculateHueChange } from 'ngx-color/helpers';
+import { calculateHueChange, HSLA } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-hue',

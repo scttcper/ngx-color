@@ -1,13 +1,13 @@
 import {
   Component,
-  OnInit,
-  Input,
-  Output,
   EventEmitter,
+  Input,
   OnChanges,
+  OnInit,
+  Output,
 } from '@angular/core';
 
-import { HSLA, RGBA, isValidHex } from 'ngx-color/helpers';
+import { isValidHex, HSLA, RGBA } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-chrome-fields',

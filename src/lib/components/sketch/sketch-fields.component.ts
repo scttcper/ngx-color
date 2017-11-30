@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { HSLA, isValidHex, RGBA } from 'ngx-color/helpers';
+import { isValidHex, HSLA, RGBA } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-sketch-fields',

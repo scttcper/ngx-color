@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { EditableInputModule, RaisedModule } from 'ngx-color';
 import { MaterialComponent } from './material.component';

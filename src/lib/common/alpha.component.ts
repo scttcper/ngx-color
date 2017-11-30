@@ -12,10 +12,10 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
-import { HSLA, RGBA, calculateAlphaChange } from 'ngx-color/helpers';
+import { calculateAlphaChange, HSLA, RGBA } from 'ngx-color/helpers';
 import { CheckboardModule } from './checkboard.component';
 
 @Component({

@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "noImplicitAny": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "module": "es2015",
-    "target": "es5",
+    "target": "es2015",
     "outDir": "../../../dist/packages-dist/helpers",
     "rootDir": ".",
     "sourceMap": true,
     "inlineSources": true,
-    "declaration": true,
+    "declaration": false,
     "removeComments": true,
     "lib": ["es2015", "dom"],
     "skipLibCheck": true,
@@ -19,5 +18,11 @@
   "files": [
     "index.ts"
   ],
-  "compileOnSave": false
+  "compileOnSave": false,
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableSummariesForJit": true,
+    "annotationsAs": "decorators"
+  }
 }

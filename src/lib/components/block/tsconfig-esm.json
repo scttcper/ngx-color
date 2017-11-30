@@ -14,6 +14,7 @@
     "strictMetadataEmit": true,
     "enableSummariesForJit": false,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "ngx-color/block"
+    "flatModuleId": "ngx-color/block",
+    "annotationsAs": "decorators"
   }
 }

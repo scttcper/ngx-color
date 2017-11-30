@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { SwatchModule } from 'ngx-color';
-import { GithubComponent } from './github.component';
 import { GithubSwatchComponent } from './github-swatch.component';
+import { GithubComponent } from './github.component';
 
 const components = [
   GithubComponent,

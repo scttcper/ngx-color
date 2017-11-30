@@ -19,15 +19,14 @@
       "ngx-color/helpers": ["../../../dist/packages-dist/helpers"]
     }
   },
-  "files": [
-    "public_api.ts"
-  ],
+  "files": ["public_api.ts"],
   "compileOnSave": false,
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "enableSummariesForJit": true,
     "flatModuleOutFile": "index.js",
-    "flatModuleId": "ngx-color"
+    "flatModuleId": "ngx-color",
+    "annotationsAs": "decorators"
   }
 }

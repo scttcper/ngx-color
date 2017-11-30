@@ -10,10 +10,7 @@
       "ngx-color": ["./lib/common"]
     }
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ],
+  "exclude": ["test.ts", "**/*.spec.ts"],
   "angularCompilerOptions": {
     "preserveWhitespaces": false
   }

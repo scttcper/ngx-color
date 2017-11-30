@@ -1,11 +1,10 @@
 /* tslint:disable:import-blacklist */
 // based on https://github.com/angular/angularfire2/blob/master/tools/build.js
-import { rollup } from 'rollup';
 import { spawn } from 'child_process';
-import { Observable } from 'rxjs';
 import * as copyfiles from 'copy';
+import { rollup } from 'rollup';
 import * as sourcemaps from 'rollup-plugin-sourcemaps';
-import 'rxjs/add/operator/concatAll';
+import { Observable } from 'rxjs';
 
 const copyAll: ((s: string, s1: string) => any) = Observable.bindCallback(copyfiles);
 

@@ -1,17 +1,17 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
+  NgModule,
   OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  NgModule,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Subscription } from 'rxjs/Subscription';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 @Component({
   selector: 'color-editable-input',

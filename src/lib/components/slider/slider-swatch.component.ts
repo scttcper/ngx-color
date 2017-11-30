@@ -1,9 +1,9 @@
 import {
   Component,
-  Input,
-  Output,
   EventEmitter,
+  Input,
   OnChanges,
+  Output,
 } from '@angular/core';
 
 import { HSL } from 'ngx-color/helpers';

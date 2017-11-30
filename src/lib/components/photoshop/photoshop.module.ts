@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { EditableInputModule, HueModule, AlphaModule, SwatchModule, SaturationModule } from 'ngx-color';
-import { PhotoshopComponent } from './photoshop.component';
-import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
+import { AlphaModule, EditableInputModule, HueModule, SaturationModule, SwatchModule } from 'ngx-color';
 import { PhotoshopButtonComponent } from './photoshop-button.component';
 import { PhotoshopFieldsComponent } from './photoshop-fields.component';
+import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
+import { PhotoshopComponent } from './photoshop.component';
 
 const components = [
   PhotoshopComponent,

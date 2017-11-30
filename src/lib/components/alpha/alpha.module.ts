@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { AlphaModule, CheckboardModule } from 'ngx-color';
 import { AlphaPickerComponent } from './alpha-picker.component';

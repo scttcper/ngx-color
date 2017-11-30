@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 import { isValidHex } from 'ngx-color/helpers';

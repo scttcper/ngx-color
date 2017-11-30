@@ -5,18 +5,14 @@
     "baseUrl": "./",
     "module": "commonjs",
     "target": "es5",
-    "types": [
-      "jasmine",
-      "node"
-    ]
+    "types": ["jasmine", "node"],
+    "paths": {
+      "ngx-color/helpers": ["./lib/helpers"],
+      "ngx-color": ["./lib/common"]
+    }
   },
-  "files": [
-    "test.ts"
-  ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ],
+  "files": ["test.ts"],
+  "include": ["**/*.spec.ts", "**/*.d.ts"],
   "angularCompilerOptions": {
     "preserveWhitespaces": false
   }

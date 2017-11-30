@@ -9,15 +9,15 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Subscription } from 'rxjs/Subscription';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import {
+  simpleCheckForValidColor,
+  toState,
   HSLA,
   HSVA,
   RGBA,
-  simpleCheckForValidColor,
-  toState,
 } from 'ngx-color/helpers';
 
 @Component({

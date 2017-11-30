@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import * as material from 'material-colors';
 
 import { ColorWrap } from 'ngx-color';

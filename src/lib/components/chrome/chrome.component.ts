@@ -1,7 +1,7 @@
 import { Component, OnChanges } from '@angular/core';
 
-import { toState } from 'ngx-color/helpers';
 import { ColorWrap } from 'ngx-color';
+import { toState } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-chrome',

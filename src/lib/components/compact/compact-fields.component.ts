@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { RGBA, isValidHex } from 'ngx-color/helpers';
+import { isValidHex, RGBA } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-compact-fields',

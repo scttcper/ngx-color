@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { HueModule, SwatchModule } from 'ngx-color';
-import { SliderComponent } from './slider.component';
-import { SliderSwatchesComponent } from './slider-swatches.component';
 import { SliderSwatchComponent } from './slider-swatch.component';
+import { SliderSwatchesComponent } from './slider-swatches.component';
+import { SliderComponent } from './slider.component';
 
 const components = [
   SliderComponent,

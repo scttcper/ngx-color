@@ -1,9 +1,9 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, ViewChild, NgModule } from '@angular/core';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Component, ElementRef, EventEmitter, Input, NgModule, OnChanges, OnDestroy, Output, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
-import { HSLA, HSVA, calculateSaturationChange } from 'ngx-color/helpers';
 import { CommonModule } from '@angular/common';
+import { calculateSaturationChange, HSLA, HSVA } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-saturation',

@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { SwatchModule } from 'ngx-color';
-import { CircleComponent } from './circle.component';
 import { CircleSwatchComponent } from './circle-swatch.component';
+import { CircleComponent } from './circle.component';
 
 const components = [
   CircleComponent,
