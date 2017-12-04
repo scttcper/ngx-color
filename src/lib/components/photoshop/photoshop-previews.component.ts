@@ -3,7 +3,6 @@ import {
   Component,
   Input,
   OnChanges,
-  OnInit,
 } from '@angular/core';
 
 @Component({
