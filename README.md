@@ -52,7 +52,7 @@ class YourModule {}
 ></color-sketch>
 ```
 
-### Others available
+#### Others available
 ```ts
 import { ColorAlphaModule } from 'ngx-color/alpha';
 import { ColorBlockModule } from 'ngx-color/block';

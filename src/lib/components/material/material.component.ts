@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 import { isValidHex, toState } from 'ngx-color/helpers';
@@ -43,7 +43,8 @@ import { isValidHex, toState } from 'ngx-color/helpers';
       </div>
     </color-raised>
   `,
-  styles: [`
+  styles: [
+    `
   .material-picker {
     width: 130px;
     height: 130px;
@@ -61,6 +62,8 @@ import { isValidHex, toState } from 'ngx-color/helpers';
   }
   `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class MaterialComponent extends ColorWrap implements OnChanges {
   HEXinput = {
@@ -109,23 +112,28 @@ export class MaterialComponent extends ColorWrap implements OnChanges {
   handleInputChange({ data, $event }) {
     if (data.hex) {
       if (isValidHex(data.hex)) {
-        this.handleValueChange({ data: {
-         hex: data.hex,
-         source: 'hex',
-       }, $event});
+        this.handleValueChange({
+          data: {
+            hex: data.hex,
+            source: 'hex',
+          },
+          $event,
+        });
       }
     } else if (data.r || data.g || data.b) {
-      this.handleValueChange({ data: {
-        r: data.r || this.rgb.r,
-        g: data.g || this.rgb.g,
-        b: data.b || this.rgb.b,
-        source: 'rgb',
-      }, $event });
+      this.handleValueChange({
+        data: {
+          r: data.r || this.rgb.r,
+          g: data.g || this.rgb.g,
+          b: data.b || this.rgb.b,
+          source: 'rgb',
+        },
+        $event,
+      });
     }
   }
   ngOnChanges() {
     this.setState(toState(this.color, this.oldHue));
     this.HEXinput['border-bottom-color'] = this.hex;
   }
-
 }

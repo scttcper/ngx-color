@@ -27,6 +27,6 @@
     "enableSummariesForJit": true,
     "flatModuleOutFile": "index.js",
     "flatModuleId": "ngx-color",
-    "annotationsAs": "decorators"
+    "annotationsAs": "static fields"
   }
 }

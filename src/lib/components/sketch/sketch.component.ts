@@ -1,4 +1,9 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+} from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 import { isValidHex, toState } from 'ngx-color/helpers';
@@ -54,9 +59,9 @@ import { isValidHex, toState } from 'ngx-color/helpers';
       ></color-sketch-preset-colors>
     </div>
   </div>
-
   `,
-  styles: [`
+  styles: [
+    `
     .sketch-picker {
       padding: 10px 10px 0;
       box-sizing: initial;
@@ -106,12 +111,30 @@ import { isValidHex, toState } from 'ngx-color/helpers';
       border-radius: 2px;
       box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SketchComponent extends ColorWrap implements OnChanges {
-  @Input() presetColors = ['#D0021B', '#F5A623', '#F8E71C', '#8B572A', '#7ED321', '#417505',
-    '#BD10E0', '#9013FE', '#4A90E2', '#50E3C2', '#B8E986', '#000000',
-    '#4A4A4A', '#9B9B9B', '#FFFFFF'];
+  @Input()
+  presetColors = [
+    '#D0021B',
+    '#F5A623',
+    '#F8E71C',
+    '#8B572A',
+    '#7ED321',
+    '#417505',
+    '#BD10E0',
+    '#9013FE',
+    '#4A90E2',
+    '#50E3C2',
+    '#B8E986',
+    '#000000',
+    '#4A4A4A',
+    '#9B9B9B',
+    '#FFFFFF',
+  ];
   @Input() width = 200;
   @Input() disableAlpha = false;
   activeBackground: string;
@@ -121,10 +144,12 @@ export class SketchComponent extends ColorWrap implements OnChanges {
 
   ngOnChanges() {
     this.setState(toState(this.color, this.oldHue));
-    this.activeBackground = `rgba(${ this.rgb.r }, ${ this.rgb.g }, ${ this.rgb.b }, ${ this.rgb.a })`;
+    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${
+      this.rgb.b
+    }, ${this.rgb.a})`;
   }
 
-  handleValueChange({data, $event}) {
+  handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }
   handleBlockChange({ hex, $event }) {

@@ -15,6 +15,6 @@
     "enableSummariesForJit": false,
     "flatModuleOutFile": "index.js",
     "flatModuleId": "ngx-color/twitter",
-    "annotationsAs": "decorators"
+    "annotationsAs": "static fields"
   }
 }

@@ -1,5 +1,10 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'color-photoshop-button',
@@ -8,7 +13,8 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
       {{ label }}
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .photoshop-button {
       background-image: linear-gradient(
         -180deg,
@@ -29,18 +35,13 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
     .photoshop-button.active {
       box-shadow: 0 0 0 1px #878787;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
-export class PhotoshopButtonComponent implements OnInit, OnChanges {
+export class PhotoshopButtonComponent {
   @Input() label = '';
   @Input() active = false;
   @Output() click = new EventEmitter<Event>();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-  ngOnChanges() {
-  }
-
 }

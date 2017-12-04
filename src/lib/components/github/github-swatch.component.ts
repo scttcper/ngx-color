@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'color-github-swatch',
@@ -14,7 +20,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       <div class="clear"></div>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .github-swatch {
       width: 25px;
       height: 25px;
@@ -26,7 +33,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       outline: 2px solid #fff;
       box-shadow: 0 0 5px 2px rgba(0,0,0,0.25);
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class GithubSwatchComponent {
   @Input() color: string;
@@ -34,10 +44,9 @@ export class GithubSwatchComponent {
   @Output() onSwatchHover = new EventEmitter<any>();
   swatchStyle: any;
 
-  constructor() { }
+  constructor() {}
 
-  handleClick({hex, $event}) {
-    this.onClick.emit({hex, $event});
+  handleClick({ hex, $event }) {
+    this.onClick.emit({ hex, $event });
   }
-
 }

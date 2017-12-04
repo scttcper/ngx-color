@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { isValidHex, HSLA, RGBA } from 'ngx-color/helpers';
 
@@ -77,6 +83,8 @@ import { isValidHex, HSLA, RGBA } from 'ngx-color/helpers';
     }
   `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SketchFieldsComponent {
   @Input() hsl: HSLA;

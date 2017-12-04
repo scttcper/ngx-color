@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -39,6 +40,8 @@ import { HSL } from 'ngx-color/helpers';
 
   `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SliderSwatchComponent implements OnChanges {
   @Input() hsl: HSL;
@@ -49,11 +52,9 @@ export class SliderSwatchComponent implements OnChanges {
   @Output() onClick = new EventEmitter<any>();
   background: string;
 
-  constructor() {}
   ngOnChanges() {
     this.background = `hsl(${this.hsl.h}, 50%, ${this.offset * 100}%)`;
   }
-
   handleClick($event) {
     this.onClick.emit({
       data: {

@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 import { toState } from 'ngx-color/helpers';
@@ -52,7 +52,8 @@ import { toState } from 'ngx-color/helpers';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .chrome-picker {
       background: #fff;
       border-radius: 2px;
@@ -106,16 +107,19 @@ import { toState } from 'ngx-color/helpers';
       height: 10px;
       position: relative;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class ChromeComponent extends ColorWrap implements OnChanges {
   className = '';
   circle = {
-    'width': '12px',
-    'height': '12px',
+    width: '12px',
+    height: '12px',
     'border-radius': '6px',
     'box-shadow': 'rgb(255, 255, 255) 0px 0px 0px 1px inset',
-    'transform': 'translate(-6px, -6px)',
+    transform: 'translate(-6px, -6px)',
   };
   pointer = {
     width: '12px',
@@ -132,12 +136,12 @@ export class ChromeComponent extends ColorWrap implements OnChanges {
 
   ngOnChanges() {
     this.setState(toState(this.color, this.oldHue));
-    this.activeBackground = `rgba(${ this.rgb.r }, ${ this.rgb.g }, ${ this.rgb.b }, ${ this.rgb.a })`;
+    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${
+      this.rgb.b
+    }, ${this.rgb.a})`;
   }
 
-  handleValueChange({data, $event}) {
+  handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }
-
-
 }

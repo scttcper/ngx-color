@@ -1,7 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { isValidHex } from 'ngx-color/helpers';
-
 
 @Component({
   selector: 'color-photoshop-fields',
@@ -58,7 +63,8 @@ import { isValidHex } from 'ngx-color/helpers';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .photoshop-fields {
       padding-top: 5px;
       padding-bottom: 9px;
@@ -79,9 +85,12 @@ import { isValidHex } from 'ngx-color/helpers';
     .photoshop-divider {
       height: 5px;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
-export class PhotoshopFieldsComponent implements OnInit, OnChanges {
+export class PhotoshopFieldsComponent {
   @Input() rgb: any;
   @Input() hsv: any;
   @Input() hex: any;
@@ -91,7 +100,8 @@ export class PhotoshopFieldsComponent implements OnInit, OnChanges {
     width: '40%',
     height: '22px',
     border: '1px solid rgb(136, 136, 136)',
-    'box-shadow': 'rgba(0, 0, 0, 0.1) 0px 1px 1px inset, rgb(236, 236, 236) 0px 1px 0px 0px',
+    'box-shadow':
+      'rgba(0, 0, 0, 0.1) 0px 1px 1px inset, rgb(236, 236, 236) 0px 1px 0px 0px',
     'margin-bottom': '2px',
     'font-size': '13px',
     'padding-left': '3px',
@@ -133,40 +143,40 @@ export class PhotoshopFieldsComponent implements OnInit, OnChanges {
     'line-height': '24px',
   };
 
-
-  constructor() { }
-
-  ngOnInit() {
-  }
   round(v) {
     return Math.round(v);
-  }
-  ngOnChanges() {
-
   }
   handleValueChange({ data, $event }) {
     if (data['#']) {
       if (isValidHex(data['#'])) {
-        this.onChange.emit({ data: {
-          hex: data['#'],
-          source: 'hex',
-        }, $event });
+        this.onChange.emit({
+          data: {
+            hex: data['#'],
+            source: 'hex',
+          },
+          $event,
+        });
       }
     } else if (data.r || data.g || data.b) {
-      this.onChange.emit({ data: {
-        r: data.r || this.rgb.r,
-        g: data.g || this.rgb.g,
-        b: data.b || this.rgb.b,
-        source: 'rgb',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          r: data.r || this.rgb.r,
+          g: data.g || this.rgb.g,
+          b: data.b || this.rgb.b,
+          source: 'rgb',
+        },
+        $event,
+      });
     } else if (data.h || data.s || data.v) {
-      this.onChange.emit({ data: {
-        h: data.h || this.hsv.h,
-        s: data.s || this.hsv.s,
-        v: data.v || this.hsv.v,
-        source: 'hsv',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          h: data.h || this.hsv.h,
+          s: data.s || this.hsv.s,
+          v: data.v || this.hsv.v,
+          source: 'hsv',
+        },
+        $event,
+      });
     }
   }
-
 }

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -117,7 +118,8 @@ import { isValidHex, HSLA, RGBA } from 'ngx-color/helpers';
       </div>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
   .chrome-wrap {
     padding-top: 16px;
     display: flex;
@@ -151,9 +153,12 @@ import { isValidHex, HSLA, RGBA } from 'ngx-color/helpers';
   .chrome-toggle-svg:hover {
     background: #eee;
   }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
-export class ChromeFieldsComponent implements OnInit, OnChanges {
+export class ChromeFieldsComponent implements OnInit {
   @Input() hsl: HSLA;
   @Input() rgb: RGBA;
   @Input() hex: string;
@@ -179,9 +184,6 @@ export class ChromeFieldsComponent implements OnInit, OnChanges {
     'margin-top': '12px',
   };
 
-
-  constructor() { }
-
   ngOnInit() {
     if (this.hsl.a === 1 && this.view !== 'hex') {
       this.view = 'hex';
@@ -202,27 +204,30 @@ export class ChromeFieldsComponent implements OnInit, OnChanges {
       }
     }
   }
-  ngOnChanges() {
-
-  }
   round(value) {
     return Math.round(value);
   }
   handleChange({ data, $event }) {
     if (data.hex) {
       if (isValidHex(data.hex)) {
-        this.onChange.emit({ data: {
-         hex: data.hex,
-         source: 'hex',
-       }, $event});
+        this.onChange.emit({
+          data: {
+            hex: data.hex,
+            source: 'hex',
+          },
+          $event,
+        });
       }
     } else if (data.r || data.g || data.b) {
-      this.onChange.emit({ data: {
-        r: data.r || this.rgb.r,
-        g: data.g || this.rgb.g,
-        b: data.b || this.rgb.b,
-        source: 'rgb',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          r: data.r || this.rgb.r,
+          g: data.g || this.rgb.g,
+          b: data.b || this.rgb.b,
+          source: 'rgb',
+        },
+        $event,
+      });
     } else if (data.a) {
       if (data.a < 0) {
         data.a = 0;
@@ -230,22 +235,26 @@ export class ChromeFieldsComponent implements OnInit, OnChanges {
         data.a = 1;
       }
 
-      this.onChange.emit({ data: {
-        h: this.hsl.h,
-        s: this.hsl.s,
-        l: this.hsl.l,
-        a: Math.round(data.a * 100) / 100,
-        source: 'rgb',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          h: this.hsl.h,
+          s: this.hsl.s,
+          l: this.hsl.l,
+          a: Math.round(data.a * 100) / 100,
+          source: 'rgb',
+        },
+        $event,
+      });
     } else if (data.h || data.s || data.l) {
-      this.onChange.emit({ data: {
-        h: data.h || this.hsl.h,
-        s: Number((data.s && data.s) || this.hsl.s),
-        l: Number((data.l && data.l) || this.hsl.l),
-        source: 'hsl',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          h: data.h || this.hsl.h,
+          s: Number((data.s && data.s) || this.hsl.s),
+          l: Number((data.l && data.l) || this.hsl.l),
+          source: 'hsl',
+        },
+        $event,
+      });
     }
   }
-
-
 }

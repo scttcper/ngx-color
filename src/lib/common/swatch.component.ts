@@ -33,6 +33,7 @@ import { CheckboardModule } from './checkboard.component';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SwatchComponent implements OnInit {
   @Input() color;

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -6,14 +7,13 @@ import {
   Output,
 } from '@angular/core';
 
-
 @Component({
   selector: 'color-circle-swatch',
   template: `
     <div class="circle-swatch"
       [style.width.px]="circleSize" [style.height.px]="circleSize"
       [style.margin-right.px]="circleSpacing" [style.margin-bottom.px]="circleSpacing"
-    >
+      >
       <color-swatch
         [color]="color"
         [style]="swatchStyle"
@@ -26,7 +26,8 @@ import {
       <div class="clear"></div>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .circle-swatch {
       transform: scale(1);
       transition: transform 100ms ease;
@@ -34,7 +35,10 @@ import {
     .circle-swatch:hover {
       transform: scale(1.2);
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class CircleSwatchComponent implements OnChanges {
   @Input() color: string;
@@ -44,23 +48,21 @@ export class CircleSwatchComponent implements OnChanges {
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
   focusStyle: any;
-
   swatchStyle = {
     'border-radius': '50%',
     background: 'transparent',
     transition: '100ms box-shadow ease',
   };
 
-  constructor() { }
-
   ngOnChanges() {
     this.focusStyle = {
-      'box-shadow': `${ this.color } 0px 0px 0px 3px inset`,
+      'box-shadow': `${this.color} 0px 0px 0px 3px inset`,
     };
-    this.swatchStyle['box-shadow'] = `inset 0 0 0 ${ this.circleSize / 2 }px ${ this.color }`;
+    this.swatchStyle['box-shadow'] = `inset 0 0 0 ${this.circleSize / 2}px ${
+      this.color
+    }`;
   }
-  handleClick({hex, $event}) {
-    this.onClick.emit({hex, $event});
+  handleClick({ hex, $event }) {
+    this.onClick.emit({ hex, $event });
   }
-
 }

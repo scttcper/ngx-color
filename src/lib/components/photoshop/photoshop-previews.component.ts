@@ -1,5 +1,10 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'color-photoshop-previews',
@@ -13,12 +18,13 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
     <div class="photoshop-label">current</div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .photoshop-swatches {
       border: 1px solid #B3B3B3;
       border-bottom: 1px solid #F0F0F0;
       margin-bottom: 2px;
-      margin-top: '1px;
+      margin-top: 1px;
     }
     .photoshop-new {
       height: 34px;
@@ -33,18 +39,18 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
       color: #000;
       text-align: center;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
-export class PhotoshopPreviewsComponent implements OnInit, OnChanges {
+export class PhotoshopPreviewsComponent implements OnChanges {
   @Input() rgb: any;
   @Input() currentColor = '';
   backgroundNew = '';
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
   ngOnChanges() {
-    this.backgroundNew = `rgb(${ this.rgb.r },${ this.rgb.g }, ${ this.rgb.b })`;
+    this.backgroundNew = `rgb(${this.rgb.r},${this.rgb.g}, ${this.rgb.b})`;
   }
-
 }

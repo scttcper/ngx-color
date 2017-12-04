@@ -41,6 +41,7 @@ import { isValidHex } from 'ngx-color/helpers';
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class CompactComponent extends ColorWrap {
   @Input() colors = [

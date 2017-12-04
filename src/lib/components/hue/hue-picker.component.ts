@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 
@@ -23,6 +23,8 @@ import { ColorWrap } from 'ngx-color';
       position: relative;
     }
   `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class HuePickerComponent extends ColorWrap implements OnInit {
   @Input() width = 316;

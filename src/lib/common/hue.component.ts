@@ -65,6 +65,7 @@ import { calculateHueChange, HSLA } from 'ngx-color/helpers';
         #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
     }
   `],
+  preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HueComponent implements OnChanges, OnDestroy {

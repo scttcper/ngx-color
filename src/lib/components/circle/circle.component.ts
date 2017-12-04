@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import * as material from 'material-colors';
 
 import { ColorWrap } from 'ngx-color';
@@ -26,6 +26,8 @@ import { isValidHex } from 'ngx-color/helpers';
       flex-wrap: wrap;
     }
   `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class CircleComponent extends ColorWrap {
   @Input() width = 252;

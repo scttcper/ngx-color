@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 
@@ -51,7 +51,6 @@ import { ColorWrap } from 'ngx-color';
       </div>
     </div>
   </div>
-
   `,
   styles: [`
     .photoshop-picker {
@@ -116,6 +115,8 @@ import { ColorWrap } from 'ngx-color';
       margin-left: 20px;
     }
   `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class PhotoshopComponent extends ColorWrap implements OnInit {
   @Input() header = 'Color Picker';

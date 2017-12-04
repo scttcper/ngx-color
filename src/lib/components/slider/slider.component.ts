@@ -1,4 +1,9 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+} from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 
@@ -22,15 +27,20 @@ import { ColorWrap } from 'ngx-color';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .slider-hue {
       height: 12px;
       position: relative;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SliderComponent extends ColorWrap implements OnChanges {
-  @Input() pointer = {
+  @Input()
+  pointer = {
     width: '14px',
     height: '14px',
     'border-radius': '6px',

@@ -1,15 +1,11 @@
 /* tslint:disable:import-blacklist */
 // based on https://github.com/angular/angularfire2/blob/master/tools/build.js
 import { spawn } from 'child_process';
-import * as copyfiles from 'copy';
 import { copy } from 'fs-extra';
 import { rollup } from 'rollup';
+import * as filesize from 'rollup-plugin-filesize';
 import * as sourcemaps from 'rollup-plugin-sourcemaps';
 import { Observable } from 'rxjs';
-
-const copyAll: ((s: string, s1: string) => any) = Observable.bindCallback(
-  copyfiles,
-);
 
 // Rollup globals
 const MODULE_NAMES = {
@@ -42,8 +38,8 @@ const GLOBALS = {
   'rxjs/Subscription': 'Rx',
   'rxjs/operators': 'Rx.Observable',
   'rxjs/observable/fromEvent': 'Rx.Observable',
-  'rxjs/add/operator/debounceTime': 'Rx.Observable.prototype',
-  'rxjs/add/operator/distinctUntilChanged': 'Rx.Observable.prototype',
+  'rxjs/operators/debounceTime': 'Rx.Observable',
+  'rxjs/operators/distinctUntilChanged': 'Rx.Observable',
   'ngx-color': MODULE_NAMES['common'],
   'ngx-color/helpers': MODULE_NAMES['helpers'],
 };
@@ -101,7 +97,7 @@ function spawnObservable(command: string, args: string[]) {
 }
 
 function generateBundle(input, file, globals, name, format) {
-  const plugins = [sourcemaps()];
+  const plugins = [sourcemaps(), filesize()];
   return rollup({
     input,
     external: Object.keys(globals),

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 import { Shape } from 'ngx-color/helpers';
 
@@ -18,7 +25,8 @@ import { Shape } from 'ngx-color/helpers';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .sketch-swatches {
       margin: 0px -10px;
       padding: 10px 0px 0px 10px;
@@ -32,9 +40,12 @@ import { Shape } from 'ngx-color/helpers';
       height: 16px;
       margin: 0px 10px 10px 0px;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
-export class SketchPresetColorsComponent implements OnInit {
+export class SketchPresetColorsComponent {
   @Input() colors: string[] | Shape[];
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
@@ -43,12 +54,8 @@ export class SketchPresetColorsComponent implements OnInit {
     'box-shadow': 'inset 0 0 0 1px rgba(0,0,0,.15)',
   };
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-  handleClick({hex, $event}) {
-    this.onClick.emit({hex, $event});
+  handleClick({ hex, $event }) {
+    this.onClick.emit({ hex, $event });
   }
   normalizeValue(val: string | Shape) {
     if (typeof val === 'string') {
@@ -59,8 +66,7 @@ export class SketchPresetColorsComponent implements OnInit {
   focusStyle(val: string | Shape) {
     const c = this.normalizeValue(val);
     return {
-      'box-shadow': `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${ c.color }`,
+      'box-shadow': `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${c.color}`,
     };
   }
-
 }

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 import { getContrastingColor } from 'ngx-color/helpers';
 
@@ -9,7 +16,7 @@ import { getContrastingColor } from 'ngx-color/helpers';
       [class.first]="first" [class.last]="last"
       (click)="handleClick($event)" (onHover)="onSwatchHover.emit($event)"
       [focusStyle]="focusStyle"
-    >
+      >
       <div class="swatch-check"
         [class.active]="active" [class.first]="first" [class.last]="last">
         <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24"
@@ -45,6 +52,8 @@ import { getContrastingColor } from 'ngx-color/helpers';
     }
   `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SwatchesColorComponent implements OnInit {
   @Input() color: string;
@@ -63,7 +72,7 @@ export class SwatchesColorComponent implements OnInit {
   focusStyle = {};
   ngOnInit() {
     this.colorStyle.background = this.color;
-    this.focusStyle['box-shadow'] = `0 0 4px ${ this.color }`;
+    this.focusStyle['box-shadow'] = `0 0 4px ${this.color}`;
   }
   handleClick($event) {
     this.onClick.emit({

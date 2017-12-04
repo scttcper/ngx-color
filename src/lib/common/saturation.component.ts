@@ -1,4 +1,15 @@
-import { Component, ElementRef, EventEmitter, Input, NgModule, OnChanges, OnDestroy, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  NgModule,
+  OnChanges,
+  OnDestroy,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 
@@ -21,7 +32,8 @@ import { calculateSaturationChange, HSLA, HSVA } from 'ngx-color/helpers';
       </div>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .saturation-white {
       background: -webkit-linear-gradient(to right, #fff, rgba(255,255,255,0));
       background: linear-gradient(to right, #fff, rgba(255,255,255,0));
@@ -60,7 +72,10 @@ import { calculateSaturationChange, HSLA, HSVA } from 'ngx-color/helpers';
       cursor: hand;
       transform: translate(-2px, -2px);
     }
-  `],
+  `,
+  ],
+  preserveWhitespaces: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SaturationComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
@@ -93,10 +108,12 @@ export class SaturationComponent implements OnChanges, OnDestroy {
     this.unsubscribe();
   }
   subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove')
-      .subscribe((ev: Event) => this.handleMousemove(ev));
-    this.mouseup = fromEvent(document, 'mouseup')
-      .subscribe(() => this.unsubscribe());
+    this.mousemove = fromEvent(document, 'mousemove').subscribe((ev: Event) =>
+      this.handleMousemove(ev),
+    );
+    this.mouseup = fromEvent(document, 'mouseup').subscribe(() =>
+      this.unsubscribe(),
+    );
   }
   unsubscribe() {
     if (this.mousemove) {
@@ -116,7 +133,11 @@ export class SaturationComponent implements OnChanges, OnDestroy {
   }
   handleChange($event: Event) {
     $event.preventDefault();
-    const data = calculateSaturationChange($event, this, this.container.nativeElement);
+    const data = calculateSaturationChange(
+      $event,
+      this,
+      this.container.nativeElement,
+    );
     this.onChange.emit({ data, $event });
   }
 }
@@ -126,4 +147,4 @@ export class SaturationComponent implements OnChanges, OnDestroy {
   exports: [SaturationComponent],
   imports: [CommonModule],
 })
-export class SaturationModule { }
+export class SaturationModule {}

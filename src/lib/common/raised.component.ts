@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, NgModule } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 
 @Component({
   selector: 'color-raised',
@@ -45,6 +45,8 @@ import { Component, Input, NgModule } from '@angular/core';
       box-shadow: 0 40px 77px rgba(0,0,0,.22), 0 27px 24px rgba(0,0,0,.2);
     }
   `],
+  preserveWhitespaces: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RaisedComponent {
   @Input() zDepth: 0 | 1 | 2 | 3 | 4 | 5  = 1;

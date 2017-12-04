@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'color-swatches-group',
@@ -15,19 +21,22 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       </color-swatches-color>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .swatches-group {
       padding-bottom: 10px;
       width: 40px;
       float: left;
       margin-right: 10px;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SwatchesGroupComponent {
   @Input() group: string[];
   @Input() active: string;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-
 }

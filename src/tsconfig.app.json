@@ -7,7 +7,7 @@
     "types": [],
     "paths": {
       "ngx-color/helpers": ["./lib/helpers"],
-      "ngx-color": ["./lib/common"]
+      "ngx-color": ["./lib/common/public_api"]
     }
   },
   "exclude": ["test.ts", "**/*.spec.ts"],

@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { HSL } from 'ngx-color/helpers';
 
@@ -48,10 +54,10 @@ import { HSL } from 'ngx-color/helpers';
         last="true"
       ></color-slider-swatch>
     </div>
-
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .slider-swatches {
       margin-top: 20px;
     }
@@ -61,7 +67,10 @@ import { HSL } from 'ngx-color/helpers';
       padding-right: 1px;
       float: left;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SliderSwatchesComponent {
   @Input() hsl: HSL;
@@ -69,14 +78,13 @@ export class SliderSwatchesComponent {
   @Output() onSwatchHover = new EventEmitter<any>();
   swatchStyle: any;
 
-  constructor() { }
   active(l: number, s: number) {
-    return Math.round(this.hsl.l * 100) / 100 === l
-      && Math.round(this.hsl.s * 100) / 100 === s;
+    return (
+      Math.round(this.hsl.l * 100) / 100 === l &&
+      Math.round(this.hsl.s * 100) / 100 === s
+    );
   }
-
   handleClick({ data, $event }) {
     this.onClick.emit({ data, $event });
   }
-
 }

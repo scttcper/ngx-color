@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import * as material from 'material-colors';
 
 import { ColorWrap } from 'ngx-color';
@@ -34,6 +34,8 @@ import { ColorWrap } from 'ngx-color';
     }
   `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class SwatchesComponent extends ColorWrap implements OnChanges {
   @Input() width = 320;

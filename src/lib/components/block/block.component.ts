@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 import { getContrastingColor, isValidHex } from 'ngx-color/helpers';
@@ -72,6 +72,8 @@ import { getContrastingColor, isValidHex } from 'ngx-color/helpers';
       width: 0;
     }
   `],
+  preserveWhitespaces: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlockComponent extends ColorWrap {
   @Input() colors = [

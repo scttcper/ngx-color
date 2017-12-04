@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 import { isValidHex, RGBA } from 'ngx-color/helpers';
 
@@ -37,7 +44,8 @@ import { isValidHex, RGBA } from 'ngx-color/helpers';
     ></color-editable-input>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
   .compact-fields {
     display: flex;
     padding-bottom: 6px;
@@ -51,9 +59,11 @@ import { isValidHex, RGBA } from 'ngx-color/helpers';
     height: 9px;
     width: 9px;
   }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
-
 export class CompactFieldsComponent implements OnInit {
   @Input() hex: string;
   @Input() rgb: RGBA;
@@ -105,25 +115,31 @@ export class CompactFieldsComponent implements OnInit {
     color: '#999',
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   handleChange({ data, $event }) {
     if (data.hex) {
       if (isValidHex(data.hex)) {
-        this.onChange.emit({ data: {
-         hex: data.hex,
-         source: 'hex',
-       }, $event});
+        this.onChange.emit({
+          data: {
+            hex: data.hex,
+            source: 'hex',
+          },
+          $event,
+        });
       }
     } else {
-      this.onChange.emit({ data: {
-        r: data.r || this.rgb.r,
-        g: data.g || this.rgb.g,
-        b: data.b || this.rgb.b,
-        source: 'rgb',
-      }, $event });
+      this.onChange.emit({
+        data: {
+          r: data.r || this.rgb.r,
+          g: data.g || this.rgb.g,
+          b: data.b || this.rgb.b,
+          source: 'rgb',
+        },
+        $event,
+      });
     }
   }
 }

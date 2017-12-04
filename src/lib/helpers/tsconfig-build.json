@@ -15,14 +15,12 @@
     "skipLibCheck": true,
     "moduleResolution": "node"
   },
-  "files": [
-    "index.ts"
-  ],
+  "files": ["index.ts"],
   "compileOnSave": false,
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "enableSummariesForJit": true,
-    "annotationsAs": "decorators"
+    "annotationsAs": "static fields"
   }
 }

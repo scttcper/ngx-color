@@ -1,8 +1,12 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+} from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 import { toState } from 'ngx-color/helpers';
-
 
 @Component({
   selector: 'color-alpha-picker',
@@ -19,14 +23,18 @@ import { toState } from 'ngx-color/helpers';
       ></color-alpha>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .color-alpha-picker {
       position: relative;
     }
     .color-alpha {
       radius: 2px;
     }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class AlphaPickerComponent extends ColorWrap implements OnChanges {
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';

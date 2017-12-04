@@ -77,6 +77,7 @@ import { isValidHex } from 'ngx-color/helpers';
   }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class GithubComponent extends ColorWrap {
   @Input() width = 212;

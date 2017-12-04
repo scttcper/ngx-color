@@ -40,7 +40,8 @@ import { CheckboardModule } from './checkboard.component';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .alpha {
       position: absolute;
       top: 0;
@@ -80,8 +81,10 @@ import { CheckboardModule } from './checkboard.component';
       margin-top: 1px;
       transform: translateX(-2px);
     },
-  `],
+  `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
   @Input() hsl: HSLA;
@@ -98,23 +101,25 @@ export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
   mousemove: Subscription;
   mouseup: Subscription;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   ngOnChanges() {
     if (this.direction === 'vertical') {
       this.pointerLeft = 0;
       this.pointerTop = this.rgb.a * 100;
       this.gradient = {
-        background: `linear-gradient(to bottom, rgba(${ this.rgb.r },${ this.rgb.g },${ this.rgb.b }, 0) 0%,
-          rgba(${ this.rgb.r },${ this.rgb.g },${ this.rgb.b }, 1) 100%)`,
+        background: `linear-gradient(to bottom, rgba(${this.rgb.r},${
+          this.rgb.g
+        },${this.rgb.b}, 0) 0%,
+          rgba(${this.rgb.r},${this.rgb.g},${this.rgb.b}, 1) 100%)`,
       };
     } else {
       this.gradient = {
-        background: `linear-gradient(to right, rgba(${ this.rgb.r },${ this.rgb.g },${ this.rgb.b }, 0) 0%,
-          rgba(${ this.rgb.r },${ this.rgb.g },${ this.rgb.b }, 1) 100%)`,
+        background: `linear-gradient(to right, rgba(${this.rgb.r},${
+          this.rgb.g
+        },${this.rgb.b}, 0) 0%,
+          rgba(${this.rgb.r},${this.rgb.g},${this.rgb.b}, 1) 100%)`,
       };
       this.pointerLeft = this.rgb.a * 100;
     }
@@ -130,10 +135,12 @@ export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
     this.subscribe();
   }
   subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove')
-      .subscribe((ev: Event) => this.handleMousemove(ev));
-    this.mouseup = fromEvent(document, 'mouseup')
-      .subscribe(() => this.unsubscribe());
+    this.mousemove = fromEvent(document, 'mousemove').subscribe((ev: Event) =>
+      this.handleMousemove(ev),
+    );
+    this.mouseup = fromEvent(document, 'mouseup').subscribe(() =>
+      this.unsubscribe(),
+    );
   }
   unsubscribe() {
     if (this.mousemove) {
@@ -144,7 +151,11 @@ export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
   handleChange($event: Event) {
-    const data = calculateAlphaChange($event, this, this.container.nativeElement);
+    const data = calculateAlphaChange(
+      $event,
+      this,
+      this.container.nativeElement,
+    );
     if (data) {
       this.onChange.emit({ data, $event });
     }
@@ -156,4 +167,4 @@ export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
   exports: [AlphaComponent],
   imports: [CommonModule, CheckboardModule],
 })
-export class AlphaModule { }
+export class AlphaModule {}

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+} from '@angular/core';
 
 import { getContrastingColor } from 'ngx-color/helpers';
 
@@ -6,21 +13,19 @@ import { getContrastingColor } from 'ngx-color/helpers';
   selector: 'color-compact-color',
   template: `
     <div class="compact-color">
-      <color-swatch
-        [color]="color"
-        [style]="swatchStyle"
+      <color-swatch class="swatch"
+        [color]="color" [style]="swatchStyle"
         [focusStyle]="swatchFocus"
-        (onClick)="handleClick($event)"
-        (onHover)="onSwatchHover.emit($event)"
-        class="swatch"
-      >
+        (onClick)="handleClick($event)" (onHover)="onSwatchHover.emit($event)"
+        >
         <div class="compact-dot"
           [class.active]="active" [style.background]="getContrastingColor(color)"
         ></div>
       </color-swatch>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
   .compact-dot {
     position: absolute;
     top: 5px;
@@ -33,7 +38,10 @@ import { getContrastingColor } from 'ngx-color/helpers';
   .compact-dot.active {
     opacity: 1;
   }
-  `],
+  `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class CompactColorComponent implements OnChanges {
   @Input() color: string;
@@ -52,17 +60,14 @@ export class CompactColorComponent implements OnChanges {
   swatchFocus: any = {};
   getContrastingColor = getContrastingColor;
 
-  constructor() { }
   ngOnChanges() {
     this.swatchStyle.background = this.color;
-    this.swatchFocus['box-shadow'] = `0 0 4px ${ this.color }`;
+    this.swatchFocus['box-shadow'] = `0 0 4px ${this.color}`;
     if (this.color.toLowerCase() === '#ffffff') {
       this.swatchStyle['box-shadow'] = 'inset 0 0 0 1px #ddd';
     }
   }
-
   handleClick({ hex, $event }) {
     this.onClick.emit({ hex, $event });
   }
-
 }

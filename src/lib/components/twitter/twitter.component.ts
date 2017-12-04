@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
 import { isValidHex } from 'ngx-color/helpers';
@@ -119,6 +119,8 @@ import { isValidHex } from 'ngx-color/helpers';
       margin-left: -4px;
     }
   `],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
 })
 export class TwitterComponent extends ColorWrap {
   @Input() width = 276;
