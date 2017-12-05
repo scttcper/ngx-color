@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, NgModule, OnChanges } from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import { ColorWrap, EditableInputModule, RaisedModule } from 'ngx-color';
 import { isValidHex, toState } from 'ngx-color/helpers';
 
 @Component({
@@ -137,3 +138,10 @@ export class MaterialComponent extends ColorWrap implements OnChanges {
     this.HEXinput['border-bottom-color'] = this.hex;
   }
 }
+
+@NgModule({
+  exports: [MaterialComponent],
+  declarations: [MaterialComponent],
+  imports: [CommonModule, EditableInputModule, RaisedModule],
+})
+export class ColorMaterialModule { }

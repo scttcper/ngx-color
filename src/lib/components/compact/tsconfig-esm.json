@@ -2,13 +2,11 @@
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "../../../../dist/packages-dist/compact",
-    "declaration": true,
-    "removeComments": false
+    "outDir": "../../../../dist/packages-dist/compact/es5",
+    "declaration": false,
+    "removeComments": true
   },
-  "files": [
-    "compact.module.ts"
-  ],
+  "files": ["compact.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

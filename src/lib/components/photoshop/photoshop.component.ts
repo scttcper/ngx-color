@@ -1,6 +1,23 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+  OnInit,
+} from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
+import {
+  AlphaModule,
+  EditableInputModule,
+  HueModule,
+  SaturationModule,
+  SwatchModule,
+} from 'ngx-color';
+import { PhotoshopButtonComponent } from './photoshop-button.component';
+import { PhotoshopFieldsComponent } from './photoshop-fields.component';
+import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
 
 @Component({
   selector: 'color-photoshop',
@@ -52,7 +69,8 @@ import { ColorWrap } from 'ngx-color';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .photoshop-picker {
       background: rgb(220, 220, 220);
       border-radius: 4px;
@@ -114,7 +132,8 @@ import { ColorWrap } from 'ngx-color';
       flex: 1 1 0%;
       margin-left: 20px;
     }
-  `],
+  `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
@@ -125,13 +144,37 @@ export class PhotoshopComponent extends ColorWrap implements OnInit {
     height: '12px',
     'border-radius': '6px',
     'box-shadow': 'rgb(255, 255, 255) 0px 0px 0px 1px inset',
-    'transform': 'translate(-6px, -6px)',
+    transform: 'translate(-6px, -6px)',
   };
   constructor() {
     super();
   }
 
-  handleValueChange({data, $event}) {
+  handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }
 }
+
+@NgModule({
+  declarations: [
+    PhotoshopComponent,
+    PhotoshopPreviewsComponent,
+    PhotoshopButtonComponent,
+    PhotoshopFieldsComponent,
+  ],
+  exports: [
+    PhotoshopComponent,
+    PhotoshopPreviewsComponent,
+    PhotoshopButtonComponent,
+    PhotoshopFieldsComponent,
+  ],
+  imports: [
+    CommonModule,
+    EditableInputModule,
+    HueModule,
+    AlphaModule,
+    SwatchModule,
+    SaturationModule,
+  ],
+})
+export class ColorPhotoshopModule {}

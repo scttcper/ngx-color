@@ -1,7 +1,13 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+  OnInit,
+} from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
-
+import { ColorWrap, HueModule } from 'ngx-color';
 
 @Component({
   selector: 'color-hue-picker',
@@ -18,11 +24,13 @@ import { ColorWrap } from 'ngx-color';
       ></color-hue>
     </div>
   `,
-  styles: [`
+  styles: [
+    `
     .color-hue-picker {
       position: relative;
     }
-  `],
+  `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
@@ -54,3 +62,10 @@ export class HuePickerComponent extends ColorWrap implements OnInit {
     this.handleChange({ a: 1, h: data.h, l: 0.5, s: 1 }, $event);
   }
 }
+
+@NgModule({
+  declarations: [HuePickerComponent],
+  exports: [HuePickerComponent],
+  imports: [CommonModule, HueModule],
+})
+export class ColorHueModule {}

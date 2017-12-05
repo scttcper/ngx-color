@@ -1,11 +1,15 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  NgModule,
   OnChanges,
 } from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import { ColorWrap, HueModule, SwatchModule  } from 'ngx-color';
+import { SliderSwatchComponent } from './slider-swatch.component';
+import { SliderSwatchesComponent } from './slider-swatches.component';
 
 @Component({
   selector: 'color-slider',
@@ -56,3 +60,14 @@ export class SliderComponent extends ColorWrap implements OnChanges {
     this.handleChange(data, $event);
   }
 }
+
+@NgModule({
+  declarations: [
+    SliderComponent,
+    SliderSwatchComponent,
+    SliderSwatchesComponent,
+  ],
+  exports: [SliderComponent, SliderSwatchComponent, SliderSwatchesComponent],
+  imports: [CommonModule, HueModule, SwatchModule],
+})
+export class ColorSliderModule {}

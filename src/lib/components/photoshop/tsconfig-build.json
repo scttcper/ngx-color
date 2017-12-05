@@ -6,11 +6,11 @@
     "module": "es2015",
     "target": "es2015",
     "noImplicitAny": false,
-    "outDir": "../../../../dist/packages-dist/photoshop/es2015",
+    "outDir": "../../../../dist/packages-dist/photoshop",
     "rootDir": ".",
     "sourceMap": true,
     "inlineSources": true,
-    "declaration": false,
+    "declaration": true,
     "removeComments": false,
     "lib": ["es2015", "dom"],
     "skipLibCheck": true,
@@ -20,14 +20,13 @@
       "ngx-color": ["../../../../dist/packages-dist"]
     }
   },
-  "files": [
-    "photoshop.module.ts"
-  ],
-  "compileOnSave": false,
+  "files": ["photoshop.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "enableSummariesForJit": false,
+    "flatModuleOutFile": "index.js",
+    "flatModuleId": "ngx-color/photoshop",
     "annotationsAs": "static fields"
   }
 }

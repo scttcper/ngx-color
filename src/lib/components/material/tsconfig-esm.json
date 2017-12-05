@@ -2,13 +2,11 @@
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "../../../../dist/packages-dist/material",
-    "declaration": true,
-    "removeComments": false
+    "outDir": "../../../../dist/packages-dist/material/es5",
+    "declaration": false,
+    "removeComments": true
   },
-  "files": [
-    "material.module.ts"
-  ],
+  "files": ["material.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

@@ -44,24 +44,24 @@ const GLOBALS = {
   'ngx-color/helpers': MODULE_NAMES['helpers'],
 };
 
+const ENTRIES = {
+  helpers: `${process.cwd()}/dist/packages-dist/helpers/index.js`,
+  common: `${process.cwd()}/dist/packages-dist/index.js`,
+  alpha: `${process.cwd()}/dist/packages-dist/alpha/index.js`,
+  block: `${process.cwd()}/dist/packages-dist/block/index.js`,
+  chrome: `${process.cwd()}/dist/packages-dist/chrome/index.js`,
+  circle: `${process.cwd()}/dist/packages-dist/circle/index.js`,
+  compact: `${process.cwd()}/dist/packages-dist/compact/index.js`,
+  github: `${process.cwd()}/dist/packages-dist/github/index.js`,
+  hue: `${process.cwd()}/dist/packages-dist/hue/index.js`,
+  material: `${process.cwd()}/dist/packages-dist/material/index.js`,
+  photoshop: `${process.cwd()}/dist/packages-dist/photoshop/index.js`,
+  sketch: `${process.cwd()}/dist/packages-dist/sketch/index.js`,
+  slider: `${process.cwd()}/dist/packages-dist/slider/index.js`,
+  swatches: `${process.cwd()}/dist/packages-dist/swatches/index.js`,
+  twitter: `${process.cwd()}/dist/packages-dist/twitter/index.js`,
+};
 function createEntry(name, target, type = 'common') {
-  const ENTRIES = {
-    helpers: `${process.cwd()}/dist/packages-dist/helpers/index.js`,
-    common: `${process.cwd()}/dist/packages-dist/index.js`,
-    alpha: `${process.cwd()}/dist/packages-dist/alpha/index.js`,
-    block: `${process.cwd()}/dist/packages-dist/block/index.js`,
-    chrome: `${process.cwd()}/dist/packages-dist/chrome/index.js`,
-    circle: `${process.cwd()}/dist/packages-dist/circle/index.js`,
-    compact: `${process.cwd()}/dist/packages-dist/compact/index.js`,
-    github: `${process.cwd()}/dist/packages-dist/github/index.js`,
-    hue: `${process.cwd()}/dist/packages-dist/hue/index.js`,
-    material: `${process.cwd()}/dist/packages-dist/material/index.js`,
-    photoshop: `${process.cwd()}/dist/packages-dist/photoshop/index.js`,
-    sketch: `${process.cwd()}/dist/packages-dist/sketch/index.js`,
-    slider: `${process.cwd()}/dist/packages-dist/slider/index.js`,
-    swatches: `${process.cwd()}/dist/packages-dist/swatches/index.js`,
-    twitter: `${process.cwd()}/dist/packages-dist/twitter/index.js`,
-  };
   return ENTRIES[name];
 }
 

@@ -6,8 +6,8 @@
     "url": "git+https://github.com/scttcper/ngx-color.git"
   },
   "main": "../bundles/sketch.umd.js",
-  "module": "index.js",
-  "es2015": "es2015/index.js",
+  "module": "es5/index.js",
+  "es2015": "index.js",
   "typings": "index.d.ts",
   "license": "MIT"
 }

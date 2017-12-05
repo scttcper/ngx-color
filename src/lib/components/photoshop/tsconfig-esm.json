@@ -2,13 +2,11 @@
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "../../../../dist/packages-dist/photoshop",
-    "declaration": true,
-    "removeComments": false
+    "outDir": "../../../../dist/packages-dist/photoshop/es5",
+    "declaration": false,
+    "removeComments": true
   },
-  "files": [
-    "photoshop.module.ts"
-  ],
+  "files": ["photoshop.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

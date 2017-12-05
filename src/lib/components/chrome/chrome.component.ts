@@ -1,7 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, NgModule, OnChanges } from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import {
+  AlphaModule,
+  CheckboardModule,
+  ColorWrap,
+  EditableInputModule,
+  HueModule,
+  SaturationModule,
+} from 'ngx-color';
 import { toState } from 'ngx-color/helpers';
+import { ChromeFieldsComponent } from './chrome-fields.component';
 
 @Component({
   selector: 'color-chrome',
@@ -145,3 +154,17 @@ export class ChromeComponent extends ColorWrap implements OnChanges {
     this.handleChange(data, $event);
   }
 }
+
+@NgModule({
+  declarations: [ChromeComponent, ChromeFieldsComponent],
+  exports: [ChromeComponent, ChromeFieldsComponent],
+  imports: [
+    CommonModule,
+    AlphaModule,
+    CheckboardModule,
+    EditableInputModule,
+    HueModule,
+    SaturationModule,
+  ],
+})
+export class ColorChromeModule {}

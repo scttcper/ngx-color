@@ -2,13 +2,11 @@
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "../../../../dist/packages-dist/block",
-    "declaration": true,
-    "removeComments": false
+    "outDir": "../../../../dist/packages-dist/block/es5",
+    "declaration": false,
+    "removeComments": true
   },
-  "files": [
-    "block.module.ts"
-  ],
+  "files": ["block.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

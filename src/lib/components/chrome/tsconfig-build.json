@@ -6,11 +6,11 @@
     "module": "es2015",
     "target": "es2015",
     "noImplicitAny": false,
-    "outDir": "../../../../dist/packages-dist/chrome/es2015",
+    "outDir": "../../../../dist/packages-dist/chrome",
     "rootDir": ".",
     "sourceMap": true,
     "inlineSources": true,
-    "declaration": false,
+    "declaration": true,
     "removeComments": false,
     "lib": ["es2015", "dom"],
     "skipLibCheck": true,
@@ -20,14 +20,13 @@
       "ngx-color": ["../../../../dist/packages-dist"]
     }
   },
-  "files": [
-    "chrome.module.ts"
-  ],
-  "compileOnSave": false,
+  "files": ["chrome.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "enableSummariesForJit": false,
+    "flatModuleOutFile": "index.js",
+    "flatModuleId": "ngx-color/chrome",
     "annotationsAs": "static fields"
   }
 }

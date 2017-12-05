@@ -6,11 +6,11 @@
     "module": "es2015",
     "target": "es2015",
     "noImplicitAny": false,
-    "outDir": "../../../../dist/packages-dist/twitter/es2015",
+    "outDir": "../../../../dist/packages-dist/twitter",
     "rootDir": ".",
     "sourceMap": true,
     "inlineSources": true,
-    "declaration": false,
+    "declaration": true,
     "removeComments": false,
     "lib": ["es2015", "dom"],
     "skipLibCheck": true,
@@ -21,13 +21,14 @@
     }
   },
   "files": [
-    "twitter.module.ts"
+    "twitter.component.ts"
   ],
-  "compileOnSave": false,
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "enableSummariesForJit": false,
+    "flatModuleOutFile": "index.js",
+    "flatModuleId": "ngx-color/twitter",
     "annotationsAs": "static fields"
   }
 }

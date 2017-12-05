@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 import * as material from 'material-colors';
 
-import { ColorWrap } from 'ngx-color';
+import { ColorWrap, SwatchModule } from 'ngx-color';
 import { isValidHex } from 'ngx-color/helpers';
+import { CircleSwatchComponent } from './circle-swatch.component';
 
 @Component({
   selector: 'color-circle',
@@ -58,3 +60,16 @@ export class CircleComponent extends ColorWrap {
     this.handleChange(data, $event);
   }
 }
+
+@NgModule({
+  declarations: [
+  CircleComponent,
+  CircleSwatchComponent,
+],
+  exports: [
+  CircleComponent,
+  CircleSwatchComponent,
+],
+  imports: [CommonModule, SwatchModule],
+})
+export class ColorCircleModule { }

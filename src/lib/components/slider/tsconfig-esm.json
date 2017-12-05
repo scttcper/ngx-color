@@ -3,12 +3,10 @@
   "compilerOptions": {
     "target": "es5",
     "outDir": "../../../../dist/packages-dist/slider",
-    "declaration": true,
-    "removeComments": false
+    "declaration": false,
+    "removeComments": true
   },
-  "files": [
-    "slider.module.ts"
-  ],
+  "files": ["slider.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

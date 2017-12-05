@@ -10,7 +10,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "declaration": false,
-    "removeComments": true,
+    "removeComments": false,
     "lib": ["es2015", "dom"],
     "skipLibCheck": true,
     "moduleResolution": "node"

@@ -6,11 +6,11 @@
     "module": "es2015",
     "target": "es2015",
     "noImplicitAny": false,
-    "outDir": "../../../../dist/packages-dist/alpha/es2015",
+    "outDir": "../../../../dist/packages-dist/alpha",
     "rootDir": ".",
     "sourceMap": true,
     "inlineSources": true,
-    "declaration": false,
+    "declaration": true,
     "removeComments": false,
     "lib": ["es2015", "dom"],
     "skipLibCheck": true,
@@ -21,13 +21,14 @@
     }
   },
   "files": [
-    "alpha.module.ts"
+    "alpha-picker.component.ts"
   ],
-  "compileOnSave": false,
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "enableSummariesForJit": false,
+    "flatModuleOutFile": "index.js",
+    "flatModuleId": "ngx-color/alpha",
     "annotationsAs": "static fields"
   }
 }

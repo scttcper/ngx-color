@@ -1,7 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+} from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import { ColorWrap, SwatchModule } from 'ngx-color';
 import { isValidHex } from 'ngx-color/helpers';
+import { GithubSwatchComponent } from './github-swatch.component';
 
 @Component({
   selector: 'color-github',
@@ -17,7 +24,8 @@ import { isValidHex } from 'ngx-color/helpers';
     ></color-github-swatch>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
   .github-picker {
     background: rgb(255, 255, 255);
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -75,13 +83,15 @@ import { isValidHex } from 'ngx-color/helpers';
     right: 9px;
     transform: rotate(180deg);
   }
-  `],
+  `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
 export class GithubComponent extends ColorWrap {
   @Input() width = 212;
-  @Input() triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
+  @Input()
+  triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
   @Input()
   colors = [
     '#B80000',
@@ -115,3 +125,10 @@ export class GithubComponent extends ColorWrap {
     this.handleChange(data, $event);
   }
 }
+
+@NgModule({
+  declarations: [GithubComponent, GithubSwatchComponent],
+  exports: [GithubComponent, GithubSwatchComponent],
+  imports: [CommonModule, SwatchModule],
+})
+export class ColorGithubModule {}

@@ -6,12 +6,12 @@
     "emitDecoratorMetadata": true,
     "module": "es2015",
     "target": "es2015",
-    "outDir": "../../../dist/packages-dist/es2015",
+    "outDir": "../../../dist/packages-dist",
     "rootDir": ".",
     "sourceMap": true,
     "inlineSources": true,
-    "declaration": false,
-    "removeComments": true,
+    "declaration": true,
+    "removeComments": false,
     "lib": ["es2015", "dom"],
     "skipLibCheck": true,
     "moduleResolution": "node",
@@ -20,7 +20,6 @@
     }
   },
   "files": ["public_api.ts"],
-  "compileOnSave": false,
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

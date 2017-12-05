@@ -1,7 +1,16 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+  OnChanges,
+} from '@angular/core';
 import * as material from 'material-colors';
 
-import { ColorWrap } from 'ngx-color';
+import { ColorWrap, RaisedModule, SwatchModule } from 'ngx-color';
+import { SwatchesColorComponent } from './swatches-color.component';
+import { SwatchesGroupComponent } from './swatches-group.component';
 
 @Component({
   selector: 'color-swatches',
@@ -40,7 +49,8 @@ import { ColorWrap } from 'ngx-color';
 export class SwatchesComponent extends ColorWrap implements OnChanges {
   @Input() width = 320;
   @Input() height = 240;
-  @Input() colors = [
+  @Input()
+  colors = [
     [
       material.red['900'],
       material.red['700'],
@@ -176,3 +186,14 @@ export class SwatchesComponent extends ColorWrap implements OnChanges {
     this.handleChange(data, $event);
   }
 }
+
+@NgModule({
+  declarations: [
+    SwatchesComponent,
+    SwatchesGroupComponent,
+    SwatchesColorComponent,
+  ],
+  exports: [SwatchesComponent, SwatchesGroupComponent, SwatchesColorComponent],
+  imports: [CommonModule, SwatchModule, RaisedModule],
+})
+export class ColorSwatchesModule {}

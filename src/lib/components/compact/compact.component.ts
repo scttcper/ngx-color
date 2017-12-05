@@ -1,7 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import {
+  ColorWrap,
+  EditableInputModule,
+  RaisedModule,
+  SwatchModule,
+} from 'ngx-color';
 import { isValidHex } from 'ngx-color/helpers';
+import { CompactColorComponent } from './compact-color.component';
+import { CompactFieldsComponent } from './compact-fields.component';
 
 @Component({
   selector: 'color-compact',
@@ -24,7 +32,8 @@ import { isValidHex } from 'ngx-color/helpers';
       </div>
     </color-raised>
   `,
-  styles: [`
+  styles: [
+    `
     .color-compact {
       background: #f6f6f6;
       radius: 4px;
@@ -44,7 +53,8 @@ import { isValidHex } from 'ngx-color/helpers';
   preserveWhitespaces: false,
 })
 export class CompactComponent extends ColorWrap {
-  @Input() colors = [
+  @Input()
+  colors = [
     '#4D4D4D',
     '#999999',
     '#FFFFFF',
@@ -95,3 +105,14 @@ export class CompactComponent extends ColorWrap {
     this.handleChange(data, $event);
   }
 }
+
+@NgModule({
+  declarations: [
+    CompactComponent,
+    CompactColorComponent,
+    CompactFieldsComponent,
+  ],
+  exports: [CompactComponent, CompactColorComponent, CompactFieldsComponent],
+  imports: [CommonModule, EditableInputModule, SwatchModule, RaisedModule],
+})
+export class ColorCompactModule {}

@@ -2,13 +2,11 @@
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "../../../../dist/packages-dist/twitter",
-    "declaration": true,
-    "removeComments": false
+    "outDir": "../../../../dist/packages-dist/twitter/es5",
+    "declaration": false,
+    "removeComments": true
   },
-  "files": [
-    "twitter.module.ts"
-  ],
+  "files": ["twitter.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

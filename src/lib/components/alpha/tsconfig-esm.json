@@ -2,12 +2,12 @@
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "../../../../dist/packages-dist/alpha",
-    "declaration": true,
-    "removeComments": false
+    "outDir": "../../../../dist/packages-dist/alpha/es5",
+    "declaration": false,
+    "removeComments": true
   },
   "files": [
-    "alpha.module.ts"
+    "alpha-picker.component.ts"
   ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

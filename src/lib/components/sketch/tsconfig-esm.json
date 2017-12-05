@@ -2,12 +2,12 @@
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "../../../../dist/packages-dist/sketch",
-    "declaration": true,
-    "removeComments": false
+    "outDir": "../../../../dist/packages-dist/sketch/es5",
+    "declaration": false,
+    "removeComments": true
   },
   "files": [
-    "sketch.module.ts"
+    "sketch.component.ts"
   ],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

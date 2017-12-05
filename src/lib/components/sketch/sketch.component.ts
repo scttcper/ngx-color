@@ -1,12 +1,24 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  NgModule,
   OnChanges,
 } from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import {
+  AlphaModule,
+  CheckboardModule,
+  ColorWrap,
+  EditableInputModule,
+  HueModule,
+  SaturationModule,
+  SwatchModule,
+} from 'ngx-color';
 import { isValidHex, toState } from 'ngx-color/helpers';
+import { SketchFieldsComponent } from './sketch-fields.component';
+import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
 
 @Component({
   selector: 'color-sketch',
@@ -165,3 +177,27 @@ export class SketchComponent extends ColorWrap implements OnChanges {
     }
   }
 }
+
+@NgModule({
+  declarations: [
+    SketchComponent,
+    SketchFieldsComponent,
+    SketchPresetColorsComponent,
+  ],
+  exports: [
+    SketchComponent,
+    SketchFieldsComponent,
+    SketchPresetColorsComponent,
+  ],
+  imports: [
+    CommonModule,
+
+    AlphaModule,
+    CheckboardModule,
+    EditableInputModule,
+    HueModule,
+    SaturationModule,
+    SwatchModule,
+  ],
+})
+export class ColorSketchModule {}

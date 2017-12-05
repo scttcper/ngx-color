@@ -1,11 +1,13 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  NgModule,
   OnChanges,
 } from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import { AlphaModule, CheckboardModule, ColorWrap } from 'ngx-color';
 import { toState } from 'ngx-color/helpers';
 
 @Component({
@@ -62,3 +64,10 @@ export class AlphaPickerComponent extends ColorWrap implements OnChanges {
     this.handleChange(data, $event);
   }
 }
+
+@NgModule({
+  declarations: [AlphaPickerComponent],
+  exports: [AlphaPickerComponent],
+  imports: [CommonModule, AlphaModule, CheckboardModule],
+})
+export class ColorAlphaModule {}

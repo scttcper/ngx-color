@@ -2,8 +2,7 @@ import { async, TestBed } from '@angular/core/testing';
 
 import { calculateAlphaChange } from 'ngx-color/helpers';
 import { red } from '../../helpers/color';
-import { AlphaPickerComponent } from './alpha-picker.component';
-import { ColorAlphaModule } from './alpha.module';
+import { AlphaPickerComponent, ColorAlphaModule } from './alpha-picker.component';
 
 describe('AlphaComponent', () => {
   beforeEach(async(() => {

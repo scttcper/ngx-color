@@ -1,7 +1,19 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+} from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import {
+  CheckboardModule,
+  ColorWrap,
+  EditableInputModule,
+  SwatchModule,
+} from 'ngx-color';
 import { getContrastingColor, isValidHex } from 'ngx-color/helpers';
+import { BlockSwatchesComponent } from './block-swatches.component';
 
 @Component({
   selector: 'color-block',
@@ -39,7 +51,8 @@ import { getContrastingColor, isValidHex } from 'ngx-color/helpers';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .block-card {
       background: #fff;
       border-radius: 6px;
@@ -71,12 +84,14 @@ import { getContrastingColor, isValidHex } from 'ngx-color/helpers';
       top: -10px;
       width: 0;
     }
-  `],
+  `,
+  ],
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlockComponent extends ColorWrap {
-  @Input() colors = [
+  @Input()
+  colors = [
     '#D9E3F0',
     '#F47373',
     '#697689',
@@ -103,8 +118,8 @@ export class BlockComponent extends ColorWrap {
     'box-sizing': 'border-box',
   };
   wrap = {
-    'position': 'relative',
-    'width': '100%',
+    position: 'relative',
+    width: '100%',
   };
 
   constructor() {
@@ -131,3 +146,10 @@ export class BlockComponent extends ColorWrap {
     }
   }
 }
+
+@NgModule({
+  declarations: [BlockComponent, BlockSwatchesComponent],
+  exports: [BlockComponent, BlockSwatchesComponent],
+  imports: [CommonModule, CheckboardModule, SwatchModule, EditableInputModule],
+})
+export class ColorBlockModule {}

@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
+import { ColorWrap, EditableInputModule, SwatchModule } from 'ngx-color';
 import { isValidHex } from 'ngx-color/helpers';
 
 @Component({
@@ -31,7 +32,8 @@ import { isValidHex } from 'ngx-color/helpers';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .twitter-picker {
       background: rgb(255, 255, 255);
       border: 0px solid rgba(0, 0, 0, 0.25);
@@ -118,16 +120,27 @@ import { isValidHex } from 'ngx-color/helpers';
       width: 108px;
       margin-left: -4px;
     }
-  `],
+  `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
 export class TwitterComponent extends ColorWrap {
   @Input() width = 276;
-  @Input() triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
-  @Input() colors = [
-    '#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3',
-    '#ABB8C3', '#EB144C', '#F78DA7', '#9900EF'
+  @Input()
+  triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
+  @Input()
+  colors = [
+    '#FF6900',
+    '#FCB900',
+    '#7BDCB5',
+    '#00D084',
+    '#8ED1FC',
+    '#0693E3',
+    '#ABB8C3',
+    '#EB144C',
+    '#F78DA7',
+    '#9900EF',
   ];
   swatchStyle = {
     width: '30px',
@@ -139,17 +152,16 @@ export class TwitterComponent extends ColorWrap {
     'border-radius': '4px',
     'border-bottom-left-radius': '0',
     'border-top-left-radius': '0',
-    'border': '1px solid #e6ecf0',
+    border: '1px solid #e6ecf0',
     '-moz-box-sizing': 'border-box',
     'box-sizing': 'border-box',
-    'display': 'inline',
+    display: 'inline',
     'font-size': '14px',
-    'height': '30px',
-    'padding': '0',
+    height: '30px',
+    padding: '0',
     'padding-left': '6px',
-    'width': '100%',
-    'color': '#657786',
-
+    width: '100%',
+    color: '#657786',
   };
 
   constructor() {
@@ -157,7 +169,7 @@ export class TwitterComponent extends ColorWrap {
   }
 
   focus(color: string) {
-    return { boxShadow: `0 0 4px ${ color }` };
+    return { boxShadow: `0 0 4px ${color}` };
   }
 
   handleBlockChange({ hex, $event }) {
@@ -173,9 +185,14 @@ export class TwitterComponent extends ColorWrap {
     }
   }
 
-  handleValueChange({data, $event}) {
+  handleValueChange({ data, $event }) {
     this.handleBlockChange({ hex: data, $event });
   }
-
-
 }
+
+@NgModule({
+  declarations: [TwitterComponent],
+  exports: [TwitterComponent],
+  imports: [CommonModule, SwatchModule, EditableInputModule],
+})
+export class ColorTwitterModule {}
