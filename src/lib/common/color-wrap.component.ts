@@ -23,7 +23,9 @@ import {
 } from 'ngx-color/helpers';
 
 @Component({
-  template: '',
+  // create seletor base for test override property
+  selector: 'color-wrap',
+  template: ``,
 })
 export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   @Input() className = '';
@@ -44,6 +46,8 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   source: string;
   currentColor: string;
   changes: Subscription;
+
+  constructor() {}
 
   ngOnInit() {
     this.changes = this.onChange.pipe(

@@ -1,6 +1,6 @@
 {
   "name": "ngx-color",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "main": "./color.umd.js",
   "module": "./color.es5.js",

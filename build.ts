@@ -11,19 +11,19 @@ import { Observable } from 'rxjs';
 const MODULE_NAMES = {
   helpers: 'ngx-color.helpers',
   common: 'ngx-color',
-  alpha: 'ngx-color.alpha',
-  block: 'ngx-color.block',
-  chrome: 'ngx-color.chrome',
-  circle: 'ngx-color.circle',
-  compact: 'ngx-color.compact',
+  // alpha: 'ngx-color.alpha',
+  // block: 'ngx-color.block',
+  // chrome: 'ngx-color.chrome',
+  // circle: 'ngx-color.circle',
+  // compact: 'ngx-color.compact',
   github: 'ngx-color.github',
-  hue: 'ngx-color.hue',
-  material: 'ngx-color.material',
-  photoshop: 'ngx-color.photoshop',
-  sketch: 'ngx-color.sketch',
-  slider: 'ngx-color.slider',
-  swatches: 'ngx-color.swatches',
-  twitter: 'ngx-color.twitter',
+  // hue: 'ngx-color.hue',
+  // material: 'ngx-color.material',
+  // photoshop: 'ngx-color.photoshop',
+  // sketch: 'ngx-color.sketch',
+  // slider: 'ngx-color.slider',
+  // swatches: 'ngx-color.swatches',
+  // twitter: 'ngx-color.twitter',
 };
 
 const GLOBALS = {
@@ -46,20 +46,20 @@ const GLOBALS = {
 
 const ENTRIES = {
   helpers: `${process.cwd()}/dist/packages-dist/helpers/index.js`,
-  common: `${process.cwd()}/dist/packages-dist/index.js`,
-  alpha: `${process.cwd()}/dist/packages-dist/alpha/index.js`,
-  block: `${process.cwd()}/dist/packages-dist/block/index.js`,
-  chrome: `${process.cwd()}/dist/packages-dist/chrome/index.js`,
-  circle: `${process.cwd()}/dist/packages-dist/circle/index.js`,
-  compact: `${process.cwd()}/dist/packages-dist/compact/index.js`,
-  github: `${process.cwd()}/dist/packages-dist/github/index.js`,
-  hue: `${process.cwd()}/dist/packages-dist/hue/index.js`,
-  material: `${process.cwd()}/dist/packages-dist/material/index.js`,
-  photoshop: `${process.cwd()}/dist/packages-dist/photoshop/index.js`,
-  sketch: `${process.cwd()}/dist/packages-dist/sketch/index.js`,
-  slider: `${process.cwd()}/dist/packages-dist/slider/index.js`,
-  swatches: `${process.cwd()}/dist/packages-dist/swatches/index.js`,
-  twitter: `${process.cwd()}/dist/packages-dist/twitter/index.js`,
+  common: `${process.cwd()}/dist/packages-dist/es5/index.js`,
+  alpha: `${process.cwd()}/dist/packages-dist/alpha/es5/index.js`,
+  block: `${process.cwd()}/dist/packages-dist/block/es5/index.js`,
+  chrome: `${process.cwd()}/dist/packages-dist/chrome/es5/index.js`,
+  circle: `${process.cwd()}/dist/packages-dist/circle/es5/index.js`,
+  compact: `${process.cwd()}/dist/packages-dist/compact/es5/index.js`,
+  github: `${process.cwd()}/dist/packages-dist/github/es5/index.js`,
+  hue: `${process.cwd()}/dist/packages-dist/hue/es5/index.js`,
+  material: `${process.cwd()}/dist/packages-dist/material/es5/index.js`,
+  photoshop: `${process.cwd()}/dist/packages-dist/photoshop/es5/index.js`,
+  sketch: `${process.cwd()}/dist/packages-dist/sketch/es5/index.js`,
+  slider: `${process.cwd()}/dist/packages-dist/slider/es5/index.js`,
+  swatches: `${process.cwd()}/dist/packages-dist/swatches/es5/index.js`,
+  twitter: `${process.cwd()}/dist/packages-dist/twitter/es5/index.js`,
 };
 function createEntry(name, target, type = 'common') {
   return ENTRIES[name];
@@ -199,6 +199,12 @@ function copyFilesCommon() {
       copy(
         `${process.cwd()}/src/lib/common/package.json`,
         `${process.cwd()}/dist/packages-dist/package.json`,
+      ),
+    ),
+    Observable.of(
+      copy(
+        `${process.cwd()}/README.md`,
+        `${process.cwd()}/dist/packages-dist/README.md`,
       ),
     ),
   );

@@ -191,7 +191,6 @@ export class SketchComponent extends ColorWrap implements OnChanges {
   ],
   imports: [
     CommonModule,
-
     AlphaModule,
     CheckboardModule,
     EditableInputModule,

@@ -1,8 +1,8 @@
 {
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
-    "target": "es5",
-    "outDir": "../../../../dist/packages-dist/slider",
+    "target": "es2015",
+    "outDir": "../../../../dist/packages-dist/slider/es5",
     "declaration": false,
     "removeComments": true
   },
