@@ -29,7 +29,7 @@
     "bootstrap": "4.0.0-beta.2",
     "core-js": "^2.5.1",
     "material-colors": "^1.2.5",
-    "rxjs": "5.5.2",
+    "rxjs": "5.5.4",
     "tinycolor2": "^1.4.1",
     "zone.js": "^0.8.18"
   },
