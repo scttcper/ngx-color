@@ -6,7 +6,6 @@
     "url": "git+https://github.com/scttcper/ngx-color.git"
   },
   "main": "../bundles/material.umd.js",
-  "module": "es5/index.js",
   "es2015": "index.js",
   "typings": "index.d.ts",
   "license": "MIT"

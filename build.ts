@@ -46,20 +46,20 @@ const GLOBALS = {
 
 const ENTRIES = {
   helpers: `${process.cwd()}/dist/packages-dist/helpers/index.js`,
-  common: `${process.cwd()}/dist/packages-dist/es5/index.js`,
-  alpha: `${process.cwd()}/dist/packages-dist/alpha/es5/index.js`,
-  block: `${process.cwd()}/dist/packages-dist/block/es5/index.js`,
-  chrome: `${process.cwd()}/dist/packages-dist/chrome/es5/index.js`,
-  circle: `${process.cwd()}/dist/packages-dist/circle/es5/index.js`,
-  compact: `${process.cwd()}/dist/packages-dist/compact/es5/index.js`,
-  github: `${process.cwd()}/dist/packages-dist/github/es5/index.js`,
-  hue: `${process.cwd()}/dist/packages-dist/hue/es5/index.js`,
-  material: `${process.cwd()}/dist/packages-dist/material/es5/index.js`,
-  photoshop: `${process.cwd()}/dist/packages-dist/photoshop/es5/index.js`,
-  sketch: `${process.cwd()}/dist/packages-dist/sketch/es5/index.js`,
-  slider: `${process.cwd()}/dist/packages-dist/slider/es5/index.js`,
-  swatches: `${process.cwd()}/dist/packages-dist/swatches/es5/index.js`,
-  twitter: `${process.cwd()}/dist/packages-dist/twitter/es5/index.js`,
+  common: `${process.cwd()}/dist/packages-dist/index.js`,
+  alpha: `${process.cwd()}/dist/packages-dist/alpha/index.js`,
+  block: `${process.cwd()}/dist/packages-dist/block/index.js`,
+  chrome: `${process.cwd()}/dist/packages-dist/chrome/index.js`,
+  circle: `${process.cwd()}/dist/packages-dist/circle/index.js`,
+  compact: `${process.cwd()}/dist/packages-dist/compact/index.js`,
+  github: `${process.cwd()}/dist/packages-dist/github/index.js`,
+  hue: `${process.cwd()}/dist/packages-dist/hue/index.js`,
+  material: `${process.cwd()}/dist/packages-dist/material/index.js`,
+  photoshop: `${process.cwd()}/dist/packages-dist/photoshop/index.js`,
+  sketch: `${process.cwd()}/dist/packages-dist/sketch/index.js`,
+  slider: `${process.cwd()}/dist/packages-dist/slider/index.js`,
+  swatches: `${process.cwd()}/dist/packages-dist/swatches/index.js`,
+  twitter: `${process.cwd()}/dist/packages-dist/twitter/index.js`,
 };
 function createEntry(name, target, type = 'common') {
   return ENTRIES[name];
@@ -154,8 +154,7 @@ function buildHelpers() {
 
 function buildModule(name: string, type: string) {
   const es2015$ = spawnObservable(NGC, TSC_ARGS(type, name));
-  const esm$ = spawnObservable(NGC, TSC_ARGS(type, name, 'esm'));
-  return Observable.forkJoin(es2015$, esm$);
+  return Observable.forkJoin(es2015$);
 }
 
 function createBundles(name: string, type: string) {
