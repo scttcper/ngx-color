@@ -16,7 +16,7 @@ import {
   SaturationModule,
   SwatchModule,
 } from 'ngx-color';
-import { isValidHex, simpleCheckForValidColor, toState } from 'ngx-color/helpers';
+import { isValidHex } from 'ngx-color/helpers';
 import { SketchFieldsComponent } from './sketch-fields.component';
 import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
 

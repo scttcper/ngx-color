@@ -9,7 +9,6 @@ import {
   HueModule,
   SaturationModule,
 } from 'ngx-color';
-import { toState } from 'ngx-color/helpers';
 import { ChromeFieldsComponent } from './chrome-fields.component';
 
 @Component({
