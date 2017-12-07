@@ -16,7 +16,7 @@ import {
   SaturationModule,
   SwatchModule,
 } from 'ngx-color';
-import { isValidHex, toState } from 'ngx-color/helpers';
+import { isValidHex, simpleCheckForValidColor, toState } from 'ngx-color/helpers';
 import { SketchFieldsComponent } from './sketch-fields.component';
 import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
 
@@ -153,14 +153,9 @@ export class SketchComponent extends ColorWrap implements OnChanges {
   constructor() {
     super();
   }
-
-  ngOnChanges() {
-    this.setState(toState(this.color, this.oldHue));
-    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${
-      this.rgb.b
-    }, ${this.rgb.a})`;
+  afterValidChange() {
+    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${this.rgb.b}, ${this.rgb.a})`;
   }
-
   handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }

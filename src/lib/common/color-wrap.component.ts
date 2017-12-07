@@ -73,6 +73,7 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
     this.rgb = data.rgb;
     this.hex = data.hex;
     this.source = data.source;
+    this.afterValidChange();
   }
   handleChange(data, $event) {
     const isValidColor = simpleCheckForValidColor(data);
@@ -80,8 +81,11 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
       const colors = toState(data, data.h || this.oldHue);
       this.setState(colors);
       this.onChange.emit({ colors, $event });
+      this.afterValidChange();
     }
   }
+  /** hook for components after a complete change */
+  afterValidChange() {}
 
   handleSwatchHover(data, $event) {
     const isValidColor = simpleCheckForValidColor(data);

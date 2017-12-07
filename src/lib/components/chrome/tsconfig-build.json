@@ -24,7 +24,7 @@
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
-    "enableSummariesForJit": false,
+    "enableSummariesForJit": true,
     "flatModuleOutFile": "index.js",
     "flatModuleId": "ngx-color/chrome",
     "annotationsAs": "static fields"

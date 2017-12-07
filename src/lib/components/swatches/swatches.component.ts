@@ -23,11 +23,9 @@ import { SwatchesGroupComponent } from './swatches-group.component';
           <div class="swatches-body">
             <color-swatches-group
               *ngFor="let group of colors"
-              [group]="group"
-              [active]="hex"
+              [group]="group" [active]="hex"
               (onClick)="handlePickerChange($event)"
-            >
-            </color-swatches-group>
+            ></color-swatches-group>
           </div>
         </div>
       </color-raised>

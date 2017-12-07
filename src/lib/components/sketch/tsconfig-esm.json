@@ -1,14 +1,12 @@
 {
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es5",
     "outDir": "../../../../dist/packages-dist/sketch/es5",
     "declaration": false,
     "removeComments": true
   },
-  "files": [
-    "sketch.component.ts"
-  ],
+  "files": ["sketch.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,

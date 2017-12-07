@@ -20,13 +20,11 @@
       "ngx-color": ["../../../../dist/packages-dist"]
     }
   },
-  "files": [
-    "twitter.component.ts"
-  ],
+  "files": ["twitter.component.ts"],
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
-    "enableSummariesForJit": false,
+    "enableSummariesForJit": true,
     "flatModuleOutFile": "index.js",
     "flatModuleId": "ngx-color/twitter",
     "annotationsAs": "static fields"

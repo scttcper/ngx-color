@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es5",
     "outDir": "../../../../dist/packages-dist/chrome/es5",
     "declaration": false,
     "removeComments": true

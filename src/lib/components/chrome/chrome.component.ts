@@ -28,7 +28,9 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
       <div class="chrome-controls">
         <div class="chrome-color">
           <div class="chrome-swatch">
-            <div class="chrome-active" [style.background]="activeBackground"></div>
+            <div class="chrome-active"
+              [style.background]="activeBackground"
+            ></div>
             <color-checkboard></color-checkboard>
           </div>
         </div>
@@ -142,14 +144,9 @@ export class ChromeComponent extends ColorWrap implements OnChanges {
   constructor() {
     super();
   }
-
-  ngOnChanges() {
-    this.setState(toState(this.color, this.oldHue));
-    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${
-      this.rgb.b
-    }, ${this.rgb.a})`;
+  afterValidChange() {
+    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${this.rgb.b}, ${this.rgb.a})`;
   }
-
   handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }

@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig-build.json",
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es5",
     "outDir": "../../../dist/packages-dist/es5",
     "declaration": false,
     "removeComments": true
@@ -12,7 +12,7 @@
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
-    "enableSummariesForJit": true,
+    "enableSummariesForJit": false,
     "flatModuleOutFile": "index.js",
     "flatModuleId": "ngx-color"
   }

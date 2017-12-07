@@ -22,17 +22,14 @@ import { BlockSwatchesComponent } from './block-swatches.component';
     <div class="block-triangle"
       *ngIf="triangle !== 'hide'"
       [style.border-color]="'transparent transparent ' + this.hex + ' transparent'"
-    >
-    </div>
+    ></div>
 
     <div class="block-head" [style.background]="hex">
       <color-checkboard
        *ngIf="hex === 'transparent'"
         borderRadius="6px 6px 0 0"
       ></color-checkboard>
-      <div class="block-label"
-        [style.color]="getContrastingColor(hex)"
-      >
+      <div class="block-label" [style.color]="getContrastingColor(hex)">
         {{ hex }}
       </div>
     </div>
@@ -132,7 +129,6 @@ export class BlockComponent extends ColorWrap {
   getContrastingColor(hex) {
     return getContrastingColor(hex);
   }
-
   handleBlockChange({ hex, $event }) {
     if (isValidHex(hex)) {
       // this.hex = hex;

@@ -133,8 +133,7 @@ export class MaterialComponent extends ColorWrap implements OnChanges {
       });
     }
   }
-  ngOnChanges() {
-    this.setState(toState(this.color, this.oldHue));
+  afterValidChange() {
     this.HEXinput['border-bottom-color'] = this.hex;
   }
 }
