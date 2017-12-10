@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { ColorEvent } from 'ngx-color';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,8 +17,8 @@ export class AppComponent {
     a: 1,
   };
 
-  changeComplete({colors, $event}) {
-    this.state = colors.hsl;
-    this.primaryColor = colors.hex;
+  changeComplete($event: ColorEvent) {
+    this.state = $event.color.hsl;
+    this.primaryColor = $event.color.hex;
   }
 }

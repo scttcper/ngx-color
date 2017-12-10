@@ -24,7 +24,7 @@ import { toState } from 'ngx-color/helpers';
   `,
   styles: [
     `
-    .color-hue-picker {
+    .hue-picker {
       position: relative;
     }
   `,
