@@ -13,21 +13,18 @@ import { toState } from 'ngx-color/helpers';
 @Component({
   selector: 'color-alpha-picker',
   template: `
-    <div class="color-alpha-picker {{ className }}"
+    <div class="alpha-picker {{ className }}"
       [style.width.px]="width" [style.height.px]="height"
     >
-      <color-alpha class="color-alpha"
-        [hsl]="hsl"
-        [rgb]="rgb"
-        [pointer]="pointer"
-        [direction]="direction"
+      <color-alpha [hsl]="hsl" [rgb]="rgb"
+        [pointer]="pointer" [direction]="direction"
         (onChange)="handlePickerChange($event)"
       ></color-alpha>
     </div>
   `,
   styles: [
     `
-    .color-alpha-picker {
+    .alpha-picker {
       position: relative;
     }
     .color-alpha {

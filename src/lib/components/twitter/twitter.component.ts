@@ -7,7 +7,7 @@ import { isValidHex } from 'ngx-color/helpers';
 @Component({
   selector: 'color-twitter',
   template: `
-  <div class="twitter-picker {{ triangle }}-triangle" [style.width.px]="width">
+  <div class="twitter-picker {{ triangle }}-triangle {{ className }}" [style.width.px]="width">
     <div class="triangleShadow"></div>
     <div class="triangle"></div>
     <div class="twitter-body">

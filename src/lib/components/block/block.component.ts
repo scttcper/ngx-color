@@ -19,14 +19,12 @@ import { BlockSwatchesComponent } from './block-swatches.component';
   selector: 'color-block',
   template: `
   <div class="block-card block-picker {{ className }}">
-    <div class="block-triangle"
-      *ngIf="triangle !== 'hide'"
+    <div class="block-triangle" *ngIf="triangle !== 'hide'"
       [style.border-color]="'transparent transparent ' + this.hex + ' transparent'"
     ></div>
 
     <div class="block-head" [style.background]="hex">
-      <color-checkboard
-       *ngIf="hex === 'transparent'"
+      <color-checkboard *ngIf="hex === 'transparent'"
         borderRadius="6px 6px 0 0"
       ></color-checkboard>
       <div class="block-label" [style.color]="getContrastingColor(hex)">
@@ -35,13 +33,11 @@ import { BlockSwatchesComponent } from './block-swatches.component';
     </div>
 
     <div class="block-body">
-      <color-block-swatches
-        [colors]="colors"
+      <color-block-swatches [colors]="colors"
         (onClick)="handleBlockChange($event)"
         (onSwatchHover)="onSwatchHover.emit($event)"
       ></color-block-swatches>
-      <color-editable-input
-        [value]="hex"
+      <color-editable-input [value]="hex"
         (onChange)="handleValueChange($event)"
         [style]="{input: input, wrap: wrap}"
       ></color-editable-input>

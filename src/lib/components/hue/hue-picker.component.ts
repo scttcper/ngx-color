@@ -4,15 +4,16 @@ import {
   Component,
   Input,
   NgModule,
-  OnInit,
+  OnChanges,
 } from '@angular/core';
 
 import { ColorWrap, HueModule } from 'ngx-color';
+import { toState } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-hue-picker',
   template: `
-  <div class="color-hue-picker {{ className }}"
+  <div class="hue-picker {{ className }}"
     [style.width.px]="width" [style.height.px]="height"
   >
     <color-hue [hsl]="hsl" [pointer]="pointer"
@@ -31,7 +32,7 @@ import { ColorWrap, HueModule } from 'ngx-color';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class HuePickerComponent extends ColorWrap implements OnInit {
+export class HuePickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */
   @Input() width: string | number = 316;
   /** Pixel value for picker height */
@@ -51,10 +52,11 @@ export class HuePickerComponent extends ColorWrap implements OnInit {
     super();
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     if (this.direction === 'vertical') {
       this.pointer.transform = 'translate(-3px, -9px)';
     }
+    this.setState(toState(this.color, this.oldHue));
   }
   handlePickerChange({ data, $event }) {
     this.handleChange({ a: 1, h: data.h, l: 0.5, s: 1 }, $event);

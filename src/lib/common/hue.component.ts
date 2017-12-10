@@ -20,10 +20,9 @@ import { calculateHueChange, HSLA, HSLAsource } from 'ngx-color/helpers';
   selector: 'color-hue',
   template: `
   <div class="color-hue color-hue-{{direction}}" [style.border-radius.px]="radius" [style.box-shadow]="shadow">
-    <div
+    <div #container
       class="color-hue-container"
       (mousedown)="handleMousedown($event)"
-      #container
     >
       <div class="color-hue-pointer" [style.left]="left" [style.top]="top" *ngIf="!hidePointer">
         <div class="color-hue-slider" [ngStyle]="pointer"></div>
@@ -97,12 +96,10 @@ export class HueComponent implements OnChanges, OnDestroy {
     this.unsubscribe();
   }
   subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove').subscribe((e: Event) =>
-      this.handleMousemove(e),
-    );
-    this.mouseup = fromEvent(document, 'mouseup').subscribe(() =>
-      this.unsubscribe(),
-    );
+    this.mousemove = fromEvent(document, 'mousemove')
+      .subscribe((e: Event) => this.handleMousemove(e));
+    this.mouseup = fromEvent(document, 'mouseup')
+      .subscribe(() => this.unsubscribe());
   }
   unsubscribe() {
     if (this.mousemove) {

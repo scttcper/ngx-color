@@ -13,11 +13,12 @@ import { GithubSwatchComponent } from './github-swatch.component';
 @Component({
   selector: 'color-github',
   template: `
-  <div class="github-picker {{ triangle }}-triangle" [style.width.px]="width">
+  <div class="github-picker {{ triangle }}-triangle {{ className }}"
+    [style.width.px]="width"
+  >
     <div class="triangleShadow"></div>
     <div class="triangle"></div>
-    <color-github-swatch
-      *ngFor="let color of colors"
+    <color-github-swatch *ngFor="let color of colors"
       [color]="color"
       (onClick)="handleBlockChange($event)"
       (onSwatchHover)="onSwatchHover.emit($event)"
