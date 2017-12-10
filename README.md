@@ -182,7 +182,7 @@ Pass a function to call once a color change is complete.
 
 Some pickers have specific APIs that are unique to themselves:
 
-### Alpha-Picker
+### Alpha
 
 * **width** - String | Number, Pixel value for picker width. Default `316px`
 * **height** - String | Number, Pixel value for picker height. Default `16px`
