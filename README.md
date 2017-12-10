@@ -34,19 +34,6 @@
   * [onChange](#onchange)
   * [onChangeComplete](#onchangecomplete)
   * [Individual APIs](#individual-apis)
-    * [Alpha](#alpha)
-    * [Block](#block)
-    * [Chrome](#chrome)
-    * [Circle](#circle)
-    * [Compact](#compact)
-    * [Github](#github)
-    * [Hue](#hue)
-    * [Material](#material)
-    * [Photoshop](#photoshop)
-    * [Sketch](#sketch)
-    * [Slider](#slider)
-    * [Swatches](#swatches)
-    * [Twitter](#twitter)
 
 ## About
 
