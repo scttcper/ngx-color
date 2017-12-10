@@ -15,21 +15,21 @@ import { SwatchesGroupComponent } from './swatches-group.component';
 @Component({
   selector: 'color-swatches',
   template: `
-    <div class="swatches-picker {{ className }}"
-      [style.width.px]="width" [style.height.px]="height"
-    >
-      <color-raised>
-        <div class="swatches-overflow" [style.height.px]="height">
-          <div class="swatches-body">
-            <color-swatches-group
-              *ngFor="let group of colors"
-              [group]="group" [active]="hex"
-              (onClick)="handlePickerChange($event)"
-            ></color-swatches-group>
-          </div>
+  <div class="swatches-picker {{ className }}"
+    [style.width.px]="width" [style.height.px]="height"
+  >
+    <color-raised>
+      <div class="swatches-overflow" [style.height.px]="height">
+        <div class="swatches-body">
+          <color-swatches-group
+            *ngFor="let group of colors"
+            [group]="group" [active]="hex"
+            (onClick)="handlePickerChange($event)"
+          ></color-swatches-group>
         </div>
-      </color-raised>
-    </div>
+      </div>
+    </color-raised>
+  </div>
   `,
   styles: [
     `
@@ -45,10 +45,12 @@ import { SwatchesGroupComponent } from './swatches-group.component';
   preserveWhitespaces: false,
 })
 export class SwatchesComponent extends ColorWrap implements OnChanges {
-  @Input() width = 320;
-  @Input() height = 240;
-  @Input()
-  colors = [
+  /** Pixel value for picker width */
+  @Input() width: string | number = 320;
+  /** Color squares to display */
+  @Input() height: string | number = 240;
+  /** An array of color groups, each with an array of colors */
+  @Input() colors: string[][] = [
     [
       material.red['900'],
       material.red['700'],

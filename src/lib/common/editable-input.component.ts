@@ -18,15 +18,14 @@ import { fromEvent } from 'rxjs/observable/fromEvent';
   selector: 'color-editable-input',
   template: `
     <div class="wrap" [ngStyle]="wrapStyle">
-      <input
+      <input [ngStyle]="inputStyle"
         [value]="currentValue"
-        (keydown)="handleKeydown($event)"
-        (keyup)="handleKeyup($event)"
-        [ngStyle]="inputStyle"
-        (focus)="handleFocus($event)"
-        (focusout)="handleFocusOut($event)"
         [placeholder]="placeholder"
         spellCheck="false"
+        (keydown)="handleKeydown($event)"
+        (keyup)="handleKeyup($event)"
+        (focus)="handleFocus($event)"
+        (focusout)="handleFocusOut($event)"
       />
       <span *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
         {{ label }}

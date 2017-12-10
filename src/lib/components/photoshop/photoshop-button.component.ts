@@ -9,7 +9,9 @@ import {
 @Component({
   selector: 'color-photoshop-button',
   template: `
-    <div class="photoshop-button" (click)="click.emit($event)" [class.active]="active">
+    <div class="photoshop-button"  [class.active]="active"
+      (click)="click.emit($event)"
+    >
       {{ label }}
     </div>
   `,

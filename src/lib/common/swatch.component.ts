@@ -14,23 +14,21 @@ import { CheckboardModule } from './checkboard.component';
 @Component({
   selector: 'color-swatch',
   template: `
-    <div
-      class="swatch"
-      [ngStyle]="activeStyles()"
-      [attr.title]="color"
-      (click)="handleClick(color, $event)"
-      (keydown.enter)="handleClick(color, $event)"
-      (focus)="handleFocus()"
-      (focusout)="handleFocusOut()"
-      (mouseover)="handleHover(color, $event)"
-      tabindex="0"
-    >
-      <ng-content></ng-content>
-      <color-checkboard
-        *ngIf="color === 'transparent'"
-        boxShadow="inset 0 0 0 1px rgba(0,0,0,0.1)"
-      ></color-checkboard>
-    </div>
+  <div class="swatch"
+    [ngStyle]="activeStyles()" [attr.title]="color"
+    (click)="handleClick(color, $event)"
+    (keydown.enter)="handleClick(color, $event)"
+    (focus)="handleFocus()"
+    (focusout)="handleFocusOut()"
+    (mouseover)="handleHover(color, $event)"
+    tabindex="0"
+  >
+    <ng-content></ng-content>
+    <color-checkboard
+      *ngIf="color === 'transparent'"
+      boxShadow="inset 0 0 0 1px rgba(0,0,0,0.1)"
+    ></color-checkboard>
+  </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
@@ -40,8 +38,8 @@ export class SwatchComponent implements OnInit {
   @Input() style = {};
   @Input() focusStyle = {};
   @Input() focus: boolean;
-  @Output() onClick = new EventEmitter<any>();
-  @Output() onHover = new EventEmitter<any>();
+  @Output() onClick = new EventEmitter<{ hex: string, $event: Event}>();
+  @Output() onHover = new EventEmitter<{ hex: string, $event: Event}>();
   divStyles: any = {};
   focusStyles: any = {};
   inFocus = false;

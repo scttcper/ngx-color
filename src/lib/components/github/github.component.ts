@@ -89,11 +89,10 @@ import { GithubSwatchComponent } from './github-swatch.component';
   preserveWhitespaces: false,
 })
 export class GithubComponent extends ColorWrap {
-  @Input() width = 212;
-  @Input()
-  triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
-  @Input()
-  colors = [
+  /** Pixel value for picker width */
+  @Input() width: string | number = 212;
+  /** Color squares to display */
+  @Input() colors = [
     '#B80000',
     '#DB3E00',
     '#FCCB00',
@@ -111,6 +110,7 @@ export class GithubComponent extends ColorWrap {
     '#BED3F3',
     '#D4C4FB',
   ];
+  @Input() triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
 
   constructor() {
     super();

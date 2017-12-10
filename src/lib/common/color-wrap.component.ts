@@ -17,10 +17,16 @@ import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import {
   simpleCheckForValidColor,
   toState,
+  Color,
   HSLA,
   HSVA,
   RGBA,
 } from 'ngx-color/helpers';
+
+export interface ColorEvent {
+  $event: Event;
+  color: Color;
+}
 
 @Component({
   // create seletor base for test override property
@@ -35,9 +41,9 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
     l: 0.2,
     a: 1,
   };
-  @Output() onChange = new EventEmitter();
-  @Output() onChangeComplete = new EventEmitter();
-  @Output() onSwatchHover = new EventEmitter();
+  @Output() onChange = new EventEmitter<ColorEvent>();
+  @Output() onChangeComplete = new EventEmitter<ColorEvent>();
+  @Output() onSwatchHover = new EventEmitter<ColorEvent>();
   oldHue: number;
   hsl: HSLA;
   hsv: HSVA;
@@ -54,9 +60,7 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
         debounceTime(100),
         distinctUntilChanged(),
       )
-      .subscribe(({ colors, $event }) =>
-        this.onChangeComplete.emit({ colors, $event })
-      );
+      .subscribe(x => this.onChangeComplete.emit(x));
     this.setState(toState(this.color, 0));
     this.currentColor = this.hex;
   }
@@ -78,9 +82,9 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   handleChange(data, $event) {
     const isValidColor = simpleCheckForValidColor(data);
     if (isValidColor) {
-      const colors = toState(data, data.h || this.oldHue);
-      this.setState(colors);
-      this.onChange.emit({ colors, $event });
+      const color = toState(data, data.h || this.oldHue);
+      this.setState(color);
+      this.onChange.emit({ color, $event });
       this.afterValidChange();
     }
   }
@@ -90,9 +94,9 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   handleSwatchHover(data, $event) {
     const isValidColor = simpleCheckForValidColor(data);
     if (isValidColor) {
-      const colors = toState(data, data.h || this.oldHue);
-      this.setState(colors);
-      this.onSwatchHover.emit({ colors, $event });
+      const color = toState(data, data.h || this.oldHue);
+      this.setState(color);
+      this.onSwatchHover.emit({ color, $event });
     }
   }
 }

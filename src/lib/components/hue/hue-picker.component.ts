@@ -12,17 +12,14 @@ import { ColorWrap, HueModule } from 'ngx-color';
 @Component({
   selector: 'color-hue-picker',
   template: `
-    <div class="color-hue-picker {{ className }}"
-      [style.width.px]="width" [style.height.px]="height"
-    >
-      <color-hue
-        [hsl]="hsl"
-        [pointer]="pointer"
-        [direction]="direction"
-        [radius]="radius"
-        (onChange)="handlePickerChange($event)"
-      ></color-hue>
-    </div>
+  <div class="color-hue-picker {{ className }}"
+    [style.width.px]="width" [style.height.px]="height"
+  >
+    <color-hue [hsl]="hsl" [pointer]="pointer"
+      [direction]="direction" [radius]="radius"
+      (onChange)="handlePickerChange($event)"
+    ></color-hue>
+  </div>
   `,
   styles: [
     `
@@ -35,11 +32,12 @@ import { ColorWrap, HueModule } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class HuePickerComponent extends ColorWrap implements OnInit {
-  @Input() width = 316;
-  @Input() height = 16;
+  /** Pixel value for picker width */
+  @Input() width: string | number = 316;
+  /** Pixel value for picker height */
+  @Input() height: string | number = 16;
   @Input() radius = 2;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
-  @Input() className: string;
   pointer = {
     width: '18px',
     height: '18px',

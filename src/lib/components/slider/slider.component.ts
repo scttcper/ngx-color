@@ -17,15 +17,12 @@ import { SliderSwatchesComponent } from './slider-swatches.component';
   <div class="slider-picker {{ className }}">
     <div class="slider-hue">
       <color-hue
-        [hsl]="hsl"
-        [radius]="radius"
-        [pointer]="pointer"
+        [hsl]="hsl" [radius]="radius" [pointer]="pointer"
         (onChange)="handlePickerChange($event)"
       ></color-hue>
     </div>
     <div class="slider-swatches">
-      <color-slider-swatches
-        [hsl]="hsl"
+      <color-slider-swatches [hsl]="hsl"
         (onClick)="handlePickerChange($event)"
       ></color-slider-swatches>
     </div>

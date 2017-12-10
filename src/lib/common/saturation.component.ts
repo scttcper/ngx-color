@@ -14,23 +14,27 @@ import { Subscription } from 'rxjs/Subscription';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 
 import { CommonModule } from '@angular/common';
-import { calculateSaturationChange, HSLA, HSVA } from 'ngx-color/helpers';
+import {
+  calculateSaturationChange,
+  HSLA,
+  HSVA,
+  HSVAsource,
+} from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-saturation',
   template: `
-    <div class="color-saturation"
-      [style.background]="background"
-      (mousedown)="handleMousedown($event)"
-      #container
-    >
-      <div [ngStyle]="white" class="saturation-white">
-        <div [ngStyle]="black" class="saturation-black"></div>
-        <div class="saturation-pointer" [ngStyle]="pointer" [style.top.%]="pointerTop" [style.left.%]="pointerLeft">
-          <div class="saturation-circle" [ngStyle]="circle"></div>
-        </div>
+  <div class="color-saturation" #container
+    [style.background]="background"
+    (mousedown)="handleMousedown($event)"
+  >
+    <div class="saturation-white">
+      <div class="saturation-black"></div>
+      <div class="saturation-pointer" [ngStyle]="pointer" [style.top.%]="pointerTop" [style.left.%]="pointerLeft">
+        <div class="saturation-circle" [ngStyle]="circle"></div>
       </div>
     </div>
+  </div>
   `,
   styles: [
     `
@@ -81,21 +85,13 @@ export class SaturationComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() hsv: HSVA;
   @Input() radius: number;
-  @Input() shadow: any;
+  @Input() pointer: any;
+  @Input() circle: any;
+  @Output() onChange = new EventEmitter<{ data: HSVAsource; $event: Event }>();
+  @ViewChild('container') container: ElementRef;
   background: string;
   pointerTop: number;
   pointerLeft: number;
-  white: any = {
-    // borderRadius: this.radius,
-  };
-  black: any = {
-    // 'box-shadow': this.shadow,
-    // 'border-radius': this.radius,
-  };
-  @Input() pointer: any;
-  @Input() circle: any;
-  @Output() onChange = new EventEmitter<any>();
-  @ViewChild('container') container: ElementRef;
   mousemove: Subscription;
   mouseup: Subscription;
 
@@ -108,8 +104,8 @@ export class SaturationComponent implements OnChanges, OnDestroy {
     this.unsubscribe();
   }
   subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove').subscribe((ev: Event) =>
-      this.handleMousemove(ev),
+    this.mousemove = fromEvent(document, 'mousemove').subscribe((e: Event) =>
+      this.handleMousemove(e),
     );
     this.mouseup = fromEvent(document, 'mouseup').subscribe(() =>
       this.unsubscribe(),

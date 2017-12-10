@@ -126,11 +126,10 @@ import { isValidHex } from 'ngx-color/helpers';
   preserveWhitespaces: false,
 })
 export class TwitterComponent extends ColorWrap {
-  @Input() width = 276;
-  @Input()
-  triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
-  @Input()
-  colors = [
+  /** Pixel value for picker width */
+  @Input() width: string | number = 276;
+  /** Color squares to display */
+  @Input() colors = [
     '#FF6900',
     '#FCB900',
     '#7BDCB5',
@@ -142,6 +141,8 @@ export class TwitterComponent extends ColorWrap {
     '#F78DA7',
     '#9900EF',
   ];
+  @Input() triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
+
   swatchStyle = {
     width: '30px',
     height: '30px',

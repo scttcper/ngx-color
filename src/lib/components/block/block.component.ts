@@ -18,7 +18,7 @@ import { BlockSwatchesComponent } from './block-swatches.component';
 @Component({
   selector: 'color-block',
   template: `
-  <div class="block-card block-picker">
+  <div class="block-card block-picker {{ className }}">
     <div class="block-triangle"
       *ngIf="triangle !== 'hide'"
       [style.border-color]="'transparent transparent ' + this.hex + ' transparent'"
@@ -87,8 +87,10 @@ import { BlockSwatchesComponent } from './block-swatches.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlockComponent extends ColorWrap {
-  @Input()
-  colors = [
+  /** Pixel value for picker width */
+  @Input() width: string | number = 170;
+  /** Color squares to display */
+  @Input() colors = [
     '#D9E3F0',
     '#F47373',
     '#697689',
@@ -99,7 +101,6 @@ export class BlockComponent extends ColorWrap {
     '#ff8a65',
     '#ba68c8',
   ];
-  @Input() width: string | number = 170;
   @Input() triangle: 'top' | 'hide' = 'top';
   triangleBorderColor: string;
   input = {

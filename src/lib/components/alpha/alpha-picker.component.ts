@@ -39,9 +39,11 @@ import { toState } from 'ngx-color/helpers';
   preserveWhitespaces: false,
 })
 export class AlphaPickerComponent extends ColorWrap implements OnChanges {
+  /** Pixel value for picker width */
+  @Input() width: string | number = 316;
+  /** Pixel value for picker height */
+  @Input() height: string | number = 16;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
-  width = 316;
-  height = 16;
   pointer = {
     width: '18px',
     height: '18px',

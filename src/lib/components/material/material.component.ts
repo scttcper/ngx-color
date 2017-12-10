@@ -7,42 +7,34 @@ import { isValidHex } from 'ngx-color/helpers';
 @Component({
   selector: 'color-material',
   template: `
-    <color-raised>
-      <div class="material-picker {{ className }}">
-        <color-editable-input
-          [value]="hex"
-          label="hex"
-          (onChange)="handleValueChange($event)"
-          [style]="{input: HEXinput, label: HEXlabel}"
-        ></color-editable-input>
-        <div class="material-split">
-          <div class="material-third">
-            <color-editable-input
-              [style]="{ input: RGBinput, label: RGBlabel }"
-              label="r"
-              [value]="rgb.r"
-              (onChange)="handleInputChange($event)"
-            ></color-editable-input>
-          </div>
-          <div class="material-third">
-            <color-editable-input
-              [style]="{ input: RGBinput, label: RGBlabel }"
-              label="g"
-              [value]="rgb.g"
-              (onChange)="handleInputChange($event)"
-            ></color-editable-input>
-          </div>
-          <div class="material-third">
-            <color-editable-input
-              [style]="{ input: RGBinput, label: RGBlabel }"
-              label="b"
-              [value]="rgb.b"
-              (onChange)="handleInputChange($event)"
-            ></color-editable-input>
-          </div>
+  <color-raised>
+    <div class="material-picker {{ className }}">
+      <color-editable-input label="hex" [value]="hex"
+        (onChange)="handleValueChange($event)"
+        [style]="{input: HEXinput, label: HEXlabel}"
+      ></color-editable-input>
+      <div class="material-split">
+        <div class="material-third">
+          <color-editable-input label="r" [value]="rgb.r"
+            [style]="{ input: RGBinput, label: RGBlabel }"
+            (onChange)="handleInputChange($event)"
+          ></color-editable-input>
+        </div>
+        <div class="material-third">
+          <color-editable-input label="g" [value]="rgb.g"
+            [style]="{ input: RGBinput, label: RGBlabel }"
+            (onChange)="handleInputChange($event)"
+          ></color-editable-input>
+        </div>
+        <div class="material-third">
+          <color-editable-input label="b" [value]="rgb.b"
+            [style]="{ input: RGBinput, label: RGBlabel }"
+            (onChange)="handleInputChange($event)"
+          ></color-editable-input>
         </div>
       </div>
-    </color-raised>
+    </div>
+  </color-raised>
   `,
   styles: [
     `

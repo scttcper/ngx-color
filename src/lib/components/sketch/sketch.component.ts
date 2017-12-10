@@ -23,11 +23,9 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
 @Component({
   selector: 'color-sketch',
   template: `
-  <div class="sketch-picker" [style.width]="width">
+  <div class="sketch-picker {{ className }}" [style.width]="width">
     <div class="sketch-saturation">
-      <color-saturation
-        [hsl]="hsl"
-        [hsv]="hsv"
+      <color-saturation [hsl]="hsl" [hsv]="hsv"
         (onChange)="handleValueChange($event)"
       >
       </color-saturation>
@@ -35,16 +33,13 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
     <div class="sketch-controls">
       <div class="sketch-sliders">
         <div class="sketch-hue">
-          <color-hue
-            [hsl]="hsl"
+          <color-hue [hsl]="hsl"
             (onChange)="handleValueChange($event)"
           ></color-hue>
         </div>
         <div class="sketch-alpha">
           <color-alpha
-            [radius]="2"
-            [rgb]="rgb"
-            [hsl]="hsl"
+            [radius]="2" [rgb]="rgb" [hsl]="hsl"
             (onChange)="handleValueChange($event)"
           ></color-alpha>
         </div>
@@ -56,9 +51,7 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
     </div>
     <div class="sketch-controls">
       <color-sketch-fields
-        [rgb]="rgb"
-        [hsl]="hsl"
-        [hex]="hex"
+        [rgb]="rgb" [hsl]="hsl" [hex]="hex"
         [disableAlpha]="disableAlpha"
         (onChange)="handleValueChange($event)"
       ></color-sketch-fields>
@@ -129,8 +122,10 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
   preserveWhitespaces: false,
 })
 export class SketchComponent extends ColorWrap implements OnChanges {
-  @Input()
-  presetColors = [
+  /** Remove alpha slider and options from picker */
+  @Input() disableAlpha = false;
+  /** Hex strings for default colors at bottom of picker */
+  @Input() presetColors = [
     '#D0021B',
     '#F5A623',
     '#F8E71C',
@@ -147,8 +142,8 @@ export class SketchComponent extends ColorWrap implements OnChanges {
     '#9B9B9B',
     '#FFFFFF',
   ];
+  /** Width of picker */
   @Input() width = 200;
-  @Input() disableAlpha = false;
   activeBackground: string;
   constructor() {
     super();

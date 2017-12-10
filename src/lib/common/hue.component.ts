@@ -14,7 +14,7 @@ import {
 import { Subscription } from 'rxjs/Subscription';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 
-import { calculateHueChange, HSLA } from 'ngx-color/helpers';
+import { calculateHueChange, HSLA, HSLAsource } from 'ngx-color/helpers';
 
 @Component({
   selector: 'color-hue',
@@ -31,7 +31,8 @@ import { calculateHueChange, HSLA } from 'ngx-color/helpers';
     </div>
   </div>
   `,
-  styles: [`
+  styles: [
+    `
     .color-hue {
       position: absolute;
       top: 0;
@@ -64,7 +65,8 @@ import { calculateHueChange, HSLA } from 'ngx-color/helpers';
       background: linear-gradient(to top, #f00 0%, #ff0 17%, #0f0 33%,
         #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
     }
-  `],
+  `,
+  ],
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -75,30 +77,32 @@ export class HueComponent implements OnChanges, OnDestroy {
   @Input() shadow: any;
   @Input() hidePointer = false;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
-  @Output() onChange = new EventEmitter<any>();
+  @Output() onChange = new EventEmitter<{ data: HSLAsource; $event: Event }>();
   @ViewChild('container') container: ElementRef;
   left = '0px';
   top = '';
   mousemove: Subscription;
   mouseup: Subscription;
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges() {
     if (this.direction === 'horizontal') {
-      this.left = `${ (this.hsl.h * 100) / 360 }%`;
+      this.left = `${this.hsl.h * 100 / 360}%`;
     } else {
-      this.top = `${ -((this.hsl.h * 100) / 360) + 100 }%`;
+      this.top = `${-(this.hsl.h * 100 / 360) + 100}%`;
     }
   }
   ngOnDestroy() {
     this.unsubscribe();
   }
   subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove')
-      .subscribe((ev: Event) => this.handleMousemove(ev));
-    this.mouseup = fromEvent(document, 'mouseup')
-      .subscribe(() => this.unsubscribe());
+    this.mousemove = fromEvent(document, 'mousemove').subscribe((e: Event) =>
+      this.handleMousemove(e),
+    );
+    this.mouseup = fromEvent(document, 'mouseup').subscribe(() =>
+      this.unsubscribe(),
+    );
   }
   unsubscribe() {
     if (this.mousemove) {
@@ -118,7 +122,7 @@ export class HueComponent implements OnChanges, OnDestroy {
   handleChange($event: Event) {
     const data = calculateHueChange($event, this, this.container.nativeElement);
     if (data) {
-      this.onChange.emit({data, $event});
+      this.onChange.emit({ data, $event });
     }
   }
 }
@@ -128,4 +132,4 @@ export class HueComponent implements OnChanges, OnDestroy {
   exports: [HueComponent],
   imports: [CommonModule],
 })
-export class HueModule { }
+export class HueModule {}

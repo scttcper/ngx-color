@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   NgModule,
   OnInit,
+  Output,
 } from '@angular/core';
 
 import { ColorWrap } from 'ngx-color';
@@ -22,22 +24,18 @@ import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
 @Component({
   selector: 'color-photoshop',
   template: `
-  <div class="photoshop-picker">
+  <div class="photoshop-picker {{ className }}">
     <div class="photoshop-head">{{ header }}</div>
     <div class="photoshop-body">
       <div class="photoshop-saturation">
         <color-saturation
-          [hsl]="hsl"
-          [hsv]="hsv"
-          [circle]="circle"
+          [hsl]="hsl" [hsv]="hsv" [circle]="circle"
           (onChange)="handleValueChange($event)"
         ></color-saturation>
       </div>
       <div class="photoshop-hue">
-        <color-hue
-          direction="vertical"
-          [hsl]="hsl"
-          [hidePointer]="true"
+        <color-hue direction="vertical"
+          [hsl]="hsl" [hidePointer]="true"
           (onChange)="handleValueChange($event)"
         ></color-hue>
       </div>
@@ -45,22 +43,19 @@ import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
         <div class="photoshop-top">
           <div class="photoshop-previews">
             <color-photoshop-previews
-              [rgb]="rgb"
-              [currentColor]="currentColor"
+              [rgb]="rgb" [currentColor]="currentColor"
             ></color-photoshop-previews>
           </div>
           <div class="photoshop-actions">
-            <color-photoshop-button
-              label="OK"
-              [active]="true"
+            <color-photoshop-button label="OK"
+              [active]="true" (click)="onAccept.emit($event)"
             ></color-photoshop-button>
-            <color-photoshop-button
-              label="Cancel"
-            ></color-photoshop-button>
+            <color-photoshop-button label="Cancel"
+              (click)="onCancel.emit($event)"
+            >
+            </color-photoshop-button>
             <color-photoshop-fields
-              [rgb]="rgb"
-              [hex]="hex"
-              [hsv]="hsv"
+              [rgb]="rgb" [hex]="hex" [hsv]="hsv"
               (onChange)="handleValueChange($event)"
             ></color-photoshop-fields>
           </div>
@@ -138,7 +133,10 @@ import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
   preserveWhitespaces: false,
 })
 export class PhotoshopComponent extends ColorWrap implements OnInit {
+  /** Title text */
   @Input() header = 'Color Picker';
+  @Output() onAccept = new EventEmitter<Event>();
+  @Output() onCancel = new EventEmitter<Event>();
   circle = {
     width: '12px',
     height: '12px',
@@ -149,7 +147,6 @@ export class PhotoshopComponent extends ColorWrap implements OnInit {
   constructor() {
     super();
   }
-
   handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }

@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, NgModule, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+  OnChanges,
+} from '@angular/core';
 
 import {
   AlphaModule,
@@ -42,21 +48,17 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
               (onChange)="handleValueChange($event)"
             ></color-hue>
           </div>
-          <div class="chrome-alpha">
+          <div class="chrome-alpha" *ngIf="!disableAlpha">
             <color-alpha
-              [radius]="2"
-              [rgb]="rgb"
-              [hsl]="hsl"
-              [pointer]="pointer"
-              (onChange)="handleValueChange($event)"
+              [radius]="2" [rgb]="rgb" [hsl]="hsl"
+              [pointer]="pointer" (onChange)="handleValueChange($event)"
             ></color-alpha>
           </div>
         </div>
       </div>
       <color-chrome-fields
-        [rgb]="rgb"
-        [hsl]="hsl"
-        [hex]="hex"
+        [rgb]="rgb" [hsl]="hsl" [hex]="hex"
+        [disableAlpha]="disableAlpha"
         (onChange)="handleValueChange($event)"
       ></color-chrome-fields>
     </div>
@@ -123,7 +125,8 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
   preserveWhitespaces: false,
 })
 export class ChromeComponent extends ColorWrap implements OnChanges {
-  className = '';
+  /** Remove alpha slider and options from picker */
+  @Input() disableAlpha = true;
   circle = {
     width: '12px',
     height: '12px',

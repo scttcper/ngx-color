@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  NgModule,
+} from '@angular/core';
 
 import {
   ColorWrap,
@@ -14,23 +19,23 @@ import { CompactFieldsComponent } from './compact-fields.component';
 @Component({
   selector: 'color-compact',
   template: `
-    <color-raised class="color-compact">
-      <div class="compact-picker {{ className }}">
-        <div>
-          <color-compact-color
-            *ngFor="let color of colors" [color]="color"
-            [active]="color.toLowerCase() === hex.toLowerCase()"
-            (onClick)="handleBlockChange($event)"
-          ></color-compact-color>
-          <div class="compact-clear"></div>
-        </div>
-        <color-compact-fields
-          [hex]="hex"
-          [rgb]="rgb"
-          (onChange)="handleValueChange($event)"
-        ></color-compact-fields>
+  <color-raised class="color-compact">
+    <div class="compact-picker {{ className }}">
+      <div>
+        <color-compact-color
+          *ngFor="let color of colors" [color]="color"
+          [active]="color.toLowerCase() === hex.toLowerCase()"
+          (onClick)="handleBlockChange($event)"
+        ></color-compact-color>
+        <div class="compact-clear"></div>
       </div>
-    </color-raised>
+      <color-compact-fields
+        [hex]="hex"
+        [rgb]="rgb"
+        (onChange)="handleValueChange($event)"
+      ></color-compact-fields>
+    </div>
+  </color-raised>
   `,
   styles: [
     `
@@ -53,8 +58,8 @@ import { CompactFieldsComponent } from './compact-fields.component';
   preserveWhitespaces: false,
 })
 export class CompactComponent extends ColorWrap {
-  @Input()
-  colors = [
+  /** Color squares to display */
+  @Input() colors = [
     '#4D4D4D',
     '#999999',
     '#FFFFFF',
