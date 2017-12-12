@@ -40,7 +40,7 @@
     "@storybook/addon-notes": "3.3.0-alpha.4",
     "@storybook/angular": "3.3.0-alpha.4",
     "@storybook/cli": "3.3.0-alpha.4",
-    "@types/fs-extra": "^4.0.5",
+    "@types/fs-extra": "^5.0.0",
     "@types/jasmine": "^2.8.2",
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^8.0.57",
