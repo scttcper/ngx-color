@@ -16,8 +16,11 @@ import { toState } from 'ngx-color/helpers';
     <div class="alpha-picker {{ className }}"
       [style.width.px]="width" [style.height.px]="height"
     >
-      <color-alpha [hsl]="hsl" [rgb]="rgb"
-        [pointer]="pointer" [direction]="direction"
+      <color-alpha
+        [hsl]="hsl"
+        [rgb]="rgb"
+        [pointer]="pointer"
+        [direction]="direction"
         (onChange)="handlePickerChange($event)"
       ></color-alpha>
     </div>
@@ -46,7 +49,6 @@ export class AlphaPickerComponent extends ColorWrap implements OnChanges {
     height: '18px',
     'border-radius': '50%',
     transform: 'translate(-9px, -2px)',
-    'background-color': 'rgb(248, 248, 248)',
     'box-shadow': '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
   };
 

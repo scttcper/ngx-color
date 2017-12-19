@@ -11,19 +11,30 @@ describe('AlphaComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AlphaTestApp],
       imports: [ColorAlphaModule],
-    }).compileComponents();
+    });
+
+    TestBed.compileComponents();
   }));
-  it(`should apply className to root element`, async(() => {
-    const fixture = TestBed.createComponent(AlphaTestApp);
-    const testComponent = fixture.debugElement.componentInstance;
+  it(`should apply className to root element`, () => {
+    const fixture = TestBed.createComponent(AlphaPickerComponent);
+    const testComponent = fixture.componentInstance;
     testComponent.className = 'classy';
     fixture.detectChanges();
-    const divDebugElement = fixture.debugElement.query(By.css('.alpha-picker'));
-    expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
-  }));
-  it(`should change alpha on mousedown`, async(() => {
+    const div = fixture.debugElement.query(By.css('.alpha-picker'));
+    expect(div.nativeElement.classList.contains('classy')).toBe(true);
+  });
+  it(`should draw vertical`, () => {
+    const fixture = TestBed.createComponent(AlphaTestApp);
+    const testComponent = fixture.componentInstance;
+    fixture.detectChanges();
+    testComponent.direction = 'vertical';
+    fixture.detectChanges();
+    const div = fixture.debugElement.query(By.css('.alpha-container'));
+    expect(div.nativeElement.classList.contains('color-alpha-vertical')).toBe(true);
+  });
+  it(`should change alpha on mousedown`, () => {
     const fixture = TestBed.createComponent(AlphaPickerComponent);
-    const component: AlphaPickerComponent = fixture.debugElement.componentInstance;
+    const component = fixture.componentInstance;
     component.width = 20;
     component.height = 200;
     component.color = red.hsl;
@@ -41,20 +52,24 @@ describe('AlphaComponent', () => {
       fixture.
       nativeElement.querySelector('.alpha-picker'),
     );
-    component.handleChange(data, $event);
+    component.handlePickerChange({ data, $event });
     fixture.detectChanges();
     expect(component.hsl.a).toEqual(0);
-  }));
+  });
 });
 
 
 @Component({
   selector: 'test-app',
   template: `
-  <color-alpha-picker [className]="className">
+  <color-alpha-picker
+    [className]="className"
+    [direction]="direction"
+  >
   </color-alpha-picker>
   `,
 })
 class AlphaTestApp {
   className = '';
+  direction = 'horizontal';
 }

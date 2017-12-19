@@ -13,7 +13,6 @@ import { Shape } from 'ngx-color/helpers';
         [focusStyle]="focusStyle(c)"
         (onClick)="handleClick($event)"
         (onHover)="onSwatchHover.emit($event)"
-        class="swatch"
       ></color-swatch>
       <div class="clear"></div>
     </div>
