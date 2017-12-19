@@ -126,7 +126,7 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
 })
 export class ChromeComponent extends ColorWrap implements OnChanges {
   /** Remove alpha slider and options from picker */
-  @Input() disableAlpha = true;
+  @Input() disableAlpha = false;
   circle = {
     width: '12px',
     height: '12px',
