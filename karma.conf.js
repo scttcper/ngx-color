@@ -16,7 +16,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      reports: [ 'text-summary', 'json', 'html' ],
+      reports: ['text-summary', 'lcovonly', 'html'],
       fixWebpackSourcePaths: true
     },
     angularCli: {
