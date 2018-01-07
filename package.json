@@ -39,7 +39,7 @@
     "@angular/language-service": "^5.1.2",
     "@storybook/addon-notes": "3.3.3",
     "@storybook/angular": "3.3.3",
-    "@storybook/cli": "3.3.3",
+    "@storybook/cli": "3.3.4",
     "@types/fs-extra": "^5.0.0",
     "@types/jasmine": "^2.8.3",
     "@types/jasminewd2": "^2.0.3",
