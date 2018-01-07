@@ -37,7 +37,7 @@
     "@angular/cli": "1.6.3",
     "@angular/compiler-cli": "^5.1.2",
     "@angular/language-service": "^5.1.2",
-    "@storybook/addon-notes": "3.3.3",
+    "@storybook/addon-notes": "3.3.4",
     "@storybook/angular": "3.3.3",
     "@storybook/cli": "3.3.3",
     "@types/fs-extra": "^5.0.0",
