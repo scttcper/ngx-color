@@ -34,8 +34,6 @@ export class CheckboardComponent implements OnInit {
   @Input() borderRadius: any;
   gridStyles: { [key: string]: string };
 
-  constructor() {}
-
   ngOnInit() {
     const background = getCheckerboard(this.white, this.grey, this.size);
     this.gridStyles = {

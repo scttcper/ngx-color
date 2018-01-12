@@ -83,8 +83,6 @@ export class HueComponent implements OnChanges, OnDestroy {
   mousemove: Subscription;
   mouseup: Subscription;
 
-  constructor() {}
-
   ngOnChanges() {
     if (this.direction === 'horizontal') {
       this.left = `${this.hsl.h * 100 / 360}%`;

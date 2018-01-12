@@ -53,8 +53,6 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   currentColor: string;
   changes: Subscription;
 
-  constructor() {}
-
   ngOnInit() {
     this.changes = this.onChange.pipe(
         debounceTime(100),

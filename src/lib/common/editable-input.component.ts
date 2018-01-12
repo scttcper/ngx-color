@@ -60,8 +60,6 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   mousemove: Subscription;
   mouseup: Subscription;
 
-  constructor() {}
-
   ngOnInit() {
     this.wrapStyle = this.style && this.style.wrap ? this.style.wrap : { };
     this.inputStyle = this.style && this.style.input ? this.style.input : { };

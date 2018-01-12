@@ -8,7 +8,6 @@ import {
   NgModule,
   OnChanges,
   OnDestroy,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -86,7 +85,7 @@ import { CheckboardModule } from './checkboard.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
+export class AlphaComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() rgb: RGBA;
   @Input() pointer: any;
@@ -101,9 +100,6 @@ export class AlphaComponent implements OnInit, OnChanges, OnDestroy {
   mousemove: Subscription;
   mouseup: Subscription;
 
-  constructor() {}
-
-  ngOnInit() {}
   ngOnChanges() {
     if (this.direction === 'vertical') {
       this.pointerLeft = 0;
