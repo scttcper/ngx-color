@@ -5,8 +5,16 @@
     "type": "git",
     "url": "git+https://github.com/scttcper/ngx-color.git"
   },
-  "main": "../bundles/sketch.umd.js",
-  "es2015": "index.js",
-  "typings": "index.d.ts",
-  "license": "MIT"
+  "ngPackage": {
+    "lib": {
+      "entryFile": "sketch.component.ts",
+      "umdModuleIds": {
+        "material-colors": "material-colors",
+        "tinycolor2": "tinycolor2",
+        "ngx-color/helpers": "ngx-color/helpers",
+        "ngx-color": "ngx-color"
+      }
+    },
+    "dest": "../../../../dist/package-dist/components/sketch"
+  }
 }

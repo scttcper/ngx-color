@@ -1,8 +1,6 @@
+sudo: false
+dist: xenial
 language: node_js
-node_js: 8
-cache:
-  directories:
-    - node_modules
 addons:
   chrome: stable
 before_install: npm install -g greenkeeper-lockfile@1
@@ -12,7 +10,7 @@ script:
   - npm run build
   - npm run lint
   # - npm run bundlesize
-  - ./node_modules/.bin/ng test --single-run --code-coverage --no-progress --browsers=ChromeHeadless
+  - npm run test:ci
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - npm run ghpages

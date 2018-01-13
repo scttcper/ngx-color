@@ -1,11 +1,19 @@
 {
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
   "name": "ngx-color/helpers",
   "author": "scttcper",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/scttcper/ngx-color.git"
+  "repository": "https://github.com/scttcper/ngx-color.git",
+  "license": "MIT",
+  "dependencies": {
+    "tinycolor2": "^1.4.1"
   },
-  "main": "index.js",
-  "typings": "index.d.ts",
-  "license": "MIT"
+  "ngPackage": {
+    "lib": {
+      "entryFile": "index.ts",
+      "umdModuleIds": {
+        "tinycolor2": "tinycolor2"
+      }
+    },
+    "dest": "../../../dist/helpers"
+  }
 }

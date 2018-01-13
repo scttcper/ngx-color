@@ -1,23 +1,33 @@
 {
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
   "name": "ngx-color",
-  "version": "1.0.0",
-  "description": "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
-  "main": "./color.umd.js",
-  "module": "./color.es5.js",
-  "es2015": "./color.es2015.js",
-  "typings": "./index.d.ts",
+  "version": "1.0.1",
+  "description":
+    "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "dependencies": {
-    "tinycolor2": "^1.4.1"
+    "tinycolor2": "^1.4.1",
+    "material-colors": "^1.2.5"
   },
   "peerDependencies": {
     "@angular/core": ">=5.0.0 <=6.0.0",
     "@angular/common": ">=5.0.0 <=6.0.0",
     "rxjs": "^5.5.0"
   },
-  "repository": "https://github.com/scttcper/ngx-color.git",
-  "homepage": "https://github.com/scttcper/ngx-color",
-  "license": "MIT",
   "bugs": "https://github.com/scttcper/ngx-color/issues",
+  "homepage": "https://github.com/scttcper/ngx-color",
+  "repository": "https://github.com/scttcper/ngx-color.git",
+  "license": "MIT",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts",
+      "umdModuleIds": {
+        "ngx-color": "ngx-color",
+        "tinycolor2": "tinycolor2",
+        "ngx-color/helpers": "ngx-color/helpers"
+      }
+    },
+    "dest": "../../../dist/common"
+  },
   "keywords": [
     "angular",
     "color picker",

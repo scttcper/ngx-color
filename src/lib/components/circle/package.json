@@ -5,8 +5,17 @@
     "type": "git",
     "url": "git+https://github.com/scttcper/ngx-color.git"
   },
-  "main": "../bundles/circle.umd.js",
-  "es2015": "index.js",
-  "typings": "index.d.ts",
-  "license": "MIT"
+  "license": "MIT",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "circle.component.ts",
+      "umdModuleIds": {
+        "material-colors": "material-colors",
+        "tinycolor2": "tinycolor2",
+        "ngx-color": "ngx-color",
+        "ngx-color/helpers": "ngx-color/helpers"
+      }
+    },
+    "dest": "../../../../dist/package-dist/components/circle"
+  }
 }
