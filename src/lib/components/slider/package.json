@@ -15,6 +15,6 @@
         "ngx-color/helpers": "ngx-color/helpers"
       }
     },
-    "dest": "../../../../dist/package-dist/components/slider"
+    "dest": "../../../../dist/package-dist/slider"
   }
 }

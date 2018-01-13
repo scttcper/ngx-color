@@ -15,6 +15,6 @@
         "ngx-color/helpers": "ngx-color/helpers"
       }
     },
-    "dest": "../../../../dist/package-dist/components/twitter"
+    "dest": "../../../../dist/package-dist/twitter"
   }
 }

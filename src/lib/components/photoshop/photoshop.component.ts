@@ -5,7 +5,6 @@ import {
   EventEmitter,
   Input,
   NgModule,
-  OnInit,
   Output,
 } from '@angular/core';
 
@@ -132,7 +131,7 @@ import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class PhotoshopComponent extends ColorWrap implements OnInit {
+export class PhotoshopComponent extends ColorWrap {
   /** Title text */
   @Input() header = 'Color Picker';
   @Output() onAccept = new EventEmitter<Event>();

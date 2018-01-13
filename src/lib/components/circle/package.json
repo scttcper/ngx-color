@@ -16,6 +16,6 @@
         "ngx-color/helpers": "ngx-color/helpers"
       }
     },
-    "dest": "../../../../dist/package-dist/components/circle"
+    "dest": "../../../../dist/package-dist/circle"
   }
 }

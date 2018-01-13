@@ -4,7 +4,6 @@ import {
   Component,
   Input,
   NgModule,
-  OnChanges,
 } from '@angular/core';
 
 import {
@@ -121,7 +120,7 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class SketchComponent extends ColorWrap implements OnChanges {
+export class SketchComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */
   @Input() disableAlpha = false;
   /** Hex strings for default colors at bottom of picker */

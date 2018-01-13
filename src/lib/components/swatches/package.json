@@ -15,6 +15,6 @@
         "ngx-color/helpers": "ngx-color/helpers"
       }
     },
-    "dest": "../../../../dist/package-dist/components/swatches"
+    "dest": "../../../../dist/package-dist/swatches"
   }
 }
