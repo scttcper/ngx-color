@@ -1,13 +1,16 @@
 {
   "name": "ngx-color",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
+  "homepage": "https://github.com/scttcper/ngx-color",
+  "bugs": "https://github.com/scttcper/ngx-color/issues",
+  "repository": "https://github.com/scttcper/ngx-color.git",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "./build.sh",
     "publish": "cd dist/packages-dist && npm publish",
-    "bundlesize": "bundlesize",
+    "bundlesize": "npx bundlesize",
     "ghpages": "ng build --prod --build-optimizer --no-progress --baseHref='/ngx-color/'",
     "test": "ng test --single-run --code-coverage --browsers=ChromeCI",
     "test:watch": "ng test --browsers=ChromeCI",
@@ -43,7 +46,6 @@
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^9.3.0",
     "@types/tinycolor2": "^1.4.0",
-    "bundlesize": "^0.15.3",
     "codelyzer": "^4.0.2",
     "jasmine-core": "^2.8.0",
     "jasmine-spec-reporter": "^4.2.1",
@@ -61,12 +63,8 @@
   },
   "bundlesize": [
     {
-      "path": "./dist/packages-dist/toastr.umd.js",
-      "maxSize": "8 kB"
-    },
-    {
-      "path": "./dist/packages-dist/toastr.css",
-      "maxSize": "3 kB"
+      "path": "./dist/package-dist/bundles/ngx-color.umd.min.js",
+      "maxSize": "4 kB"
     }
   ]
 }
