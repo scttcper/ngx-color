@@ -31,7 +31,7 @@ async function main() {
   });
   copySync(
     join(process.cwd(), '/dist/helpers'),
-    join(process.cwd(), '/dist/package-dist/helpers'),
+    join(process.cwd(), '/dist/packages-dist/helpers'),
   );
 
   // make common
@@ -45,14 +45,14 @@ async function main() {
   });
   copySync(
     join(process.cwd(), '/dist/common'),
-    join(process.cwd(), '/dist/package-dist'),
+    join(process.cwd(), '/dist/packages-dist'),
   );
 
 
   for (const m of MODULE_NAMES) {
     rimraf.sync(join(process.cwd(), `/src/lib/components/${m}/node_modules`));
     copySync(
-      join(process.cwd(), '/dist/package-dist'),
+      join(process.cwd(), '/dist/packages-dist'),
       join(process.cwd(), `/src/lib/components/${m}/node_modules/ngx-color`),
     );
     await build({
@@ -61,8 +61,8 @@ async function main() {
 
   }
 
-  copySync('README.md', join(process.cwd(), 'dist/package-dist/README.md'));
-  copySync('LICENSE', join(process.cwd(), 'dist/package-dist/LICENSE'));
+  copySync('README.md', join(process.cwd(), 'dist/packages-dist/README.md'));
+  copySync('LICENSE', join(process.cwd(), 'dist/packages-dist/LICENSE'));
 }
 
 main()
