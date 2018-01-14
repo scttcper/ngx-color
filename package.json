@@ -17,9 +17,7 @@
     "test:ci": "ng test --single-run --code-coverage --no-progress --browsers=ChromeCI",
     "lint": "ng lint --type-check -t stylish",
     "lint:fix": "ng lint --type-check --fix -t stylish",
-    "e2e": "ng e2e",
-    "storybook": "echo 'not yet working'; start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
