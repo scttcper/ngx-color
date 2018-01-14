@@ -1,0 +1,73 @@
+import { copySync } from 'fs-extra';
+import { build } from 'ng-packagr';
+import { join } from 'path';
+import * as rimraf from 'rimraf';
+
+
+const MODULE_NAMES = [
+  'alpha',
+  'block',
+  'chrome',
+  'circle',
+  'compact',
+  'github',
+  'hue',
+  'material',
+  'photoshop',
+  'sketch',
+  'slider',
+  'swatches',
+  'twitter',
+];
+
+async function main() {
+  // cleanup dist
+  rimraf.sync(join(process.cwd(), '/dist'));
+
+
+  // make helpers
+  await build({
+    project: join(process.cwd(), '/src/lib/helpers/package.json')
+  });
+  await copySync(
+    join(process.cwd(), '/dist/helpers'),
+    join(process.cwd(), '/dist/package-dist/helpers'),
+  );
+
+  // make common
+  rimraf.sync(join(process.cwd(), '/src/lib/common/node_modules'));
+  await copySync(
+    join(process.cwd(), '/dist/helpers'),
+    join(process.cwd(), '/src/lib/common/node_modules/ngx-color/helpers'),
+  );
+  await build({
+    project: join(process.cwd(), 'src/lib/common/package.json'),
+  });
+  await copySync(
+    join(process.cwd(), '/dist/common'),
+    join(process.cwd(), '/dist/package-dist'),
+  );
+
+
+  for (const m of MODULE_NAMES) {
+    rimraf.sync(join(process.cwd(), `/src/lib/components/${m}/node_modules`));
+    await copySync(
+      join(process.cwd(), '/dist/package-dist'),
+      join(process.cwd(), `/src/lib/components/${m}/node_modules/ngx-color`),
+    );
+    await build({
+      project: join(process.cwd(), `src/lib/components/${m}/package.json`),
+    });
+
+  }
+}
+
+main()
+  .then(() => console.log('success'))
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+
+// cpx.copy('README.md', 'dist');
+// cpx.copy('LICENSE', 'dist');
