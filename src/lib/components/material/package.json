@@ -16,6 +16,6 @@
         "ngx-color/common": "ngx-color"
       }
     },
-    "dest": "../../../../dist/package-dist/material"
+    "dest": "../../../../dist/packages-dist/material"
   }
 }

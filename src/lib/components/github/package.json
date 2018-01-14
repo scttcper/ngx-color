@@ -16,6 +16,6 @@
         "ngx-color/helpers": "ngx-color/helpers"
       }
     },
-    "dest": "../../../../dist/package-dist/github"
+    "dest": "../../../../dist/packages-dist/github"
   }
 }

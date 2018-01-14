@@ -15,6 +15,6 @@
         "ngx-color": "ngx-color"
       }
     },
-    "dest": "../../../../dist/package-dist/sketch"
+    "dest": "../../../../dist/packages-dist/sketch"
   }
 }

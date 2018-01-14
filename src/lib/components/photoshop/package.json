@@ -15,6 +15,6 @@
         "ngx-color/helpers": "ngx-color/helpers"
       }
     },
-    "dest": "../../../../dist/package-dist/photoshop"
+    "dest": "../../../../dist/packages-dist/photoshop"
   }
 }
