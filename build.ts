@@ -29,7 +29,7 @@ async function main() {
   await build({
     project: join(process.cwd(), '/src/lib/helpers/package.json')
   });
-  await copySync(
+  copySync(
     join(process.cwd(), '/dist/helpers'),
     join(process.cwd(), '/dist/package-dist/helpers'),
   );
@@ -43,7 +43,7 @@ async function main() {
   await build({
     project: join(process.cwd(), 'src/lib/common/package.json'),
   });
-  await copySync(
+  copySync(
     join(process.cwd(), '/dist/common'),
     join(process.cwd(), '/dist/package-dist'),
   );
@@ -51,7 +51,7 @@ async function main() {
 
   for (const m of MODULE_NAMES) {
     rimraf.sync(join(process.cwd(), `/src/lib/components/${m}/node_modules`));
-    await copySync(
+    copySync(
       join(process.cwd(), '/dist/package-dist'),
       join(process.cwd(), `/src/lib/components/${m}/node_modules/ngx-color`),
     );
@@ -60,6 +60,9 @@ async function main() {
     });
 
   }
+
+  copySync('README.md', join(process.cwd(), 'dist/package-dist/README.md'));
+  copySync('LICENSE', join(process.cwd(), 'dist/package-dist/LICENSE'));
 }
 
 main()
@@ -69,5 +72,4 @@ main()
     process.exit(1);
   });
 
-// cpx.copy('README.md', 'dist');
-// cpx.copy('LICENSE', 'dist');
+
