@@ -56,8 +56,7 @@ import { HSL } from 'ngx-color/helpers';
     </div>
   </div>
   `,
-  styles: [
-    `
+  styles: [`
     .slider-swatches {
       margin-top: 20px;
     }
@@ -67,8 +66,7 @@ import { HSL } from 'ngx-color/helpers';
       padding-right: 1px;
       float: left;
     }
-  `,
-  ],
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
