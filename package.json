@@ -11,7 +11,7 @@
     "build": "./build.sh",
     "publish": "cd dist/packages-dist && npm publish",
     "bundlesize": "npx bundlesize",
-    "ghpages": "ng build --prod --build-optimizer=false --no-progress --baseHref='/ngx-color/'",
+    "ghpages": "ng build --aot --output-hashing=all --named-chunks=false --build-optimizer --environment=prod --sourcemaps=false --extract-css=true --no-progress --baseHref='/ngx-color/'",
     "test": "ng test --single-run --code-coverage --browsers=ChromeCI",
     "test:watch": "ng test --browsers=ChromeCI",
     "test:ci": "ng test --single-run --code-coverage --no-progress --browsers=ChromeCI",
