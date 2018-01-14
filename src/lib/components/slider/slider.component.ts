@@ -4,7 +4,6 @@ import {
   Component,
   Input,
   NgModule,
-  OnChanges,
 } from '@angular/core';
 
 import { ColorWrap, HueModule, SwatchModule  } from 'ngx-color';
@@ -39,7 +38,7 @@ import { SliderSwatchesComponent } from './slider-swatches.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class SliderComponent extends ColorWrap implements OnChanges {
+export class SliderComponent extends ColorWrap {
   @Input()
   pointer = {
     width: '14px',

@@ -4,7 +4,6 @@ import {
   Component,
   Input,
   NgModule,
-  OnChanges,
 } from '@angular/core';
 
 import {
@@ -124,7 +123,7 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class ChromeComponent extends ColorWrap implements OnChanges {
+export class ChromeComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */
   @Input() disableAlpha = false;
   circle = {

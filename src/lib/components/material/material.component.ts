@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, NgModule, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 
 import { ColorWrap, EditableInputModule, RaisedModule } from 'ngx-color';
 import { isValidHex } from 'ngx-color/helpers';

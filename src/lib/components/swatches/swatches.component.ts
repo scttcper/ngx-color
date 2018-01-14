@@ -4,7 +4,6 @@ import {
   Component,
   Input,
   NgModule,
-  OnChanges,
 } from '@angular/core';
 import * as material from 'material-colors';
 
@@ -44,7 +43,7 @@ import { SwatchesGroupComponent } from './swatches-group.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class SwatchesComponent extends ColorWrap implements OnChanges {
+export class SwatchesComponent extends ColorWrap {
   /** Pixel value for picker width */
   @Input() width: string | number = 320;
   /** Color squares to display */
