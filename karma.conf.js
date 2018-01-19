@@ -31,7 +31,7 @@ module.exports = function(config) {
     customLaunchers: {
       ChromeCI: {
         base: `${process.env['TRAVIS'] ? 'ChromeHeadless' : 'Chrome'}`,
-        flags: ['--no-sandbox'],
+        flags: process.env['TRAVIS'] ? ['--no-sandbox'] : [],
       },
     },
     singleRun: false,
