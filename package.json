@@ -28,7 +28,7 @@
     "@angular/forms": "^5.2.1",
     "@angular/platform-browser": "^5.2.1",
     "@angular/platform-browser-dynamic": "^5.2.1",
-    "@ctrl/ngx-github-buttons": "^1.0.4",
+    "@ctrl/ngx-github-buttons": "^1.0.5",
     "bootstrap": "4.0.0",
     "core-js": "^2.5.3",
     "material-colors": "^1.2.5",

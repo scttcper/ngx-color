@@ -2,7 +2,7 @@
 @import '~bootstrap/scss/variables';
 $container-max-widths: (sm: 540px, md: 810px, lg: 810px, xl: 810px);
 @import '~bootstrap/scss/mixins';
-@import '~bootstrap/scss/print';
+@import '~bootstrap/scss/root';
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/type';
 // @import "~bootstrap/scss/images";
@@ -33,6 +33,7 @@ $container-max-widths: (sm: 540px, md: 810px, lg: 810px, xl: 810px);
 // @import "~bootstrap/scss/popover";
 // @import "~bootstrap/scss/carousel";
 @import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/print';
 
 html,
 body {
