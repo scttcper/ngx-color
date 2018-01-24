@@ -274,3 +274,8 @@ None
   `top-left`
 * **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
+
+---
+
+> GitHub [@scttcper](https://github.com/scttcper) &nbsp;&middot;&nbsp;
+> Twitter [@scttcper](https://twitter.com/scttcper)
