@@ -43,7 +43,7 @@ import { fromEvent } from 'rxjs/observable/fromEvent';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() style: any;
+  @Input() style: {[key: string]: string};
   @Input() label: string;
   @Input() value: string | number;
   @Input() arrowOffset: number;
@@ -53,9 +53,9 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   @Output() onChange = new EventEmitter();
   currentValue: string | number;
   blurValue: string;
-  wrapStyle: any;
-  inputStyle: any;
-  labelStyle: any;
+  wrapStyle: {[key: string]: string};
+  inputStyle: {[key: string]: string};
+  labelStyle: {[key: string]: string};
   focus = false;
   mousemove: Subscription;
   mouseup: Subscription;

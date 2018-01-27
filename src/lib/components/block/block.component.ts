@@ -99,19 +99,19 @@ export class BlockComponent extends ColorWrap {
   ];
   @Input() triangle: 'top' | 'hide' = 'top';
   triangleBorderColor: string;
-  input = {
+  input: {[key: string]: string} = {
     width: '100%',
-    'font-size': '12px',
+    fontSize: '12px',
     color: '#666',
     border: '0px',
     outline: 'none',
     height: '22px',
-    'box-shadow': 'inset 0 0 0 1px #ddd',
-    'border-radius': '4px',
+    boxShadow: 'inset 0 0 0 1px #ddd',
+    borderRadius: '4px',
     padding: '0 7px',
-    'box-sizing': 'border-box',
+    boxSizing: 'border-box',
   };
-  wrap = {
+  wrap: {[key: string]: string} = {
     position: 'relative',
     width: '100%',
   };

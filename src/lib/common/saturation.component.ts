@@ -85,8 +85,8 @@ export class SaturationComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() hsv: HSVA;
   @Input() radius: number;
-  @Input() pointer: any;
-  @Input() circle: any;
+  @Input() pointer: { [key: string]: string };
+  @Input() circle: { [key: string]: string };
   @Output() onChange = new EventEmitter<{ data: HSVAsource; $event: Event }>();
   @ViewChild('container') container: ElementRef;
   background: string;

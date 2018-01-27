@@ -143,24 +143,23 @@ export class TwitterComponent extends ColorWrap {
   ];
   @Input() triangle: 'hide' | 'top-left' | 'top-right' | 'bottom-right' = 'top-left';
 
-  swatchStyle = {
+  swatchStyle: {[key: string]: string} = {
     width: '30px',
     height: '30px',
-    'border-radius': '4px',
-    'font-size': 0,
+    borderRadius: '4px',
+    fontSize: '0',
   };
-  input = {
-    'border-radius': '4px',
-    'border-bottom-left-radius': '0',
-    'border-top-left-radius': '0',
+  input: {[key: string]: string} = {
+    borderRadius: '4px',
+    borderBottomLeftRadius: '0',
+    borderTopLeftRadius: '0',
     border: '1px solid #e6ecf0',
-    '-moz-box-sizing': 'border-box',
-    'box-sizing': 'border-box',
+    boxSizing: 'border-box',
     display: 'inline',
-    'font-size': '14px',
+    fontSize: '14px',
     height: '30px',
     padding: '0',
-    'padding-left': '6px',
+    paddingLeft: '6px',
     width: '100%',
     color: '#657786',
   };
@@ -176,13 +175,7 @@ export class TwitterComponent extends ColorWrap {
   handleBlockChange({ hex, $event }) {
     if (isValidHex(hex)) {
       // this.hex = hex;
-      this.handleChange(
-        {
-          hex,
-          source: 'hex',
-        },
-        $event,
-      );
+      this.handleChange({ hex, source: 'hex' }, $event);
     }
   }
 

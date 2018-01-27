@@ -30,7 +30,7 @@ export class BlockSwatchesComponent implements OnInit {
   @Input() colors: string[] | Shape[];
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle: any;
+  swatchStyle: {[key: string]: string};
 
   constructor() { }
 
@@ -39,9 +39,9 @@ export class BlockSwatchesComponent implements OnInit {
       width: '22px',
       height: '22px',
       float: 'left',
-      'margin-right': '10px',
-      'margin-bottom': '10px',
-      'border-radius': '4px',
+      marginRight: '10px',
+      marginBottom: '10px',
+      borderRadius: '4px',
     };
   }
   handleClick({hex, $event}) {
@@ -49,7 +49,7 @@ export class BlockSwatchesComponent implements OnInit {
   }
   focusStyle(c) {
     return {
-      'box-shadow': `${ c } 0 0 4px`,
+      boxShadow: `${ c } 0 0 4px`,
     };
   }
 

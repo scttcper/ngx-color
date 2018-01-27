@@ -95,50 +95,50 @@ export class PhotoshopFieldsComponent {
   @Input() hsv: any;
   @Input() hex: any;
   @Output() onChange = new EventEmitter<any>();
-  RGBinput = {
+  RGBinput: {[key: string]: string} = {
     'margin-left': '35%',
     width: '40%',
     height: '22px',
     border: '1px solid rgb(136, 136, 136)',
-    'box-shadow':
+    boxShadow:
       'rgba(0, 0, 0, 0.1) 0px 1px 1px inset, rgb(236, 236, 236) 0px 1px 0px 0px',
-    'margin-bottom': '2px',
-    'font-size': '13px',
-    'padding-left': '3px',
-    'margin-right': '10px',
+    marginBottom: '2px',
+    fontSize: '13px',
+    paddingLeft: '3px',
+    marginRight: '10px',
   };
-  RGBwrap = {
+  RGBwrap: {[key: string]: string} = {
     position: 'relative',
   };
-  RGBlabel = {
+  RGBlabel: {[key: string]: string} = {
     left: '0px',
     width: '34px',
     'text-transform': 'uppercase',
-    'font-size': '13px',
+    fontSize: '13px',
     height: '24px',
     'line-height': '24px',
     position: 'absolute',
   };
-  HEXinput = {
+  HEXinput: {[key: string]: string} = {
     'margin-left': '20%',
     width: '80%',
     height: '22px',
     border: '1px solid #888888',
-    'box-shadow': 'inset 0 1px 1px rgba(0,0,0,.1), 0 1px 0 0 #ECECEC',
-    'margin-bottom': '3px',
-    'font-size': '13px',
-    'padding-left': '3px',
+    boxShadow: 'inset 0 1px 1px rgba(0,0,0,.1), 0 1px 0 0 #ECECEC',
+    marginBottom: '3px',
+    fontSize: '13px',
+    paddingLeft: '3px',
   };
-  HEXwrap = {
+  HEXwrap: {[key: string]: string} = {
     position: 'relative',
   };
-  HEXlabel = {
+  HEXlabel: {[key: string]: string} = {
     position: 'absolute',
     top: '0px',
     left: '0px',
     width: '14px',
     'text-transform': 'uppercase',
-    'font-size': '13px',
+    fontSize: '13px',
     height: '24px',
     'line-height': '24px',
   };

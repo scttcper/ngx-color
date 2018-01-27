@@ -3,7 +3,6 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnInit,
   Output,
 } from '@angular/core';
 
@@ -64,60 +63,56 @@ import { isValidHex, RGBA } from 'ngx-color/helpers';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class CompactFieldsComponent implements OnInit {
+export class CompactFieldsComponent {
   @Input() hex: string;
   @Input() rgb: RGBA;
   @Output() onChange = new EventEmitter<any>();
-  HEXWrap = {
-    'margin-top': '-3px',
-    'margin-bottom': '-3px',
+  HEXWrap: {[key: string]: string} = {
+    marginTop: '-3px',
+    marginBottom: '-3px',
     // flex: '6 1 0%',
     position: 'relative',
   };
-  HEXinput = {
+  HEXinput: {[key: string]: string} = {
     width: '80%',
     padding: '0px',
-    'padding-left': '20%',
+    paddingLeft: '20%',
     border: 'none',
     outline: 'none',
     background: 'none',
-    'font-size': '12px',
+    fontSize: '12px',
     color: '#333',
     height: '16px',
   };
-  HEXlabel = {
+  HEXlabel: {[key: string]: string} = {
     display: 'none',
   };
-  RGBwrap = {
-    'margin-top': '-3px',
-    'margin-bottom': '-3px',
+  RGBwrap: {[key: string]: string} = {
+    marginTop: '-3px',
+    marginBottom: '-3px',
     // flex: '3 1 0%',
     position: 'relative',
   };
-  RGBinput = {
+  RGBinput: {[key: string]: string} = {
     width: '80%',
     padding: '0px',
-    'padding-left': '30%',
+    paddingLeft: '30%',
     border: 'none',
     outline: 'none',
     background: 'none',
-    'font-size': '12px',
+    fontSize: '12px',
     color: '#333',
     height: '16px',
   };
-  RGBlabel = {
+  RGBlabel: {[key: string]: string} = {
     position: 'absolute',
     top: '6px',
     left: '0px',
     'line-height': '16px',
     'text-transform': 'uppercase',
-    'font-size': '12px',
+    fontSize: '12px',
     color: '#999',
   };
-
-  constructor() {}
-
-  ngOnInit() {}
 
   handleChange({ data, $event }) {
     if (data.hex) {

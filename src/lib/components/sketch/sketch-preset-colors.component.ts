@@ -49,8 +49,8 @@ export class SketchPresetColorsComponent {
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
   swatchStyle = {
-    'border-radius': '3px',
-    'box-shadow': 'inset 0 0 0 1px rgba(0,0,0,.15)',
+    borderRadius: '3px',
+    boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.15)',
   };
 
   handleClick({ hex, $event }) {
@@ -65,7 +65,7 @@ export class SketchPresetColorsComponent {
   focusStyle(val: string | Shape) {
     const c = this.normalizeValue(val);
     return {
-      'box-shadow': `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${c.color}`,
+      boxShadow: `inset 0 0 0 1px rgba(0,0,0,.15), 0 0 4px ${c.color}`,
     };
   }
 }

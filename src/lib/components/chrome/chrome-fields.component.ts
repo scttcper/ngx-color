@@ -149,24 +149,24 @@ export class ChromeFieldsComponent implements OnInit {
   @Input() hex: string;
   @Output() onChange = new EventEmitter<any>();
   view = '';
-  input = {
-    'font-size': '11px',
+  input: {[key: string]: string} = {
+    fontSize: '11px',
     color: '#333',
     width: '100%',
-    'border-radius': '2px',
+    borderRadius: '2px',
     border: 'none',
-    'box-shadow': 'inset 0 0 0 1px #dadada',
+    boxShadow: 'inset 0 0 0 1px #dadada',
     height: '21px',
     'text-align': 'center',
   };
-  label = {
+  label: {[key: string]: string} = {
     'text-transform': 'uppercase',
-    'font-size': '11px',
+    fontSize: '11px',
     'line-height': '11px',
     color: '#969696',
     'text-align': 'center',
     display: 'block',
-    'margin-top': '12px',
+    marginTop: '12px',
   };
 
   ngOnInit() {

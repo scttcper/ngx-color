@@ -40,8 +40,8 @@ export class SwatchComponent implements OnInit {
   @Input() focus: boolean;
   @Output() onClick = new EventEmitter<{ hex: string, $event: Event}>();
   @Output() onHover = new EventEmitter<{ hex: string, $event: Event}>();
-  divStyles: any = {};
-  focusStyles: any = {};
+  divStyles: {[key: string]: string} = {};
+  focusStyles: {[key: string]: string} = {};
   inFocus = false;
 
   constructor() {}

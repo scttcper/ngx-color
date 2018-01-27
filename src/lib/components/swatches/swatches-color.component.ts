@@ -63,7 +63,7 @@ export class SwatchesColorComponent implements OnInit {
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
   getContrastingColor = getContrastingColor;
-  colorStyle: any = {
+  colorStyle: {[key: string]: string} = {
     width: '40px',
     height: '24px',
     cursor: 'pointer',
@@ -72,7 +72,7 @@ export class SwatchesColorComponent implements OnInit {
   focusStyle = {};
   ngOnInit() {
     this.colorStyle.background = this.color;
-    this.focusStyle['box-shadow'] = `0 0 4px ${this.color}`;
+    this.focusStyle['boxShadow'] = `0 0 4px ${this.color}`;
   }
   handleClick($event) {
     this.onClick.emit({

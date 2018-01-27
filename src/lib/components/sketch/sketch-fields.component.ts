@@ -92,22 +92,22 @@ export class SketchFieldsComponent {
   @Input() hex: string;
   @Input() disableAlpha = false;
   @Output() onChange = new EventEmitter<any>();
-  input = {
+  input: {[key: string]: string} = {
     width: '100%',
     padding: '4px 10% 3px',
     border: 'none',
-    'box-sizing': 'border-box',
-    'box-shadow': 'inset 0 0 0 1px #ccc',
-    'font-size': '11px',
+    boxSizing: 'border-box',
+    boxShadow: 'inset 0 0 0 1px #ccc',
+    fontSize: '11px',
   };
-  label = {
+  label: {[key: string]: string} = {
     display: 'block',
-    'text-align': 'center',
-    'font-size': '11px',
+    textAlign: 'center',
+    fontSize: '11px',
     color: '#222',
-    'padding-top': '3px',
-    'padding-bottom': '4px',
-    'text-transform': 'capitalize',
+    paddingTop: '3px',
+    paddingBottom: '4px',
+    textTransform: 'capitalize',
   };
 
   round(value) {

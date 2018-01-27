@@ -139,8 +139,8 @@ export class PhotoshopComponent extends ColorWrap {
   circle = {
     width: '12px',
     height: '12px',
-    'border-radius': '6px',
-    'box-shadow': 'rgb(255, 255, 255) 0px 0px 0px 1px inset',
+    borderRadius: '6px',
+    boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 1px inset',
     transform: 'translate(-6px, -6px)',
   };
   constructor() {

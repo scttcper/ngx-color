@@ -59,25 +59,25 @@ import { isValidHex } from 'ngx-color/helpers';
   preserveWhitespaces: false,
 })
 export class MaterialComponent extends ColorWrap {
-  HEXinput = {
+  HEXinput: {[key: string]: string} = {
     width: '100%',
-    'margin-top': '12px',
-    'font-size': '15px',
+    marginTop: '12px',
+    fontSize: '15px',
     color: 'rgb(51, 51, 51)',
     padding: '0px',
     'border-width': '0px 0px 2px',
     outline: 'none',
     height: '30px',
   };
-  HEXlabel = {
+  HEXlabel: {[key: string]: string} = {
     position: 'absolute',
     top: '0px',
     left: '0px',
-    'font-size': '11px',
+    fontSize: '11px',
     color: 'rgb(153, 153, 153)',
     'text-transform': 'capitalize',
   };
-  RGBinput = {
+  RGBinput: {[key: string]: string} = {
     width: '100%',
     marginTop: '12px',
     fontSize: '15px',
@@ -88,11 +88,11 @@ export class MaterialComponent extends ColorWrap {
     outline: 'none',
     height: '30px',
   };
-  RGBlabel = {
+  RGBlabel: {[key: string]: string} = {
     position: 'absolute',
     top: '0px',
     left: '0px',
-    'font-size': '11px',
+    fontSize: '11px',
     color: '#999999',
     'text-transform': 'capitalize',
   };

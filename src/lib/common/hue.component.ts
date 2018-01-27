@@ -71,7 +71,7 @@ import { calculateHueChange, HSLA, HSLAsource } from 'ngx-color/helpers';
 })
 export class HueComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
-  @Input() pointer: any;
+  @Input() pointer: { [key: string]: string };
   @Input() radius: number;
   @Input() shadow: any;
   @Input() hidePointer = false;

@@ -88,13 +88,13 @@ import { CheckboardModule } from './checkboard.component';
 export class AlphaComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() rgb: RGBA;
-  @Input() pointer: any;
+  @Input() pointer: { [key: string]: string };
   @Input() shadow: string;
   @Input() radius: string;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<any>();
   @ViewChild('container') container: ElementRef;
-  gradient: any;
+  gradient: { [key: string]: string };
   pointerLeft: number;
   pointerTop: number;
   mousemove: Subscription;

@@ -44,12 +44,12 @@ export class AlphaPickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker height */
   @Input() height: string | number = 16;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
-  pointer = {
+  pointer: {[key: string]: string} = {
     width: '18px',
     height: '18px',
-    'border-radius': '50%',
+    borderRadius: '50%',
     transform: 'translate(-9px, -2px)',
-    'box-shadow': '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
+    boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
   };
 
   constructor() {

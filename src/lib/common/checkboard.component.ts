@@ -37,8 +37,8 @@ export class CheckboardComponent implements OnInit {
   ngOnInit() {
     const background = getCheckerboard(this.white, this.grey, this.size);
     this.gridStyles = {
-      'border-radius': this.borderRadius,
-      'box-shadow': this.boxShadow,
+      borderRadius: this.borderRadius,
+      boxShadow: this.boxShadow,
       background: `url(${background}) center left`,
     };
   }
