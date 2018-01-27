@@ -14,8 +14,10 @@ import {
 import { Subscription } from 'rxjs/Subscription';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 
-import { calculateAlphaChange, HSLA, RGBA } from 'ngx-color/helpers';
+
 import { CheckboardModule } from './checkboard.component';
+import { calculateAlphaChange } from './helpers/alpha';
+import { HSLA, RGBA } from './helpers/color.interfaces';
 
 @Component({
   selector: 'color-alpha',

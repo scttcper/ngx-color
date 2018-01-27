@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { isValidHex } from 'ngx-color/helpers';
+import { isValidHex } from 'ngx-color';
 
 @Component({
   selector: 'color-photoshop-fields',

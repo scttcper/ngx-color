@@ -4,10 +4,8 @@
     "outDir": "../out-tsc/spec",
     "baseUrl": "./",
     "module": "commonjs",
-    "target": "es2015",
     "types": ["jasmine", "node"],
     "paths": {
-      "ngx-color/helpers": ["./lib/helpers"],
       "ngx-color": ["./lib/common/public_api"]
     }
   },

@@ -14,12 +14,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 
 import { CommonModule } from '@angular/common';
-import {
-  calculateSaturationChange,
-  HSLA,
-  HSVA,
-  HSVAsource,
-} from 'ngx-color/helpers';
+import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
+import { calculateSaturationChange } from './helpers/saturation';
 
 @Component({
   selector: 'color-saturation',

@@ -12,8 +12,7 @@
       "umdModuleIds": {
         "ngx-color": "ngx-color",
         "material-colors": "material-colors",
-        "tinycolor2": "tinycolor2",
-        "ngx-color/helpers": "ngx-color/helpers"
+        "tinycolor2": "tinycolor2"
       }
     },
     "dest": "../../../../dist/packages-dist/compact"

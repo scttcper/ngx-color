@@ -1,6 +1,6 @@
 {
   "name": "ngx-color",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "license": "MIT",
   "homepage": "https://github.com/scttcper/ngx-color",
   "bugs": "https://github.com/scttcper/ngx-color/issues",
@@ -11,7 +11,7 @@
     "build": "ts-node build.ts",
     "publish": "cd dist/packages-dist && npm publish",
     "bundlesize": "npx bundlesize",
-    "ghpages": "ng build --aot --output-hashing=all --named-chunks=false --build-optimizer --environment=prod --sourcemaps=false --extract-css=true --no-progress --baseHref='/ngx-color/'",
+    "ghpages": "ng build --prod --show-circular-dependencies --baseHref='/ngx-color/'",
     "test": "ng test --single-run --code-coverage --browsers=ChromeCI",
     "test:watch": "ng test --browsers=ChromeCI",
     "test:ci": "ng test --single-run --code-coverage --no-progress --browsers=ChromeCI",
@@ -37,7 +37,7 @@
     "zone.js": "^0.8.20"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.6",
+    "@angular/cli": "1.7.0-beta.2",
     "@angular/compiler-cli": "^5.2.2",
     "@angular/language-service": "^5.2.2",
     "@types/fs-extra": "^5.0.0",

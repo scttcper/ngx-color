@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2015",
+    "target": "es5",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -21,7 +21,6 @@
       "dom"
     ],
     "paths": {
-      "ngx-color/helpers": ["./lib/helpers"],
       "ngx-color": ["./lib/common/public_api"]
     }
   }

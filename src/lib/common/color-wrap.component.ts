@@ -14,14 +14,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
-import {
-  simpleCheckForValidColor,
-  toState,
-  Color,
-  HSLA,
-  HSVA,
-  RGBA,
-} from 'ngx-color/helpers';
+import { simpleCheckForValidColor, toState } from './helpers/color';
+import { Color, HSLA, HSVA, RGBA } from './helpers/color.interfaces';
 
 export interface ColorEvent {
   $event: Event;

@@ -24,22 +24,8 @@ async function main() {
   // cleanup dist
   rimraf.sync(join(process.cwd(), '/dist'));
 
-
-  // make helpers
-  await build({
-    project: join(process.cwd(), '/src/lib/helpers/package.json')
-  });
-  copySync(
-    join(process.cwd(), '/dist/helpers'),
-    join(process.cwd(), '/dist/packages-dist/helpers'),
-  );
-
   // make common
   rimraf.sync(join(process.cwd(), '/src/lib/common/node_modules'));
-  await copySync(
-    join(process.cwd(), '/dist/helpers'),
-    join(process.cwd(), '/src/lib/common/node_modules/ngx-color/helpers'),
-  );
   await build({
     project: join(process.cwd(), 'src/lib/common/package.json'),
   });

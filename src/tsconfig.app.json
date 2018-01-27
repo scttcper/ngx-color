@@ -6,7 +6,6 @@
     "module": "es2015",
     "types": [],
     "paths": {
-      "ngx-color/helpers": ["./lib/helpers"],
       "ngx-color": ["./lib/common/public_api"]
     }
   },

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { calculateAlphaChange } from 'ngx-color/helpers';
+import { calculateAlphaChange } from 'ngx-color';
 import { red } from '../../helpers/color';
 import { AlphaPickerComponent, ColorAlphaModule } from './alpha-picker.component';
 

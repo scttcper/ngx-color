@@ -12,7 +12,7 @@ import {
   EditableInputModule,
   SwatchModule,
 } from 'ngx-color';
-import { getContrastingColor, isValidHex } from 'ngx-color/helpers';
+import { getContrastingColor, isValidHex } from 'ngx-color';
 import { BlockSwatchesComponent } from './block-swatches.component';
 
 @Component({

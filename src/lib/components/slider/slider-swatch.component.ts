@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { HSL } from 'ngx-color/helpers';
+import { HSL } from 'ngx-color';
 
 @Component({
   selector: 'color-slider-swatch',

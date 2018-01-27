@@ -6,3 +6,10 @@ export * from './hue.component';
 export * from './raised.component';
 export * from './saturation.component';
 export * from './swatch.component';
+
+export * from './helpers/alpha';
+export * from './helpers/checkboard';
+export * from './helpers/color';
+export * from './helpers/color.interfaces';
+export * from './helpers/hue';
+export * from './helpers/saturation';

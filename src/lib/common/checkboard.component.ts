@@ -7,7 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 
-import { getCheckerboard } from 'ngx-color/helpers';
+import { getCheckerboard } from './helpers/checkboard';
 
 @Component({
   selector: 'color-checkboard',

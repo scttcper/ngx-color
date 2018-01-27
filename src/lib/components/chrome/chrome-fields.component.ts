@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { isValidHex, HSLA, RGBA } from 'ngx-color/helpers';
+import { isValidHex, HSLA, RGBA } from 'ngx-color';
 
 @Component({
   selector: 'color-chrome-fields',

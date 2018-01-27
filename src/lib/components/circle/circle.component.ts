@@ -8,7 +8,7 @@ import {
 import * as material from 'material-colors';
 
 import { ColorWrap, SwatchModule } from 'ngx-color';
-import { isValidHex } from 'ngx-color/helpers';
+import { isValidHex } from 'ngx-color';
 import { CircleSwatchComponent } from './circle-swatch.component';
 
 @Component({

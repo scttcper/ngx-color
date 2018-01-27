@@ -12,7 +12,7 @@ import {
   RaisedModule,
   SwatchModule,
 } from 'ngx-color';
-import { isValidHex } from 'ngx-color/helpers';
+import { isValidHex } from 'ngx-color';
 import { CompactColorComponent } from './compact-color.component';
 import { CompactFieldsComponent } from './compact-fields.component';
 

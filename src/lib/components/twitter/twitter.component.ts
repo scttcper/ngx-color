@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 
 import { ColorWrap, EditableInputModule, SwatchModule } from 'ngx-color';
-import { isValidHex } from 'ngx-color/helpers';
+import { isValidHex } from 'ngx-color';
 
 @Component({
   selector: 'color-twitter',

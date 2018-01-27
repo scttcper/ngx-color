@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { AlphaModule, CheckboardModule, ColorWrap } from 'ngx-color';
-import { toState } from 'ngx-color/helpers';
+import { toState } from 'ngx-color';
 
 @Component({
   selector: 'color-alpha-picker',

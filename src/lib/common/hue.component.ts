@@ -14,7 +14,8 @@ import {
 import { Subscription } from 'rxjs/Subscription';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 
-import { calculateHueChange, HSLA, HSLAsource } from 'ngx-color/helpers';
+import { HSLA, HSLAsource } from './helpers/color.interfaces';
+import { calculateHueChange } from './helpers/hue';
 
 @Component({
   selector: 'color-hue',

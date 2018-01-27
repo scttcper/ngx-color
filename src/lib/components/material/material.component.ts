@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 
 import { ColorWrap, EditableInputModule, RaisedModule } from 'ngx-color';
-import { isValidHex } from 'ngx-color/helpers';
+import { isValidHex } from 'ngx-color';
 
 @Component({
   selector: 'color-material',

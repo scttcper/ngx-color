@@ -1,7 +1,7 @@
 {
   "$schema": "../../../node_modules/ng-packagr/package.schema.json",
   "name": "ngx-color",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description":
     "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "dependencies": {
@@ -22,8 +22,7 @@
       "entryFile": "public_api.ts",
       "umdModuleIds": {
         "ngx-color": "ngx-color",
-        "tinycolor2": "tinycolor2",
-        "ngx-color/helpers": "ngx-color/helpers"
+        "tinycolor2": "tinycolor2"
       }
     },
     "dest": "../../../dist/common"

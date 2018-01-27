@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { getContrastingColor } from 'ngx-color/helpers';
+import { getContrastingColor } from 'ngx-color';
 
 @Component({
   selector: 'color-compact-color',
