@@ -25,7 +25,6 @@ async function main() {
   rimraf.sync(join(process.cwd(), '/dist'));
 
   // make common
-  rimraf.sync(join(process.cwd(), '/src/lib/common/node_modules'));
   await build({
     project: join(process.cwd(), 'src/lib/common/package.json'),
   });
