@@ -1,13 +1,14 @@
 {
   "$schema": "../../../node_modules/ng-packagr/package.schema.json",
   "name": "ngx-color",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description":
     "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "dependencies": {
     "tinycolor2": "^1.4.1",
     "material-colors": "^1.2.5"
   },
+  "sideEffects": false,
   "peerDependencies": {
     "@angular/core": ">=5.0.0",
     "@angular/common": ">=5.0.0",
