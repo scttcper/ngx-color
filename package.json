@@ -34,7 +34,7 @@
     "material-colors": "1.2.5",
     "rxjs": "5.5.8",
     "tinycolor2": "1.4.1",
-    "zone.js": "0.8.24"
+    "zone.js": "0.8.25"
   },
   "devDependencies": {
     "@angular/cli": "1.7.3",
