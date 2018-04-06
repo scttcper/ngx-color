@@ -11,9 +11,6 @@
   <a href="https://codecov.io/github/scttcper/ngx-color">
     <img src="https://img.shields.io/codecov/c/github/scttcper/ngx-color.svg" alt="codecov">
   </a>
-  <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/scttcper/ngx-color.svg" alt="greenkeeper">
-  </a>
 </div>
 
 <br>
