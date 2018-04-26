@@ -55,7 +55,7 @@
     "karma-coverage-istanbul-reporter": "1.4.2",
     "karma-jasmine": "1.1.1",
     "karma-jasmine-html-reporter": "0.2.2",
-    "karma-mocha-reporter": "^2.2.5",
+    "karma-mocha-reporter": "2.2.5",
     "ng-packagr": "2.4.2",
     "protractor": "5.3.1",
     "rimraf": "2.6.2",
