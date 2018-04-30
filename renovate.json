@@ -1,8 +1,9 @@
 {
   "extends": [
-    "config:base",
+    "config:js-lib",
     ":semanticCommitTypeAll(chore)",
-    "schedule:earlyMondays"
+    "schedule:earlyMondays",
+    ":maintainLockFilesMonthly"
   ],
   "rebaseStalePrs": true,
   "semanticCommits": true,
