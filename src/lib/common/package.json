@@ -8,7 +8,6 @@
     "tinycolor2": "^1.4.1",
     "material-colors": "^1.2.5"
   },
-  "sideEffects": false,
   "peerDependencies": {
     "@angular/core": ">=5.0.0",
     "@angular/common": ">=5.0.0",

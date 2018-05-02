@@ -1,5 +1,5 @@
 import { copySync } from 'fs-extra';
-import { build } from 'ng-packagr';
+import { ngPackagr } from 'ng-packagr';
 import { join } from 'path';
 import * as rimraf from 'rimraf';
 
@@ -23,27 +23,28 @@ const MODULE_NAMES = [
 async function main() {
   // cleanup dist
   rimraf.sync(join(process.cwd(), '/dist'));
+  rimraf.sync(join(process.cwd(), '/node_modules/ngx-color'));
 
-  // make common
-  await build({
-    project: join(process.cwd(), 'src/lib/common/package.json'),
-  });
+  await ngPackagr()
+    .forProject(join(process.cwd(), 'src/lib/common/package.json'))
+    .build();
+
+  // put it in node modules so the path resolves
+  // proper path support eventually
+  copySync(
+    join(process.cwd(), '/dist/common'),
+    join(process.cwd(), '/node_modules/ngx-color'),
+  );
   copySync(
     join(process.cwd(), '/dist/common'),
     join(process.cwd(), '/dist/packages-dist'),
   );
 
-
+  // build each package
   for (const m of MODULE_NAMES) {
-    rimraf.sync(join(process.cwd(), `/src/lib/components/${m}/node_modules`));
-    copySync(
-      join(process.cwd(), '/dist/packages-dist'),
-      join(process.cwd(), `/src/lib/components/${m}/node_modules/ngx-color`),
-    );
-    await build({
-      project: join(process.cwd(), `src/lib/components/${m}/package.json`),
-    });
-
+    await ngPackagr()
+      .forProject(join(process.cwd(), `src/lib/components/${m}/package.json`))
+      .build();
   }
 
   copySync('README.md', join(process.cwd(), 'dist/packages-dist/README.md'));
