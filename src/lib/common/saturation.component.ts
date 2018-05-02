@@ -10,8 +10,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { fromEvent, Subscription } from 'rxjs';
 
 import { CommonModule } from '@angular/common';
 import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';

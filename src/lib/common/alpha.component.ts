@@ -11,8 +11,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { fromEvent , Subscription } from 'rxjs';
 
 
 import { CheckboardModule } from './checkboard.component';

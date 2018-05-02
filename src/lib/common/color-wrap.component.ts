@@ -10,9 +10,8 @@ import {
   Output,
 } from '@angular/core';
 
-import { Subscription } from 'rxjs/Subscription';
-import { debounceTime } from 'rxjs/operators/debounceTime';
-import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
+import { Subscription } from 'rxjs';
+import { debounceTime,  distinctUntilChanged } from 'rxjs/operators';
 
 import { simpleCheckForValidColor, toState } from './helpers/color';
 import { Color, HSLA, HSVA, RGBA } from './helpers/color.interfaces';

@@ -11,8 +11,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { Subscription } from 'rxjs/Subscription';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { fromEvent,  Subscription } from 'rxjs';
 
 @Component({
   selector: 'color-editable-input',
