@@ -74,7 +74,7 @@ export class SliderSwatchesComponent {
   @Input() hsl: HSL;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle: any;
+  swatchStyle: { [key: string]: string };
 
   active(l: number, s: number) {
     return (

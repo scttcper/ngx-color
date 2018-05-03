@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { isValidHex } from 'ngx-color';
+import { isValidHex, HSV, RGB } from 'ngx-color';
 
 @Component({
   selector: 'color-photoshop-fields',
@@ -91,12 +91,12 @@ import { isValidHex } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class PhotoshopFieldsComponent {
-  @Input() rgb: any;
-  @Input() hsv: any;
-  @Input() hex: any;
+  @Input() rgb: RGB;
+  @Input() hsv: HSV;
+  @Input() hex: string;
   @Output() onChange = new EventEmitter<any>();
-  RGBinput: {[key: string]: string} = {
-    'margin-left': '35%',
+  RGBinput: { [key: string]: string } = {
+    marginLeft: '35%',
     width: '40%',
     height: '22px',
     border: '1px solid rgb(136, 136, 136)',
@@ -107,20 +107,20 @@ export class PhotoshopFieldsComponent {
     paddingLeft: '3px',
     marginRight: '10px',
   };
-  RGBwrap: {[key: string]: string} = {
+  RGBwrap: { [key: string]: string } = {
     position: 'relative',
   };
-  RGBlabel: {[key: string]: string} = {
+  RGBlabel: { [key: string]: string } = {
     left: '0px',
     width: '34px',
-    'text-transform': 'uppercase',
+    textTransform: 'uppercase',
     fontSize: '13px',
     height: '24px',
-    'line-height': '24px',
+    lineHeight: '24px',
     position: 'absolute',
   };
-  HEXinput: {[key: string]: string} = {
-    'margin-left': '20%',
+  HEXinput: { [key: string]: string } = {
+    marginLeft: '20%',
     width: '80%',
     height: '22px',
     border: '1px solid #888888',
@@ -129,18 +129,18 @@ export class PhotoshopFieldsComponent {
     fontSize: '13px',
     paddingLeft: '3px',
   };
-  HEXwrap: {[key: string]: string} = {
+  HEXwrap: { [key: string]: string } = {
     position: 'relative',
   };
-  HEXlabel: {[key: string]: string} = {
+  HEXlabel: { [key: string]: string } = {
     position: 'absolute',
     top: '0px',
     left: '0px',
     width: '14px',
-    'text-transform': 'uppercase',
+    textTransform: 'uppercase',
     fontSize: '13px',
     height: '24px',
-    'line-height': '24px',
+    lineHeight: '24px',
   };
 
   round(v) {

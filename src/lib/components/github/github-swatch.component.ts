@@ -9,16 +9,16 @@ import {
 @Component({
   selector: 'color-github-swatch',
   template: `
-    <div class="github-swatch">
-      <color-swatch
-        [color]="color"
-        [style]="swatchStyle"
-        (onClick)="handleClick($event)"
-        (onHover)="onSwatchHover.emit($event)"
-        class="swatch"
-      ></color-swatch>
-      <div class="clear"></div>
-    </div>
+  <div class="github-swatch">
+    <color-swatch
+      [color]="color"
+      [style]="swatchStyle"
+      (onClick)="handleClick($event)"
+      (onHover)="onSwatchHover.emit($event)"
+      class="swatch"
+    ></color-swatch>
+    <div class="clear"></div>
+  </div>
   `,
   styles: [
     `
@@ -42,7 +42,7 @@ export class GithubSwatchComponent {
   @Input() color: string;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle: any;
+  swatchStyle: { [key: string]: string };
 
   constructor() {}
 

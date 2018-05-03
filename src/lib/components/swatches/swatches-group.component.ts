@@ -9,17 +9,17 @@ import {
 @Component({
   selector: 'color-swatches-group',
   template: `
-    <div class="swatches-group">
-      <color-swatches-color
-        *ngFor="let color of group; let idx = index;"
-        [active]="color.toLowerCase() === active"
-        [color]="color"
-        [first]="idx === 0"
-        [last]="idx === group.length - 1"
-        (onClick)="onClick.emit($event)"
-      >
-      </color-swatches-color>
-    </div>
+  <div class="swatches-group">
+    <color-swatches-color
+      *ngFor="let color of group; let idx = index;"
+      [active]="color.toLowerCase() === active"
+      [color]="color"
+      [first]="idx === 0"
+      [last]="idx === group.length - 1"
+      (onClick)="onClick.emit($event)"
+    >
+    </color-swatches-color>
+  </div>
   `,
   styles: [
     `

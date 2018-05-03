@@ -73,7 +73,7 @@ export class HueComponent implements OnChanges, OnDestroy {
   @Input() hsl: HSLA;
   @Input() pointer: { [key: string]: string };
   @Input() radius: number;
-  @Input() shadow: any;
+  @Input() shadow: string;
   @Input() hidePointer = false;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<{ data: HSLAsource; $event: Event }>();

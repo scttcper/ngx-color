@@ -12,17 +12,17 @@ import { getContrastingColor } from 'ngx-color';
 @Component({
   selector: 'color-compact-color',
   template: `
-    <div class="compact-color">
-      <color-swatch class="swatch"
-        [color]="color" [style]="swatchStyle"
-        [focusStyle]="swatchFocus"
-        (onClick)="handleClick($event)" (onHover)="onSwatchHover.emit($event)"
-        >
-        <div class="compact-dot"
-          [class.active]="active" [style.background]="getContrastingColor(color)"
-        ></div>
-      </color-swatch>
-    </div>
+  <div class="compact-color">
+    <color-swatch class="swatch"
+      [color]="color" [style]="swatchStyle"
+      [focusStyle]="swatchFocus"
+      (onClick)="handleClick($event)" (onHover)="onSwatchHover.emit($event)"
+      >
+      <div class="compact-dot"
+        [class.active]="active" [style.background]="getContrastingColor(color)"
+      ></div>
+    </color-swatch>
+  </div>
   `,
   styles: [
     `
@@ -48,7 +48,7 @@ export class CompactColorComponent implements OnChanges {
   @Input() active: boolean;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle: {[key: string]: string} = {
+  swatchStyle: { [key: string]: string } = {
     width: '15px',
     height: '15px',
     float: 'left',
@@ -57,14 +57,14 @@ export class CompactColorComponent implements OnChanges {
     position: 'relative',
     cursor: 'pointer',
   };
-  swatchFocus: {[key: string]: string} = {};
+  swatchFocus: { [key: string]: string } = {};
   getContrastingColor = getContrastingColor;
 
   ngOnChanges() {
     this.swatchStyle.background = this.color;
-    this.swatchFocus['box-shadow'] = `0 0 4px ${this.color}`;
+    this.swatchFocus.boxShadow = `0 0 4px ${this.color}`;
     if (this.color.toLowerCase() === '#ffffff') {
-      this.swatchStyle['box-shadow'] = 'inset 0 0 0 1px #ddd';
+      this.swatchStyle.boxShadow = 'inset 0 0 0 1px #ddd';
     }
   }
   handleClick({ hex, $event }) {

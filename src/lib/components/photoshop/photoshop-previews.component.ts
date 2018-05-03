@@ -4,6 +4,7 @@ import {
   Input,
   OnChanges,
 } from '@angular/core';
+import { RGB } from 'ngx-color';
 
 @Component({
   selector: 'color-photoshop-previews',
@@ -19,35 +20,34 @@ import {
   `,
   styles: [
     `
-    .photoshop-swatches {
-      border: 1px solid #B3B3B3;
-      border-bottom: 1px solid #F0F0F0;
-      margin-bottom: 2px;
-      margin-top: 1px;
-    }
-    .photoshop-new {
-      height: 34px;
-      box-shadow: inset 1px 0 0 #000, inset -1px 0 0 #000, inset 0 1px 0 #000;
-    }
-    .photoshop-current {
-      height: 34px;
-      box-shadow: inset 1px 0 0 #000, inset -1px 0 0 #000, inset 0 -1px 0 #000;
-    }
-    .photoshop-label {
-      font-size: 14px;
-      color: #000;
-      text-align: center;
-    }
+  .photoshop-swatches {
+    border: 1px solid #B3B3B3;
+    border-bottom: 1px solid #F0F0F0;
+    margin-bottom: 2px;
+    margin-top: 1px;
+  }
+  .photoshop-new {
+    height: 34px;
+    box-shadow: inset 1px 0 0 #000, inset -1px 0 0 #000, inset 0 1px 0 #000;
+  }
+  .photoshop-current {
+    height: 34px;
+    box-shadow: inset 1px 0 0 #000, inset -1px 0 0 #000, inset 0 -1px 0 #000;
+  }
+  .photoshop-label {
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+  }
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
 export class PhotoshopPreviewsComponent implements OnChanges {
-  @Input() rgb: any;
+  @Input() rgb: RGB;
   @Input() currentColor = '';
   backgroundNew = '';
-  constructor() {}
 
   ngOnChanges() {
     this.backgroundNew = `rgb(${this.rgb.r},${this.rgb.g}, ${this.rgb.b})`;

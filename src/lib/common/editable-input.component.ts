@@ -11,38 +11,44 @@ import {
   Output,
 } from '@angular/core';
 
-import { fromEvent,  Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
   selector: 'color-editable-input',
   template: `
-    <div class="wrap" [ngStyle]="wrapStyle">
-      <input [ngStyle]="inputStyle"
-        [value]="currentValue"
-        [placeholder]="placeholder"
-        spellCheck="false"
-        (keydown)="handleKeydown($event)"
-        (keyup)="handleKeyup($event)"
-        (focus)="handleFocus($event)"
-        (focusout)="handleFocusOut($event)"
-      />
-      <span *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
-        {{ label }}
-      </span>
-    </div>
+  <div class="wrap" [ngStyle]="wrapStyle">
+    <input [ngStyle]="inputStyle"
+      [value]="currentValue"
+      [placeholder]="placeholder"
+      spellCheck="false"
+      (keydown)="handleKeydown($event)"
+      (keyup)="handleKeyup($event)"
+      (focus)="handleFocus($event)"
+      (focusout)="handleFocusOut($event)"
+    />
+    <span *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
+      {{ label }}
+    </span>
+  </div>
   `,
-  styles: [`
+  styles: [
+    `
     :host {
       display: flex;
     }
     .wrap {
       position: relative;
     }
-  `],
+  `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() style: {[key: string]: string};
+  @Input() style: {
+    wrap: { [key: string]: string };
+    input: { [key: string]: string };
+    label: { [key: string]: string };
+  };
   @Input() label: string;
   @Input() value: string | number;
   @Input() arrowOffset: number;
@@ -52,17 +58,17 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   @Output() onChange = new EventEmitter();
   currentValue: string | number;
   blurValue: string;
-  wrapStyle: {[key: string]: string};
-  inputStyle: {[key: string]: string};
-  labelStyle: {[key: string]: string};
+  wrapStyle: { [key: string]: string };
+  inputStyle: { [key: string]: string };
+  labelStyle: { [key: string]: string };
   focus = false;
   mousemove: Subscription;
   mouseup: Subscription;
 
   ngOnInit() {
-    this.wrapStyle = this.style && this.style.wrap ? this.style.wrap : { };
-    this.inputStyle = this.style && this.style.input ? this.style.input : { };
-    this.labelStyle = this.style && this.style.label ? this.style.label : { };
+    this.wrapStyle = this.style && this.style.wrap ? this.style.wrap : {};
+    this.inputStyle = this.style && this.style.input ? this.style.input : {};
+    this.labelStyle = this.style && this.style.label ? this.style.label : {};
     if (this.dragLabel) {
       this.labelStyle.cursor = 'ew-resize';
     }
@@ -87,13 +93,16 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
       // Up
       if ($event.keyCode === 38) {
         if (this.label) {
-          this.onChange.emit({ data: { [this.label]: number + amount }, $event });
+          this.onChange.emit({
+            data: { [this.label]: number + amount },
+            $event,
+          });
         } else {
           this.onChange.emit({ data: number + amount, $event });
         }
 
         if (isPercentage) {
-          this.currentValue = `${ number + amount }%`;
+          this.currentValue = `${number + amount}%`;
         } else {
           this.currentValue = number + amount;
         }
@@ -102,13 +111,16 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
       // Down
       if ($event.keyCode === 40) {
         if (this.label) {
-          this.onChange.emit({ data: { [this.label]: number - amount }, $event });
+          this.onChange.emit({
+            data: { [this.label]: number - amount },
+            $event,
+          });
         } else {
           this.onChange.emit({ data: number - amount, $event });
         }
 
         if (isPercentage) {
-          this.currentValue = `${ number - amount }%`;
+          this.currentValue = `${number - amount}%`;
         } else {
           this.currentValue = number - amount;
         }
@@ -120,7 +132,10 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
       return;
     }
     if (this.label) {
-      this.onChange.emit({ data: { [this.label]: $event.target.value }, $event });
+      this.onChange.emit({
+        data: { [this.label]: $event.target.value },
+        $event,
+      });
     } else {
       this.onChange.emit({ data: $event.target.value, $event });
     }
@@ -137,10 +152,12 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
     this.unsubscribe();
   }
   subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove')
-      .subscribe((ev: Event) => this.handleDrag(ev));
-    this.mouseup = fromEvent(document, 'mouseup')
-      .subscribe(() => this.unsubscribe());
+    this.mousemove = fromEvent(document, 'mousemove').subscribe((ev: Event) =>
+      this.handleDrag(ev),
+    );
+    this.mouseup = fromEvent(document, 'mouseup').subscribe(() =>
+      this.unsubscribe(),
+    );
   }
   unsubscribe() {
     if (this.mousemove) {
@@ -172,4 +189,4 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   exports: [EditableInputComponent],
   imports: [CommonModule],
 })
-export class EditableInputModule { }
+export class EditableInputModule {}

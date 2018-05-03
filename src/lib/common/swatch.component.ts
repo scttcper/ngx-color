@@ -35,8 +35,8 @@ import { CheckboardModule } from './checkboard.component';
 })
 export class SwatchComponent implements OnInit {
   @Input() color;
-  @Input() style = {};
-  @Input() focusStyle = {};
+  @Input() style: { [key: string]: string } = {};
+  @Input() focusStyle: { [key: string]: string } = {};
   @Input() focus: boolean;
   @Output() onClick = new EventEmitter<{ hex: string, $event: Event}>();
   @Output() onHover = new EventEmitter<{ hex: string, $event: Event}>();

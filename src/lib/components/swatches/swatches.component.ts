@@ -15,8 +15,7 @@ import { SwatchesGroupComponent } from './swatches-group.component';
   selector: 'color-swatches',
   template: `
   <div class="swatches-picker {{ className }}"
-    [style.width.px]="width" [style.height.px]="height"
-  >
+    [style.width.px]="width" [style.height.px]="height">
     <color-raised>
       <div class="swatches-overflow" [style.height.px]="height">
         <div class="swatches-body">
@@ -49,7 +48,8 @@ export class SwatchesComponent extends ColorWrap {
   /** Color squares to display */
   @Input() height: string | number = 240;
   /** An array of color groups, each with an array of colors */
-  @Input() colors: string[][] = [
+  @Input()
+  colors: string[][] = [
     [
       material.red['900'],
       material.red['700'],

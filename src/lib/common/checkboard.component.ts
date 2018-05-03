@@ -14,13 +14,13 @@ import { getCheckerboard } from './helpers/checkboard';
   template: `<div class="grid" [ngStyle]="gridStyles"></div>`,
   styles: [
     `
-    .grid {
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      position: absolute;
-    }
+  .grid {
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+  }
   `,
   ],
   preserveWhitespaces: false,
@@ -30,8 +30,8 @@ export class CheckboardComponent implements OnInit {
   @Input() white = 'transparent';
   @Input() size = 8;
   @Input() grey = 'rgba(0,0,0,.08)';
-  @Input() boxShadow: any;
-  @Input() borderRadius: any;
+  @Input() boxShadow: string;
+  @Input() borderRadius: string;
   gridStyles: { [key: string]: string };
 
   ngOnInit() {
