@@ -11,7 +11,7 @@
     "build": "ts-node build.ts",
     "publish": "cd dist/packages-dist && npm publish",
     "bundlesize": "npx bundlesize",
-    "ghpages": "ng build --prod --show-circular-dependencies --baseHref='/ngx-color/'",
+    "ghpages": "ng build --prod --baseHref='/ngx-color/'",
     "test": "ng test --single-run --code-coverage --browsers=ChromeCI",
     "test:watch": "ng test --browsers=ChromeCI",
     "test:ci": "ng test --single-run --code-coverage --no-progress --browsers=ChromeCI",
