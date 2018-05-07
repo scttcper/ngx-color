@@ -11,7 +11,7 @@
       "ngx-color": ["./lib/common/public_api"]
     }
   },
-  "files": ["test.ts"],
+  "files": ["test.ts", "polyfills.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"],
   "angularCompilerOptions": {
     "preserveWhitespaces": false
