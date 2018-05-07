@@ -4,10 +4,10 @@ node_js: 10
 addons:
   chrome: stable
 script:
-  - npm run build
   - npm run lint
-  - npm run bundlesize
   - npm run test:ci
+  - npm run build
+  - npm run bundlesize
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - npm run ghpages
