@@ -14,7 +14,7 @@ import {
     [style.width.px]="circleSize" [style.height.px]="circleSize"
     [style.margin-right.px]="circleSpacing" [style.margin-bottom.px]="circleSpacing"
     >
-    <color-swatch class="swatch"
+    <color-swatch
       [color]="color" [style]="swatchStyle" [focus]="focus" [focusStyle]="focusStyle"
       (onClick)="handleClick($event)" (onHover)="onSwatchHover.emit($event)">
     </color-swatch>
