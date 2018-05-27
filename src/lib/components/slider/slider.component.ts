@@ -6,7 +6,7 @@ import {
   NgModule,
 } from '@angular/core';
 
-import { ColorWrap, HueModule, SwatchModule  } from 'ngx-color';
+import { ColorWrap, HueModule, SwatchModule } from 'ngx-color';
 import { SliderSwatchComponent } from './slider-swatch.component';
 import { SliderSwatchesComponent } from './slider-swatches.component';
 
@@ -40,18 +40,20 @@ import { SliderSwatchesComponent } from './slider-swatches.component';
 })
 export class SliderComponent extends ColorWrap {
   @Input()
-  pointer: {[key: string]: string} = {
+  pointer: { [key: string]: string } = {
     width: '14px',
     height: '14px',
     borderRadius: '6px',
-    transform: 'translate(-7px, -1px)',
+    transform: 'translate(-7px, -2px)',
     backgroundColor: 'rgb(248, 248, 248)',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
   };
   @Input() radius = 2;
+
   constructor() {
     super();
   }
+
   handlePickerChange({ data, $event }) {
     this.handleChange(data, $event);
   }
