@@ -35,6 +35,9 @@ $container-max-widths: (sm: 540px, md: 810px, lg: 810px, xl: 810px);
 @import '~bootstrap/scss/utilities';
 @import '~bootstrap/scss/print';
 
+html {
+  touch-action: manipulation;
+}
 html,
 body {
   background: #eee;

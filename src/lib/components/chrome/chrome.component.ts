@@ -88,7 +88,7 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
       bottom: 0;
       left: 0;
       right: 0;
-      border-radius: 8px;
+      border-radius: 20px;
       box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
       z-index: 2;
     }

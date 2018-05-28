@@ -12,4 +12,3 @@ export * from './helpers/checkboard';
 export * from './helpers/color';
 export * from './helpers/color.interfaces';
 export * from './helpers/hue';
-export * from './helpers/saturation';
