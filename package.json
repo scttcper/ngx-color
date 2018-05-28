@@ -82,7 +82,7 @@
   "bundlesize": [
     {
       "path": "./dist/packages-dist/bundles/ngx-color.umd.min.js",
-      "maxSize": "5 kB"
+      "maxSize": "6 kB"
     }
   ]
 }
