@@ -8,11 +8,13 @@ import {
   Input,
   NgModule,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
 
+import { Subject, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
@@ -71,7 +73,7 @@ import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SaturationComponent implements OnChanges, OnInit {
+export class SaturationComponent implements OnChanges, OnInit, OnDestroy {
   @Input() hsl: HSLA;
   @Input() hsv: HSVA;
   @Input() radius: number;
@@ -83,11 +85,12 @@ export class SaturationComponent implements OnChanges, OnInit {
   pointerTop: string;
   pointerLeft: string;
   private mouseListening = false;
-  private mousechange = new EventEmitter<{
+  private mousechange = new Subject<{
     x: number;
     y: number;
     $event: any;
   }>();
+  private sub: Subscription;
   @HostListener('window:mousemove', ['$event', '$event.pageX', '$event.pageY'])
   @HostListener('window:touchmove', [
     '$event',
@@ -97,7 +100,7 @@ export class SaturationComponent implements OnChanges, OnInit {
   mousemove($event: Event, x: number, y: number) {
     if (this.mouseListening) {
       $event.preventDefault();
-      this.mousechange.emit({ $event, x, y });
+      this.mousechange.next({ $event, x, y });
     }
   }
   @HostListener('window:mouseup', ['$event'])
@@ -113,16 +116,19 @@ export class SaturationComponent implements OnChanges, OnInit {
   mousedown($event: Event, x: number, y: number) {
     $event.preventDefault();
     this.mouseListening = true;
-    this.mousechange.emit({ $event, x, y });
+    this.mousechange.next({ $event, x, y });
   }
 
   ngOnInit() {
-    this.mousechange
+    this.sub = this.mousechange
       .pipe(
         // limit times it is updated for the same area
-        distinctUntilChanged((p: any, q: any) => p.x === q.x && p.y === q.y),
+        distinctUntilChanged((p, q) => p.x === q.x && p.y === q.y),
       )
       .subscribe(n => this.handleChange(n));
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
   ngOnChanges() {
     this.background = `hsl(${this.hsl.h}, 100%, 50%)`;
