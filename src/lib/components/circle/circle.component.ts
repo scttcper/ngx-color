@@ -62,7 +62,7 @@ export class CircleComponent extends ColorWrap {
   /** Color squares to display */
   @Input()
   colors: string[] = [
-    red.500,
+    red['500'],
     pink['500'],
     purple['500'],
     deepPurple['500'],
