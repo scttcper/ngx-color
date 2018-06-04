@@ -34,7 +34,7 @@
     "@ctrl/ngx-github-buttons": "2.0.3",
     "bootstrap": "4.1.1",
     "core-js": "2.5.7",
-    "material-colors": "1.2.5",
+    "material-colors": "1.2.6",
     "rxjs": "6.1.0",
     "rxjs-compat": "6.1.0",
     "tinycolor2": "1.4.1",
