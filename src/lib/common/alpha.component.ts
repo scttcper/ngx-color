@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   NgModule,
   OnChanges,
@@ -11,12 +12,13 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { fromEvent , Subscription } from 'rxjs';
-
+import { Subject, Subscription } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 import { CheckboardModule } from './checkboard.component';
-import { calculateAlphaChange } from './helpers/alpha';
+import { CoordinatesModule } from './coordinates.directive';
 import { HSLA, RGBA } from './helpers/color.interfaces';
+
 
 @Component({
   selector: 'color-alpha',
@@ -25,15 +27,8 @@ import { HSLA, RGBA } from './helpers/color.interfaces';
     <div class="alpha-checkboard">
       <color-checkboard></color-checkboard>
     </div>
-    <div class="alpha-gradient"
-      [style.box-shadow]="shadow" [style.border-radius]="radius"
-      [ngStyle]="gradient"
-    ></div>
-    <div
-      #container
-      class="alpha-container color-alpha-{{direction}}"
-      (mousedown)="handleMousedown($event)"
-    >
+    <div class="alpha-gradient" [ngStyle]="gradient" [style.box-shadow]="shadow" [style.border-radius]="radius"></div>
+    <div ngx-color-coordinates (coordinatesChange)="handleChange($event)" class="alpha-container color-alpha-{{direction}}">
       <div class="alpha-pointer" [style.left.%]="pointerLeft" [style.top.%]="pointerTop">
         <div class="alpha-slider" [ngStyle]="pointer"></div>
       </div>
@@ -86,7 +81,7 @@ import { HSLA, RGBA } from './helpers/color.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class AlphaComponent implements OnChanges, OnDestroy {
+export class AlphaComponent implements OnChanges {
   @Input() hsl: HSLA;
   @Input() rgb: RGBA;
   @Input() pointer: { [key: string]: string };
@@ -98,8 +93,6 @@ export class AlphaComponent implements OnChanges, OnDestroy {
   gradient: { [key: string]: string };
   pointerLeft: number;
   pointerTop: number;
-  mousemove: Subscription;
-  mouseup: Subscription;
 
   ngOnChanges() {
     if (this.direction === 'vertical') {
@@ -121,47 +114,57 @@ export class AlphaComponent implements OnChanges, OnDestroy {
       this.pointerLeft = this.rgb.a * 100;
     }
   }
-  ngOnDestroy() {
-    this.unsubscribe();
-  }
-  handleMousemove($event: Event) {
-    this.handleChange($event);
-  }
-  handleMousedown($event: Event) {
-    this.handleChange($event);
-    this.subscribe();
-  }
-  subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove').subscribe((ev: Event) =>
-      this.handleMousemove(ev),
-    );
-    this.mouseup = fromEvent(document, 'mouseup').subscribe(() =>
-      this.unsubscribe(),
-    );
-  }
-  unsubscribe() {
-    if (this.mousemove) {
-      this.mousemove.unsubscribe();
+  handleChange({ top, left, containerHeight, containerWidth, $event }) {
+    let data;
+    if (this.direction === 'vertical') {
+      let a;
+      if (top < 0) {
+        a = 0;
+      } else if (top > containerHeight) {
+        a = 1;
+      } else {
+        a = Math.round(top * 100 / containerHeight) / 100;
+      }
+
+      if (this.hsl.a !== a) {
+        data = {
+          h: this.hsl.h,
+          s: this.hsl.s,
+          l: this.hsl.l,
+          a,
+          source: 'rgb',
+        };
+      }
+    } else {
+      let a;
+      if (left < 0) {
+        a = 0;
+      } else if (left > containerWidth) {
+        a = 1;
+      } else {
+        a = Math.round(left * 100 / containerWidth) / 100;
+      }
+
+      if (this.hsl.a !== a) {
+        data = {
+          h: this.hsl.h,
+          s: this.hsl.s,
+          l: this.hsl.l,
+          a,
+          source: 'rgb',
+        };
+      }
     }
-    if (this.mouseup) {
-      this.mouseup.unsubscribe();
+    if (!data) {
+      return null;
     }
-  }
-  handleChange($event: Event) {
-    const data = calculateAlphaChange(
-      $event,
-      this,
-      this.container.nativeElement,
-    );
-    if (data) {
-      this.onChange.emit({ data, $event });
-    }
+    this.onChange.emit({ data, $event });
   }
 }
 
 @NgModule({
   declarations: [AlphaComponent],
   exports: [AlphaComponent],
-  imports: [CommonModule, CheckboardModule],
+  imports: [CommonModule, CheckboardModule, CoordinatesModule],
 })
 export class AlphaModule {}

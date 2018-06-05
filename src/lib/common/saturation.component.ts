@@ -89,6 +89,7 @@ export class SaturationComponent implements OnChanges, OnInit, OnDestroy {
     x: number;
     y: number;
     $event: any;
+    isTouch: boolean;
   }>();
   private sub: Subscription;
   @HostListener('window:mousemove', ['$event', '$event.pageX', '$event.pageY'])
@@ -96,15 +97,17 @@ export class SaturationComponent implements OnChanges, OnInit, OnDestroy {
     '$event',
     '$event.touches[0].clientX',
     '$event.touches[0].clientY',
+    'true',
   ])
-  mousemove($event: Event, x: number, y: number) {
+  mousemove($event: Event, x: number, y: number, isTouch = false) {
     if (this.mouseListening) {
       $event.preventDefault();
-      this.mousechange.next({ $event, x, y });
+      this.mousechange.next({ $event, x, y, isTouch });
     }
   }
-  @HostListener('window:mouseup', ['$event'])
-  mouseup(e: MouseEvent) {
+  @HostListener('window:mouseup')
+  @HostListener('window:touchend')
+  mouseup() {
     this.mouseListening = false;
   }
   @HostListener('mousedown', ['$event', '$event.pageX', '$event.pageY'])
@@ -112,11 +115,12 @@ export class SaturationComponent implements OnChanges, OnInit, OnDestroy {
     '$event',
     '$event.touches[0].clientX',
     '$event.touches[0].clientY',
+    'true',
   ])
-  mousedown($event: Event, x: number, y: number) {
+  mousedown($event: Event, x: number, y: number, isTouch = false) {
     $event.preventDefault();
     this.mouseListening = true;
-    this.mousechange.next({ $event, x, y });
+    this.mousechange.next({ $event, x, y, isTouch });
   }
 
   ngOnInit() {
@@ -125,7 +129,7 @@ export class SaturationComponent implements OnChanges, OnInit, OnDestroy {
         // limit times it is updated for the same area
         distinctUntilChanged((p, q) => p.x === q.x && p.y === q.y),
       )
-      .subscribe(n => this.handleChange(n));
+      .subscribe(n => this.handleChange(n.x, n.y, n.$event, n.isTouch));
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
@@ -135,11 +139,15 @@ export class SaturationComponent implements OnChanges, OnInit, OnDestroy {
     this.pointerTop = -(this.hsv.v * 100) + 1 + 100 + '%';
     this.pointerLeft = this.hsv.s * 100 + '%';
   }
-  handleChange({ x, y, $event }) {
+  handleChange(x: number, y: number, $event: Event, isTouch: boolean) {
     const containerRect = this.container.nativeElement.getBoundingClientRect();
     const { width: containerWidth, height: containerHeight } = containerRect;
     let left = x - (containerRect.left + window.pageXOffset);
-    let top = y - (containerRect.top + window.pageYOffset);
+    let top = y - containerRect.top;
+
+    if (!isTouch) {
+      top = top - window.pageYOffset;
+    }
 
     if (left < 0) {
       left = 0;

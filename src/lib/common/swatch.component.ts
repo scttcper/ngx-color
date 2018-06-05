@@ -44,8 +44,6 @@ export class SwatchComponent implements OnInit {
   focusStyles: {[key: string]: string} = {};
   inFocus = false;
 
-  constructor() {}
-
   ngOnInit() {
     this.divStyles = {
       background: this.color,

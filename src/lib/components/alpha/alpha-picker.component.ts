@@ -14,8 +14,7 @@ import { toState } from 'ngx-color';
   selector: 'color-alpha-picker',
   template: `
     <div class="alpha-picker {{ className }}"
-      [style.width.px]="width" [style.height.px]="height"
-    >
+      [style.width.px]="width" [style.height.px]="height">
       <color-alpha
         [hsl]="hsl"
         [rgb]="rgb"

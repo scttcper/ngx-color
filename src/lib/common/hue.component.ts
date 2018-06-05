@@ -4,26 +4,25 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostListener,
   Input,
   NgModule,
   OnChanges,
   OnDestroy,
+  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
-import { HSLA, HSLAsource } from './helpers/color.interfaces';
-import { calculateHueChange } from './helpers/hue';
+import { HSLA, HSLAsource, HSVAsource } from './helpers/color.interfaces';
 
 @Component({
   selector: 'color-hue',
   template: `
   <div class="color-hue color-hue-{{direction}}" [style.border-radius.px]="radius" [style.box-shadow]="shadow">
-    <div #container
-      class="color-hue-container"
-      (mousedown)="handleMousedown($event)"
-    >
+    <div #container class="color-hue-container">
       <div class="color-hue-pointer" [style.left]="left" [style.top]="top" *ngIf="!hidePointer">
         <div class="color-hue-slider" [ngStyle]="pointer"></div>
       </div>
@@ -69,7 +68,7 @@ import { calculateHueChange } from './helpers/hue';
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HueComponent implements OnChanges, OnDestroy {
+export class HueComponent implements OnChanges, OnDestroy, OnInit {
   @Input() hsl: HSLA;
   @Input() pointer: { [key: string]: string };
   @Input() radius: number;
@@ -80,8 +79,51 @@ export class HueComponent implements OnChanges, OnDestroy {
   @ViewChild('container') container: ElementRef;
   left = '0px';
   top = '';
-  mousemove: Subscription;
-  mouseup: Subscription;
+  private mouseListening = false;
+  private mousechange = new Subject<{
+    x: number;
+    y: number;
+    $event: any;
+    isTouch: boolean;
+  }>();
+  private sub: Subscription;
+  @HostListener('window:mousemove', ['$event', '$event.pageX', '$event.pageY'])
+  @HostListener('window:touchmove', [
+    '$event',
+    '$event.touches[0].clientX',
+    '$event.touches[0].clientY',
+  ])
+  mousemove($event: Event, x: number, y: number, isTouch = false) {
+    if (this.mouseListening) {
+      $event.preventDefault();
+      this.mousechange.next({ $event, x, y, isTouch });
+    }
+  }
+  @HostListener('window:mouseup')
+  @HostListener('window:touchend')
+  mouseup() {
+    this.mouseListening = false;
+  }
+  @HostListener('mousedown', ['$event', '$event.pageX', '$event.pageY'])
+  @HostListener('touchstart', [
+    '$event',
+    '$event.touches[0].clientX',
+    '$event.touches[0].clientY',
+  ])
+  mousedown($event: Event, x: number, y: number, isTouch = false) {
+    $event.preventDefault();
+    this.mouseListening = true;
+      this.mousechange.next({ $event, x, y, isTouch });
+  }
+
+  ngOnInit() {
+    this.sub = this.mousechange
+      .pipe(
+        // limit times it is updated for the same area
+        distinctUntilChanged((p, q) => p.x === q.x && p.y === q.y),
+      )
+      .subscribe(n => this.handleChange(n.x, n.y, n.$event, n.isTouch));
+  }
 
   ngOnChanges() {
     if (this.direction === 'horizontal') {
@@ -91,34 +133,65 @@ export class HueComponent implements OnChanges, OnDestroy {
     }
   }
   ngOnDestroy() {
-    this.unsubscribe();
+    this.sub.unsubscribe();
   }
-  subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove')
-      .subscribe((e: Event) => this.handleMousemove(e));
-    this.mouseup = fromEvent(document, 'mouseup')
-      .subscribe(() => this.unsubscribe());
-  }
-  unsubscribe() {
-    if (this.mousemove) {
-      this.mousemove.unsubscribe();
+  handleChange(x: number, y: number, $event: Event, isTouch: boolean) {
+    const containerRect = this.container.nativeElement.getBoundingClientRect();
+    const containerWidth = this.container.nativeElement.clientWidth;
+    const containerHeight = this.container.nativeElement.clientHeight;
+    const left = x - (containerRect.left + window.pageXOffset);
+    let top = y - containerRect.top;
+
+    if (!isTouch) {
+      top = top - window.pageYOffset;
     }
-    if (this.mouseup) {
-      this.mouseup.unsubscribe();
+
+    let data: HSLAsource;
+    if (this.direction === 'vertical') {
+      let h;
+      if (top < 0) {
+        h = 359;
+      } else if (top > containerHeight) {
+        h = 0;
+      } else {
+        const percent = -(top * 100 / containerHeight) + 100;
+        h = 360 * percent / 100;
+      }
+
+      if (this.hsl.h !== h) {
+        data = {
+          h,
+          s: this.hsl.s,
+          l: this.hsl.l,
+          a: this.hsl.a,
+          source: 'rgb',
+        };
+      }
+    } else {
+      let h;
+      if (left < 0) {
+        h = 0;
+      } else if (left > containerWidth) {
+        h = 359;
+      } else {
+        const percent = left * 100 / containerWidth;
+        h = 360 * percent / 100;
+      }
+
+      if (this.hsl.h !== h) {
+        data = {
+          h,
+          s: this.hsl.s,
+          l: this.hsl.l,
+          a: this.hsl.a,
+          source: 'rgb',
+        };
+      }
     }
-  }
-  handleMousemove($event: Event) {
-    this.handleChange($event);
-  }
-  handleMousedown($event: Event) {
-    this.handleChange($event);
-    this.subscribe();
-  }
-  handleChange($event: Event) {
-    const data = calculateHueChange($event, this, this.container.nativeElement);
-    if (data) {
-      this.onChange.emit({ data, $event });
+    if (!data) {
+      return null;
     }
+    this.onChange.emit({ data, $event });
   }
 }
 
