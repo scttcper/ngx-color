@@ -2,18 +2,12 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   EventEmitter,
-  HostListener,
   Input,
   NgModule,
   OnChanges,
-  OnDestroy,
   Output,
-  ViewChild,
 } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
 
 import { CheckboardModule } from './checkboard.component';
 import { CoordinatesModule } from './coordinates.directive';
@@ -89,7 +83,6 @@ export class AlphaComponent implements OnChanges {
   @Input() radius: string;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<any>();
-  @ViewChild('container') container: ElementRef;
   gradient: { [key: string]: string };
   pointerLeft: number;
   pointerTop: number;

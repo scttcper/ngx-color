@@ -1,7 +1,6 @@
 import {
   Directive,
   ElementRef,
-  EventEmitter,
   HostListener,
   NgModule,
   OnDestroy,
@@ -73,6 +72,10 @@ export class CoordinatesDirective implements OnInit, OnDestroy {
         distinctUntilChanged((p, q) => p.x === q.x && p.y === q.y),
       )
       .subscribe(n => this.handleChange(n.x, n.y, n.$event, n.isTouch));
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   handleChange(x: number, y: number, $event: Event, isTouch: boolean) {

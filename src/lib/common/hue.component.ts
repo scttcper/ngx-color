@@ -2,27 +2,21 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   EventEmitter,
-  HostListener,
   Input,
   NgModule,
   OnChanges,
-  OnDestroy,
-  OnInit,
   Output,
-  ViewChild,
 } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
 
-import { HSLA, HSLAsource, HSVAsource } from './helpers/color.interfaces';
+import { CoordinatesModule } from './coordinates.directive';
+import { HSLA, HSLAsource } from './helpers/color.interfaces';
 
 @Component({
   selector: 'color-hue',
   template: `
   <div class="color-hue color-hue-{{direction}}" [style.border-radius.px]="radius" [style.box-shadow]="shadow">
-    <div #container class="color-hue-container">
+    <div ngx-color-coordinates (coordinatesChange)="handleChange($event)" class="color-hue-container">
       <div class="color-hue-pointer" [style.left]="left" [style.top]="top" *ngIf="!hidePointer">
         <div class="color-hue-slider" [ngStyle]="pointer"></div>
       </div>
@@ -68,7 +62,7 @@ import { HSLA, HSLAsource, HSVAsource } from './helpers/color.interfaces';
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HueComponent implements OnChanges, OnDestroy, OnInit {
+export class HueComponent implements OnChanges {
   @Input() hsl: HSLA;
   @Input() pointer: { [key: string]: string };
   @Input() radius: number;
@@ -76,54 +70,8 @@ export class HueComponent implements OnChanges, OnDestroy, OnInit {
   @Input() hidePointer = false;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<{ data: HSLAsource; $event: Event }>();
-  @ViewChild('container') container: ElementRef;
   left = '0px';
   top = '';
-  private mouseListening = false;
-  private mousechange = new Subject<{
-    x: number;
-    y: number;
-    $event: any;
-    isTouch: boolean;
-  }>();
-  private sub: Subscription;
-  @HostListener('window:mousemove', ['$event', '$event.pageX', '$event.pageY'])
-  @HostListener('window:touchmove', [
-    '$event',
-    '$event.touches[0].clientX',
-    '$event.touches[0].clientY',
-  ])
-  mousemove($event: Event, x: number, y: number, isTouch = false) {
-    if (this.mouseListening) {
-      $event.preventDefault();
-      this.mousechange.next({ $event, x, y, isTouch });
-    }
-  }
-  @HostListener('window:mouseup')
-  @HostListener('window:touchend')
-  mouseup() {
-    this.mouseListening = false;
-  }
-  @HostListener('mousedown', ['$event', '$event.pageX', '$event.pageY'])
-  @HostListener('touchstart', [
-    '$event',
-    '$event.touches[0].clientX',
-    '$event.touches[0].clientY',
-  ])
-  mousedown($event: Event, x: number, y: number, isTouch = false) {
-    $event.preventDefault();
-    this.mouseListening = true;
-      this.mousechange.next({ $event, x, y, isTouch });
-  }
-
-  ngOnInit() {
-    this.sub = this.mousechange
-      .pipe(
-        // limit times it is updated for the same area
-        distinctUntilChanged((p, q) => p.x === q.x && p.y === q.y),
-      )
-      .subscribe(n => this.handleChange(n.x, n.y, n.$event, n.isTouch));
-  }
 
   ngOnChanges() {
     if (this.direction === 'horizontal') {
@@ -132,20 +80,7 @@ export class HueComponent implements OnChanges, OnDestroy, OnInit {
       this.top = `${-(this.hsl.h * 100 / 360) + 100}%`;
     }
   }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-  handleChange(x: number, y: number, $event: Event, isTouch: boolean) {
-    const containerRect = this.container.nativeElement.getBoundingClientRect();
-    const containerWidth = this.container.nativeElement.clientWidth;
-    const containerHeight = this.container.nativeElement.clientHeight;
-    const left = x - (containerRect.left + window.pageXOffset);
-    let top = y - containerRect.top;
-
-    if (!isTouch) {
-      top = top - window.pageYOffset;
-    }
-
+  handleChange({ top, left, containerHeight, containerWidth, $event }) {
     let data: HSLAsource;
     if (this.direction === 'vertical') {
       let h;
@@ -198,6 +133,6 @@ export class HueComponent implements OnChanges, OnDestroy, OnInit {
 @NgModule({
   declarations: [HueComponent],
   exports: [HueComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, CoordinatesModule],
 })
 export class HueModule {}

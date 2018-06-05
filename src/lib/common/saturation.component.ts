@@ -2,27 +2,21 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   EventEmitter,
-  HostListener,
   Input,
   NgModule,
   OnChanges,
-  OnDestroy,
-  OnInit,
   Output,
-  ViewChild,
 } from '@angular/core';
 
-import { Subject, Subscription } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
 
+import { CoordinatesModule } from './coordinates.directive';
 import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
 
 @Component({
   selector: 'color-saturation',
   template: `
-  <div class="color-saturation" #container [style.background]="background">
+  <div class="color-saturation" ngx-color-coordinates (coordinatesChange)="handleChange($event)" [style.background]="background">
     <div class="saturation-white">
       <div class="saturation-black"></div>
       <div class="saturation-pointer" [ngStyle]="pointer" [style.top]="pointerTop" [style.left]="pointerLeft">
@@ -73,82 +67,23 @@ import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SaturationComponent implements OnChanges, OnInit, OnDestroy {
+export class SaturationComponent implements OnChanges {
   @Input() hsl: HSLA;
   @Input() hsv: HSVA;
   @Input() radius: number;
   @Input() pointer: { [key: string]: string };
   @Input() circle: { [key: string]: string };
   @Output() onChange = new EventEmitter<{ data: HSVAsource; $event: Event }>();
-  @ViewChild('container') container: ElementRef;
   background: string;
   pointerTop: string;
   pointerLeft: string;
-  private mouseListening = false;
-  private mousechange = new Subject<{
-    x: number;
-    y: number;
-    $event: any;
-    isTouch: boolean;
-  }>();
-  private sub: Subscription;
-  @HostListener('window:mousemove', ['$event', '$event.pageX', '$event.pageY'])
-  @HostListener('window:touchmove', [
-    '$event',
-    '$event.touches[0].clientX',
-    '$event.touches[0].clientY',
-    'true',
-  ])
-  mousemove($event: Event, x: number, y: number, isTouch = false) {
-    if (this.mouseListening) {
-      $event.preventDefault();
-      this.mousechange.next({ $event, x, y, isTouch });
-    }
-  }
-  @HostListener('window:mouseup')
-  @HostListener('window:touchend')
-  mouseup() {
-    this.mouseListening = false;
-  }
-  @HostListener('mousedown', ['$event', '$event.pageX', '$event.pageY'])
-  @HostListener('touchstart', [
-    '$event',
-    '$event.touches[0].clientX',
-    '$event.touches[0].clientY',
-    'true',
-  ])
-  mousedown($event: Event, x: number, y: number, isTouch = false) {
-    $event.preventDefault();
-    this.mouseListening = true;
-    this.mousechange.next({ $event, x, y, isTouch });
-  }
 
-  ngOnInit() {
-    this.sub = this.mousechange
-      .pipe(
-        // limit times it is updated for the same area
-        distinctUntilChanged((p, q) => p.x === q.x && p.y === q.y),
-      )
-      .subscribe(n => this.handleChange(n.x, n.y, n.$event, n.isTouch));
-  }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
   ngOnChanges() {
     this.background = `hsl(${this.hsl.h}, 100%, 50%)`;
     this.pointerTop = -(this.hsv.v * 100) + 1 + 100 + '%';
     this.pointerLeft = this.hsv.s * 100 + '%';
   }
-  handleChange(x: number, y: number, $event: Event, isTouch: boolean) {
-    const containerRect = this.container.nativeElement.getBoundingClientRect();
-    const { width: containerWidth, height: containerHeight } = containerRect;
-    let left = x - (containerRect.left + window.pageXOffset);
-    let top = y - containerRect.top;
-
-    if (!isTouch) {
-      top = top - window.pageYOffset;
-    }
-
+  handleChange({ top, left, containerHeight, containerWidth, $event }) {
     if (left < 0) {
       left = 0;
     } else if (left > containerWidth) {
@@ -178,6 +113,6 @@ export class SaturationComponent implements OnChanges, OnInit, OnDestroy {
 @NgModule({
   declarations: [SaturationComponent],
   exports: [SaturationComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, CoordinatesModule],
 })
 export class SaturationModule {}

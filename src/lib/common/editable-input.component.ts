@@ -17,15 +17,10 @@ import { fromEvent, Subscription } from 'rxjs';
   selector: 'color-editable-input',
   template: `
   <div class="wrap" [ngStyle]="wrapStyle">
-    <input [ngStyle]="inputStyle"
-      [value]="currentValue"
-      [placeholder]="placeholder"
-      spellCheck="false"
-      (keydown)="handleKeydown($event)"
-      (keyup)="handleKeyup($event)"
-      (focus)="handleFocus($event)"
-      (focusout)="handleFocusOut($event)"
-    />
+    <input [ngStyle]="inputStyle" spellCheck="false"
+      [value]="currentValue" [placeholder]="placeholder"
+      (keydown)="handleKeydown($event)" (keyup)="handleKeyup($event)"
+      (focus)="handleFocus($event)" (focusout)="handleFocusOut($event)" />
     <span *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
       {{ label }}
     </span>
