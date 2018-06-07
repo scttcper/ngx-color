@@ -141,7 +141,7 @@ export class PhotoshopComponent extends ColorWrap {
     height: '12px',
     borderRadius: '6px',
     boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 1px inset',
-    transform: 'translate(-6px, -6px)',
+    transform: 'translate(-6px, -10px)',
   };
   constructor() {
     super();
