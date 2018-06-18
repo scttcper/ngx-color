@@ -52,7 +52,7 @@
     "@types/rimraf": "2.0.2",
     "@types/tinycolor2": "1.4.0",
     "codelyzer": "4.3.0",
-    "commitizen": "2.9.6",
+    "commitizen": "2.10.1",
     "cz-conventional-changelog": "2.1.0",
     "fs-extra": "6.0.1",
     "jasmine-core": "2.99.1",
