@@ -231,11 +231,13 @@ export class ChromeFieldsComponent implements OnInit {
         $event,
       });
     } else if (data.h || data.s || data.l) {
+      const s = data.s && data.s.replace('%', '');
+      const l = data.l && data.l.replace('%', '');
       this.onChange.emit({
         data: {
           h: data.h || this.hsl.h,
-          s: Number((data.s && data.s) || this.hsl.s),
-          l: Number((data.l && data.l) || this.hsl.l),
+          s: Number(s || this.hsl.s),
+          l: Number(l || this.hsl.l),
           source: 'hsl',
         },
         $event,
