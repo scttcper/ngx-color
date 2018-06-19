@@ -104,40 +104,40 @@ import { isValidHex, HSLA, RGBA } from 'ngx-color';
   `,
   styles: [
     `
-  .chrome-wrap {
-    padding-top: 16px;
-    display: flex;
-  }
-  .chrome-fields {
-    flex: 1;
-    display: flex;
-    margin-left: -6px;
-  }
-  .chrome-field {
-    padding-left: 6px;
-    width: 100%;
-  }
-  .chrome-toggle {
-    width: 32px;
-    text-align: right;
-    position: relative;
-  }
-  .chrome-icon {
-    margin-right: -4px;
-    margin-top: 12px;
-    cursor: pointer;
-    position: relative;
-  }
-  .chrome-toggle-svg {
-    width: 24px;
-    height: 24px;
-    border: 1px transparent solid;
-    border-radius: 5px;
-  }
-  .chrome-toggle-svg:hover {
-    background: #eee;
-  }
-  `,
+      .chrome-wrap {
+        padding-top: 16px;
+        display: flex;
+      }
+      .chrome-fields {
+        flex: 1;
+        display: flex;
+        margin-left: -6px;
+      }
+      .chrome-field {
+        padding-left: 6px;
+        width: 100%;
+      }
+      .chrome-toggle {
+        width: 32px;
+        text-align: right;
+        position: relative;
+      }
+      .chrome-icon {
+        margin-right: -4px;
+        margin-top: 12px;
+        cursor: pointer;
+        position: relative;
+      }
+      .chrome-toggle-svg {
+        width: 24px;
+        height: 24px;
+        border: 1px transparent solid;
+        border-radius: 5px;
+      }
+      .chrome-toggle-svg:hover {
+        background: #eee;
+      }
+    `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
@@ -149,7 +149,7 @@ export class ChromeFieldsComponent implements OnInit {
   @Input() hex: string;
   @Output() onChange = new EventEmitter<any>();
   view = '';
-  input: {[key: string]: string} = {
+  input: { [key: string]: string } = {
     fontSize: '11px',
     color: '#333',
     width: '100%',
@@ -159,7 +159,7 @@ export class ChromeFieldsComponent implements OnInit {
     height: '21px',
     'text-align': 'center',
   };
-  label: {[key: string]: string} = {
+  label: { [key: string]: string } = {
     'text-transform': 'uppercase',
     fontSize: '11px',
     'line-height': '11px',
