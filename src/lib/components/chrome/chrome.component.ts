@@ -65,60 +65,60 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
   `,
   styles: [
     `
-    .chrome-picker {
-      background: #fff;
-      border-radius: 2px;
-      box-shadow: 0 0 2px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.3);
-      box-sizing: initial;
-      width: 225px;
-      font-family: 'Menlo';
-    }
-    .chrome-controls {
-      display: flex;
-    }
-    .chrome-color {
-      width: 42px;
-    }
-    .chrome-body {
-      padding: 14px 14px 12px;
-    }
-    .chrome-active {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      border-radius: 20px;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
-      z-index: 2;
-    }
-    .chrome-swatch {
-      width: 28px;
-      height: 28px;
-      border-radius: 15px;
-      position: relative;
-      overflow: hidden;
-    }
-    .saturation {
-      width: 100%;
-      padding-bottom: 55%;
-      position: relative;
-      border-radius: 2px 2px 0 0;
-      overflow: hidden;
-    }
-    .chrome-toggles {
-      flex: 1;
-    }
-    .chrome-hue {
-      height: 10px;
-      position: relative;
-      margin-bottom: 8px;
-    }
-    .chrome-alpha {
-      height: 10px;
-      position: relative;
-    }
-  `,
+      .chrome-picker {
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
+        box-sizing: initial;
+        width: 225px;
+        font-family: 'Menlo';
+      }
+      .chrome-controls {
+        display: flex;
+      }
+      .chrome-color {
+        width: 42px;
+      }
+      .chrome-body {
+        padding: 14px 14px 12px;
+      }
+      .chrome-active {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 20px;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+      }
+      .chrome-swatch {
+        width: 28px;
+        height: 28px;
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+      }
+      .saturation {
+        width: 100%;
+        padding-bottom: 55%;
+        position: relative;
+        border-radius: 2px 2px 0 0;
+        overflow: hidden;
+      }
+      .chrome-toggles {
+        flex: 1;
+      }
+      .chrome-hue {
+        height: 10px;
+        position: relative;
+        margin-bottom: 8px;
+      }
+      .chrome-alpha {
+        height: 10px;
+        position: relative;
+      }
+    `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
@@ -126,14 +126,14 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
 export class ChromeComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */
   @Input() disableAlpha = false;
-  circle: {[key: string]: string} = {
+  circle: { [key: string]: string } = {
     width: '12px',
     height: '12px',
     borderRadius: '6px',
     boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 1px inset',
     transform: 'translate(-6px, -8px)',
   };
-  pointer: {[key: string]: string} = {
+  pointer: { [key: string]: string } = {
     width: '12px',
     height: '12px',
     borderRadius: '6px',
@@ -142,11 +142,15 @@ export class ChromeComponent extends ColorWrap {
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
   };
   activeBackground: string;
+
   constructor() {
     super();
   }
+
   afterValidChange() {
-    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${this.rgb.b}, ${this.rgb.a})`;
+    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${
+      this.rgb.b
+    }, ${this.rgb.a})`;
   }
   handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
