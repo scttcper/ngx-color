@@ -31,10 +31,10 @@ module.exports = function(config) {
     autoWatch: true,
     browsers: ['Chrome'],
     customLaunchers: {
-      ChromeCI: {
-        base: `${process.env['TRAVIS'] ? 'ChromeHeadless' : 'Chrome'}`,
-        flags: process.env['TRAVIS'] ? ['--no-sandbox'] : [],
-      },
+      ChromeNoSandbox: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
     },
     singleRun: false,
   });
