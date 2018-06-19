@@ -15,7 +15,7 @@
   },
   "bugs": "https://github.com/scttcper/ngx-color/issues",
   "homepage": "https://github.com/scttcper/ngx-color",
-  "repository": "https://github.com/scttcper/ngx-color.git",
+  "repository": "scttcper/ngx-color",
   "license": "MIT",
   "ngPackage": {
     "lib": {

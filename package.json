@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": "https://github.com/scttcper/ngx-color",
   "bugs": "https://github.com/scttcper/ngx-color/issues",
-  "repository": "https://github.com/scttcper/ngx-color.git",
+  "repository": "scttcper/ngx-color",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
