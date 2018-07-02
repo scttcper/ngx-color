@@ -50,7 +50,7 @@
     "@types/node": "10.3.6",
     "@types/rimraf": "2.0.2",
     "@types/tinycolor2": "1.4.0",
-    "codelyzer": "4.3.0",
+    "codelyzer": "4.4.2",
     "commitizen": "2.10.1",
     "cz-conventional-changelog": "2.1.0",
     "fs-extra": "6.0.1",
