@@ -68,7 +68,7 @@
     "travis-deploy-once": "5.0.1",
     "ts-node": "6.1.2",
     "tslint": "5.10.0",
-    "typescript": "2.7.2"
+    "typescript": "2.9.2"
   },
   "release": {
     "branch": "master"
