@@ -35,7 +35,7 @@
     "bootstrap": "4.1.2",
     "core-js": "2.5.7",
     "material-colors": "1.2.6",
-    "rxjs": "6.2.1",
+    "rxjs": "6.2.2",
     "tinycolor2": "1.4.1",
     "zone.js": "0.8.26"
   },
