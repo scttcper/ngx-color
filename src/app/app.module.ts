@@ -17,11 +17,13 @@ import { ColorSliderModule } from '../lib/components/slider/slider.component';
 import { ColorSwatchesModule } from '../lib/components/swatches/swatches.component';
 import { ColorTwitterModule } from '../lib/components/twitter/twitter.component';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
