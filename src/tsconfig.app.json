@@ -3,14 +3,9 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
-    "module": "es2015",
-    "types": [],
     "paths": {
       "ngx-color": ["./lib/common/public_api"]
     }
   },
-  "exclude": ["test.ts", "**/*.spec.ts"],
-  "angularCompilerOptions": {
-    "preserveWhitespaces": false
-  }
+  "exclude": ["test.ts", "**/*.spec.ts"]
 }

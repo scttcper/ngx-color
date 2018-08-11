@@ -8,7 +8,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ts-node build.ts",
+    "build": "ts-node -O '{ \"module\": \"commonjs\" }' build.ts",
     "ghpages": "ng build --prod --baseHref='/ngx-color/'",
     "test": "ng test --watch=false --code-coverage --browsers=ChromeCI",
     "test:watch": "ng test --browsers=ChromeCI",
