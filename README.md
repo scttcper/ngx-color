@@ -62,10 +62,7 @@ class YourModule {}
 ##### use
 
 ```html
-<color-sketch
-  [color]="state"
-  (onChangeComplete)="changeComplete($event)"
-></color-sketch>
+<color-sketch [color]="state" (onChangeComplete)="changeComplete($event)"></color-sketch>
 ```
 
 ### Others available
@@ -124,9 +121,7 @@ import { ColorEvent } from 'ngx-color';
 @Component({
   selector: 'selector-name',
   template: `
-  <color-sketch 
-    (onChange)="handleChange($event)"
-  ></color-sketch>
+  <color-sketch (onChange)="handleChange($event)"></color-sketch>
   `,
 })
 export class NameComponent {
