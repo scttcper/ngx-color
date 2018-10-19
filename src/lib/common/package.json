@@ -1,7 +1,7 @@
 {
   "$schema": "../../../node_modules/ng-packagr/package.schema.json",
   "name": "ngx-color",
-  "version": "0.0.0",
+  "version": "0.0.0-placeholder",
   "description":
     "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "dependencies": {
@@ -9,9 +9,9 @@
     "material-colors": "^1.2.6"
   },
   "peerDependencies": {
-    "@angular/core": "^5.2.0 || ^6.0.0",
-    "@angular/common": "^5.2.0 || ^6.0.0",
-    "rxjs": "^6.0.0"
+    "@angular/core": "^5.2.0 || ^6.0.0 || ^7.0.0",
+    "@angular/common": "^5.2.0 || ^6.0.0 || ^7.0.0",
+    "rxjs": "^6.1.0"
   },
   "bugs": "https://github.com/scttcper/ngx-color/issues",
   "homepage": "https://github.com/scttcper/ngx-color",
