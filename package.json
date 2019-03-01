@@ -30,7 +30,7 @@
     "@angular/platform-browser-dynamic": "7.1.4",
     "@ctrl/ngx-github-buttons": "2.1.0",
     "bootstrap": "4.2.1",
-    "core-js": "2.6.3",
+    "core-js": "2.6.5",
     "material-colors": "1.2.6",
     "rxjs": "6.3.3",
     "tinycolor2": "1.4.1",
