@@ -39,6 +39,8 @@ import { CircleSwatchComponent } from './circle-swatch.component';
     [style.margin-bottom.px]="-circleSpacing">
     <color-circle-swatch
       *ngFor="let color of colors"
+      [circleSize]="circleSize"
+      [circleSpacing]="circleSpacing"
       [color]="color" [focus]="isActive(color)"
       (onClick)="handleBlockChange($event)"
       (onSwatchHover)="onSwatchHover.emit($event)"
