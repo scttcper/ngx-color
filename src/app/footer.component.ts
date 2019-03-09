@@ -3,14 +3,15 @@ import { Component, VERSION } from '@angular/core';
 @Component({
   selector: 'app-footer',
   template: `
-  <footer class="footer mb-4 mt-5">
-    Angular {{ version }}
-    <br>
-    Released under the
-    <a href="https://github.com/typectrl/ngx-codemirror/blob/master/LICENSE">MIT</a> license
-    <br>
-    Listed on <a href="https://angular.parts/package/ngx-color">angular.parts</a>
-  </footer>
+    <footer class="footer mb-4 mt-5">
+      Angular {{ version }}
+      <br />
+      Released under the
+      <a href="https://github.com/typectrl/ngx-codemirror/blob/master/LICENSE"
+        >MIT</a
+      >
+      license
+    </footer>
   `,
   styles: [
     `
@@ -19,7 +20,7 @@ import { Component, VERSION } from '@angular/core';
         text-align: center;
         font-size: 70%;
         color: #999;
-        font-family: var(--font-family-monospace)
+        font-family: var(--font-family-monospace);
       }
     `,
   ],
