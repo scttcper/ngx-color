@@ -43,7 +43,7 @@
     "@angular/language-service": "7.2.11",
     "@types/fs-extra": "5.0.5",
     "@types/jasmine": "3.3.9",
-    "@types/node": "11.11.0",
+    "@types/node": "11.11.8",
     "@types/rimraf": "2.0.2",
     "@types/tinycolor2": "1.4.1",
     "codelyzer": "4.5.0",
