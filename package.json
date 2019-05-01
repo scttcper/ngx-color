@@ -28,7 +28,7 @@
     "@angular/http": "7.2.11",
     "@angular/platform-browser": "7.2.11",
     "@angular/platform-browser-dynamic": "7.2.11",
-    "@ctrl/ngx-github-buttons": "2.1.0",
+    "@ctrl/ngx-github-buttons": "2.1.1",
     "bootstrap": "4.3.1",
     "core-js": "2.6.5",
     "material-colors": "1.2.6",
