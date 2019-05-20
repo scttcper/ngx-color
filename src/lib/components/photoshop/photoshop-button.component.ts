@@ -10,7 +10,7 @@ import {
   selector: 'color-photoshop-button',
   template: `
     <div class="photoshop-button"  [class.active]="active"
-      (click)="click.emit($event)"
+      (click)="onClick.emit($event)"
     >
       {{ label }}
     </div>
