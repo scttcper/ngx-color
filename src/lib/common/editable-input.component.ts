@@ -81,25 +81,25 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
     // https://github.com/casesandberg/react-color/issues/383
     const stringValue = String($event.target.value);
     const isPercentage = stringValue.indexOf('%') > -1;
-    const number = Number(stringValue.replace(/%/g, ''));
-    if (!isNaN(number)) {
+    const num = Number(stringValue.replace(/%/g, ''));
+    if (!isNaN(num)) {
       const amount = this.arrowOffset || 1;
 
       // Up
       if ($event.keyCode === 38) {
         if (this.label) {
           this.onChange.emit({
-            data: { [this.label]: number + amount },
+            data: { [this.label]: num + amount },
             $event,
           });
         } else {
-          this.onChange.emit({ data: number + amount, $event });
+          this.onChange.emit({ data: num + amount, $event });
         }
 
         if (isPercentage) {
-          this.currentValue = `${number + amount}%`;
+          this.currentValue = `${num + amount}%`;
         } else {
-          this.currentValue = number + amount;
+          this.currentValue = num + amount;
         }
       }
 
@@ -107,17 +107,17 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
       if ($event.keyCode === 40) {
         if (this.label) {
           this.onChange.emit({
-            data: { [this.label]: number - amount },
+            data: { [this.label]: num - amount },
             $event,
           });
         } else {
-          this.onChange.emit({ data: number - amount, $event });
+          this.onChange.emit({ data: num - amount, $event });
         }
 
         if (isPercentage) {
-          this.currentValue = `${number - amount}%`;
+          this.currentValue = `${num - amount}%`;
         } else {
-          this.currentValue = number - amount;
+          this.currentValue = num - amount;
         }
       }
     }

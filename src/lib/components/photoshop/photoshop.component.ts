@@ -47,10 +47,10 @@ import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
           </div>
           <div class="photoshop-actions">
             <color-photoshop-button label="OK"
-              [active]="true" (click)="onAccept.emit($event)"
+              [active]="true" (onClick)="onAccept.emit($event)"
             ></color-photoshop-button>
             <color-photoshop-button label="Cancel"
-              (click)="onCancel.emit($event)"
+              (onClick)="onCancel.emit($event)"
             >
             </color-photoshop-button>
             <color-photoshop-fields

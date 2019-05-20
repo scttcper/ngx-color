@@ -45,5 +45,5 @@ import {
 export class PhotoshopButtonComponent {
   @Input() label = '';
   @Input() active = false;
-  @Output() click = new EventEmitter<Event>();
+  @Output() onClick = new EventEmitter<Event>();
 }
