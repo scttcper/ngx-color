@@ -10,7 +10,7 @@
       "entryFile": "slider.component.ts",
       "umdModuleIds": {
         "material-colors": "material-colors",
-        "tinycolor2": "tinycolor2",
+        "@ctrl/tinycolor": "@ctrl/tinycolor",
         "ngx-color": "ngx-color"
       }
     },

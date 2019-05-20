@@ -1,8 +1,6 @@
-import * as _tinycolor from 'tinycolor2';
+import { TinyColor } from '@ctrl/tinycolor';
 
 import { Color } from './color.interfaces';
-
-const tinycolor = _tinycolor;
 
 export function simpleCheckForValidColor(data) {
   const keysToCheck = ['r', 'g', 'b', 'a', 'h', 's', 'l', 'v'];
@@ -27,7 +25,7 @@ export function simpleCheckForValidColor(data) {
 }
 
 export function toState(data, oldHue?: number): Color {
-  const color = data.hex ? tinycolor(data.hex) : tinycolor(data);
+  const color = data.hex ? new TinyColor(data.hex) : new TinyColor(data);
   const hsl = color.toHsl();
   const hsv = color.toHsv();
   const rgb = color.toRgb();
@@ -49,7 +47,7 @@ export function toState(data, oldHue?: number): Color {
 }
 
 export function isValidHex(hex: string) {
-  return tinycolor(hex).isValid();
+  return new TinyColor(hex).isValid;
 }
 
 export function getContrastingColor(data) {

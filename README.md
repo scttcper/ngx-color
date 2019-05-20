@@ -6,8 +6,8 @@
   <a href="https://www.npmjs.org/package/ngx-color">
     <img src="https://badge.fury.io/js/ngx-color.svg" alt="npm">
   </a> 
-  <a href="https://travis-ci.org/scttcper/ngx-color">
-    <img src="https://travis-ci.org/scttcper/ngx-color.svg?branch=master" alt="travis"></a> 
+  <a href="https://circleci.com/gh/scttcper/ngx-color">
+    <img src="https://circleci.com/gh/scttcper/ngx-color.svg?style=svg" alt="circleci"></a> 
   <a href="https://codecov.io/github/scttcper/ngx-color">
     <img src="https://img.shields.io/codecov/c/github/scttcper/ngx-color.svg" alt="codecov">
   </a>
@@ -15,6 +15,8 @@
 
 <br>
 <br>
+
+DEMO: https://ngx-color.netlify.com/  
 
 * [About](#about)
 * [Getting Started](#getting-started)

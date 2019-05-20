@@ -5,13 +5,13 @@
   "description":
     "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "dependencies": {
-    "tinycolor2": "^1.4.1",
+    "@ctrl/tinycolor": "^2.4.0",
     "material-colors": "^1.2.6"
   },
   "peerDependencies": {
-    "@angular/core": "^5.2.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
-    "@angular/common": "^5.2.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
-    "rxjs": "^6.1.0"
+    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0-0",
+    "@angular/common": "^6.0.0 || ^7.0.0 || ^8.0.0-0",
+    "rxjs": "^6.4.0"
   },
   "bugs": "https://github.com/scttcper/ngx-color/issues",
   "homepage": "https://github.com/scttcper/ngx-color",
@@ -21,11 +21,11 @@
     "lib": {
       "entryFile": "public_api.ts",
       "umdModuleIds": {
-        "tinycolor2": "tinycolor2",
+        "@ctrl/tinycolor": "@ctrl/tinycolor",
         "ngx-color": "ngx-color"
       }
     },
-    "whitelistedNonPeerDependencies": ["tinycolor2", "material-colors"],
+    "whitelistedNonPeerDependencies": ["@ctrl/tinycolor", "material-colors"],
     "dest": "../../../dist/common"
   },
   "keywords": [

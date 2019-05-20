@@ -1,7 +1,7 @@
 import { copySync } from 'fs-extra';
 import { ngPackagr } from 'ng-packagr';
 import { join } from 'path';
-import * as rimraf from 'rimraf';
+import del from 'del';
 
 
 const MODULE_NAMES = [
@@ -22,8 +22,8 @@ const MODULE_NAMES = [
 
 async function main() {
   // cleanup dist
-  rimraf.sync(join(process.cwd(), '/dist'));
-  rimraf.sync(join(process.cwd(), '/node_modules/ngx-color'));
+  del.sync(join(process.cwd(), '/dist'));
+  del.sync(join(process.cwd(), '/node_modules/ngx-color'));
 
   await ngPackagr()
     .forProject(join(process.cwd(), 'src/lib/common/package.json'))
