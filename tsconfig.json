@@ -11,7 +11,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "paths": {
-      "ngx-color": ["./lib/common/public_api"]
+      "ngx-color": ["./src/lib/common/public_api"]
     },
     "target": "es2015",
     "typeRoots": [
