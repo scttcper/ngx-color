@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 
 import { Subscription } from 'rxjs';
-import { debounceTime,  distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 import { simpleCheckForValidColor, toState } from './helpers/color';
 import { Color, HSLA, HSVA, RGBA } from './helpers/color.interfaces';
@@ -47,10 +47,8 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   changes: Subscription;
 
   ngOnInit() {
-    this.changes = this.onChange.pipe(
-        debounceTime(100),
-        distinctUntilChanged(),
-      )
+    this.changes = this.onChange
+      .pipe(debounceTime(100))
       .subscribe(x => this.onChangeComplete.emit(x));
     this.setState(toState(this.color, 0));
     this.currentColor = this.hex;
