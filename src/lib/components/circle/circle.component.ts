@@ -33,19 +33,22 @@ import { CircleSwatchComponent } from './circle-swatch.component';
 @Component({
   selector: 'color-circle',
   template: `
-  <div class="circle-picker {{ className }}"
-    [style.width.px]="width"
-    [style.margin-right.px]="-circleSpacing"
-    [style.margin-bottom.px]="-circleSpacing">
-    <color-circle-swatch
-      *ngFor="let color of colors"
-      [circleSize]="circleSize"
-      [circleSpacing]="circleSpacing"
-      [color]="color" [focus]="isActive(color)"
-      (onClick)="handleBlockChange($event)"
-      (onSwatchHover)="onSwatchHover.emit($event)"
-    ></color-circle-swatch>
-  </div>
+    <div
+      class="circle-picker {{ className }}"
+      [style.width.px]="width"
+      [style.margin-right.px]="-circleSpacing"
+      [style.margin-bottom.px]="-circleSpacing"
+    >
+      <color-circle-swatch
+        *ngFor="let color of colors"
+        [circleSize]="circleSize"
+        [circleSpacing]="circleSpacing"
+        [color]="color"
+        [focus]="isActive(color)"
+        (onClick)="handleBlockChange($event)"
+        (onSwatchHover)="onSwatchHover.emit($event)"
+      ></color-circle-swatch>
+    </div>
   `,
   styles: [
     `

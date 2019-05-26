@@ -42,18 +42,19 @@ export class CircleSwatchComponent implements OnChanges {
   @Input() focus = false;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  focusStyle: { [key: string]: string };
+  focusStyle: { [key: string]: string } = {};
   swatchStyle: { [key: string]: string } = {
     borderRadius: '50%',
     background: 'transparent',
-    transition: '100ms box-shadow ease',
+    transition: '100ms box-shadow ease 0s',
   };
 
   ngOnChanges() {
-    this.focusStyle = {
-      boxShadow: `${this.color} 0px 0px 0px 3px inset`,
-    };
     this.swatchStyle.boxShadow = `inset 0 0 0 ${this.circleSize / 2}px ${this.color}`;
+    this.focusStyle.boxShadow = `inset 0 0 0 ${ this.circleSize / 2 }px ${ this.color }, 0 0 5px ${ this.color }`;
+    if (this.focus) {
+      this.focusStyle.boxShadow = `inset 0 0 0 3px ${ this.color }, 0 0 5px ${ this.color }`;
+    }
   }
   handleClick({ hex, $event }) {
     this.onClick.emit({ hex, $event });
