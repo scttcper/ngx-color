@@ -42,7 +42,7 @@
     "@angular/compiler-cli": "8.0.0",
     "@angular/language-service": "8.0.0",
     "@types/fs-extra": "7.0.0",
-    "@types/jasmine": "3.3.12",
+    "@types/jasmine": "3.3.13",
     "@types/node": "12.0.2",
     "codelyzer": "5.0.1",
     "del": "4.1.1",
