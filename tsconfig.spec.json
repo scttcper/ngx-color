@@ -5,7 +5,10 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+      "ngx-color": ["./src/lib/common/public_api"]
+    },
   },
   "files": [
     "src/test.ts",

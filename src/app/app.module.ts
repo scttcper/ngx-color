@@ -19,12 +19,8 @@ import { ColorTwitterModule } from '../lib/components/twitter/twitter.component'
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-  ],
+  declarations: [AppComponent, FooterComponent],
   imports: [
     BrowserModule,
 
@@ -45,6 +41,6 @@ import { FooterComponent } from './footer.component';
     ColorTwitterModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

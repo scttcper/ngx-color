@@ -3,7 +3,6 @@ import { ngPackagr } from 'ng-packagr';
 import { join } from 'path';
 import del from 'del';
 
-
 const MODULE_NAMES = [
   'alpha',
   'block',

@@ -5,12 +5,12 @@
   "description":
     "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "dependencies": {
-    "@ctrl/tinycolor": "^2.4.0",
+    "@ctrl/tinycolor": "^2.5.3",
     "material-colors": "^1.2.6"
   },
   "peerDependencies": {
-    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0-0",
-    "@angular/common": "^6.0.0 || ^7.0.0 || ^8.0.0-0",
+    "@angular/core": ">=8.0.0",
+    "@angular/common": ">=8.0.0",
     "rxjs": "^6.4.0"
   },
   "bugs": "https://github.com/scttcper/ngx-color/issues",
