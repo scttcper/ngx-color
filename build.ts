@@ -1,7 +1,7 @@
 import { copySync } from 'fs-extra';
 import { ngPackagr } from 'ng-packagr';
 import { join } from 'path';
-import del from 'del';
+import * as del from 'del';
 
 const MODULE_NAMES = [
   'alpha',
