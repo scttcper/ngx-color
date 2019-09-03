@@ -36,7 +36,7 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
             (onChange)="handleValueChange($event)"
           ></color-hue>
         </div>
-        <div class="sketch-alpha">
+        <div class="sketch-alpha" *ngIf="disableAlpha === false">
           <color-alpha
             [radius]="2" [rgb]="rgb" [hsl]="hsl"
             (onChange)="handleValueChange($event)"
