@@ -10,19 +10,33 @@ import {
 } from '@angular/core';
 import { CoordinatesModule } from './coordinates.directive';
 import { HSLA, RGBA } from './helpers/color.interfaces';
+import { TinyColor } from '@ctrl/tinycolor';
 
 
 @Component({
   selector: 'color-shade',
   template: `
-  <div class="shade" [style.border-radius]="radius">
-    <div class="shade-gradient" [ngStyle]="gradient" [style.box-shadow]="shadow" [style.border-radius]="radius"></div>
-    <div ngx-color-coordinates (coordinatesChange)="handleChange($event)" class="shade-container color-shade-{{direction}}">
-      <div class="shade-pointer" [style.left.%]="pointerLeft" [style.top.%]="pointerTop">
-        <div class="shade-slider" [ngStyle]="pointer"></div>
+    <div class="shade" [style.border-radius]="radius">
+      <div
+        class="shade-gradient"
+        [ngStyle]="gradient"
+        [style.box-shadow]="shadow"
+        [style.border-radius]="radius"
+      ></div>
+      <div
+        ngx-color-coordinates
+        (coordinatesChange)="handleChange($event)"
+        class="shade-container color-shade-{{ direction }}"
+      >
+        <div
+          class="shade-pointer"
+          [style.left.%]="pointerLeft"
+          [style.top.%]="pointerTop"
+        >
+          <div class="shade-slider" [ngStyle]="pointer"></div>
+        </div>
       </div>
     </div>
-  </div>
   `,
   styles: [
     `
@@ -73,40 +87,44 @@ export class ShadeComponent implements OnChanges {
   gradient: { [key: string]: string };
   pointerLeft: number;
   pointerTop: number;
-  changeV = 0;
+
   ngOnChanges() {
-    // this.gradient= {background: `hsl(${this.hsl.h}, 100%, 50%)`};
     this.gradient = {
-        background: `linear-gradient(to right,
+      background: `linear-gradient(to right,
           hsl(${this.hsl.h}, 90%, 55%),
           #000)`,
-      };
-    this.pointerLeft =  this.changeV * 100;
+    };
+    const hsv = new TinyColor(this.hsl).toHsv();
+    this.pointerLeft = 100 - (hsv.v * 100);
   }
+
   handleChange({ left, containerWidth, $event }) {
     let data;
-    let v;
+    let v: number;
     if (left < 0) {
-        v = 0;
-      } else if (left > containerWidth) {
-        v = 1;
-      } else {
-        v = Math.round(left * 100 / containerWidth) / 100;
-      }
-    this.changeV =  v;
-    if (this.hsl.a !== v) {
-       data = {
-          h: this.hsl.h,
-          s: 100,
-          v: 1 - v,
-          l: this.hsl.l,
-          a: this.hsl.a,
-          source: 'rgb',
-        };
-      }
+      v = 0;
+    } else if (left > containerWidth) {
+      v = 1;
+    } else {
+      v = Math.round((left * 100) / containerWidth) / 100;
+    }
+
+    const hsv = new TinyColor(this.hsl).toHsv();
+    if (hsv.v !== v) {
+      data = {
+        h: this.hsl.h,
+        s: 100,
+        v: 1 - v,
+        l: this.hsl.l,
+        a: this.hsl.a,
+        source: 'rgb',
+      };
+    }
+
     if (!data) {
       return null;
     }
+
     this.onChange.emit({ data, $event });
   }
 }

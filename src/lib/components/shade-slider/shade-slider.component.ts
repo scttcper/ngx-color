@@ -7,7 +7,6 @@ import {
   OnChanges,
 } from '@angular/core';
 
-
 import { ColorWrap, ShadeModule, toState } from 'ngx-color';
 
 @Component({
