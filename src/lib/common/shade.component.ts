@@ -26,7 +26,7 @@ import { TinyColor } from '@ctrl/tinycolor';
       <div
         ngx-color-coordinates
         (coordinatesChange)="handleChange($event)"
-        class="shade-container color-shade-{{ direction }}"
+        class="shade-container"
       >
         <div
           class="shade-pointer"
@@ -82,7 +82,6 @@ export class ShadeComponent implements OnChanges {
   @Input() pointer: { [key: string]: string };
   @Input() shadow: string;
   @Input() radius: string;
-  @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<any>();
   gradient: { [key: string]: string };
   pointerLeft: number;

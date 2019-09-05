@@ -36,6 +36,7 @@ DEMO: https://ngx-color.netlify.com/
     - [Slider](#slider)
     - [Swatches](#swatches)
     - [Twitter](#twitter)
+    - [Shade Slider](#shade-slider)
 
 ## About
 
@@ -277,6 +278,11 @@ None
   `top-left`
 * **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
+
+### Shade Slider
+
+* **width** - String | Number, Pixel value for picker width. Default `316px`
+* **height** - String | Number, Pixel value for picker height. Default `16px`
 
 ---
 

@@ -18,7 +18,6 @@ import { ColorWrap, ShadeModule, toState } from 'ngx-color';
         [hsl]="hsl"
         [rgb]="rgb"
         [pointer]="pointer"
-        [direction]="direction"
         (onChange)="handlePickerChange($event)"
       ></color-shade>
     </div>
@@ -38,7 +37,6 @@ export class ShadeSliderComponent extends ColorWrap implements OnChanges {
   @Input() width: string | number = 316;
   /** Pixel value for picker height */
   @Input() height: string | number = 16;
-  @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   pointer: {[key: string]: string} = {
     width: '18px',
     height: '18px',
@@ -51,9 +49,6 @@ export class ShadeSliderComponent extends ColorWrap implements OnChanges {
     super();
   }
   ngOnChanges() {
-    if (this.direction === 'vertical') {
-      this.pointer.transform = 'translate(-3px, -9px)';
-    }
     this.setState(toState(this.color, this.oldHue));
   }
   handlePickerChange({ data, $event }) {
