@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../../node_modules/ng-packagr/package.schema.json",
+  "name": "ngx-color/shader-slider",
+  "author": "scttcper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scttcper/ngx-color.git"
+  },
+  "license": "MIT",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "alpha-picker.component.ts",
+      "umdModuleIds": {
+        "material-colors": "material-colors",
+        "@ctrl/tinycolor": "@ctrl/tinycolor",
+        "ngx-color": "ngx-color"
+      }
+    },
+    "dest": "../../../../dist/packages-dist/alpha"
+  }
+}
