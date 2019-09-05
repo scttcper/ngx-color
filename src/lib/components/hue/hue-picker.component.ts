@@ -7,8 +7,7 @@ import {
   OnChanges,
 } from '@angular/core';
 
-import { ColorWrap, HueModule } from 'ngx-color';
-import { toState } from 'ngx-color';
+import { ColorWrap, HueModule, toState } from 'ngx-color';
 
 @Component({
   selector: 'color-hue-picker',

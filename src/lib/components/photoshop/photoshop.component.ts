@@ -8,8 +8,8 @@ import {
   Output,
 } from '@angular/core';
 
-import { ColorWrap } from 'ngx-color';
 import {
+  ColorWrap,
   AlphaModule,
   EditableInputModule,
   HueModule,

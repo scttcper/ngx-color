@@ -6,8 +6,7 @@ import {
   NgModule,
 } from '@angular/core';
 
-import { ColorWrap, SwatchModule } from 'ngx-color';
-import { isValidHex } from 'ngx-color';
+import { ColorWrap, SwatchModule, isValidHex } from 'ngx-color';
 import { GithubSwatchComponent } from './github-swatch.component';
 
 @Component({
