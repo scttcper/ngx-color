@@ -33,7 +33,6 @@ describe('AlphaComponent', () => {
     const fixture = TestBed.createComponent(ColorShadeSliderApp);
     const testComponent = fixture.componentInstance;
     fixture.detectChanges();
-    testComponent.direction = 'vertical';
     fixture.detectChanges();
     const div = fixture.debugElement.query(By.css('.alpha-container'));
     expect(div.nativeElement.classList.contains('color-alpha-vertical')).toBe(true);
@@ -63,12 +62,10 @@ describe('AlphaComponent', () => {
   template: `
   <color-shade-slider
     [className]="className"
-    [direction]="direction"
   >
   </color-shade-slider>
   `,
 })
 class ColorShadeSliderApp {
   className = '';
-  direction = 'horizontal';
 }
