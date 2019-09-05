@@ -83,7 +83,7 @@ export class ShadeComponent implements OnChanges {
       };
     this.pointerLeft =  this.changeV * 100;
   }
-  handleChange({ top, left, containerWidth, $event }) {
+  handleChange({ left, containerWidth, $event }) {
     let data;
     let v;
     if (left < 0) {
@@ -104,7 +104,6 @@ export class ShadeComponent implements OnChanges {
           source: 'rgb',
         };
       }
-      console.log(left, containerWidth);
     if (!data) {
       return null;
     }

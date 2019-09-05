@@ -7,9 +7,8 @@ import {
   OnChanges,
 } from '@angular/core';
 
-import { AlphaModule, ColorWrap } from 'ngx-color';
-import { toState } from 'ngx-color';
-import { ShadeModule } from 'src/lib/common/shade.component';
+
+import { ColorWrap, ShadeModule, toState } from 'ngx-color';
 
 @Component({
   selector: 'color-shade-slider',
@@ -29,9 +28,6 @@ import { ShadeModule } from 'src/lib/common/shade.component';
     `
     .shade-slider {
       position: relative;
-    }
-    .color-alpha {
-      radius: 2px;
     }
   `,
   ],

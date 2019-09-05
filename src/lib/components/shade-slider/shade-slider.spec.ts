@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-
 import { ColorShadeSliderModule, ShadeSliderComponent } from './shade-slider.component';
 
 export const red = {

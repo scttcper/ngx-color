@@ -18,16 +18,24 @@
 
 DEMO: https://ngx-color.netlify.com/  
 
-* [About](#about)
-* [Getting Started](#getting-started)
-  * [Install](#install)
-  * [Include Component](#include-component)
-  * [Others available](#others-available)
-* [Component API](#component-api)
-  * [Color](#color)
-  * [onChange](#onchange)
-  * [onChangeComplete](#onchangecomplete)
-  * [Individual APIs](#individual-apis)
+- [Component API](#component-api)
+  - [Color](#color)
+  - [onChange](#onchange)
+  - [onChangeComplete](#onchangecomplete)
+  - [Individual APIs](#individual-apis)
+    - [Alpha](#alpha)
+    - [Block](#block)
+    - [Chrome](#chrome)
+    - [Circle](#circle)
+    - [Compact](#compact)
+    - [Github](#github)
+    - [Hue](#hue)
+    - [Material](#material)
+    - [Photoshop](#photoshop)
+    - [Sketch](#sketch)
+    - [Slider](#slider)
+    - [Swatches](#swatches)
+    - [Twitter](#twitter)
 
 ## About
 
@@ -83,6 +91,7 @@ import { ColorSketchModule } from 'ngx-color/sketch'; // <color-sketch></color-s
 import { ColorSliderModule } from 'ngx-color/slider'; // <color-slider></color-slider>
 import { ColorSwatchesModule } from 'ngx-color/swatches'; // <color-swatches></color-swatches>
 import { ColorTwitterModule } from 'ngx-color/twitter'; // <color-twitter></color-twitter>
+import { ColorShadeSliderModule } from 'ngx-color/shade-slider'; // <color-shade-slider></color-shade-slider>
 ```
 
 # Component API
