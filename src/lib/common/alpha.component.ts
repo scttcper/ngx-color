@@ -110,7 +110,7 @@ export class AlphaComponent implements OnChanges {
   handleChange({ top, left, containerHeight, containerWidth, $event }) {
     let data;
     if (this.direction === 'vertical') {
-      let a;
+      let a: number;
       if (top < 0) {
         a = 0;
       } else if (top > containerHeight) {
@@ -129,7 +129,7 @@ export class AlphaComponent implements OnChanges {
         };
       }
     } else {
-      let a;
+      let a: number;
       if (left < 0) {
         a = 0;
       } else if (left > containerWidth) {
@@ -148,9 +148,11 @@ export class AlphaComponent implements OnChanges {
         };
       }
     }
+
     if (!data) {
       return null;
     }
+
     this.onChange.emit({ data, $event });
   }
 }

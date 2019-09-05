@@ -7,6 +7,7 @@ export * from './raised.component';
 export * from './saturation.component';
 export * from './swatch.component';
 export * from './coordinates.directive';
+export * from './shade.component';
 
 export * from './helpers/checkboard';
 export * from './helpers/color';

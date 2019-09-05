@@ -11,8 +11,9 @@ import {
   ColorWrap,
   EditableInputModule,
   SwatchModule,
+  getContrastingColor,
+  isValidHex,
 } from 'ngx-color';
-import { getContrastingColor, isValidHex } from 'ngx-color';
 import { BlockSwatchesComponent } from './block-swatches.component';
 
 @Component({

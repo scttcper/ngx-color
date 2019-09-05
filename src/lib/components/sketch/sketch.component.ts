@@ -14,8 +14,8 @@ import {
   HueModule,
   SaturationModule,
   SwatchModule,
+  isValidHex,
 } from 'ngx-color';
-import { isValidHex } from 'ngx-color';
 import { SketchFieldsComponent } from './sketch-fields.component';
 import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
 

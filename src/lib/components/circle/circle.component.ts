@@ -26,8 +26,7 @@ import {
   yellow,
 } from 'material-colors';
 
-import { ColorWrap, SwatchModule } from 'ngx-color';
-import { isValidHex } from 'ngx-color';
+import { ColorWrap, SwatchModule, isValidHex } from 'ngx-color';
 import { CircleSwatchComponent } from './circle-swatch.component';
 
 @Component({

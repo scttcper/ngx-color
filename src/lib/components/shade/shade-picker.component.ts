@@ -6,42 +6,36 @@ import {
   NgModule,
   OnChanges,
 } from '@angular/core';
-
-import { AlphaModule, CheckboardModule, ColorWrap, toState } from 'ngx-color';
+import { ColorWrap, ShadeModule, toState } from 'ngx-color';
 
 @Component({
-  selector: 'color-alpha-picker',
+  selector: 'color-shade-picker',
   template: `
-    <div class="alpha-picker {{ className }}"
+    <div class="shade-slider {{ className }}"
       [style.width.px]="width" [style.height.px]="height">
-      <color-alpha
+      <color-shade
         [hsl]="hsl"
         [rgb]="rgb"
         [pointer]="pointer"
-        [direction]="direction"
         (onChange)="handlePickerChange($event)"
-      ></color-alpha>
+      ></color-shade>
     </div>
   `,
   styles: [
     `
-    .alpha-picker {
+    .shade-slider {
       position: relative;
-    }
-    .color-alpha {
-      radius: 2px;
     }
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
 })
-export class AlphaPickerComponent extends ColorWrap implements OnChanges {
+export class ShadeSliderComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */
   @Input() width: string | number = 316;
   /** Pixel value for picker height */
   @Input() height: string | number = 16;
-  @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   pointer: {[key: string]: string} = {
     width: '18px',
     height: '18px',
@@ -54,9 +48,6 @@ export class AlphaPickerComponent extends ColorWrap implements OnChanges {
     super();
   }
   ngOnChanges() {
-    if (this.direction === 'vertical') {
-      this.pointer.transform = 'translate(-3px, -9px)';
-    }
     this.setState(toState(this.color, this.oldHue));
   }
   handlePickerChange({ data, $event }) {
@@ -65,8 +56,8 @@ export class AlphaPickerComponent extends ColorWrap implements OnChanges {
 }
 
 @NgModule({
-  declarations: [AlphaPickerComponent],
-  exports: [AlphaPickerComponent],
-  imports: [CommonModule, AlphaModule, CheckboardModule],
+  declarations: [ShadeSliderComponent],
+  exports: [ShadeSliderComponent],
+  imports: [CommonModule, ShadeModule],
 })
-export class ColorAlphaModule {}
+export class ColorShadeModule {}
