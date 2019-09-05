@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../node_modules/ng-packagr/package.schema.json",
-  "name": "ngx-color/shade-slider",
+  "name": "ngx-color/shade",
   "author": "scttcper",
   "repository": {
     "type": "git",
@@ -9,13 +9,13 @@
   "license": "MIT",
   "ngPackage": {
     "lib": {
-      "entryFile": "shade-slider.component.ts",
+      "entryFile": "shade-picker.component.ts",
       "umdModuleIds": {
         "material-colors": "material-colors",
         "@ctrl/tinycolor": "@ctrl/tinycolor",
         "ngx-color": "ngx-color"
       }
     },
-    "dest": "../../../../dist/packages-dist/shade-slider"
+    "dest": "../../../../dist/packages-dist/shade"
   }
 }

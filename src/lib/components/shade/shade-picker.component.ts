@@ -6,11 +6,10 @@ import {
   NgModule,
   OnChanges,
 } from '@angular/core';
-
 import { ColorWrap, ShadeModule, toState } from 'ngx-color';
 
 @Component({
-  selector: 'color-shade-slider',
+  selector: 'color-shade-picker',
   template: `
     <div class="shade-slider {{ className }}"
       [style.width.px]="width" [style.height.px]="height">
@@ -61,4 +60,4 @@ export class ShadeSliderComponent extends ColorWrap implements OnChanges {
   exports: [ShadeSliderComponent],
   imports: [CommonModule, ShadeModule],
 })
-export class ColorShadeSliderModule {}
+export class ColorShadeModule {}

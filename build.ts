@@ -17,7 +17,7 @@ const MODULE_NAMES = [
   'slider',
   'swatches',
   'twitter',
-  'shade-slider',
+  'shade',
 ];
 
 async function main() {

@@ -18,7 +18,7 @@ import { ColorSwatchesModule } from '../lib/components/swatches/swatches.compone
 import { ColorTwitterModule } from '../lib/components/twitter/twitter.component';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer.component';
-import { ColorShadeSliderModule } from '../lib/components/shade-slider/shade-slider.component';
+import { ColorShadeModule } from '../lib/components/shade/shade-picker.component';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent],
@@ -40,7 +40,7 @@ import { ColorShadeSliderModule } from '../lib/components/shade-slider/shade-sli
     ColorSliderModule,
     ColorSwatchesModule,
     ColorTwitterModule,
-    ColorShadeSliderModule
+    ColorShadeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

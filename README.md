@@ -36,7 +36,7 @@ DEMO: https://ngx-color.netlify.com/
     - [Slider](#slider)
     - [Swatches](#swatches)
     - [Twitter](#twitter)
-    - [Shade Slider](#shade-slider)
+    - [Shade](#shade)
 
 ## About
 
@@ -92,7 +92,7 @@ import { ColorSketchModule } from 'ngx-color/sketch'; // <color-sketch></color-s
 import { ColorSliderModule } from 'ngx-color/slider'; // <color-slider></color-slider>
 import { ColorSwatchesModule } from 'ngx-color/swatches'; // <color-swatches></color-swatches>
 import { ColorTwitterModule } from 'ngx-color/twitter'; // <color-twitter></color-twitter>
-import { ColorShadeSliderModule } from 'ngx-color/shade-slider'; // <color-shade-slider></color-shade-slider>
+import { ColorShadeModule } from 'ngx-color/shade'; // <color-shade-picker></color-shade-picker>
 ```
 
 # Component API
@@ -279,7 +279,7 @@ None
 * **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
 
-### Shade Slider
+### Shade
 
 * **width** - String | Number, Pixel value for picker width. Default `316px`
 * **height** - String | Number, Pixel value for picker height. Default `16px`
