@@ -49,6 +49,16 @@ DEMO: https://ngx-color.netlify.com/
 
 ## Getting Started
 
+## Dependencies
+
+Latest version available for each version of Angular
+
+| ngx-color | Angular |
+| --------- | ------- |
+| 3.0.3     | 6.x 7.x |
+| 4.1.1     | 8.x     |
+| current   | >= 9.x  |
+
 ### Install
 
 ```sh
