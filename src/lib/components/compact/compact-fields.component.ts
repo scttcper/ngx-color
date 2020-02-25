@@ -13,34 +13,38 @@ import { isValidHex, RGBA } from 'ngx-color';
   template: `
   <div class="compact-fields">
     <div class="compact-active" [style.background]="hex"></div>
-    <color-editable-input
-      style="flex: 6 1 0%;"
-      [style]="{ wrap: HEXWrap, input: HEXinput, label: HEXlabel }"
-      label="hex"
-      [value]="hex"
-      (onChange)="handleChange($event)"
-    ></color-editable-input>
-    <color-editable-input
-      style="flex: 3 1 0%"
-      [style]="{ wrap: RGBwrap, input: RGBinput, label: RGBlabel }"
-      label="r"
-      [value]="rgb.r"
-      (onChange)="handleChange($event)"
-    ></color-editable-input>
-    <color-editable-input
-      style="flex: 3 1 0%"
-      [style]="{ wrap: RGBwrap, input: RGBinput, label: RGBlabel }"
-      label="g"
-      [value]="rgb.g"
-      (onChange)="handleChange($event)"
-    ></color-editable-input>
-    <color-editable-input
-      style="flex: 3 1 0%"
-      [style]="{ wrap: RGBwrap, input: RGBinput, label: RGBlabel }"
-      label="b"
-      [value]="rgb.b"
-      (onChange)="handleChange($event)"
-    ></color-editable-input>
+    <div style="flex: 6 1 0%;">
+      <color-editable-input
+        [style]="{ wrap: HEXWrap, input: HEXinput, label: HEXlabel }"
+        label="hex"
+        [value]="hex"
+        (onChange)="handleChange($event)"
+      ></color-editable-input>
+    </div>
+    <div style="flex: 3 1 0%">
+      <color-editable-input
+        [style]="{ wrap: RGBwrap, input: RGBinput, label: RGBlabel }"
+        label="r"
+        [value]="rgb.r"
+        (onChange)="handleChange($event)"
+      ></color-editable-input>
+    </div>
+    <div style="flex: 3 1 0%">
+      <color-editable-input
+        [style]="{ wrap: RGBwrap, input: RGBinput, label: RGBlabel }"
+        label="g"
+        [value]="rgb.g"
+        (onChange)="handleChange($event)"
+      ></color-editable-input>
+    </div>
+    <div style="flex: 3 1 0%">
+      <color-editable-input
+        [style]="{ wrap: RGBwrap, input: RGBinput, label: RGBlabel }"
+        label="b"
+        [value]="rgb.b"
+        (onChange)="handleChange($event)"
+      ></color-editable-input>
+    </div>
   </div>
   `,
   styles: [
