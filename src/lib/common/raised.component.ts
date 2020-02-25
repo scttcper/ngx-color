@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
 
+export type zDepth = 0 | 1 | 2 | 3 | 4 | 5;
+
 @Component({
   selector: 'color-raised',
   template: `
@@ -49,7 +51,7 @@ import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/co
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RaisedComponent {
-  @Input() zDepth: 0 | 1 | 2 | 3 | 4 | 5  = 1;
+  @Input() zDepth: zDepth = 1;
   @Input() radius = 1;
   @Input() background = '#fff';
 }

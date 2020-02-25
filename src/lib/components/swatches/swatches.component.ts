@@ -26,7 +26,7 @@ import {
   yellow,
 } from 'material-colors';
 
-import { ColorWrap, RaisedModule, SwatchModule } from 'ngx-color';
+import { ColorWrap, RaisedModule, SwatchModule, zDepth } from 'ngx-color';
 import { SwatchesColorComponent } from './swatches-color.component';
 import { SwatchesGroupComponent } from './swatches-group.component';
 
@@ -35,7 +35,7 @@ import { SwatchesGroupComponent } from './swatches-group.component';
   template: `
   <div class="swatches-picker {{ className }}"
     [style.width.px]="width" [style.height.px]="height">
-    <color-raised>
+    <color-raised [zDepth]="zDepth" [background]="background" [radius]="radius">
       <div class="swatches-overflow" [style.height.px]="height">
         <div class="swatches-body">
           <color-swatches-group
@@ -197,9 +197,14 @@ export class SwatchesComponent extends ColorWrap {
     ],
     ['#000000', '#525252', '#969696', '#D9D9D9', '#FFFFFF'],
   ];
+  @Input() zDepth: zDepth = 1;
+  @Input() radius = 1;
+  @Input() background = '#fff';
+
   constructor() {
     super();
   }
+
   handlePickerChange({ data, $event }) {
     this.handleChange(data, $event);
   }

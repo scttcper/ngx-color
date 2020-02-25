@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgModule, Input } from '@angular/core';
 
-import { ColorWrap, EditableInputModule, RaisedModule, isValidHex } from 'ngx-color';
+import { ColorWrap, EditableInputModule, RaisedModule, isValidHex, zDepth } from 'ngx-color';
 
 @Component({
   selector: 'color-material',
   template: `
-  <color-raised>
+  <color-raised [zDepth]="zDepth" [background]="background" [radius]="radius">
     <div class="material-picker {{ className }}">
       <color-editable-input label="hex" [value]="hex"
         (onChange)="handleValueChange($event)"
@@ -95,12 +95,18 @@ export class MaterialComponent extends ColorWrap {
     color: '#999999',
     'text-transform': 'capitalize',
   };
+  @Input() zDepth: zDepth = 1;
+  @Input() radius = 1;
+  @Input() background = '#fff';
+
   constructor() {
     super();
   }
+
   handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }
+
   handleInputChange({ data, $event }) {
     if (data.hex) {
       if (isValidHex(data.hex)) {
@@ -124,6 +130,7 @@ export class MaterialComponent extends ColorWrap {
       });
     }
   }
+
   afterValidChange() {
     this.HEXinput['border-bottom-color'] = this.hex;
   }

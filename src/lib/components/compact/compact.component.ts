@@ -12,6 +12,7 @@ import {
   RaisedModule,
   SwatchModule,
   isValidHex,
+  zDepth,
 } from 'ngx-color';
 import { CompactColorComponent } from './compact-color.component';
 import { CompactFieldsComponent } from './compact-fields.component';
@@ -19,7 +20,7 @@ import { CompactFieldsComponent } from './compact-fields.component';
 @Component({
   selector: 'color-compact',
   template: `
-  <color-raised class="color-compact">
+  <color-raised class="color-compact" [zDepth]="zDepth" [background]="background" [radius]="radius">
     <div class="compact-picker {{ className }}">
       <div>
         <color-compact-color
@@ -97,6 +98,9 @@ export class CompactComponent extends ColorWrap {
     '#653294',
     '#AB149E',
   ];
+  @Input() zDepth: zDepth = 1;
+  @Input() radius = 1;
+  @Input() background = '#fff';
 
   constructor() {
     super();
