@@ -11,11 +11,8 @@ describe('PhotoshopComponent', () => {
       imports: [ColorPhotoshopModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, async(() => {
+  it('should apply className to root element', async(() => {
     const fixture = TestBed.createComponent(PhotoshopTestApp);
-    fixture.detectChanges();
-    const testComponent = fixture.debugElement.componentInstance;
-    testComponent.className = 'classy';
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.photoshop-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
@@ -25,10 +22,9 @@ describe('PhotoshopComponent', () => {
 @Component({
   selector: 'test-app',
   template: `
-  <color-photoshop [className]="className">
-  </color-photoshop>
+  <color-photoshop [className]="className"></color-photoshop>
   `,
 })
 class PhotoshopTestApp {
-  className = '';
+  className = 'classy';
 }

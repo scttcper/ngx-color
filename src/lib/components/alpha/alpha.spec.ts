@@ -23,12 +23,10 @@ describe('AlphaComponent', () => {
     TestBed.compileComponents();
   }));
   it(`should apply className to root element`, () => {
-    const fixture = TestBed.createComponent(AlphaPickerComponent);
-    const testComponent = fixture.componentInstance;
-    testComponent.className = 'classy';
+    const fixture = TestBed.createComponent(AlphaTestApp);
     fixture.detectChanges();
-    const div = fixture.debugElement.query(By.css('.alpha-picker'));
-    expect(div.nativeElement.classList.contains('classy')).toBe(true);
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.alpha-picker').className).toContain('classy');
   });
   it(`should draw vertical`, () => {
     const fixture = TestBed.createComponent(AlphaTestApp);
@@ -70,6 +68,6 @@ describe('AlphaComponent', () => {
   `,
 })
 class AlphaTestApp {
-  className = '';
+  className = 'classy';
   direction = 'horizontal';
 }

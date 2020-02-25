@@ -14,9 +14,6 @@ describe('SketchComponent', () => {
   it(`should apply className to root element`, async(() => {
     const fixture = TestBed.createComponent(SketchTestApp);
     fixture.detectChanges();
-    const testComponent = fixture.debugElement.componentInstance;
-    testComponent.className = 'classy';
-    fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.sketch-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
   }));
@@ -30,5 +27,5 @@ describe('SketchComponent', () => {
   `,
 })
 class SketchTestApp {
-  className = '';
+  className = 'classy';
 }

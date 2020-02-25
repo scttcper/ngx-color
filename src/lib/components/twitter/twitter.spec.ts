@@ -14,9 +14,6 @@ describe('TwitterComponent', () => {
   it(`should apply className to root element`, async(() => {
     const fixture = TestBed.createComponent(TwitterTestApp);
     fixture.detectChanges();
-    const testComponent = fixture.debugElement.componentInstance;
-    testComponent.className = 'classy';
-    fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.twitter-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
   }));
@@ -30,5 +27,5 @@ describe('TwitterComponent', () => {
   `,
 })
 class TwitterTestApp {
-  className = '';
+  className = 'classy';
 }

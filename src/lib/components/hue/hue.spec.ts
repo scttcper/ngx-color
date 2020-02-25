@@ -13,8 +13,6 @@ describe('HuePickerComponent', () => {
   }));
   it(`should apply className to root element`, async(() => {
     const fixture = TestBed.createComponent(HueTestApp);
-    const testComponent = fixture.debugElement.componentInstance;
-    testComponent.className = 'classy';
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.hue-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
@@ -29,5 +27,5 @@ describe('HuePickerComponent', () => {
   `,
 })
 class HueTestApp {
-  className = '';
+  className = 'classy';
 }

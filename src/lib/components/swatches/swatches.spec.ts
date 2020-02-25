@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { ColorSwatchesModule } from './swatches.component';
 
@@ -14,11 +13,8 @@ describe('SwatchesComponent', () => {
   it(`should apply className to root element`, async(() => {
     const fixture = TestBed.createComponent(SwatchTestApp);
     fixture.detectChanges();
-    const testComponent = fixture.debugElement.componentInstance;
-    testComponent.className = 'classy';
-    fixture.detectChanges();
-    const divDebugElement = fixture.debugElement.query(By.css('.swatches-picker'));
-    expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.swatches-picker').className).toContain('classy');
   }));
 });
 
@@ -30,5 +26,5 @@ describe('SwatchesComponent', () => {
   `,
 })
 class SwatchTestApp {
-  className = '';
+  className = 'classy';
 }

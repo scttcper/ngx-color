@@ -15,8 +15,6 @@ describe('BlockComponent', () => {
   }));
   it(`should apply className to root element`, () => {
     const fixture = TestBed.createComponent(BlockTestApp);
-    const testComponent = fixture.debugElement.componentInstance;
-    testComponent.className = 'classy';
     fixture.detectChanges();
     const div = fixture.debugElement.query(By.css('.block-card'));
     expect(div.nativeElement.classList.contains('classy')).toBe(true);
@@ -54,5 +52,5 @@ describe('BlockComponent', () => {
   `,
 })
 class BlockTestApp {
-  className = '';
+  className = 'classy';
 }

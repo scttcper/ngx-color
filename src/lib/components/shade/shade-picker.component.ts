@@ -11,7 +11,7 @@ import { ColorWrap, ShadeModule, toState } from 'ngx-color';
 @Component({
   selector: 'color-shade-picker',
   template: `
-    <div class="shade-slider {{ className }}"
+    <div class="shade-slider {{ className || '' }}"
       [style.width.px]="width" [style.height.px]="height">
       <color-shade
         [hsl]="hsl"
@@ -48,6 +48,7 @@ export class ShadeSliderComponent extends ColorWrap implements OnChanges {
     super();
   }
   ngOnChanges() {
+    console.log(this.className)
     this.setState(toState(this.color, this.oldHue));
   }
   handlePickerChange({ data, $event }) {

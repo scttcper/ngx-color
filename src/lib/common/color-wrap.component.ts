@@ -27,7 +27,7 @@ export interface ColorEvent {
   template: ``,
 })
 export class ColorWrap implements OnInit, OnChanges, OnDestroy {
-  @Input() className = '';
+  @Input() className?: string;
   @Input() color: HSLA | HSVA | RGBA | string = {
     h: 250,
     s: 0.5,

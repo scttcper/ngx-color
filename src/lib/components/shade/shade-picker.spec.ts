@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
-import { ColorShadeModule, ShadeSliderComponent } from './shade-picker.component';
+import { ColorShadeModule } from './shade-picker.component';
 
 export const red = {
   hsl: { a: 1, h: 0, l: 0.5, s: 1 },
@@ -17,17 +16,13 @@ describe('AlphaComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ColorShadeSliderApp],
       imports: [ColorShadeModule],
-    });
-
-    TestBed.compileComponents();
+    }).compileComponents();
   }));
   it(`should apply className to root element`, () => {
-    const fixture = TestBed.createComponent(ShadeSliderComponent);
-    const testComponent = fixture.componentInstance;
-    testComponent.className = 'classy';
+    const fixture = TestBed.createComponent(ColorShadeSliderApp);
     fixture.detectChanges();
-    const div = fixture.debugElement.query(By.css('.shade-slider'));
-    expect(div.nativeElement.classList.contains('classy')).toBe(true);
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.shade-slider').className).toContain('classy');
   });
 });
 
@@ -35,12 +30,9 @@ describe('AlphaComponent', () => {
 @Component({
   selector: 'test-app',
   template: `
-  <color-shade-picker
-    [className]="className"
-  >
-  </color-shade-picker>
+  <color-shade-picker [className]="className"></color-shade-picker>
   `,
 })
 class ColorShadeSliderApp {
-  className = '';
+  className = 'classy';
 }

@@ -14,9 +14,6 @@ describe('BlockComponent', () => {
   it(`should apply className to root element`, async(() => {
     const fixture = TestBed.createComponent(CircleTestApp);
     fixture.detectChanges();
-    const testComponent = fixture.debugElement.componentInstance;
-    testComponent.className = 'classy';
-    fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.circle-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
   }));
@@ -30,5 +27,5 @@ describe('BlockComponent', () => {
   `,
 })
 class CircleTestApp {
-  className = '';
+  className = 'classy';
 }
