@@ -48,7 +48,6 @@ export class ShadeSliderComponent extends ColorWrap implements OnChanges {
     super();
   }
   ngOnChanges() {
-    console.log(this.className)
     this.setState(toState(this.color, this.oldHue));
   }
   handlePickerChange({ data, $event }) {
