@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import { isValidHex, HSLA, RGBA } from 'ngx-color';
+import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
   selector: 'color-sketch-fields',
@@ -116,9 +117,10 @@ export class SketchFieldsComponent {
   handleChange({ data, $event }) {
     if (data.hex) {
       if (isValidHex(data.hex)) {
+        const color = new TinyColor(data.hex);
         this.onChange.emit({
           data: {
-            hex: data.hex,
+            hex: this.disableAlpha ? color.toHex() : color.toHex8(),
             source: 'hex',
           },
           $event,
@@ -141,6 +143,10 @@ export class SketchFieldsComponent {
         data.a = 100;
       }
       data.a /= 100;
+
+      if (this.disableAlpha) {
+        data.a = 1;
+      }
 
       this.onChange.emit({
         data: {

@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 
 import { isValidHex, HSLA, RGBA } from 'ngx-color';
+import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
   selector: 'color-chrome-fields',
@@ -143,7 +144,7 @@ import { isValidHex, HSLA, RGBA } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class ChromeFieldsComponent implements OnInit {
-  @Input() disableAlpha;
+  @Input() disableAlpha: boolean;
   @Input() hsl: HSLA;
   @Input() rgb: RGBA;
   @Input() hex: string;
@@ -195,9 +196,10 @@ export class ChromeFieldsComponent implements OnInit {
   handleChange({ data, $event }) {
     if (data.hex) {
       if (isValidHex(data.hex)) {
+        const color = new TinyColor(data.hex);
         this.onChange.emit({
           data: {
-            hex: data.hex,
+            hex: this.disableAlpha ? color.toHex() : color.toHex8(),
             source: 'hex',
           },
           $event,
@@ -217,6 +219,10 @@ export class ChromeFieldsComponent implements OnInit {
       if (data.a < 0) {
         data.a = 0;
       } else if (data.a > 1) {
+        data.a = 1;
+      }
+
+      if (this.disableAlpha) {
         data.a = 1;
       }
 

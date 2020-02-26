@@ -148,9 +148,8 @@ export class ChromeComponent extends ColorWrap {
   }
 
   afterValidChange() {
-    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${
-      this.rgb.b
-    }, ${this.rgb.a})`;
+    const alpha = this.disableAlpha ? 1 : this.rgb.a;
+    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${this.rgb.b}, ${alpha})`;
   }
   handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
