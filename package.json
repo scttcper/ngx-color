@@ -44,7 +44,7 @@
     "@angular/language-service": "9.1.0",
     "@types/fs-extra": "8.1.0",
     "@types/jasmine": "3.5.10",
-    "@types/node": "13.9.2",
+    "@types/node": "13.9.8",
     "codelyzer": "5.2.1",
     "del": "5.1.0",
     "fs-extra": "9.0.0",
