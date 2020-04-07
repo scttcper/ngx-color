@@ -27,12 +27,12 @@ import { Shape } from 'ngx-color';
   styles: [
     `
     .sketch-swatches {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
       margin: 0px -10px;
       padding: 10px 0px 0px 10px;
       border-top: 1px solid rgb(238, 238, 238);
-      display: flex;
-      flex-wrap: wrap;
-      position: relative;
     }
     .sketch-wrap {
       width: 16px;

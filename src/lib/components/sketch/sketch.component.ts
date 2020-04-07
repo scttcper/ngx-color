@@ -48,14 +48,14 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
         <div class="sketch-active" [style.background]="activeBackground"></div>
       </div>
     </div>
-    <div class="sketch-controls">
+    <div class="sketch-fields-container">
       <color-sketch-fields
         [rgb]="rgb" [hsl]="hsl" [hex]="hex"
         [disableAlpha]="disableAlpha"
         (onChange)="handleValueChange($event)"
       ></color-sketch-fields>
     </div>
-    <div class="sketch-controls">
+    <div class="sketch-swatches-container" *ngIf="presetColors && presetColors.length">
       <color-sketch-preset-colors
         [colors]="presetColors"
         (onClick)="handleBlockChange($event)"
@@ -67,7 +67,7 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
   styles: [
     `
     .sketch-picker {
-      padding: 10px 10px 0;
+      padding: 10px 10px 3px;
       box-sizing: initial;
       background: #fff;
       border-radius: 4px;
@@ -78,6 +78,12 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
       padding-bottom: 75%;
       position: relative;
       overflow: hidden;
+    }
+    .sketch-fields-container {
+      display: flex;
+    }
+    .sketch-swatches-container {
+      display: flex;
     }
     .sketch-controls {
       display: flex;
