@@ -16,6 +16,7 @@ import { ColorWrap, EditableInputModule, SwatchModule, isValidHex } from 'ngx-co
           [style]="swatchStyle"
           [focusStyle]="focus(color)"
           (onClick)="handleBlockChange($event)"
+          (onHover)="onSwatchHover.emit($event)"
         ></color-swatch>
       </div>
       <div class="twitter-hash">
