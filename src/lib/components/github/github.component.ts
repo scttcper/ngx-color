@@ -116,7 +116,7 @@ export class GithubComponent extends ColorWrap {
     super();
   }
 
-  handleBlockChange({ hex, $event }) {
+  handleBlockChange({ hex, $event }: { hex: string, $event: Event }) {
     if (isValidHex(hex)) {
       this.handleChange({ hex, source: 'hex' }, $event);
     }

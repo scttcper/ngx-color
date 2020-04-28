@@ -38,7 +38,7 @@ export function toState(data, oldHue?: number): Color {
 
   return {
     hsl,
-    hex: transparent ? 'transparent' : `#${hex}`,
+    hex: transparent ? 'transparent' : color.toHexString(),
     rgb,
     hsv,
     oldHue: data.h || oldHue || hsl.h,

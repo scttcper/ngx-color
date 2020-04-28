@@ -25,6 +25,7 @@ import {
   teal,
   yellow,
 } from 'material-colors';
+import { TinyColor } from '@ctrl/tinycolor';
 
 import { ColorWrap, SwatchModule, isValidHex } from 'ngx-color';
 import { CircleSwatchComponent } from './circle-swatch.component';
@@ -93,10 +94,10 @@ export class CircleComponent extends ColorWrap {
   constructor() {
     super();
   }
-  isActive(color) {
-    return this.hex === color;
+  isActive(color: string) {
+    return new TinyColor(this.hex).equals(color);
   }
-  handleBlockChange({ hex, $event }) {
+  handleBlockChange({ hex, $event }: { hex: string, $event: Event }) {
     if (isValidHex(hex)) {
       this.handleChange({ hex, source: 'hex' }, $event);
     }
