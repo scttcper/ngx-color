@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MdoButtonModule } from '@ctrl/ngx-github-buttons';
+import { GhButtonModule } from '@ctrl/ngx-github-buttons';
 
 import { ColorAlphaModule } from '../lib/components/alpha/alpha-picker.component';
 import { ColorBlockModule } from '../lib/components/block/block.component';
@@ -25,7 +25,7 @@ import { ColorShadeModule } from '../lib/components/shade/shade-picker.component
   imports: [
     BrowserModule,
 
-    MdoButtonModule,
+    GhButtonModule,
 
     ColorAlphaModule,
     ColorBlockModule,
