@@ -9,10 +9,9 @@
     "material-colors": "^1.2.6"
   },
   "peerDependencies": {
-    "@angular/core": ">=9.0.0-0",
-    "@angular/common": ">=9.0.0-0"
+    "@angular/core": ">=10.0.0-0",
+    "@angular/common": ">=10.0.0-0"
   },
-  "bugs": "https://github.com/scttcper/ngx-color/issues",
   "homepage": "https://github.com/scttcper/ngx-color",
   "repository": "scttcper/ngx-color",
   "license": "MIT",

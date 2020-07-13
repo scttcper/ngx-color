@@ -27,10 +27,10 @@ import { Shape } from 'ngx-color';
   `],
 })
 export class BlockSwatchesComponent implements OnInit {
-  @Input() colors: string[] | Shape[];
+  @Input() colors!: string[] | Shape[];
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle: {[key: string]: string};
+  swatchStyle?: {[key: string]: string};
 
   constructor() { }
 

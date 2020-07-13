@@ -30,9 +30,9 @@ export class CheckboardComponent implements OnInit {
   @Input() white = 'transparent';
   @Input() size = 8;
   @Input() grey = 'rgba(0,0,0,.08)';
-  @Input() boxShadow: string;
-  @Input() borderRadius: string;
-  gridStyles: { [key: string]: string };
+  @Input() boxShadow!: string;
+  @Input() borderRadius!: string;
+  gridStyles!: { [key: string]: string };
 
   ngOnInit() {
     const background = getCheckerboard(this.white, this.grey, this.size);

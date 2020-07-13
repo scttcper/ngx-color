@@ -68,8 +68,8 @@ import { isValidHex, RGBA } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class CompactFieldsComponent {
-  @Input() hex: string;
-  @Input() rgb: RGBA;
+  @Input() hex!: string;
+  @Input() rgb!: RGBA;
   @Output() onChange = new EventEmitter<any>();
   HEXWrap: {[key: string]: string} = {
     marginTop: '-3px',

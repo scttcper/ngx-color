@@ -45,7 +45,7 @@ import { Shape } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class SketchPresetColorsComponent {
-  @Input() colors: string[] | Shape[];
+  @Input() colors!: string[];
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
   swatchStyle = {

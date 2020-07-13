@@ -31,7 +31,7 @@ export class CoordinatesDirective implements OnInit, OnDestroy {
   }>();
 
   private mouseListening = false;
-  private sub: Subscription;
+  private sub!: Subscription;
   @HostListener('window:mousemove', ['$event', '$event.pageX', '$event.pageY'])
   @HostListener('window:touchmove', [
     '$event',

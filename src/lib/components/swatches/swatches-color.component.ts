@@ -39,10 +39,10 @@ import { getContrastingColor } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class SwatchesColorComponent implements OnInit {
-  @Input() color: string;
+  @Input() color!: string;
   @Input() first = false;
   @Input() last = false;
-  @Input() active: boolean;
+  @Input() active!: boolean;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
   getContrastingColor = getContrastingColor;

@@ -44,8 +44,8 @@ import { getContrastingColor } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class CompactColorComponent implements OnChanges {
-  @Input() color: string;
-  @Input() active: boolean;
+  @Input() color!: string;
+  @Input() active!: boolean;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
   swatchStyle: { [key: string]: string } = {

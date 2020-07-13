@@ -99,7 +99,6 @@ export class BlockComponent extends ColorWrap {
     '#ba68c8',
   ];
   @Input() triangle: 'top' | 'hide' = 'top';
-  triangleBorderColor: string;
   input: {[key: string]: string} = {
     width: '100%',
     fontSize: '12px',

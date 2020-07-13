@@ -144,10 +144,10 @@ import { TinyColor } from '@ctrl/tinycolor';
   preserveWhitespaces: false,
 })
 export class ChromeFieldsComponent implements OnInit {
-  @Input() disableAlpha: boolean;
-  @Input() hsl: HSLA;
-  @Input() rgb: RGBA;
-  @Input() hex: string;
+  @Input() disableAlpha!: boolean;
+  @Input() hsl!: HSLA;
+  @Input() rgb!: RGBA;
+  @Input() hex!: string;
   @Output() onChange = new EventEmitter<any>();
   view = '';
   input: { [key: string]: string } = {

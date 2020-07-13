@@ -37,14 +37,14 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   @Output() onChange = new EventEmitter<ColorEvent>();
   @Output() onChangeComplete = new EventEmitter<ColorEvent>();
   @Output() onSwatchHover = new EventEmitter<ColorEvent>();
-  oldHue: number;
-  hsl: HSLA;
-  hsv: HSVA;
-  rgb: RGBA;
-  hex: string;
-  source: string;
-  currentColor: string;
-  changes: Subscription;
+  oldHue!: number;
+  hsl!: HSLA;
+  hsv!: HSVA;
+  rgb!: RGBA;
+  hex!: string;
+  source!: string;
+  currentColor!: string;
+  changes!: Subscription;
 
   ngOnInit() {
     this.changes = this.onChange

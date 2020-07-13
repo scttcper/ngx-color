@@ -149,7 +149,7 @@ export class SketchComponent extends ColorWrap {
   ];
   /** Width of picker */
   @Input() width = 200;
-  activeBackground: string;
+  activeBackground!: string;
   constructor() {
     super();
   }

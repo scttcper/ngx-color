@@ -68,15 +68,15 @@ import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SaturationComponent implements OnChanges {
-  @Input() hsl: HSLA;
-  @Input() hsv: HSVA;
-  @Input() radius: number;
-  @Input() pointer: { [key: string]: string };
-  @Input() circle: { [key: string]: string };
+  @Input() hsl!: HSLA;
+  @Input() hsv!: HSVA;
+  @Input() radius!: number;
+  @Input() pointer!: { [key: string]: string };
+  @Input() circle!: { [key: string]: string };
   @Output() onChange = new EventEmitter<{ data: HSVAsource; $event: Event }>();
-  background: string;
-  pointerTop: string;
-  pointerLeft: string;
+  background!: string;
+  pointerTop!: string;
+  pointerLeft!: string;
 
   ngOnChanges() {
     this.background = `hsl(${this.hsl.h}, 100%, 50%)`;

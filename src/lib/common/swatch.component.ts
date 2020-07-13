@@ -35,19 +35,19 @@ import { CheckboardModule } from './checkboard.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwatchComponent implements OnInit {
-  @Input() color;
+  @Input() color!: string;
   @Input() style: { [key: string]: string } = {};
   @Input() focusStyle: { [key: string]: string } = {};
-  @Input() focus: boolean;
-  @Output() onClick = new EventEmitter<{ hex: string; $event: Event }>();
-  @Output() onHover = new EventEmitter<{ hex: string; $event: Event }>();
+  @Input() focus!: boolean;
+  @Output() onClick = new EventEmitter<any>();
+  @Output() onHover = new EventEmitter<any>();
   divStyles: { [key: string]: string } = {};
   focusStyles: { [key: string]: string } = {};
   inFocus = false;
 
   ngOnInit() {
     this.divStyles = {
-      background: this.color,
+      background: this.color as string,
       height: '100%',
       width: '100%',
       cursor: 'pointer',
@@ -69,10 +69,10 @@ export class SwatchComponent implements OnInit {
   handleFocus() {
     this.inFocus = true;
   }
-  handleHover(hex, $event) {
+  handleHover(hex: string, $event) {
     this.onHover.emit({ hex, $event });
   }
-  handleClick(hex, $event) {
+  handleClick(hex: string, $event) {
     this.onClick.emit({ hex, $event });
   }
 }

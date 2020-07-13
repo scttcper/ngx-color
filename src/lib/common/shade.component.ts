@@ -77,15 +77,15 @@ import { TinyColor } from '@ctrl/tinycolor';
   preserveWhitespaces: false,
 })
 export class ShadeComponent implements OnChanges {
-  @Input() hsl: HSLA;
-  @Input() rgb: RGBA;
-  @Input() pointer: { [key: string]: string };
-  @Input() shadow: string;
-  @Input() radius: string;
+  @Input() hsl!: HSLA;
+  @Input() rgb!: RGBA;
+  @Input() pointer!: { [key: string]: string };
+  @Input() shadow!: string;
+  @Input() radius!: string;
   @Output() onChange = new EventEmitter<any>();
-  gradient: { [key: string]: string };
-  pointerLeft: number;
-  pointerTop: number;
+  gradient!: { [key: string]: string };
+  pointerLeft!: number;
+  pointerTop?: number;
 
   ngOnChanges() {
     this.gradient = {
@@ -97,7 +97,7 @@ export class ShadeComponent implements OnChanges {
     this.pointerLeft = 100 - (hsv.v * 100);
   }
 
-  handleChange({ left, containerWidth, $event }) {
+  handleChange({ left, containerWidth, $event }): void {
     let data;
     let v: number;
     if (left < 0) {
@@ -121,7 +121,7 @@ export class ShadeComponent implements OnChanges {
     }
 
     if (!data) {
-      return null;
+      return;
     }
 
     this.onChange.emit({ data, $event });

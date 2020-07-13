@@ -44,13 +44,13 @@ import { HSL } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class SliderSwatchComponent implements OnChanges {
-  @Input() hsl: HSL;
-  @Input() active: boolean;
-  @Input() offset: number;
+  @Input() hsl!: HSL;
+  @Input() active!: boolean;
+  @Input() offset!: number;
   @Input() first = false;
   @Input() last = false;
   @Output() onClick = new EventEmitter<any>();
-  background: string;
+  background!: string;
 
   ngOnChanges() {
     this.background = `hsl(${this.hsl.h}, 50%, ${this.offset * 100}%)`;

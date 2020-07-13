@@ -91,9 +91,9 @@ import { isValidHex, HSV, RGB } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class PhotoshopFieldsComponent {
-  @Input() rgb: RGB;
-  @Input() hsv: HSV;
-  @Input() hex: string;
+  @Input() rgb!: RGB;
+  @Input() hsv!: HSV;
+  @Input() hex!: string;
   @Output() onChange = new EventEmitter<any>();
   RGBinput: { [key: string]: string } = {
     marginLeft: '35%',

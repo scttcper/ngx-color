@@ -172,14 +172,14 @@ export class TwitterComponent extends ColorWrap {
     return { boxShadow: `0 0 4px ${color}` };
   }
 
-  handleBlockChange({ hex, $event }) {
+  handleBlockChange({ hex, $event }: any) {
     if (isValidHex(hex)) {
       // this.hex = hex;
       this.handleChange({ hex, source: 'hex' }, $event);
     }
   }
 
-  handleValueChange({ data, $event }) {
+  handleValueChange({ data, $event }: any) {
     this.handleBlockChange({ hex: data, $event });
   }
 }

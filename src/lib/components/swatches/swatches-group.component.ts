@@ -35,8 +35,8 @@ import {
   preserveWhitespaces: false,
 })
 export class SwatchesGroupComponent {
-  @Input() group: string[];
-  @Input() active: string;
+  @Input() group!: string[];
+  @Input() active!: string;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
 }

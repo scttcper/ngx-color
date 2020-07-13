@@ -36,7 +36,7 @@ import {
   preserveWhitespaces: false,
 })
 export class CircleSwatchComponent implements OnChanges {
-  @Input() color: string;
+  @Input() color!: string;
   @Input() circleSize = 28;
   @Input() circleSpacing = 14;
   @Input() focus = false;

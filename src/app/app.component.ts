@@ -17,7 +17,7 @@ export class AppComponent {
     a: 1,
   };
 
-  changeComplete($event: ColorEvent) {
+  changeComplete($event: ColorEvent): void {
     this.state = $event.color.hsl;
     this.primaryColor = $event.color.hex;
   }

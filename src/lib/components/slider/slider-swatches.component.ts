@@ -15,16 +15,16 @@ import { HSL } from 'ngx-color';
     <div class="slider-swatch-wrap">
       <color-slider-swatch
         [hsl]="hsl"
-        offset=".80"
+        [offset]=".80"
         [active]="active(0.80, 0.50)"
         (onClick)="handleClick($event)"
-        first="true"
+        [first]="true"
       ></color-slider-swatch>
     </div>
     <div class="slider-swatch-wrap">
       <color-slider-swatch
         [hsl]="hsl"
-        offset=".65"
+        [offset]=".65"
         [active]="active(0.65, 0.50)"
         (onClick)="handleClick($event)"
       ></color-slider-swatch>
@@ -32,7 +32,7 @@ import { HSL } from 'ngx-color';
     <div class="slider-swatch-wrap">
       <color-slider-swatch
         [hsl]="hsl"
-        offset=".50"
+        [offset]=".50"
         [active]="active(0.50, 0.50)"
         (onClick)="handleClick($event)"
       ></color-slider-swatch>
@@ -40,7 +40,7 @@ import { HSL } from 'ngx-color';
     <div class="slider-swatch-wrap">
       <color-slider-swatch
         [hsl]="hsl"
-        offset=".35"
+        [offset]=".35"
         [active]="active(0.35, 0.50)"
         (onClick)="handleClick($event)"
       ></color-slider-swatch>
@@ -48,10 +48,10 @@ import { HSL } from 'ngx-color';
     <div class="slider-swatch-wrap">
       <color-slider-swatch
         [hsl]="hsl"
-        offset=".20"
+        [offset]=".20"
         [active]="active(0.20, 0.50)"
         (onClick)="handleClick($event)"
-        last="true"
+        [last]="true"
       ></color-slider-swatch>
     </div>
   </div>
@@ -71,10 +71,9 @@ import { HSL } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class SliderSwatchesComponent {
-  @Input() hsl: HSL;
+  @Input() hsl!: HSL;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle: { [key: string]: string };
 
   active(l: number, s: number) {
     return (

@@ -141,7 +141,7 @@ export class ChromeComponent extends ColorWrap {
     backgroundColor: 'rgb(248, 248, 248)',
     boxShadow: '0 1px 4px 0 rgba(0, 0, 0, 0.37)',
   };
-  activeBackground: string;
+  activeBackground!: string;
 
   constructor() {
     super();

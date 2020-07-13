@@ -39,26 +39,26 @@ import { fromEvent, Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() style: {
-    wrap: { [key: string]: string };
-    input: { [key: string]: string };
-    label: { [key: string]: string };
+  @Input() style!: {
+    wrap?: Record<string, any>;
+    input?: Record<string, any>;
+    label?: Record<string, any>;
   };
-  @Input() label: string;
-  @Input() value: string | number;
-  @Input() arrowOffset: number;
-  @Input() dragLabel: boolean;
-  @Input() dragMax: number;
+  @Input() label!: string;
+  @Input() value!: string | number;
+  @Input() arrowOffset!: number;
+  @Input() dragLabel!: boolean;
+  @Input() dragMax!: number;
   @Input() placeholder = '';
   @Output() onChange = new EventEmitter();
-  currentValue: string | number;
-  blurValue: string;
-  wrapStyle: { [key: string]: string };
-  inputStyle: { [key: string]: string };
-  labelStyle: { [key: string]: string };
+  currentValue!: string | number;
+  blurValue!: string;
+  wrapStyle!: { [key: string]: string };
+  inputStyle!: { [key: string]: string };
+  labelStyle!: { [key: string]: string };
   focus = false;
-  mousemove: Subscription;
-  mouseup: Subscription;
+  mousemove!: Subscription;
+  mouseup!: Subscription;
 
   ngOnInit() {
     this.wrapStyle = this.style && this.style.wrap ? this.style.wrap : {};

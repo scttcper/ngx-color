@@ -16,7 +16,7 @@
 <br>
 <br>
 
-DEMO: https://ngx-color.netlify.com/  
+DEMO: https://ngx-color.vercel.app
 
 - [Component API](#component-api)
   - [Color](#color)
@@ -40,11 +40,11 @@ DEMO: https://ngx-color.netlify.com/
 
 ## About
 
-* **13 Different Pickers** - Sketch, Photoshop, Chrome, Twitter and many more
+- **13 Different Pickers** - Sketch, Photoshop, Chrome, Twitter and many more
 
-* **Make Your Own** - Use the building block components to make your own
+- **Make Your Own** - Use the building block components to make your own
 
-* This is a port of [react-color](https://github.com/casesandberg/react-color)
+- This is a port of [react-color](https://github.com/casesandberg/react-color)
   by casesandberg
 
 ## Getting Started
@@ -57,7 +57,8 @@ Latest version available for each version of Angular
 | --------- | ------- |
 | 3.0.3     | 6.x 7.x |
 | 4.1.1     | 8.x     |
-| current   | >= 9.x  |
+| 5.1.4     | 9.x     |
+| current   | >= 10.x |
 
 ### Install
 
@@ -118,10 +119,7 @@ values `{ r: 51, g: 51, b: 51 }` or `{ h: 0, s: 0, l: .10 }`. Both rgb and hsl
 will also take a `a: 1` value for alpha. You can also use `transparent`.
 
 ```html
-<color-sketch
-  color="#fff"
-  (onChangeComplete)="handleChangeComplete($event)"
-></color-sketch>
+<color-sketch color="#fff" (onChangeComplete)="handleChangeComplete($event)"></color-sketch>
 ```
 
 In this case, the color picker will initialize with the color `#fff`. When the
@@ -142,9 +140,7 @@ import { ColorEvent } from 'ngx-color';
 
 @Component({
   selector: 'selector-name',
-  template: `
-  <color-sketch (onChange)="handleChange($event)"></color-sketch>
-  `,
+  template: ` <color-sketch (onChange)="handleChange($event)"></color-sketch> `,
 })
 export class NameComponent {
   constructor() {}
@@ -180,65 +176,52 @@ Some pickers have specific APIs that are unique to themselves:
 
 ### Alpha
 
-* **width** - String | Number, Pixel value for picker width. Default `316px`
-* **height** - String | Number, Pixel value for picker height. Default `16px`
-* **direction** - String, `horizontal` or `vertical`. Default `horizontal`
+- **width** - String | Number, Pixel value for picker width. Default `316px`
+- **height** - String | Number, Pixel value for picker height. Default `16px`
+- **direction** - String, `horizontal` or `vertical`. Default `horizontal`
 
 ### Block
 
-* **width** - string | number, Pixel value for picker width. Default `170px`
-* **colors** - Array of Strings, Color squares to display. Default `['#D9E3F0',
-  '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#dce775', '#ff8a65',
-  '#ba68c8']`
-* **triangle** - String, Either `hide` or `top`. Default `top`
-* **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
+- **width** - string | number, Pixel value for picker width. Default `170px`
+- **colors** - Array of Strings, Color squares to display. Default `['#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#dce775', '#ff8a65', '#ba68c8']`
+- **triangle** - String, Either `hide` or `top`. Default `top`
+- **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
 
 ### Chrome
 
-* **disableAlpha** - Bool, Remove alpha slider and options from picker. Default
+- **disableAlpha** - Bool, Remove alpha slider and options from picker. Default
   `false`
 
 ### Circle
 
-* **width** - String | number, Pixel value for picker width. Default `252px`
-* **colors** - Array of Strings, Color squares to display. Default `["#f44336",
-  "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4",
-  "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800",
-  "#ff5722", "#795548", "#607d8b"]`
-* **circleSize** - Number, Value for circle size. Default `28`
-* **circleSpacing** - Number, Value for spacing between circles. Default `14`
-* **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
+- **width** - String | number, Pixel value for picker width. Default `252px`
+- **colors** - Array of Strings, Color squares to display. Default `["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"]`
+- **circleSize** - Number, Value for circle size. Default `28`
+- **circleSpacing** - Number, Value for spacing between circles. Default `14`
+- **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
 
 ### Compact
 
-* **colors** - Array of Strings, Color squares to display. Default `['#4D4D4D',
-  '#999999', '#FFFFFF', '#F44E3B', '#FE9200', '#FCDC00', '#DBDF00', '#A4DD00',
-  '#68CCCA', '#73D8FF', '#AEA1FF', '#FDA1FF', '#333333', '#808080', '#cccccc',
-  '#D33115', '#E27300', '#FCC400', '#B0BC00', '#68BC00', '#16A5A5', '#009CE0',
-  '#7B64FF', '#FA28FF', '#000000', '#666666', '#B3B3B3', '#9F0500', '#C45100',
-  '#FB9E00', '#808900', '#194D33', '#0C797D', '#0062B1', '#653294', '#AB149E']`
-* **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
+- **colors** - Array of Strings, Color squares to display. Default `['#4D4D4D', '#999999', '#FFFFFF', '#F44E3B', '#FE9200', '#FCDC00', '#DBDF00', '#A4DD00', '#68CCCA', '#73D8FF', '#AEA1FF', '#FDA1FF', '#333333', '#808080', '#cccccc', '#D33115', '#E27300', '#FCC400', '#B0BC00', '#68BC00', '#16A5A5', '#009CE0', '#7B64FF', '#FA28FF', '#000000', '#666666', '#B3B3B3', '#9F0500', '#C45100', '#FB9E00', '#808900', '#194D33', '#0C797D', '#0062B1', '#653294', '#AB149E']`
+- **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
 
 ### Github
 
-* **width** - string | number, Pixel value for picker width. Default `212px`
-* **colors** - Array of Strings, Color squares to display. Default `['#B80000',
-  '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB',
-  '#EB9694', '#FAD0C3', '#FEF3BD', '#C1E1C5', '#BEDADC', '#C4DEF6', '#BED3F3',
-  '#D4C4FB']`
-* **triangle** - String, Either `hide`, `top-left` or `top-right`. Default
+- **width** - string | number, Pixel value for picker width. Default `212px`
+- **colors** - Array of Strings, Color squares to display. Default `['#B80000', '#DB3E00', '#FCCB00', '#008B02', '#006B76', '#1273DE', '#004DCF', '#5300EB', '#EB9694', '#FAD0C3', '#FEF3BD', '#C1E1C5', '#BEDADC', '#C4DEF6', '#BED3F3', '#D4C4FB']`
+- **triangle** - String, Either `hide`, `top-left` or `top-right`. Default
   `top-left`
-* **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
+- **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
 
 ### Hue
 
-* **width** - string | number, Pixel value for picker width. Default `316px`
-* **height** - string | number, Pixel value for picker height. Default `16px`
-* **direction** - String Enum, `horizontal` or `vertical`. Default `horizontal`
+- **width** - string | number, Pixel value for picker width. Default `316px`
+- **height** - string | number, Pixel value for picker height. Default `16px`
+- **direction** - String Enum, `horizontal` or `vertical`. Default `horizontal`
 
 ### Material
 
@@ -246,53 +229,49 @@ None
 
 ### Photoshop
 
-* **header** - String, Title text. Default `Color Picker`
-* **onAccept** - (Output), Callback for when accept is clicked.
-* **onCancel** - (Output), Callback for when cancel is clicked.
+- **header** - String, Title text. Default `Color Picker`
+- **onAccept** - (Output), Callback for when accept is clicked.
+- **onCancel** - (Output), Callback for when cancel is clicked.
 
 ### Sketch
 
-* **disableAlpha** - Bool, Remove alpha slider and options from picker. Default
+- **disableAlpha** - Bool, Remove alpha slider and options from picker. Default
   `false`
-* **presetColors** - Array of Strings or Objects, Hex strings for default colors
-  at bottom of picker. Default `['#D0021B', '#F5A623', '#F8E71C', '#8B572A',
-  '#7ED321', '#417505', '#BD10E0', '#9013FE', '#4A90E2', '#50E3C2', '#B8E986',
-  '#000000', '#4A4A4A', '#9B9B9B', '#FFFFFF']`
+- **presetColors** - Array of Strings or Objects, Hex strings for default colors
+  at bottom of picker. Default `['#D0021B', '#F5A623', '#F8E71C', '#8B572A', '#7ED321', '#417505', '#BD10E0', '#9013FE', '#4A90E2', '#50E3C2', '#B8E986', '#000000', '#4A4A4A', '#9B9B9B', '#FFFFFF']`
   > **presetColors** may also be described as an array of objects with `color`
   > and `title` properties: `[{ color: '#f00', title: 'red' }]` or a combination
   > of both
-* **width** - Number, Width of picker. Default `200`
-* **onSwatchHover** - An event handler for `onMouseOver` on the `<Swatch>`s
+- **width** - Number, Width of picker. Default `200`
+- **onSwatchHover** - An event handler for `onMouseOver` on the `<Swatch>`s
   within this component. Gives the args `(color, event)`
 
 ### Slider
 
-* **pointer** - React Component, Custom pointer component
+- **pointer** - React Component, Custom pointer component
 
 ### Swatches
 
-* **width** - string | number, Pixel value for picker width. Default `320`
-* **height** - string | number, Pixel value for picker height. Default `240`
-* **colors** - Array of Arrays of Strings, An array of color groups, each with
+- **width** - string | number, Pixel value for picker width. Default `320`
+- **height** - string | number, Pixel value for picker height. Default `240`
+- **colors** - Array of Arrays of Strings, An array of color groups, each with
   an array of colors
-* **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
+- **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
 
 ### Twitter
 
-* **width** - string | number, Pixel value for picker width. Default `276px`
-* **colors** - Array of Strings, Color squares to display. Default `['#FF6900',
-  '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C',
-  '#F78DA7', '#9900EF']`
-* **triangle** - String, Either `hide`, `top-left` or `top-right`. Default
+- **width** - string | number, Pixel value for picker width. Default `276px`
+- **colors** - Array of Strings, Color squares to display. Default `['#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7', '#9900EF']`
+- **triangle** - String, Either `hide`, `top-left` or `top-right`. Default
   `top-left`
-* **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
+- **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
 
 ### Shade
 
-* **width** - String | Number, Pixel value for picker width. Default `316px`
-* **height** - String | Number, Pixel value for picker height. Default `16px`
+- **width** - String | Number, Pixel value for picker width. Default `316px`
+- **height** - String | Number, Pixel value for picker height. Default `16px`
 
 ---
 

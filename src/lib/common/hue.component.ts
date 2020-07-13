@@ -63,27 +63,27 @@ import { HSLA, HSLAsource } from './helpers/color.interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HueComponent implements OnChanges {
-  @Input() hsl: HSLA;
-  @Input() pointer: { [key: string]: string };
-  @Input() radius: number;
-  @Input() shadow: string;
+  @Input() hsl!: HSLA;
+  @Input() pointer!: { [key: string]: string };
+  @Input() radius!: number;
+  @Input() shadow!: string;
   @Input() hidePointer = false;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<{ data: HSLAsource; $event: Event }>();
   left = '0px';
   top = '';
 
-  ngOnChanges() {
+  ngOnChanges(): void {
     if (this.direction === 'horizontal') {
       this.left = `${this.hsl.h * 100 / 360}%`;
     } else {
       this.top = `${-(this.hsl.h * 100 / 360) + 100}%`;
     }
   }
-  handleChange({ top, left, containerHeight, containerWidth, $event }) {
-    let data: HSLAsource;
+  handleChange({ top, left, containerHeight, containerWidth, $event }): void {
+    let data: HSLAsource | undefined;
     if (this.direction === 'vertical') {
-      let h;
+      let h: number;
       if (top < 0) {
         h = 359;
       } else if (top > containerHeight) {
@@ -103,7 +103,7 @@ export class HueComponent implements OnChanges {
         };
       }
     } else {
-      let h;
+      let h: number;
       if (left < 0) {
         h = 0;
       } else if (left > containerWidth) {
@@ -123,9 +123,11 @@ export class HueComponent implements OnChanges {
         };
       }
     }
+
     if (!data) {
-      return null;
+      return;
     }
+
     this.onChange.emit({ data, $event });
   }
 }

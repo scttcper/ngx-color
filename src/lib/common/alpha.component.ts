@@ -76,16 +76,16 @@ import { HSLA, RGBA } from './helpers/color.interfaces';
   preserveWhitespaces: false,
 })
 export class AlphaComponent implements OnChanges {
-  @Input() hsl: HSLA;
-  @Input() rgb: RGBA;
-  @Input() pointer: { [key: string]: string };
-  @Input() shadow: string;
-  @Input() radius: string;
+  @Input() hsl!: HSLA;
+  @Input() rgb!: RGBA;
+  @Input() pointer!: { [key: string]: string };
+  @Input() shadow!: string;
+  @Input() radius!: number | string;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<any>();
-  gradient: { [key: string]: string };
-  pointerLeft: number;
-  pointerTop: number;
+  gradient!: { [key: string]: string };
+  pointerLeft!: number;
+  pointerTop!: number;
 
   ngOnChanges() {
     if (this.direction === 'vertical') {
@@ -107,8 +107,8 @@ export class AlphaComponent implements OnChanges {
       this.pointerLeft = this.rgb.a * 100;
     }
   }
-  handleChange({ top, left, containerHeight, containerWidth, $event }) {
-    let data;
+  handleChange({ top, left, containerHeight, containerWidth, $event }): void {
+    let data: any;
     if (this.direction === 'vertical') {
       let a: number;
       if (top < 0) {
@@ -150,7 +150,7 @@ export class AlphaComponent implements OnChanges {
     }
 
     if (!data) {
-      return null;
+      return;
     }
 
     this.onChange.emit({ data, $event });

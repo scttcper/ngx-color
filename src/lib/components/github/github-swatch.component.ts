@@ -39,10 +39,10 @@ import {
   preserveWhitespaces: false,
 })
 export class GithubSwatchComponent {
-  @Input() color: string;
+  @Input() color!: string;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle: { [key: string]: string };
+  swatchStyle?: { [key: string]: string };
 
   constructor() {}
 

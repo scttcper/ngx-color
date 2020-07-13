@@ -88,9 +88,9 @@ import { TinyColor } from '@ctrl/tinycolor';
   preserveWhitespaces: false,
 })
 export class SketchFieldsComponent {
-  @Input() hsl: HSLA;
-  @Input() rgb: RGBA;
-  @Input() hex: string;
+  @Input() hsl!: HSLA;
+  @Input() rgb!: RGBA;
+  @Input() hex!: string;
   @Input() disableAlpha = false;
   @Output() onChange = new EventEmitter<any>();
   input: {[key: string]: string} = {

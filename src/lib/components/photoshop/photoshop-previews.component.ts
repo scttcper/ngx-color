@@ -45,7 +45,7 @@ import { RGB } from 'ngx-color';
   preserveWhitespaces: false,
 })
 export class PhotoshopPreviewsComponent implements OnChanges {
-  @Input() rgb: RGB;
+  @Input() rgb!: RGB;
   @Input() currentColor = '';
   backgroundNew = '';
 
