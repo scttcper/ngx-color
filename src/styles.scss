@@ -45,3 +45,26 @@ body {
 .home {
   font-family: 'Roboto', sans-serif;
 }
+
+[dir=rtl] {
+  div.sketch-color {
+    margin-right: 4px;
+    margin-left: 0;
+  }
+
+  div.sketch-single,
+  div.sketch-alpha {
+    padding-right: 6px;
+    padding-left: 0;
+  }
+
+  div.sketch-swatches {
+    padding-right: 10px;
+    padding-left: 0;
+  }
+
+  div.sketch-wrap {
+    margin-left: 10px;
+    margin-right: 0;
+  }
+}
