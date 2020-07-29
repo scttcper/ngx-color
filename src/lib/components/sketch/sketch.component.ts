@@ -80,10 +80,10 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
       overflow: hidden;
     }
     .sketch-fields-container {
-      display: flex;
+      display: block;
     }
     .sketch-swatches-container {
-      display: flex;
+      display: block;
     }
     .sketch-controls {
       display: flex;
