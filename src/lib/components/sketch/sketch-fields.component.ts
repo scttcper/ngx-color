@@ -82,6 +82,14 @@ import { TinyColor } from '@ctrl/tinycolor';
       flex: 1 1 0%;
       padding-left: 6px;
     }
+    :host-context([dir=rtl]) .sketch-single {
+      padding-right: 6px;
+      padding-left: 0;
+    }
+    :host-context([dir=rtl]) .sketch-alpha {
+      padding-right: 6px;
+      padding-left: 0;
+    }
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

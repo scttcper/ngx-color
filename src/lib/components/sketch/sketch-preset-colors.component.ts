@@ -39,6 +39,14 @@ import { Shape } from 'ngx-color';
       height: 16px;
       margin: 0px 10px 10px 0px;
     }
+    :host-context([dir=rtl]) .sketch-swatches {
+      padding-right: 10px;
+      padding-left: 0;
+    }
+    :host-context([dir=rtl]) .sketch-wrap {
+      margin-left: 10px;
+      margin-right: 0;
+    }
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
