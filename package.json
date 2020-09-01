@@ -22,9 +22,9 @@
     "material-colors": "1.2.6"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.1000.5",
+    "@angular-devkit/build-angular": "0.1000.8",
     "@angular/animations": "10.0.14",
-    "@angular/cli": "10.0.5",
+    "@angular/cli": "10.0.8",
     "@angular/common": "10.0.14",
     "@angular/compiler-cli": "10.0.14",
     "@angular/compiler": "10.0.14",
