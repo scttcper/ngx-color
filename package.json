@@ -23,17 +23,17 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1000.5",
-    "@angular/animations": "10.0.7",
+    "@angular/animations": "10.0.14",
     "@angular/cli": "10.0.5",
-    "@angular/common": "10.0.7",
-    "@angular/compiler-cli": "10.0.7",
-    "@angular/compiler": "10.0.7",
-    "@angular/core": "10.0.7",
-    "@angular/forms": "10.0.7",
-    "@angular/language-service": "10.0.7",
-    "@angular/platform-browser-dynamic": "10.0.7",
-    "@angular/platform-browser": "10.0.7",
-    "@angular/router": "10.0.7",
+    "@angular/common": "10.0.14",
+    "@angular/compiler-cli": "10.0.14",
+    "@angular/compiler": "10.0.14",
+    "@angular/core": "10.0.14",
+    "@angular/forms": "10.0.14",
+    "@angular/language-service": "10.0.14",
+    "@angular/platform-browser-dynamic": "10.0.14",
+    "@angular/platform-browser": "10.0.14",
+    "@angular/router": "10.0.14",
     "@ctrl/ngx-github-buttons": "6.0.3",
     "@types/fs-extra": "9.0.1",
     "@types/jasmine": "3.5.12",
@@ -56,7 +56,7 @@
     "tslib": "2.0.0",
     "tslint": "6.1.2",
     "typescript": "3.9.7",
-    "zone.js": "0.10.3"
+    "zone.js": "0.11.1"
   },
   "release": {
     "branch": "master"
