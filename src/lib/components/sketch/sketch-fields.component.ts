@@ -128,7 +128,7 @@ export class SketchFieldsComponent {
         const color = new TinyColor(data.hex);
         this.onChange.emit({
           data: {
-            hex: this.disableAlpha ? color.toHex() : color.toHex8(),
+            hex: this.disableAlpha || data.hex.length <= 6 ? color.toHex() : color.toHex8(),
             source: 'hex',
           },
           $event,

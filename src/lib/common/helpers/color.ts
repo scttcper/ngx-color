@@ -24,8 +24,12 @@ export function simpleCheckForValidColor(data) {
   return checked === passed ? data : false;
 }
 
-export function toState(data, oldHue?: number): Color {
+export function toState(data, oldHue?: number, disableAlpha?: boolean): Color {
   const color = data.hex ? new TinyColor(data.hex) : new TinyColor(data);
+  if (disableAlpha) {
+    color.setAlpha(1);
+  }
+
   const hsl = color.toHsl();
   const hsv = color.toHsv();
   const rgb = color.toRgb();

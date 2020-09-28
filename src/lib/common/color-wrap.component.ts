@@ -45,6 +45,7 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   source!: string;
   currentColor!: string;
   changes!: Subscription;
+  disableAlpha?: boolean;
 
   ngOnInit() {
     this.changes = this.onChange
@@ -71,7 +72,7 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   handleChange(data, $event) {
     const isValidColor = simpleCheckForValidColor(data);
     if (isValidColor) {
-      const color = toState(data, data.h || this.oldHue);
+      const color = toState(data, data.h || this.oldHue, this.disableAlpha);
       this.setState(color);
       this.onChange.emit({ color, $event });
       this.afterValidChange();

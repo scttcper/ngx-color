@@ -163,6 +163,7 @@ export class TwitterComponent extends ColorWrap {
     width: '100%',
     color: '#657786',
   };
+  disableAlpha = true;
 
   constructor() {
     super();

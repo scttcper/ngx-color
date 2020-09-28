@@ -115,6 +115,7 @@ export class BlockComponent extends ColorWrap {
     position: 'relative',
     width: '100%',
   };
+  disableAlpha = true;
 
   constructor() {
     super();

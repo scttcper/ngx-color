@@ -16,25 +16,31 @@ import { fromEvent, Subscription } from 'rxjs';
 @Component({
   selector: 'color-editable-input',
   template: `
-  <div class="wrap" [ngStyle]="wrapStyle">
-    <input [ngStyle]="inputStyle" spellCheck="false"
-      [value]="currentValue" [placeholder]="placeholder"
-      (keydown)="handleKeydown($event)" (keyup)="handleKeyup($event)"
-      (focus)="handleFocus($event)" (focusout)="handleFocusOut($event)" />
-    <span *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
-      {{ label }}
-    </span>
-  </div>
+    <div class="wrap" [ngStyle]="wrapStyle">
+      <input
+        [ngStyle]="inputStyle"
+        spellCheck="false"
+        [value]="currentValue"
+        [placeholder]="placeholder"
+        (keydown)="handleKeydown($event)"
+        (keyup)="handleKeyup($event)"
+        (focus)="handleFocus($event)"
+        (focusout)="handleFocusOut($event)"
+      />
+      <span *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
+        {{ label }}
+      </span>
+    </div>
   `,
   styles: [
     `
-    :host {
-      display: flex;
-    }
-    .wrap {
-      position: relative;
-    }
-  `,
+      :host {
+        display: flex;
+      }
+      .wrap {
+        position: relative;
+      }
+    `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -82,43 +88,44 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
     const stringValue = String($event.target.value);
     const isPercentage = stringValue.indexOf('%') > -1;
     const num = Number(stringValue.replace(/%/g, ''));
-    if (!isNaN(num)) {
-      const amount = this.arrowOffset || 1;
+    if (isNaN(num)) {
+      return;
+    }
+    const amount = this.arrowOffset || 1;
 
-      // Up
-      if ($event.keyCode === 38) {
-        if (this.label) {
-          this.onChange.emit({
-            data: { [this.label]: num + amount },
-            $event,
-          });
-        } else {
-          this.onChange.emit({ data: num + amount, $event });
-        }
-
-        if (isPercentage) {
-          this.currentValue = `${num + amount}%`;
-        } else {
-          this.currentValue = num + amount;
-        }
+    // Up
+    if ($event.keyCode === 38) {
+      if (this.label) {
+        this.onChange.emit({
+          data: { [this.label]: num + amount },
+          $event,
+        });
+      } else {
+        this.onChange.emit({ data: num + amount, $event });
       }
 
-      // Down
-      if ($event.keyCode === 40) {
-        if (this.label) {
-          this.onChange.emit({
-            data: { [this.label]: num - amount },
-            $event,
-          });
-        } else {
-          this.onChange.emit({ data: num - amount, $event });
-        }
+      if (isPercentage) {
+        this.currentValue = `${num + amount}%`;
+      } else {
+        this.currentValue = num + amount;
+      }
+    }
 
-        if (isPercentage) {
-          this.currentValue = `${num - amount}%`;
-        } else {
-          this.currentValue = num - amount;
-        }
+    // Down
+    if ($event.keyCode === 40) {
+      if (this.label) {
+        this.onChange.emit({
+          data: { [this.label]: num - amount },
+          $event,
+        });
+      } else {
+        this.onChange.emit({ data: num - amount, $event });
+      }
+
+      if (isPercentage) {
+        this.currentValue = `${num - amount}%`;
+      } else {
+        this.currentValue = num - amount;
       }
     }
   }
@@ -151,12 +158,8 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
     this.unsubscribe();
   }
   subscribe() {
-    this.mousemove = fromEvent(document, 'mousemove').subscribe((ev: Event) =>
-      this.handleDrag(ev),
-    );
-    this.mouseup = fromEvent(document, 'mouseup').subscribe(() =>
-      this.unsubscribe(),
-    );
+    this.mousemove = fromEvent(document, 'mousemove').subscribe((ev: Event) => this.handleDrag(ev));
+    this.mouseup = fromEvent(document, 'mouseup').subscribe(() => this.unsubscribe());
   }
   unsubscribe() {
     if (this.mousemove) {

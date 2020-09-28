@@ -98,6 +98,7 @@ export class MaterialComponent extends ColorWrap {
   @Input() zDepth: zDepth = 1;
   @Input() radius = 1;
   @Input() background = '#fff';
+  disableAlpha = true;
 
   constructor() {
     super();
