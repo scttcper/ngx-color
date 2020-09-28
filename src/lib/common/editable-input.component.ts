@@ -133,7 +133,7 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
     if ($event.keyCode === 40 || $event.keyCode === 38) {
       return;
     }
-    if (`${this.currentValue}` == $event.target.value) {
+    if (`${this.currentValue}` === $event.target.value) {
       return;
     }
 
