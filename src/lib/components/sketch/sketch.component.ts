@@ -121,6 +121,10 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
       border-radius: 2px;
       box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
     }
+    :host-context([dir=rtl]) .sketch-color {
+      margin-right: 4px;
+      margin-left: 0;
+    }
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
