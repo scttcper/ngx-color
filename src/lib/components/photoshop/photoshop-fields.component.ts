@@ -95,7 +95,7 @@ export class PhotoshopFieldsComponent {
   @Input() hsv!: HSV;
   @Input() hex!: string;
   @Output() onChange = new EventEmitter<any>();
-  RGBinput: { [key: string]: string } = {
+  RGBinput: Record<string, string> = {
     marginLeft: '35%',
     width: '40%',
     height: '22px',
@@ -107,10 +107,10 @@ export class PhotoshopFieldsComponent {
     paddingLeft: '3px',
     marginRight: '10px',
   };
-  RGBwrap: { [key: string]: string } = {
+  RGBwrap: Record<string, string> = {
     position: 'relative',
   };
-  RGBlabel: { [key: string]: string } = {
+  RGBlabel: Record<string, string> = {
     left: '0px',
     width: '34px',
     textTransform: 'uppercase',
@@ -119,7 +119,7 @@ export class PhotoshopFieldsComponent {
     lineHeight: '24px',
     position: 'absolute',
   };
-  HEXinput: { [key: string]: string } = {
+  HEXinput: Record<string, string> = {
     marginLeft: '20%',
     width: '80%',
     height: '22px',
@@ -129,10 +129,10 @@ export class PhotoshopFieldsComponent {
     fontSize: '13px',
     paddingLeft: '3px',
   };
-  HEXwrap: { [key: string]: string } = {
+  HEXwrap: Record<string, string> = {
     position: 'relative',
   };
-  HEXlabel: { [key: string]: string } = {
+  HEXlabel: Record<string, string> = {
     position: 'absolute',
     top: '0px',
     left: '0px',

@@ -150,7 +150,7 @@ export class ChromeFieldsComponent implements OnInit {
   @Input() hex!: string;
   @Output() onChange = new EventEmitter<any>();
   view = '';
-  input: { [key: string]: string } = {
+  input: Record<string, string> = {
     fontSize: '11px',
     color: '#333',
     width: '100%',
@@ -160,7 +160,7 @@ export class ChromeFieldsComponent implements OnInit {
     height: '21px',
     'text-align': 'center',
   };
-  label: { [key: string]: string } = {
+  label: Record<string, string> = {
     'text-transform': 'uppercase',
     fontSize: '11px',
     'line-height': '11px',

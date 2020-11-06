@@ -40,7 +40,7 @@ import { SliderSwatchesComponent } from './slider-swatches.component';
 })
 export class SliderComponent extends ColorWrap {
   @Input()
-  pointer: { [key: string]: string } = {
+  pointer: Record<string, string> = {
     width: '14px',
     height: '14px',
     borderRadius: '6px',

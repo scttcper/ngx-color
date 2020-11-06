@@ -59,9 +59,9 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   @Output() onChange = new EventEmitter();
   currentValue!: string | number;
   blurValue!: string;
-  wrapStyle!: { [key: string]: string };
-  inputStyle!: { [key: string]: string };
-  labelStyle!: { [key: string]: string };
+  wrapStyle!: Record<string, string>;
+  inputStyle!: Record<string, string>;
+  labelStyle!: Record<string, string>;
   focus = false;
   mousemove!: Subscription;
   mouseup!: Subscription;

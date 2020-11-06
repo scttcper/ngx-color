@@ -79,11 +79,11 @@ import { TinyColor } from '@ctrl/tinycolor';
 export class ShadeComponent implements OnChanges {
   @Input() hsl!: HSLA;
   @Input() rgb!: RGBA;
-  @Input() pointer!: { [key: string]: string };
+  @Input() pointer!: Record<string, string>;
   @Input() shadow!: string;
   @Input() radius!: string;
   @Output() onChange = new EventEmitter<any>();
-  gradient!: { [key: string]: string };
+  gradient!: Record<string, string>;
   pointerLeft!: number;
   pointerTop?: number;
 
