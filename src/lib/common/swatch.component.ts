@@ -32,27 +32,33 @@ import { CheckboardModule } from './checkboard.component';
       ></color-checkboard>
     </div>
   `,
+  styles: [
+    `
+      .swatch {
+        outline: none;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwatchComponent implements OnInit {
   @Input() color!: string;
-  @Input() style: { [key: string]: string } = {};
-  @Input() focusStyle: { [key: string]: string } = {};
+  @Input() style: Record<string, string> = {};
+  @Input() focusStyle: Record<string, string> = {};
   @Input() focus!: boolean;
   @Output() onClick = new EventEmitter<any>();
   @Output() onHover = new EventEmitter<any>();
-  divStyles: { [key: string]: string } = {};
-  focusStyles: { [key: string]: string } = {};
+  divStyles: Record<string, string> = {};
+  focusStyles: Record<string, string> = {};
   inFocus = false;
 
   ngOnInit() {
     this.divStyles = {
       background: this.color as string,
-      height: '100%',
-      width: '100%',
-      cursor: 'pointer',
-      position: 'relative',
-      outline: 'none',
       ...this.style,
     };
   }
