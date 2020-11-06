@@ -71,8 +71,8 @@ export class SaturationComponent implements OnChanges {
   @Input() hsl!: HSLA;
   @Input() hsv!: HSVA;
   @Input() radius!: number;
-  @Input() pointer!: { [key: string]: string };
-  @Input() circle!: { [key: string]: string };
+  @Input() pointer!: Record<string, string>;
+  @Input() circle!: Record<string, string>;
   @Output() onChange = new EventEmitter<{ data: HSVAsource; $event: Event }>();
   background!: string;
   pointerTop!: string;

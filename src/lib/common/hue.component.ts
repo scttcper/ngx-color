@@ -64,7 +64,7 @@ import { HSLA, HSLAsource } from './helpers/color.interfaces';
 })
 export class HueComponent implements OnChanges {
   @Input() hsl!: HSLA;
-  @Input() pointer!: { [key: string]: string };
+  @Input() pointer!: Record<string, string>;
   @Input() radius!: number;
   @Input() shadow!: string;
   @Input() hidePointer = false;

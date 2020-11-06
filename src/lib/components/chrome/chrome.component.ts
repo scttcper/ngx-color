@@ -126,14 +126,14 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
 export class ChromeComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */
   @Input() disableAlpha = false;
-  circle: { [key: string]: string } = {
+  circle: Record<string, string> = {
     width: '12px',
     height: '12px',
     borderRadius: '6px',
     boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 1px inset',
     transform: 'translate(-6px, -8px)',
   };
-  pointer: { [key: string]: string } = {
+  pointer: Record<string, string> = {
     width: '12px',
     height: '12px',
     borderRadius: '6px',

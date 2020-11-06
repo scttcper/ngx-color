@@ -42,8 +42,8 @@ export class CircleSwatchComponent implements OnChanges {
   @Input() focus = false;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  focusStyle: { [key: string]: string } = {};
-  swatchStyle: { [key: string]: string } = {
+  focusStyle: Record<string, string> = {};
+  swatchStyle: Record<string, string> = {
     borderRadius: '50%',
     background: 'transparent',
     transition: '100ms box-shadow ease 0s',

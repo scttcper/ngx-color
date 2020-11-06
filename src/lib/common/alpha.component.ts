@@ -78,12 +78,12 @@ import { HSLA, RGBA } from './helpers/color.interfaces';
 export class AlphaComponent implements OnChanges {
   @Input() hsl!: HSLA;
   @Input() rgb!: RGBA;
-  @Input() pointer!: { [key: string]: string };
+  @Input() pointer!: Record<string, string>;
   @Input() shadow!: string;
   @Input() radius!: number | string;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
   @Output() onChange = new EventEmitter<any>();
-  gradient!: { [key: string]: string };
+  gradient!: Record<string, string>;
   pointerLeft!: number;
   pointerTop!: number;
 

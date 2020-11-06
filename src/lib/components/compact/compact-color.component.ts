@@ -48,7 +48,7 @@ export class CompactColorComponent implements OnChanges {
   @Input() active!: boolean;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
-  swatchStyle: { [key: string]: string } = {
+  swatchStyle: Record<string, string> = {
     width: '15px',
     height: '15px',
     float: 'left',
@@ -57,7 +57,7 @@ export class CompactColorComponent implements OnChanges {
     position: 'relative',
     cursor: 'pointer',
   };
-  swatchFocus: { [key: string]: string } = {};
+  swatchFocus: Record<string, string> = {};
   getContrastingColor = getContrastingColor;
 
   ngOnChanges() {
