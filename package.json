@@ -22,9 +22,9 @@
     "material-colors": "1.2.6"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.1002.0",
+    "@angular-devkit/build-angular": "0.1100.3",
     "@angular/animations": "11.0.3",
-    "@angular/cli": "10.2.0",
+    "@angular/cli": "11.0.3",
     "@angular/common": "11.0.3",
     "@angular/compiler-cli": "11.0.3",
     "@angular/compiler": "11.0.3",
@@ -50,7 +50,7 @@
     "karma-jasmine-html-reporter": "1.5.4",
     "karma-jasmine": "4.0.1",
     "karma": "5.2.3",
-    "ng-packagr": "10.1.2",
+    "ng-packagr": "11.0.3",
     "rxjs": "6.6.3",
     "ts-node": "9.0.0",
     "tslib": "2.0.3",
