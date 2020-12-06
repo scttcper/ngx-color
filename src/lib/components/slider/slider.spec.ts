@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ColorSliderModule } from './slider.component';
 
 describe('SliderComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SliderTestApp],
       imports: [ColorSliderModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, async(() => {
+  it(`should apply className to root element`, waitForAsync(() => {
     const fixture = TestBed.createComponent(SliderTestApp);
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.slider-picker'));

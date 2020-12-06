@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ColorCompactModule } from './compact.component';
 
 describe('CompactComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CompactTestApp],
       imports: [ColorCompactModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, async(() => {
+  it(`should apply className to root element`, waitForAsync(() => {
     const fixture = TestBed.createComponent(CompactTestApp);
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.compact-picker'));
