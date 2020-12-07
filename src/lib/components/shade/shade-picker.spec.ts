@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ColorShadeModule } from './shade-picker.component';
 
@@ -12,7 +12,7 @@ export const red = {
 
 
 describe('AlphaComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ColorShadeSliderApp],
       imports: [ColorShadeModule],
