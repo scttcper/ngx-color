@@ -194,6 +194,20 @@
         </div>
       </div>
   </div>
+  <div class='col-12 col-md-7 mb-3'>
+    <div class='d-flex justify-content-center justify-content-md-start'>
+      <div style='width: 320px;display: inline-block'>
+        <color-shade-picker
+          [color]='state'
+          (onChangeComplete)='changeComplete($event)'
+          (onChange)='changeComplete($event)'
+          [disabled]='true'
+        ></color-shade-picker>
+        <div class='pt-3 text-center label'>Disabled Shade Slider</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>
+</div>
