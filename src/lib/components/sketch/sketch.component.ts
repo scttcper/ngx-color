@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 
 import {
-  AlphaModule,
   CheckboardModule,
   ColorWrap,
   EditableInputModule,
@@ -36,12 +35,6 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
             (onChange)="handleValueChange($event)"
           ></color-hue>
         </div>
-        <div class="sketch-alpha" *ngIf="disableAlpha === false">
-          <color-alpha
-            [radius]="2" [rgb]="rgb" [hsl]="hsl"
-            (onChange)="handleValueChange($event)"
-          ></color-alpha>
-        </div>
       </div>
       <div class="sketch-color">
         <color-checkboard></color-checkboard>
@@ -49,11 +42,6 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
       </div>
     </div>
     <div class="sketch-fields-container">
-      <color-sketch-fields
-        [rgb]="rgb" [hsl]="hsl" [hex]="hex"
-        [disableAlpha]="disableAlpha"
-        (onChange)="handleValueChange($event)"
-      ></color-sketch-fields>
     </div>
     <div class="sketch-swatches-container" *ngIf="presetColors && presetColors.length">
       <color-sketch-preset-colors
@@ -98,12 +86,7 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
       height: 10px;
       overflow: hidden;
     }
-    .sketch-alpha {
-      position: relative;
-      height: 10px;
-      margin-top: 4px;
-      overflow: hidden;
-    }
+   
     .sketch-color {
       width: 24px;
       height: 24px;
@@ -131,8 +114,6 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
   preserveWhitespaces: false,
 })
 export class SketchComponent extends ColorWrap {
-  /** Remove alpha slider and options from picker */
-  @Input() disableAlpha = false;
   /** Hex strings for default colors at bottom of picker */
   @Input() presetColors = [
     '#D0021B',
@@ -157,10 +138,7 @@ export class SketchComponent extends ColorWrap {
   constructor() {
     super();
   }
-  afterValidChange() {
-    const alpha = this.disableAlpha ? 1 : this.rgb.a;
-    this.activeBackground = `rgba(${this.rgb.r}, ${this.rgb.g}, ${this.rgb.b}, ${alpha})`;
-  }
+
   handleValueChange({ data, $event }) {
     this.handleChange(data, $event);
   }
@@ -191,7 +169,6 @@ export class SketchComponent extends ColorWrap {
   ],
   imports: [
     CommonModule,
-    AlphaModule,
     CheckboardModule,
     EditableInputModule,
     HueModule,
