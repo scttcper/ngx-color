@@ -62,7 +62,6 @@ export class MaterialComponent extends ColorWrap {
     fontSize: '15px',
     color: 'rgb(51, 51, 51)',
     padding: '0px',
-    'border-width': '0px 0px 2px',
     outline: 'none',
     height: '30px',
   };
@@ -80,8 +79,6 @@ export class MaterialComponent extends ColorWrap {
     fontSize: '15px',
     color: '#333',
     padding: '0px',
-    border: '0px',
-    'border-bottom': '1px solid #eee',
     outline: 'none',
     height: '30px',
   };
