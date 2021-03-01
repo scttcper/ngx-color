@@ -38,8 +38,6 @@ import { ColorWrap, EditableInputModule, RaisedModule, isValidHex, zDepth } from
   styles: [
     `
   .material-picker {
-    width: 130px;
-    height: 130px;
     padding: 16px;
     font-family: Roboto;
   }
