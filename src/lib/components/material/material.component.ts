@@ -38,14 +38,13 @@ import { ColorWrap, EditableInputModule, RaisedModule, isValidHex, zDepth } from
   styles: [
     `
   .material-picker {
-    padding: 16px;
     font-family: Roboto;
   }
   .material-split {
     display: flex;
     margin-right: -10px;
-    padding-top: 11px;
-  }
+
+  
   .material-third {
     flex: 1 1 0%;
     padding-right: 10px;
@@ -57,13 +56,10 @@ import { ColorWrap, EditableInputModule, RaisedModule, isValidHex, zDepth } from
 })
 export class MaterialComponent extends ColorWrap {
   HEXinput: {[key: string]: string} = {
-    width: '100%',
-    marginTop: '12px',
     fontSize: '15px',
     color: 'rgb(51, 51, 51)',
     padding: '0px',
     outline: 'none',
-    height: '30px',
   };
   HEXlabel: {[key: string]: string} = {
     position: 'absolute',
@@ -74,13 +70,10 @@ export class MaterialComponent extends ColorWrap {
     'text-transform': 'capitalize',
   };
   RGBinput: {[key: string]: string} = {
-    width: '100%',
-    marginTop: '12px',
     fontSize: '15px',
     color: '#333',
     padding: '0px',
     outline: 'none',
-    height: '30px',
   };
   RGBlabel: {[key: string]: string} = {
     position: 'absolute',
