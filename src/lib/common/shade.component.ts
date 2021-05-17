@@ -70,7 +70,7 @@ import { TinyColor } from '@ctrl/tinycolor';
       background: #fff;
       margin-top: 1px;
       transform: translateX(-2px);
-    },
+    }
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

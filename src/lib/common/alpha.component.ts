@@ -69,7 +69,7 @@ import { HSLA, RGBA } from './helpers/color.interfaces';
       background: #fff;
       margin-top: 1px;
       transform: translateX(-2px);
-    },
+    }
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
