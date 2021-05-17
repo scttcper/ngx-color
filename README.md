@@ -53,12 +53,13 @@ DEMO: https://ngx-color.vercel.app
 
 Latest version available for each version of Angular
 
-| ngx-color | Angular |
-| --------- | ------- |
-| 3.0.3     | 6.x 7.x |
-| 4.1.1     | 8.x     |
-| 5.1.4     | 9.x     |
-| current   | >= 10.x |
+| ngx-color | Angular   |
+| --------- | --------- |
+| 3.0.3     | 6.x 7.x   |
+| 4.1.1     | 8.x       |
+| 5.1.4     | 9.x       |
+| 6.2.0     | 10.x 11.x |
+| current   | >= 12.x   |
 
 ### Install
 
