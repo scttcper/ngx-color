@@ -26,8 +26,9 @@ import { fromEvent, Subscription } from 'rxjs';
         (keyup)="handleKeyup($event)"
         (focus)="handleFocus($event)"
         (focusout)="handleFocusOut($event)"
+        aria-labelledby="colorEditableInputLabel"
       />
-      <span *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
+      <span id="colorEditableInputLabel" *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
         {{ label }}
       </span>
     </div>
