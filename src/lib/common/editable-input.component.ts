@@ -13,6 +13,8 @@ import {
 
 import { fromEvent, Subscription } from 'rxjs';
 
+let nextUniqueId = 0;
+
 @Component({
   selector: 'color-editable-input',
   template: `
@@ -26,9 +28,9 @@ import { fromEvent, Subscription } from 'rxjs';
         (keyup)="handleKeyup($event)"
         (focus)="handleFocus($event)"
         (focusout)="handleFocusOut($event)"
-        aria-labelledby="colorEditableInputLabel"
+        [attr.aria-labelledby]="uniqueId"
       />
-      <span id="colorEditableInputLabel" *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
+      <span [id]="uniqueId" *ngIf="label" [ngStyle]="labelStyle" (mousedown)="handleMousedown($event)">
         {{ label }}
       </span>
     </div>
@@ -66,6 +68,7 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
   focus = false;
   mousemove!: Subscription;
   mouseup!: Subscription;
+  uniqueId: string = `editableInput-${++nextUniqueId}`;
 
   ngOnInit() {
     this.wrapStyle = this.style && this.style.wrap ? this.style.wrap : {};
