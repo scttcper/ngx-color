@@ -34,6 +34,7 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
     l: 0.2,
     a: 1,
   };
+  @Input() disabled = false;
   @Output() onChange = new EventEmitter<ColorEvent>();
   @Output() onChangeComplete = new EventEmitter<ColorEvent>();
   @Output() onSwatchHover = new EventEmitter<ColorEvent>();
@@ -69,9 +70,10 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
     this.source = data.source;
     this.afterValidChange();
   }
+
   handleChange(data, $event) {
     const isValidColor = simpleCheckForValidColor(data);
-    if (isValidColor) {
+    if (isValidColor && !this.disabled) {
       const color = toState(data, data.h || this.oldHue, this.disableAlpha);
       this.setState(color);
       this.onChange.emit({ color, $event });
