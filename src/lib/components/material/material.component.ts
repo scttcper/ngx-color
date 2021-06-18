@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, NgModule, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
-import { ColorWrap, EditableInputModule, RaisedModule, isValidHex, zDepth } from 'ngx-color';
+import { ColorWrap, EditableInputModule, isValidHex, RaisedModule, zDepth } from 'ngx-color';
 
 @Component({
   selector: 'color-material',
@@ -56,6 +56,12 @@ import { ColorWrap, EditableInputModule, RaisedModule, isValidHex, zDepth } from
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => MaterialComponent),
+    },
+  ],
 })
 export class MaterialComponent extends ColorWrap {
   HEXinput: {[key: string]: string} = {

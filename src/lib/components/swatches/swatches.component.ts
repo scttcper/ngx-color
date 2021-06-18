@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 import {
   amber,
   blue,
@@ -60,6 +55,12 @@ import { SwatchesGroupComponent } from './swatches-group.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => SwatchesComponent),
+    },
+  ],
 })
 export class SwatchesComponent extends ColorWrap {
   /** Pixel value for picker width */

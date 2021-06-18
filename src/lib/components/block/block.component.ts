@@ -1,18 +1,13 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
 import {
   CheckboardModule,
   ColorWrap,
   EditableInputModule,
-  SwatchModule,
   getContrastingColor,
   isValidHex,
+  SwatchModule,
 } from 'ngx-color';
 import { BlockSwatchesComponent } from './block-swatches.component';
 
@@ -82,6 +77,12 @@ import { BlockSwatchesComponent } from './block-swatches.component';
   ],
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => BlockComponent),
+    },
+  ],
 })
 export class BlockComponent extends ColorWrap {
   /** Pixel value for picker width */

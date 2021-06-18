@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
-import { ColorWrap, EditableInputModule, SwatchModule, isValidHex } from 'ngx-color';
+import { ColorWrap, EditableInputModule, isValidHex, SwatchModule } from 'ngx-color';
 
 @Component({
   selector: 'color-twitter',
@@ -124,6 +124,12 @@ import { ColorWrap, EditableInputModule, SwatchModule, isValidHex } from 'ngx-co
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => TwitterComponent),
+    },
+  ],
 })
 export class TwitterComponent extends ColorWrap {
   /** Pixel value for picker width */

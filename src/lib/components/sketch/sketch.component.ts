@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
 import {
   AlphaModule,
@@ -12,9 +7,9 @@ import {
   ColorWrap,
   EditableInputModule,
   HueModule,
+  isValidHex,
   SaturationModule,
   SwatchModule,
-  isValidHex,
 } from 'ngx-color';
 import { SketchFieldsComponent } from './sketch-fields.component';
 import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
@@ -129,6 +124,12 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => SketchComponent),
+    },
+  ],
 })
 export class SketchComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */

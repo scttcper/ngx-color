@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-  OnChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule, OnChanges } from '@angular/core';
 import { ColorWrap, ShadeModule, toState } from 'ngx-color';
 
 @Component({
@@ -30,6 +24,12 @@ import { ColorWrap, ShadeModule, toState } from 'ngx-color';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => ShadeSliderComponent),
+    },
+  ],
 })
 export class ShadeSliderComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */

@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
 import { ColorWrap, HueModule, SwatchModule } from 'ngx-color';
 import { SliderSwatchComponent } from './slider-swatch.component';
@@ -37,6 +32,12 @@ import { SliderSwatchesComponent } from './slider-swatches.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => SliderComponent),
+    },
+  ],
 })
 export class SliderComponent extends ColorWrap {
   @Input()

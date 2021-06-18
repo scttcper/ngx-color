@@ -1,21 +1,7 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  NgModule,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, NgModule, Output } from '@angular/core';
 
-import {
-  ColorWrap,
-  AlphaModule,
-  EditableInputModule,
-  HueModule,
-  SaturationModule,
-  SwatchModule,
-} from 'ngx-color';
+import { AlphaModule, ColorWrap, EditableInputModule, HueModule, SaturationModule, SwatchModule } from 'ngx-color';
 import { PhotoshopButtonComponent } from './photoshop-button.component';
 import { PhotoshopFieldsComponent } from './photoshop-fields.component';
 import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
@@ -130,6 +116,12 @@ import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => PhotoshopComponent),
+    },
+  ],
 })
 export class PhotoshopComponent extends ColorWrap {
   /** Title text */

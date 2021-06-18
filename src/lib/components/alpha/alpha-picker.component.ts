@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-  OnChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule, OnChanges } from '@angular/core';
 
 import { AlphaModule, CheckboardModule, ColorWrap, toState } from 'ngx-color';
 
@@ -35,6 +29,12 @@ import { AlphaModule, CheckboardModule, ColorWrap, toState } from 'ngx-color';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => AlphaPickerComponent)
+    }
+  ]
 })
 export class AlphaPickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */
