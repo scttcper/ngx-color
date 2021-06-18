@@ -88,7 +88,11 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => GithubComponent),
       multi: true,
-    }
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => GithubComponent),
+    },
   ]
 })
 export class GithubComponent extends ColorWrap {

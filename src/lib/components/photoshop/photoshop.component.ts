@@ -122,7 +122,11 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => PhotoshopComponent),
       multi: true,
-    }
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => PhotoshopComponent),
+    },
   ]
 })
 export class PhotoshopComponent extends ColorWrap {
