@@ -3,6 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
+  isDevMode,
   NgModule,
   OnChanges,
   OnDestroy,
@@ -11,7 +12,7 @@ import {
 } from '@angular/core';
 
 import { Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, tap } from 'rxjs/operators';
 
 import { simpleCheckForValidColor, toState } from './helpers/color';
 import { Color, HSLA, HSVA, RGBA } from './helpers/color.interfaces';
@@ -21,6 +22,13 @@ export interface ColorEvent {
   color: Color;
 }
 
+export enum ColorMode {
+  HEX = 'hex',
+  HSL = 'hsl',
+  HSV = 'hsv',
+  RGB = 'rgb'
+}
+
 @Component({
   // create seletor base for test override property
   selector: 'color-wrap',
@@ -28,12 +36,19 @@ export interface ColorEvent {
 })
 export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   @Input() className?: string;
+
+  /**
+   * Descriptors the return color format if the component is used with two-way binding
+   */
+  @Input() mode: ColorMode = ColorMode.HEX;
+
   @Input() color: HSLA | HSVA | RGBA | string = {
     h: 250,
     s: 0.5,
     l: 0.2,
     a: 1,
   };
+  @Output() colorChange = new EventEmitter<HSLA | HSVA | RGBA | string>();
   @Output() onChange = new EventEmitter<ColorEvent>();
   @Output() onChangeComplete = new EventEmitter<ColorEvent>();
   @Output() onSwatchHover = new EventEmitter<ColorEvent>();
@@ -49,8 +64,34 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.changes = this.onChange
-      .pipe(debounceTime(100))
-      .subscribe(x => this.onChangeComplete.emit(x));
+      .pipe(
+        debounceTime(100),
+        tap(event => {
+          this.onChangeComplete.emit(event);
+          switch (this.mode) {
+            case ColorMode.HEX:
+              this.colorChange.emit(event.color.hex);
+              break;
+            case ColorMode.HSL:
+              this.colorChange.emit(event.color.hsl);
+              break;
+            case ColorMode.HSV:
+              this.colorChange.emit(event.color.hsv);
+              break;
+            case ColorMode.RGB:
+              this.colorChange.emit(event.color.rgb);
+              break;
+            default:
+              if (isDevMode()) {
+                throw new Error(`The mode '${this.mode}' is not supported`);
+              } else {
+                console.warn(`The mode '${this.mode}' is not supported`);
+              }
+              break;
+          }
+        })
+      )
+      .subscribe();
     this.setState(toState(this.color, 0));
     this.currentColor = this.hex;
   }
