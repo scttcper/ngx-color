@@ -1,20 +1,9 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
-import {
-  AlphaModule,
-  CheckboardModule,
-  ColorWrap,
-  EditableInputModule,
-  HueModule,
-  SaturationModule,
-} from 'ngx-color';
+import { AlphaModule, CheckboardModule, ColorWrap, EditableInputModule, HueModule, SaturationModule } from 'ngx-color';
 import { ChromeFieldsComponent } from './chrome-fields.component';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'color-chrome',
@@ -122,6 +111,13 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ChromeComponent),
+      multi: true,
+    }
+  ]
 })
 export class ChromeComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */

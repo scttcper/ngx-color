@@ -1,12 +1,7 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-  OnChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule, OnChanges } from '@angular/core';
 import { ColorWrap, ShadeModule, toState } from 'ngx-color';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'color-shade-picker',
@@ -30,6 +25,13 @@ import { ColorWrap, ShadeModule, toState } from 'ngx-color';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ShadeSliderComponent),
+      multi: true,
+    }
+  ]
 })
 export class ShadeSliderComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */

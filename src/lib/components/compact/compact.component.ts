@@ -1,21 +1,10 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
-import {
-  ColorWrap,
-  EditableInputModule,
-  RaisedModule,
-  SwatchModule,
-  isValidHex,
-  zDepth,
-} from 'ngx-color';
+import { ColorWrap, EditableInputModule, isValidHex, RaisedModule, SwatchModule, zDepth } from 'ngx-color';
 import { CompactColorComponent } from './compact-color.component';
 import { CompactFieldsComponent } from './compact-fields.component';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'color-compact',
@@ -57,6 +46,13 @@ import { CompactFieldsComponent } from './compact-fields.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CompactComponent),
+      multi: true,
+    }
+  ]
 })
 export class CompactComponent extends ColorWrap {
   /** Color squares to display */

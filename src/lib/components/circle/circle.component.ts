@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 import {
   amber,
   blue,
@@ -27,8 +22,9 @@ import {
 } from 'material-colors';
 import { TinyColor } from '@ctrl/tinycolor';
 
-import { ColorWrap, SwatchModule, isValidHex } from 'ngx-color';
+import { ColorWrap, isValidHex, SwatchModule } from 'ngx-color';
 import { CircleSwatchComponent } from './circle-swatch.component';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'color-circle',
@@ -60,6 +56,13 @@ import { CircleSwatchComponent } from './circle-swatch.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CircleComponent),
+      multi: true,
+    }
+  ]
 })
 export class CircleComponent extends ColorWrap {
   /** Pixel value for picker width */

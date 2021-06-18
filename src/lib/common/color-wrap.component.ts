@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
+  forwardRef,
   Input,
   NgModule,
   OnChanges,
@@ -11,10 +12,11 @@ import {
 } from '@angular/core';
 
 import { Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, tap } from 'rxjs/operators';
 
 import { simpleCheckForValidColor, toState } from './helpers/color';
 import { Color, HSLA, HSVA, RGBA } from './helpers/color.interfaces';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export interface ColorEvent {
   $event: Event;
@@ -25,8 +27,15 @@ export interface ColorEvent {
   // create seletor base for test override property
   selector: 'color-wrap',
   template: ``,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ColorWrap),
+      multi: true,
+    }
+  ]
 })
-export class ColorWrap implements OnInit, OnChanges, OnDestroy {
+export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   @Input() className?: string;
   @Input() color: HSLA | HSVA | RGBA | string = {
     h: 250,
@@ -47,6 +56,9 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   changes!: Subscription;
   disableAlpha?: boolean;
 
+  private _onChangeCompleteSubscription = new Subscription();
+  private _onSwatchHoverSubscription = new Subscription();
+
   ngOnInit() {
     this.changes = this.onChange
       .pipe(debounceTime(100))
@@ -59,6 +71,8 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
   }
   ngOnDestroy() {
     this.changes.unsubscribe();
+    this._onChangeCompleteSubscription.unsubscribe();
+    this._onSwatchHoverSubscription.unsubscribe();
   }
   setState(data) {
     this.oldHue = data.oldHue;
@@ -89,6 +103,25 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy {
       this.onSwatchHover.emit({ color, $event });
     }
   }
+
+  registerOnChange(fn: (hex: string) => void): void {
+    this._onChangeCompleteSubscription.add(this.onChangeComplete.pipe(
+      tap(event => fn(event.color.hex)),
+    ).subscribe());
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this._onSwatchHoverSubscription.add(this.onSwatchHover.pipe(
+      tap(() => fn()),
+    ).subscribe());
+  }
+
+  setDisabledState(isDisabled: boolean): void {}
+
+  writeValue(hex: string): void {
+    this.color = hex;
+  }
+
 }
 
 @NgModule({
