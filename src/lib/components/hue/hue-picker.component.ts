@@ -1,13 +1,8 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-  OnChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule, OnChanges } from '@angular/core';
 
 import { ColorWrap, HueModule, toState } from 'ngx-color';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'color-hue-picker',
@@ -30,6 +25,13 @@ import { ColorWrap, HueModule, toState } from 'ngx-color';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => HuePickerComponent),
+      multi: true,
+    }
+  ]
 })
 export class HuePickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */

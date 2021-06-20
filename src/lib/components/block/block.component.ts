@@ -1,20 +1,16 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
 import {
   CheckboardModule,
   ColorWrap,
   EditableInputModule,
-  SwatchModule,
   getContrastingColor,
   isValidHex,
+  SwatchModule,
 } from 'ngx-color';
 import { BlockSwatchesComponent } from './block-swatches.component';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'color-block',
@@ -82,6 +78,13 @@ import { BlockSwatchesComponent } from './block-swatches.component';
   ],
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => BlockComponent),
+      multi: true,
+    }
+  ]
 })
 export class BlockComponent extends ColorWrap {
   /** Pixel value for picker width */
