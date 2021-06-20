@@ -94,10 +94,11 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAcce
               this.colorChange.emit(event.color.rgb);
               break;
             default:
+              const msg = `The mode '${this.mode}' is not supported`;
               if (isDevMode()) {
-                throw new Error(`The mode '${this.mode}' is not supported`);
+                throw new Error(msg);
               } else {
-                console.warn(`The mode '${this.mode}' is not supported`);
+                console.warn(msg);
               }
               break;
           }
