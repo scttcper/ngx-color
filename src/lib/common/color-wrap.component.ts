@@ -68,7 +68,7 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAcce
   hex!: string;
   source!: string;
   currentColor!: string;
-  changes!: Subscription;
+  changes?: Subscription;
   disableAlpha?: boolean;
 
   private _onChangeCompleteSubscription = new Subscription();
@@ -112,7 +112,7 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAcce
     this.setState(toState(this.color, this.oldHue));
   }
   ngOnDestroy() {
-    this.changes.unsubscribe();
+    this.changes?.unsubscribe();
     this._onChangeCompleteSubscription.unsubscribe();
     this._onSwatchHoverSubscription.unsubscribe();
   }
