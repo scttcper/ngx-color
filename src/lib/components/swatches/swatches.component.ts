@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 import {
   amber,
   blue,
@@ -29,6 +24,7 @@ import {
 import { ColorWrap, RaisedModule, SwatchModule, zDepth } from 'ngx-color';
 import { SwatchesColorComponent } from './swatches-color.component';
 import { SwatchesGroupComponent } from './swatches-group.component';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'color-swatches',
@@ -60,6 +56,13 @@ import { SwatchesGroupComponent } from './swatches-group.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SwatchesComponent),
+      multi: true,
+    }
+  ]
 })
 export class SwatchesComponent extends ColorWrap {
   /** Pixel value for picker width */

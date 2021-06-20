@@ -1,13 +1,9 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  NgModule,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
-import { ColorWrap, SwatchModule, isValidHex } from 'ngx-color';
+import { ColorWrap, isValidHex, SwatchModule } from 'ngx-color';
 import { GithubSwatchComponent } from './github-swatch.component';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'color-github',
@@ -87,6 +83,13 @@ import { GithubSwatchComponent } from './github-swatch.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => GithubComponent),
+      multi: true,
+    }
+  ]
 })
 export class GithubComponent extends ColorWrap {
   /** Pixel value for picker width */
