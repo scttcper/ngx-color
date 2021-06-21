@@ -83,7 +83,11 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => BlockComponent),
       multi: true,
-    }
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => BlockComponent),
+    },
   ]
 })
 export class BlockComponent extends ColorWrap {

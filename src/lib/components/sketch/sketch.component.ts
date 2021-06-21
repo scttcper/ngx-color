@@ -130,7 +130,11 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => SketchComponent),
       multi: true,
-    }
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => SketchComponent),
+    },
   ]
 })
 export class SketchComponent extends ColorWrap {

@@ -30,7 +30,11 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => HuePickerComponent),
       multi: true,
-    }
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => HuePickerComponent),
+    },
   ]
 })
 export class HuePickerComponent extends ColorWrap implements OnChanges {

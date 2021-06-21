@@ -51,7 +51,11 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CompactComponent),
       multi: true,
-    }
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => CompactComponent),
+    },
   ]
 })
 export class CompactComponent extends ColorWrap {
