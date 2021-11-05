@@ -7,12 +7,7 @@
   },
   "ngPackage": {
     "lib": {
-      "entryFile": "swatches.component.ts",
-      "umdModuleIds": {
-        "material-colors": "material-colors",
-        "@ctrl/tinycolor": "@ctrl/tinycolor",
-        "ngx-color": "ngx-color"
-      }
+      "entryFile": "public_api.ts"
     },
     "dest": "../../../../dist/packages-dist/swatches"
   }

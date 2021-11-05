@@ -1,7 +1,7 @@
+import { sync } from 'del';
 import { copySync } from 'fs-extra';
 import { ngPackagr } from 'ng-packagr';
 import { join } from 'path';
-import * as del from 'del';
 
 const MODULE_NAMES = [
   'alpha',
@@ -22,11 +22,12 @@ const MODULE_NAMES = [
 
 async function main() {
   // cleanup dist
-  del.sync(join(process.cwd(), '/dist'));
-  del.sync(join(process.cwd(), '/node_modules/ngx-color'));
+  sync(join(process.cwd(), '/dist'));
+  sync(join(process.cwd(), '/node_modules/ngx-color'));
 
   await ngPackagr()
     .forProject(join(process.cwd(), 'src/lib/common/package.json'))
+    .withTsConfig('tsconfig.lib.json')
     .build();
 
   // put it in node modules so the path resolves
@@ -44,6 +45,7 @@ async function main() {
   for (const m of MODULE_NAMES) {
     await ngPackagr()
       .forProject(join(process.cwd(), `src/lib/components/${m}/package.json`))
+      .withTsConfig('tsconfig.lib.json')
       .build();
   }
 
@@ -57,5 +59,3 @@ main()
     console.error(e);
     process.exit(1);
   });
-
-

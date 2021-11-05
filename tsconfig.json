@@ -28,5 +28,10 @@
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictTemplates": false
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }
