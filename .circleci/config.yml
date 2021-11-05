@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@4
   browser-tools: circleci/browser-tools@1
-  codecov: codecov/codecov@1
+  codecov: codecov/codecov@3
 jobs:
   test:
     docker:
@@ -40,5 +40,7 @@ workflows:
             branches:
               only:
                 - master
+          context:
+            - npm
           requires:
             - test
