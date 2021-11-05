@@ -8,12 +8,7 @@
   "license": "MIT",
   "ngPackage": {
     "lib": {
-      "entryFile": "compact.component.ts",
-      "umdModuleIds": {
-        "ngx-color": "ngx-color",
-        "material-colors": "material-colors",
-        "@ctrl/tinycolor": "@ctrl/tinycolor"
-      }
+      "entryFile": "public_api.ts"
     },
     "dest": "../../../../dist/packages-dist/compact"
   }
