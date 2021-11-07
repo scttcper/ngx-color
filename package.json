@@ -8,7 +8,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ts-node build.ts",
+    "build": "ng-packagr -p ./src/lib/package.json",
     "ghpages": "ng build --configuration production --no-progress",
     "test": "ng test --watch=false --code-coverage --browsers=ChromeCI",
     "test:watch": "ng test --browsers=ChromeCI",
@@ -59,7 +59,6 @@
     "karma-jasmine-html-reporter": "1.7.0",
     "ng-packagr": "13.0.3",
     "rxjs": "6.6.7",
-    "ts-node": "10.4.0",
     "tslib": "2.3.1",
     "typescript": "4.4.4",
     "zone.js": "0.11.4"

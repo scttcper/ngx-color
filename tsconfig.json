@@ -21,17 +21,14 @@
       "es2018",
       "dom"
     ],
+    "skipLibCheck": true,
     "paths": {
-      "ngx-color": ["./src/lib/common/public_api"]
+      "ngx-color": ["./src/lib/public_api"]
     }
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
-    "strictTemplates": false
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
+    "strictTemplates": true,
+    "enableIvy": true,
   }
 }
