@@ -27,7 +27,7 @@ jobs:
       - checkout
       - node/install-packages
       - run: npm run build
-      - run: cd dist/packages-dist && npx semantic-release
+      - run: cd dist && npx semantic-release
 
 workflows:
   version: 2

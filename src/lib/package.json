@@ -1,0 +1,32 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "ngx-color",
+  "version": "0.0.0-placeholder",
+  "description": "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
+  "peerDependencies": {
+    "@angular/core": ">=12.0.0-0",
+    "@angular/common": ">=12.0.0-0",
+    "@ctrl/tinycolor": "^3.4.0"
+  },
+  "homepage": "https://github.com/scttcper/ngx-color",
+  "repository": "scttcper/ngx-color",
+  "license": "MIT",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    },
+    "dest": "../../dist"
+  },
+  "keywords": [
+    "angular",
+    "color picker",
+    "angular-component",
+    "colorpicker",
+    "picker",
+    "sketch",
+    "chrome",
+    "photoshop",
+    "material design",
+    "popup"
+  ]
+}

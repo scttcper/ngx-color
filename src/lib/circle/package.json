@@ -1,0 +1,17 @@
+{
+  "name": "ngx-color/circle",
+  "author": "scttcper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scttcper/ngx-color.git"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "material-colors": "^1.2.6"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    }
+  }
+}

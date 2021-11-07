@@ -1,0 +1,13 @@
+{
+  "name": "ngx-color/slider",
+  "author": "scttcper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scttcper/ngx-color.git"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    }
+  }
+}
