@@ -8,7 +8,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng-packagr -p ./src/lib/package.json",
+    "build": "ng-packagr -p ./src/lib/package.json && cp README.md ./dist && cp LICENSE ./dist",
     "ghpages": "ng build --configuration production --no-progress",
     "test": "ng test --watch=false --code-coverage --browsers=ChromeCI",
     "test:watch": "ng test --browsers=ChromeCI",
