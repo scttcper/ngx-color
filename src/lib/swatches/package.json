@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/scttcper/ngx-color.git"
   },
-  "peerDependencies": {
+  "dependencies": {
     "material-colors": "^1.2.6"
   },
   "ngPackage": {
