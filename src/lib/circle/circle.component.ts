@@ -35,6 +35,17 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       [style.margin-right.px]="-circleSpacing"
       [style.margin-bottom.px]="-circleSpacing"
     >
+      <!-- <color-circle-swatch
+        *ngIf="emptyColor"
+        [emptyColor]="true"
+        [circleSize]="circleSize"
+        [circleSpacing]="circleSpacing"
+        [color]="greyColor"
+        [focus]="isActive(greyColor)"
+        (onClick)="handleBlockChange($event)"
+        (onSwatchHover)="onSwatchHover.emit($event)"
+      >
+      </color-circle-swatch> -->
       <color-circle-swatch
         *ngFor="let color of colors"
         [circleSize]="circleSize"
@@ -44,6 +55,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         (onClick)="handleBlockChange($event)"
         (onSwatchHover)="onSwatchHover.emit($event)"
       ></color-circle-swatch>
+      <!-- Add button -->
     </div>
   `,
   styles: [
@@ -71,9 +83,32 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 export class CircleComponent extends ColorWrap {
   /** Pixel value for picker width */
   @Input() width: string | number = 252;
+  /** Whether or not to add an 'empty color' option */
+  @Input() emptyColor: boolean = false;
+  /** Whether or not to add an add color button option */
+  @Input() addColorButton: boolean = false;
   /** Color squares to display */
   @Input()
   colors: string[] = [
+    // '#f44336d9',
+    // '#e91e63d9',
+    // '#9c27b0d9',
+    // '#673ab7d9',
+    // '#3f51b5d9',
+    // '#2196f3d9',
+    // '#03a9f4d9',
+    // '#00bcd4d9',
+    // '#009688d9',
+    // '#4caf50d9',
+    // '#8bc34ad9',
+    // '#cddc39d9',
+    // '#ffeb3bd9',
+    // '#ffc107d9',
+    // '#ff9800d9',
+    // '#ff5722d9',
+    // '#795548d9',
+    // '#9C27B0C9',
+    // '#9C27B0C7',
     red['500'],
     pink['500'],
     purple['500'],
@@ -97,6 +132,8 @@ export class CircleComponent extends ColorWrap {
   @Input() circleSize = 28;
   /** Value for spacing between circles */
   @Input() circleSpacing = 14;
+
+  greyColor: string = '#aaaaaa'
 
   constructor() {
     super();

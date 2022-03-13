@@ -40,6 +40,7 @@ export class CircleSwatchComponent implements OnChanges {
   @Input() circleSize = 28;
   @Input() circleSpacing = 14;
   @Input() focus = false;
+  @Input() emptyColor: boolean = false;
   @Output() onClick = new EventEmitter<any>();
   @Output() onSwatchHover = new EventEmitter<any>();
   focusStyle: Record<string, string> = {};
@@ -60,3 +61,18 @@ export class CircleSwatchComponent implements OnChanges {
     this.onClick.emit({ hex, $event });
   }
 }
+
+// I don't like CSS figure it out
+// if (this.emptyColor) {
+//   this.swatchStyle.background = 'linear-gradient(to top right, white calc(50% - 1px), grey , white calc(50% + 1px) )';
+//   this.swatchStyle.boxShadow = `inset 0 0 0 3px grey, 0 0 5px grey`;
+//   if (this.focus) {
+//     this.focusStyle.boxShadow = `inset 0 0 0 3px black, 0 0 5px black`;
+//   }
+// } else {
+//   this.swatchStyle.boxShadow = `inset 0 0 0 ${this.circleSize / 2}px ${this.color}`;
+//   this.focusStyle.boxShadow = `inset 0 0 0 ${ this.circleSize / 2 }px ${ this.color }, 0 0 5px ${ this.color }`;
+//   if (this.focus) {
+//     this.focusStyle.boxShadow = `inset 0 0 0 3px black, 0 0 5px ${ this.color }`;
+//   }
+// }
