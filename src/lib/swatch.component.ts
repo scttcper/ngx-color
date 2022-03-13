@@ -57,18 +57,10 @@ export class SwatchComponent implements OnInit {
   inFocus = false;
 
   ngOnInit() {
-    if (this.color == "#aaaaaa") {
-      this.divStyles = {
-        background: "#ffffff",
-        ...this.style
-      }
-    } else {
-      this.divStyles = {
-        background: this.color as string,
-        ...this.style,
-      };
-    }
-
+    this.divStyles = {
+      background: this.color as string,
+      ...this.style,
+    };
   }
   currentStyles() {
     this.focusStyles = {
