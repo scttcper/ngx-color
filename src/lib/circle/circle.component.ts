@@ -35,17 +35,6 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       [style.margin-right.px]="-circleSpacing"
       [style.margin-bottom.px]="-circleSpacing"
     >
-      <!-- <color-circle-swatch
-        *ngIf="emptyColor"
-        [emptyColor]="true"
-        [circleSize]="circleSize"
-        [circleSpacing]="circleSpacing"
-        [color]="greyColor"
-        [focus]="isActive(greyColor)"
-        (onClick)="handleBlockChange($event)"
-        (onSwatchHover)="onSwatchHover.emit($event)"
-      >
-      </color-circle-swatch> -->
       <color-circle-swatch
         *ngFor="let color of colors"
         [circleSize]="circleSize"
@@ -56,7 +45,6 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         (onClick)="handleBlockChange($event)"
         (onSwatchHover)="onSwatchHover.emit($event)"
       ></color-circle-swatch>
-      <!-- Add button -->
     </div>
   `,
   styles: [
@@ -116,8 +104,6 @@ export class CircleComponent extends ColorWrap {
   @Input() circleSize = 28;
   /** Value for spacing between circles */
   @Input() circleSpacing = 14;
-
-  greyColor: string = '#aaaaaa'
 
   constructor() {
     super();
