@@ -41,6 +41,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         [circleSpacing]="circleSpacing"
         [color]="color"
         [focus]="isActive(color)"
+        [tickStyling]="tickStyling"
         (onClick)="handleBlockChange($event)"
         (onSwatchHover)="onSwatchHover.emit($event)"
       ></color-circle-swatch>
@@ -71,6 +72,12 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 export class CircleComponent extends ColorWrap {
   /** Pixel value for picker width */
   @Input() width: string | number = 252;
+  /** Whether or not to add an 'empty color' option */
+  @Input() emptyColor: boolean = false;
+  /** Whether or not to add an add color button option */
+  @Input() addColorButton: boolean = false;
+  /** Whether or not to use a 'tick' when a color is selected */
+  @Input() tickStyling: boolean = false;
   /** Color squares to display */
   @Input()
   colors: string[] = [

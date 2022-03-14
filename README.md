@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/scttcper/ngx-color/master/misc/sketch-example.png" width="225" alt="Angular color sketch preview">
   <br>
-  <h1>Angular Color</h1>
+  <h1>Angular Color (Fork)</h1>
   <br>
   <a href="https://www.npmjs.org/package/ngx-color">
     <img src="https://badge.fury.io/js/ngx-color.svg" alt="npm">
@@ -43,6 +43,8 @@ DEMO: https://ngx-color.vercel.app
 - **13 Different Pickers** - Sketch, Photoshop, Chrome, Twitter and many more
 
 - **Make Your Own** - Use the building block components to make your own
+
+- This is a fork of [ngx-color](https://github.com/scttcper/ngx-color)
 
 - This is a port of [react-color](https://github.com/casesandberg/react-color)
   by casesandberg
@@ -115,7 +117,7 @@ Color controls what color is active on the color picker. You can use this to
 initialize the color picker with a particular color, or to keep it in sync with
 the state of a parent component.
 
-Color accepts either a string of a hex color `'#333'` or a object of rgb or hsl
+Color accepts either a string of a hex color `'#333'` including hex8 `'#9c27b0c7'` values or a object of rgb or hsl
 values `{ r: 51, g: 51, b: 51 }` or `{ h: 0, s: 0, l: .10 }`. Both rgb and hsl
 will also take a `a: 1` value for alpha. You can also use `transparent`.
 
@@ -184,7 +186,7 @@ Some pickers have specific APIs that are unique to themselves:
 ### Block
 
 - **width** - string | number, Pixel value for picker width. Default `170px`
-- **colors** - Array of Strings, Color squares to display. Default `['#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#dce775', '#ff8a65', '#ba68c8']`
+- **colors** - Array of Strings, Color squares to display. Default `['#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555555', '#dce775', '#ff8a65', '#ba68c8', '#9c27b0c7']`
 - **triangle** - String, Either `hide` or `top`. Default `top`
 - **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
@@ -202,6 +204,7 @@ Some pickers have specific APIs that are unique to themselves:
 - **circleSpacing** - Number, Value for spacing between circles. Default `14`
 - **onSwatchHover** - (Output) An event handler for `onMouseOver` on the
   `<Swatch>`s within this component. Gives the args `(color, event)`
+- **tickStyling** - Whether or not to use a 'tick' when a color is selected. Default `false`
 
 ### Compact
 
