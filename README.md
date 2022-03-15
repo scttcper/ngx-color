@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/scttcper/ngx-color/master/misc/sketch-example.png" width="225" alt="Angular color sketch preview">
   <br>
-  <h1>Angular Color (Fork)</h1>
+  <h1>Angular Color</h1>
   <br>
   <a href="https://www.npmjs.org/package/ngx-color">
     <img src="https://badge.fury.io/js/ngx-color.svg" alt="npm">
@@ -43,8 +43,6 @@ DEMO: https://ngx-color.vercel.app
 - **13 Different Pickers** - Sketch, Photoshop, Chrome, Twitter and many more
 
 - **Make Your Own** - Use the building block components to make your own
-
-- This is a fork of [ngx-color](https://github.com/scttcper/ngx-color)
 
 - This is a port of [react-color](https://github.com/casesandberg/react-color)
   by casesandberg
