@@ -14,7 +14,7 @@ export class AppComponent {
     h: 150,
     s: 0.50,
     l: 0.20,
-    a: 0.51,
+    a: 1,
   };
 
   changeComplete($event: ColorEvent): void {

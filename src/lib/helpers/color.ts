@@ -1,4 +1,4 @@
-import { Numberify, TinyColor } from '@ctrl/tinycolor';
+import { TinyColor } from '@ctrl/tinycolor';
 
 import { Color } from './color.interfaces';
 
