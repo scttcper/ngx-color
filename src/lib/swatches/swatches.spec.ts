@@ -20,10 +20,7 @@ describe('SwatchesComponent', () => {
 
 @Component({
   selector: 'test-app',
-  template: `
-  <color-swatches [className]="className">
-  </color-swatches>
-  `,
+  template: `<color-swatches [className]="className"></color-swatches>`,
 })
 class SwatchTestApp {
   className = 'classy';

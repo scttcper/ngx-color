@@ -10,7 +10,6 @@ export const red = {
   hsv: { h: 0, s: 1, v: 1, a: 1 },
 };
 
-
 describe('AlphaComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -26,12 +25,9 @@ describe('AlphaComponent', () => {
   });
 });
 
-
 @Component({
   selector: 'test-app',
-  template: `
-  <color-shade-picker [className]="className"></color-shade-picker>
-  `,
+  template: `<color-shade-picker [className]="className"></color-shade-picker>`,
 })
 class ColorShadeSliderApp {
   className = 'classy';

@@ -21,10 +21,7 @@ describe('BlockComponent', () => {
 
 @Component({
   selector: 'test-app',
-  template: `
-  <color-chrome [className]="className">
-  </color-chrome>
-  `,
+  template: `<color-chrome [className]="className"></color-chrome>`,
 })
 class ChromeTestApp {
   className = 'classy';

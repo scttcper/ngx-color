@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-
 import { ColorAlphaModule } from './alpha-picker.component';
 
 export const red = {
@@ -11,7 +10,6 @@ export const red = {
   rgb: { r: 255, g: 0, b: 0, a: 1 },
   hsv: { h: 0, s: 1, v: 1, a: 1 },
 };
-
 
 describe('AlphaComponent', () => {
   beforeEach(waitForAsync(() => {
@@ -56,16 +54,9 @@ describe('AlphaComponent', () => {
   // });
 });
 
-
 @Component({
   selector: 'test-app',
-  template: `
-  <color-alpha-picker
-    [className]="className"
-    [direction]="direction"
-  >
-  </color-alpha-picker>
-  `,
+  template: `<color-alpha-picker [className]="className" [direction]="direction"></color-alpha-picker>`,
 })
 class AlphaTestApp {
   className = 'classy';
