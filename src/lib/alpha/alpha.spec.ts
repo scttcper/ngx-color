@@ -3,7 +3,7 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 
-import { AlphaPickerComponent, ColorAlphaModule } from './alpha-picker.component';
+import { ColorAlphaModule } from './alpha-picker.component';
 
 export const red = {
   hsl: { a: 1, h: 0, l: 0.5, s: 1 },
