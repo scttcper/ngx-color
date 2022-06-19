@@ -11,12 +11,12 @@ describe('HuePickerComponent', () => {
       imports: [ColorHueModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, waitForAsync(() => {
+  it(`should apply className to root element`, () => {
     const fixture = TestBed.createComponent(HueTestApp);
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.hue-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
-  }));
+  });
 });
 
 @Component({

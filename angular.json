@@ -116,8 +116,6 @@
       }
     }
   },
-  "defaultProject": "ngx-color",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
   }
 }

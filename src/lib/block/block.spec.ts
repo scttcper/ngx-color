@@ -44,12 +44,7 @@ describe('BlockComponent', () => {
 
 @Component({
   selector: 'test-app',
-  template: `
-  <color-block
-    [className]="className"
-  >
-  </color-block>
-  `,
+  template: `<color-block [className]="className"></color-block>`,
 })
 class BlockTestApp {
   className = 'classy';

@@ -11,20 +11,17 @@ describe('CompactComponent', () => {
       imports: [ColorCompactModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, waitForAsync(() => {
+  it(`should apply className to root element`, () => {
     const fixture = TestBed.createComponent(CompactTestApp);
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.compact-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
-  }));
+  });
 });
 
 @Component({
   selector: 'test-app',
-  template: `
-  <color-compact [className]="className">
-  </color-compact>
-  `,
+  template: `<color-compact [className]="className"></color-compact>`,
 })
 class CompactTestApp {
   className = 'classy';

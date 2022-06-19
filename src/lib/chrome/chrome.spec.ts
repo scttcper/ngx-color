@@ -11,20 +11,17 @@ describe('BlockComponent', () => {
       imports: [ColorChromeModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, waitForAsync(() => {
+  it(`should apply className to root element`, () => {
     const fixture = TestBed.createComponent(ChromeTestApp);
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.chrome-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
-  }));
+  });
 });
 
 @Component({
   selector: 'test-app',
-  template: `
-  <color-chrome [className]="className">
-  </color-chrome>
-  `,
+  template: `<color-chrome [className]="className"></color-chrome>`,
 })
 class ChromeTestApp {
   className = 'classy';

@@ -10,20 +10,17 @@ describe('SwatchesComponent', () => {
       imports: [ColorSwatchesModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, waitForAsync(() => {
+  it(`should apply className to root element`, () => {
     const fixture = TestBed.createComponent(SwatchTestApp);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.swatches-picker').className).toContain('classy');
-  }));
+  });
 });
 
 @Component({
   selector: 'test-app',
-  template: `
-  <color-swatches [className]="className">
-  </color-swatches>
-  `,
+  template: `<color-swatches [className]="className"></color-swatches>`,
 })
 class SwatchTestApp {
   className = 'classy';

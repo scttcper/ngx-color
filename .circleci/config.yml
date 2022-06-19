@@ -1,10 +1,11 @@
 version: 2.1
 orbs:
-  node: circleci/node@4
+  node: circleci/node@5
   browser-tools: circleci/browser-tools@1
   codecov: codecov/codecov@3
 jobs:
   test:
+    resource_class: large
     docker:
       - image: cimg/node:current-browsers
         environment:

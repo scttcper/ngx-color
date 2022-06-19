@@ -11,12 +11,12 @@ describe('MaterialComponent', () => {
       imports: [ColorMaterialModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, waitForAsync(() => {
+  it(`should apply className to root element`, () => {
     const fixture = TestBed.createComponent(MaterialTestApp);
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.material-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
-  }));
+  });
 });
 
 @Component({
