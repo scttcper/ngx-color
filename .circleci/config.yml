@@ -4,6 +4,7 @@ orbs:
   browser-tools: circleci/browser-tools@1
   codecov: codecov/codecov@3
 jobs:
+  resource_class: large
   test:
     docker:
       - image: cimg/node:current-browsers
