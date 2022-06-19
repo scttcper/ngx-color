@@ -11,12 +11,12 @@ describe('BlockComponent', () => {
       imports: [ColorGithubModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, waitForAsync(() => {
+  it(`should apply className to root element`, () => {
     const fixture = TestBed.createComponent(GithubTestApp);
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.github-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
-  }));
+  });
 });
 
 @Component({

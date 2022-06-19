@@ -11,12 +11,12 @@ describe('BlockComponent', () => {
       imports: [ColorCircleModule],
     }).compileComponents();
   }));
-  it(`should apply className to root element`, waitForAsync(() => {
+  it(`should apply className to root element`, () => {
     const fixture = TestBed.createComponent(CircleTestApp);
     fixture.detectChanges();
     const divDebugElement = fixture.debugElement.query(By.css('.circle-picker'));
     expect(divDebugElement.nativeElement.classList.contains('classy')).toBe(true);
-  }));
+  });
 });
 
 @Component({
