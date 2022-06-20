@@ -1,15 +1,9 @@
 {
-  "$schema": "../../../../node_modules/ng-packagr/package.schema.json",
   "name": "ngx-color/shade",
   "author": "scttcper",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scttcper/ngx-color.git"
   },
-  "license": "MIT",
-  "ngPackage": {
-    "lib": {
-      "entryFile": "public_api.ts"
-    }
-  }
+  "license": "MIT"
 }

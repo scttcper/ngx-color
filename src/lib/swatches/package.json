@@ -7,10 +7,5 @@
   },
   "dependencies": {
     "material-colors": "^1.2.6"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "public_api.ts"
-    }
   }
 }
