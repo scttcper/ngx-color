@@ -166,12 +166,8 @@ export class EditableInputComponent implements OnInit, OnChanges, OnDestroy {
     this.mouseup = fromEvent(document, 'mouseup').subscribe(() => this.unsubscribe());
   }
   unsubscribe() {
-    if (this.mousemove) {
-      this.mousemove.unsubscribe();
-    }
-    if (this.mouseup) {
-      this.mouseup.unsubscribe();
-    }
+    this.mousemove?.unsubscribe();
+    this.mouseup?.unsubscribe();
   }
   handleMousedown($event: Event) {
     if (this.dragLabel) {

@@ -113,8 +113,8 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAcce
   }
   ngOnDestroy() {
     this.changes?.unsubscribe();
-    this._onChangeCompleteSubscription.unsubscribe();
-    this._onSwatchHoverSubscription.unsubscribe();
+    this._onChangeCompleteSubscription?.unsubscribe();
+    this._onSwatchHoverSubscription?.unsubscribe();
   }
   setState(data) {
     this.oldHue = data.oldHue;

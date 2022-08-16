@@ -31,7 +31,7 @@ export class CoordinatesDirective implements OnInit, OnDestroy {
   }>();
 
   private mouseListening = false;
-  private sub!: Subscription;
+  private sub?: Subscription;
   @HostListener('window:mousemove', ['$event', '$event.pageX', '$event.pageY'])
   @HostListener('window:touchmove', [
     '$event',
@@ -75,7 +75,7 @@ export class CoordinatesDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.sub?.unsubscribe();
   }
 
   handleChange(x: number, y: number, $event: Event, isTouch: boolean) {
