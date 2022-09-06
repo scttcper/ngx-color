@@ -18,7 +18,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'color-sketch',
   template: `
-  <div class="sketch-picker {{ className }}" [style.width]="width">
+  <div class="sketch-picker {{ className }}" [style.width.px]="width">
     <div class="sketch-saturation">
       <color-saturation [hsl]="hsl" [hsv]="hsv"
         (onChange)="handleValueChange($event)"
