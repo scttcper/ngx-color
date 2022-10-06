@@ -25,14 +25,12 @@
   font-weight: 300;
   line-height: 27px;
   padding-top: 15px;
-
-  a {
-    color: rgba(0, 0, 0, 0.6);
-    // color: #fff;
-    // color: rgba(255, 255, 255, 0.75);
-    text-decoration: underline;
-  }
 }
+.description > a {
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: underline;
+}
+
 .label {
   text-align: center;
   width: 100%;

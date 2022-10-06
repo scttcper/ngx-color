@@ -1,0 +1,21 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html {
+  touch-action: manipulation;
+}
+html,
+body {
+  background: #eee;
+}
+.home {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* fix weird issue on demo with background overlaying */
+.col-md-6, .col-md-3, .col-md-4, .col-md-8 {
+  z-index: 3;
+}
+
+.container {
+  max-width: 800px;
+}
