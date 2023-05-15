@@ -3,12 +3,12 @@
   "version": "0.0.0-placeholder",
   "description": "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "dependencies": {
-    "@ctrl/tinycolor": "^3.4.1",
+    "@ctrl/tinycolor": "^3.6.0",
     "material-colors": "^1.2.6"
   },
   "peerDependencies": {
-    "@angular/core": ">=14.0.0-0",
-    "@angular/common": ">=14.0.0-0"
+    "@angular/core": ">=16.0.0-0",
+    "@angular/common": ">=16.0.0-0"
   },
   "homepage": "https://github.com/scttcper/ngx-color",
   "repository": "scttcper/ngx-color",
@@ -24,5 +24,14 @@
     "photoshop",
     "material design",
     "popup"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "release": {
+    "branches": [
+      "master"
+    ]
+  }
 }
