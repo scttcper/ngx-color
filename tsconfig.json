@@ -15,16 +15,19 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
-      "es2018",
+      "es2022",
       "dom"
     ],
     "skipLibCheck": true,
     "paths": {
-      "ngx-color": ["./src/lib/public_api"]
-    }
+      "ngx-color": [
+        "./src/lib/public_api"
+      ]
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

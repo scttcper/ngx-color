@@ -6,8 +6,6 @@
   <a href="https://www.npmjs.org/package/ngx-color">
     <img src="https://badge.fury.io/js/ngx-color.svg" alt="npm">
   </a> 
-  <a href="https://circleci.com/gh/scttcper/ngx-color">
-    <img src="https://circleci.com/gh/scttcper/ngx-color.svg?style=svg" alt="circleci"></a> 
   <a href="https://codecov.io/github/scttcper/ngx-color">
     <img src="https://img.shields.io/codecov/c/github/scttcper/ngx-color.svg" alt="codecov">
   </a>
@@ -59,7 +57,8 @@ Latest version available for each version of Angular
 | 5.1.4     | 9.x       |
 | 6.2.0     | 10.x 11.x |
 | 7.3.3     | 12.x 13.x |
-| current   | >= 14.x   |
+| 8.0.3     | 14.x 15.x |
+| current   | >= 16.x   |
 
 ### Install
 
