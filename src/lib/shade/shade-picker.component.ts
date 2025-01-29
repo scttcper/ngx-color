@@ -4,8 +4,8 @@ import { ColorWrap, ShadeModule, toState } from 'ngx-color';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-shade-picker',
-  template: `
+    selector: 'color-shade-picker',
+    template: `
     <div class="shade-slider {{ className || '' }}"
       [style.width.px]="width" [style.height.px]="height">
       <color-shade
@@ -16,26 +16,27 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       ></color-shade>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .shade-slider {
       position: relative;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ShadeSliderComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => ShadeSliderComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => ShadeSliderComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => ShadeSliderComponent),
+        },
+    ],
+    standalone: false
 })
 export class ShadeSliderComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */

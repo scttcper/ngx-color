@@ -13,18 +13,20 @@ import { CoordinatesModule } from './coordinates.directive';
 import { HSLA, HSLAsource } from './helpers/color.interfaces';
 
 @Component({
-  selector: 'color-hue',
-  template: `
+    selector: 'color-hue',
+    template: `
   <div class="color-hue color-hue-{{direction}}" [style.border-radius.px]="radius" [style.box-shadow]="shadow">
     <div ngx-color-coordinates (coordinatesChange)="handleChange($event)" class="color-hue-container">
-      <div class="color-hue-pointer" [style.left]="left" [style.top]="top" *ngIf="!hidePointer">
-        <div class="color-hue-slider" [ngStyle]="pointer"></div>
-      </div>
+      @if (!hidePointer) {
+        <div class="color-hue-pointer" [style.left]="left" [style.top]="top">
+          <div class="color-hue-slider" [ngStyle]="pointer"></div>
+        </div>
+      }
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .color-hue {
       position: absolute;
       top: 0;
@@ -58,9 +60,10 @@ import { HSLA, HSLAsource } from './helpers/color.interfaces';
         #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
     }
   `,
-  ],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    preserveWhitespaces: false,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HueComponent implements OnChanges {
   @Input() hsl!: HSLA;

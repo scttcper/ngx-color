@@ -1,18 +1,15 @@
-import {
-  Directive,
-  ElementRef,
-  HostListener,
-  NgModule,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Directive, ElementRef, HostListener, NgModule, OnDestroy, OnInit, Output, inject } from '@angular/core';
 
 import { Subject, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-@Directive({ selector: '[ngx-color-coordinates]' })
+@Directive({
+    selector: '[ngx-color-coordinates]',
+    standalone: false
+})
 export class CoordinatesDirective implements OnInit, OnDestroy {
+  private el = inject(ElementRef);
+
   @Output()
   coordinatesChange = new Subject<{
     x: number;
@@ -62,8 +59,6 @@ export class CoordinatesDirective implements OnInit, OnDestroy {
     this.mouseListening = true;
     this.mousechange.next({ $event, x, y, isTouch });
   }
-
-  constructor(private el: ElementRef) {}
 
   ngOnInit() {
     this.sub = this.mousechange

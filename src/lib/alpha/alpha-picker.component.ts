@@ -5,8 +5,8 @@ import { AlphaModule, CheckboardModule, ColorWrap, toState } from 'ngx-color';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-alpha-picker',
-  template: `
+    selector: 'color-alpha-picker',
+    template: `
     <div class="alpha-picker {{ className }}"
       [style.width.px]="width" [style.height.px]="height">
       <color-alpha
@@ -18,8 +18,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       ></color-alpha>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .alpha-picker {
       position: relative;
     }
@@ -27,20 +27,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       radius: 2px;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AlphaPickerComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => AlphaPickerComponent)
-    }
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => AlphaPickerComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => AlphaPickerComponent)
+        }
+    ],
+    standalone: false
 })
 export class AlphaPickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */

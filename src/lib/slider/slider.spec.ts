@@ -20,11 +20,12 @@ describe('SliderComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `
+    selector: 'test-app',
+    template: `
   <color-slider [className]="className">
   </color-slider>
   `,
+    standalone: false
 })
 class SliderTestApp {
   className = 'classy';

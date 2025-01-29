@@ -7,8 +7,8 @@ import {
 import { RGB } from 'ngx-color';
 
 @Component({
-  selector: 'color-photoshop-previews',
-  template: `
+    selector: 'color-photoshop-previews',
+    template: `
   <div>
     <div class="photoshop-label">new</div>
     <div class="photoshop-swatches">
@@ -18,8 +18,8 @@ import { RGB } from 'ngx-color';
     <div class="photoshop-label">current</div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
   .photoshop-swatches {
     border: 1px solid #B3B3B3;
     border-bottom: 1px solid #F0F0F0;
@@ -40,9 +40,10 @@ import { RGB } from 'ngx-color';
     text-align: center;
   }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class PhotoshopPreviewsComponent implements OnChanges {
   @Input() rgb!: RGB;

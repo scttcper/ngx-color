@@ -6,8 +6,8 @@ import { ChromeFieldsComponent } from './chrome-fields.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-chrome',
-  template: `
+    selector: 'color-chrome',
+    template: `
   <div class="chrome-picker {{ className }}">
     <div class="saturation">
       <color-saturation
@@ -36,12 +36,14 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
               (onChange)="handleValueChange($event)"
             ></color-hue>
           </div>
-          <div class="chrome-alpha" *ngIf="!disableAlpha">
-            <color-alpha
-              [radius]="2" [rgb]="rgb" [hsl]="hsl"
-              [pointer]="pointer" (onChange)="handleValueChange($event)"
-            ></color-alpha>
-          </div>
+          @if (!disableAlpha) {
+            <div class="chrome-alpha">
+              <color-alpha
+                [radius]="2" [rgb]="rgb" [hsl]="hsl"
+                [pointer]="pointer" (onChange)="handleValueChange($event)"
+              ></color-alpha>
+            </div>
+          }
         </div>
       </div>
       <color-chrome-fields
@@ -52,8 +54,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .chrome-picker {
         background: #fff;
         border-radius: 2px;
@@ -108,20 +110,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         position: relative;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ChromeComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => ChromeComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => ChromeComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => ChromeComponent),
+        },
+    ],
+    standalone: false
 })
 export class ChromeComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */

@@ -14,8 +14,8 @@ import { CoordinatesModule } from './coordinates.directive';
 import { HSLA, RGBA } from './helpers/color.interfaces';
 
 @Component({
-  selector: 'color-alpha',
-  template: `
+    selector: 'color-alpha',
+    template: `
   <div class="alpha" [style.border-radius]="radius">
     <div class="alpha-checkboard">
       <color-checkboard></color-checkboard>
@@ -28,8 +28,8 @@ import { HSLA, RGBA } from './helpers/color.interfaces';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .alpha {
       position: absolute;
       top: 0;
@@ -70,9 +70,10 @@ import { HSLA, RGBA } from './helpers/color.interfaces';
       transform: translateX(-2px);
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class AlphaComponent implements OnChanges {
   @Input() hsl!: HSLA;

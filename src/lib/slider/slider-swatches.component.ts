@@ -9,8 +9,8 @@ import {
 import { HSL } from 'ngx-color';
 
 @Component({
-  selector: 'color-slider-swatches',
-  template: `
+    selector: 'color-slider-swatches',
+    template: `
   <div class="slider-swatches">
     <div class="slider-swatch-wrap">
       <color-slider-swatch
@@ -56,7 +56,7 @@ import { HSL } from 'ngx-color';
     </div>
   </div>
   `,
-  styles: [`
+    styles: [`
     .slider-swatches {
       margin-top: 20px;
     }
@@ -67,8 +67,9 @@ import { HSL } from 'ngx-color';
       float: left;
     }
   `],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class SliderSwatchesComponent {
   @Input() hsl!: HSL;

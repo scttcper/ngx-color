@@ -20,8 +20,9 @@ describe('CompactComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `<color-compact [className]="className"></color-compact>`,
+    selector: 'test-app',
+    template: `<color-compact [className]="className"></color-compact>`,
+    standalone: false
 })
 class CompactTestApp {
   className = 'classy';

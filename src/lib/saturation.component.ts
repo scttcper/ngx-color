@@ -14,8 +14,8 @@ import { CoordinatesModule } from './coordinates.directive';
 import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
 
 @Component({
-  selector: 'color-saturation',
-  template: `
+    selector: 'color-saturation',
+    template: `
   <div class="color-saturation" ngx-color-coordinates (coordinatesChange)="handleChange($event)" [style.background]="background">
     <div class="saturation-white">
       <div class="saturation-black"></div>
@@ -25,8 +25,8 @@ import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .saturation-white {
       background: linear-gradient(to right, #fff, rgba(255,255,255,0));
       position: absolute;
@@ -63,9 +63,10 @@ import { HSLA, HSVA, HSVAsource } from './helpers/color.interfaces';
       transform: translate(-2px, -4px);
     }
   `,
-  ],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    preserveWhitespaces: false,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SaturationComponent implements OnChanges {
   @Input() hsl!: HSLA;

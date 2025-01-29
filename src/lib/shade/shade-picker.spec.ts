@@ -26,8 +26,9 @@ describe('AlphaComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `<color-shade-picker [className]="className"></color-shade-picker>`,
+    selector: 'test-app',
+    template: `<color-shade-picker [className]="className"></color-shade-picker>`,
+    standalone: false
 })
 class ColorShadeSliderApp {
   className = 'classy';

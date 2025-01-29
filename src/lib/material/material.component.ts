@@ -5,8 +5,8 @@ import { ColorWrap, EditableInputModule, isValidHex, RaisedModule, zDepth } from
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-material',
-  template: `
+    selector: 'color-material',
+    template: `
   <color-raised [zDepth]="zDepth" [background]="background" [radius]="radius">
     <div class="material-picker {{ className }}">
       <color-editable-input label="hex" [value]="hex"
@@ -36,8 +36,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     </div>
   </color-raised>
   `,
-  styles: [
-    `
+    styles: [
+        `
   .material-picker {
     width: 130px;
     height: 130px;
@@ -54,20 +54,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     padding-right: 10px;
   }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MaterialComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => MaterialComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => MaterialComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => MaterialComponent),
+        },
+    ],
+    standalone: false
 })
 export class MaterialComponent extends ColorWrap {
   HEXinput: {[key: string]: string} = {

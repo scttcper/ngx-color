@@ -7,8 +7,8 @@ import { SliderSwatchesComponent } from './slider-swatches.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-slider',
-  template: `
+    selector: 'color-slider',
+    template: `
   <div class="slider-picker {{ className }}">
     <div class="slider-hue">
       <color-hue
@@ -23,27 +23,28 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .slider-hue {
       height: 12px;
       position: relative;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SliderComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => SliderComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SliderComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => SliderComponent),
+        },
+    ],
+    standalone: false
 })
 export class SliderComponent extends ColorWrap {
   @Input()

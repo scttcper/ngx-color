@@ -9,23 +9,25 @@ import {
 import { Shape } from 'ngx-color';
 
 @Component({
-  selector: 'color-sketch-preset-colors',
-  template: `
+    selector: 'color-sketch-preset-colors',
+    template: `
   <div class="sketch-swatches">
-    <div class="sketch-wrap" *ngFor="let c of colors">
-      <color-swatch
-        [color]="normalizeValue(c).color"
-        [style]="swatchStyle"
-        [focusStyle]="focusStyle(c)"
-        (onClick)="handleClick($event)"
-        (onHover)="onSwatchHover.emit($event)"
-        class="swatch"
-      ></color-swatch>
-    </div>
+    @for (c of colors; track c) {
+      <div class="sketch-wrap">
+        <color-swatch
+          [color]="normalizeValue(c).color"
+          [style]="swatchStyle"
+          [focusStyle]="focusStyle(c)"
+          (onClick)="handleClick($event)"
+          (onHover)="onSwatchHover.emit($event)"
+          class="swatch"
+        ></color-swatch>
+      </div>
+    }
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .sketch-swatches {
       position: relative;
       display: flex;
@@ -48,9 +50,10 @@ import { Shape } from 'ngx-color';
       margin-right: 0;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class SketchPresetColorsComponent {
   @Input() colors!: string[];

@@ -20,11 +20,12 @@ describe('MaterialComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `
+    selector: 'test-app',
+    template: `
   <color-material [className]="className">
   </color-material>
   `,
+    standalone: false
 })
 class MaterialTestApp {
   className = 'classy';

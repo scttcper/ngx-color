@@ -14,8 +14,8 @@ import { TinyColor } from '@ctrl/tinycolor';
 
 
 @Component({
-  selector: 'color-shade',
-  template: `
+    selector: 'color-shade',
+    template: `
     <div class="shade" [style.border-radius]="radius">
       <div
         class="shade-gradient"
@@ -38,8 +38,8 @@ import { TinyColor } from '@ctrl/tinycolor';
       </div>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .shade {
       position: absolute;
       top: 0;
@@ -72,9 +72,10 @@ import { TinyColor } from '@ctrl/tinycolor';
       transform: translateX(-2px);
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class ShadeComponent implements OnChanges {
   @Input() hsl!: HSLA;

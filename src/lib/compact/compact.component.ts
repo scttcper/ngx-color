@@ -7,28 +7,30 @@ import { CompactFieldsComponent } from './compact-fields.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-compact',
-  template: `
+    selector: 'color-compact',
+    template: `
   <color-raised class="color-compact" [zDepth]="zDepth" [background]="background" [radius]="radius">
-    <div class="compact-picker {{ className }}">
-      <div>
+  <div class="compact-picker {{ className }}">
+    <div>
+      @for (color of colors; track color) {
         <color-compact-color
-          *ngFor="let color of colors" [color]="color"
+          [color]="color"
           [active]="color.toLowerCase() === hex.toLowerCase()"
           (onClick)="handleBlockChange($event)"
         ></color-compact-color>
-        <div class="compact-clear"></div>
-      </div>
-      <color-compact-fields
-        [hex]="hex"
-        [rgb]="rgb"
-        (onChange)="handleValueChange($event)"
-      ></color-compact-fields>
+      }
+      <div class="compact-clear"></div>
     </div>
+    <color-compact-fields
+      [hex]="hex"
+      [rgb]="rgb"
+      (onChange)="handleValueChange($event)"
+    ></color-compact-fields>
+  </div>
   </color-raised>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .color-compact {
       background: #f6f6f6;
       radius: 4px;
@@ -43,20 +45,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       clear: both;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CompactComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => CompactComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => CompactComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => CompactComponent),
+        },
+    ],
+    standalone: false
 })
 export class CompactComponent extends ColorWrap {
   /** Color squares to display */

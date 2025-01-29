@@ -55,8 +55,9 @@ describe('AlphaComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `<color-alpha-picker [className]="className" [direction]="direction"></color-alpha-picker>`,
+    selector: 'test-app',
+    template: `<color-alpha-picker [className]="className" [direction]="direction"></color-alpha-picker>`,
+    standalone: false
 })
 class AlphaTestApp {
   className = 'classy';

@@ -20,11 +20,12 @@ describe('SketchComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `
+    selector: 'test-app',
+    template: `
   <color-sketch [className]="className">
   </color-sketch>
   `,
+    standalone: false
 })
 class SketchTestApp {
   className = 'classy';

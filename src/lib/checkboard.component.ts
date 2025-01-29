@@ -10,10 +10,10 @@ import {
 import { getCheckerboard } from './helpers/checkboard';
 
 @Component({
-  selector: 'color-checkboard',
-  template: `<div class="grid" [ngStyle]="gridStyles"></div>`,
-  styles: [
-    `
+    selector: 'color-checkboard',
+    template: `<div class="grid" [ngStyle]="gridStyles"></div>`,
+    styles: [
+        `
   .grid {
     top: 0px;
     right: 0px;
@@ -22,9 +22,10 @@ import { getCheckerboard } from './helpers/checkboard';
     position: absolute;
   }
   `,
-  ],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    preserveWhitespaces: false,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckboardComponent implements OnInit {
   @Input() white = 'transparent';

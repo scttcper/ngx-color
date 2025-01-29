@@ -32,16 +32,17 @@ export enum ColorMode {
 }
 
 @Component({
-  // create seletor base for test override property
-  selector: 'color-wrap',
-  template: ``,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => ColorWrap),
-      multi: true,
-    }
-  ]
+    // create seletor base for test override property
+    selector: 'color-wrap',
+    template: ``,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => ColorWrap),
+            multi: true,
+        }
+    ],
+    standalone: false
 })
 export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   @Input() className?: string;

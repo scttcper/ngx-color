@@ -27,25 +27,26 @@ import { SwatchesGroupComponent } from './swatches-group.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-swatches',
-  template: `
+    selector: 'color-swatches',
+    template: `
   <div class="swatches-picker {{ className }}"
     [style.width.px]="width" [style.height.px]="height">
     <color-raised [zDepth]="zDepth" [background]="background" [radius]="radius">
-      <div class="swatches-overflow" [style.height.px]="height">
-        <div class="swatches-body">
+    <div class="swatches-overflow" [style.height.px]="height">
+      <div class="swatches-body">
+        @for (group of colors; track group) {
           <color-swatches-group
-            *ngFor="let group of colors"
             [group]="group" [active]="hex"
             (onClick)="handlePickerChange($event)"
           ></color-swatches-group>
-        </div>
+        }
       </div>
-    </color-raised>
+    </div>
+  </color-raised>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .swatches-overflow {
         overflow-y: scroll;
       }
@@ -53,20 +54,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         padding: 16px 0 6px 16px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SwatchesComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => SwatchesComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SwatchesComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => SwatchesComponent),
+        },
+    ],
+    standalone: false
 })
 export class SwatchesComponent extends ColorWrap {
   /** Pixel value for picker width */

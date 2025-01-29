@@ -10,8 +10,8 @@ import { isValidHex, HSLA, RGBA } from 'ngx-color';
 import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
-  selector: 'color-sketch-fields',
-  template: `
+    selector: 'color-sketch-fields',
+    template: `
   <div class="sketch-fields">
     <div class="sketch-double">
       <color-editable-input
@@ -51,20 +51,22 @@ import { TinyColor } from '@ctrl/tinycolor';
         [dragMax]="255"
       ></color-editable-input>
     </div>
-    <div class="sketch-alpha" *ngIf="disableAlpha === false">
-      <color-editable-input
-        [style]="{ input: input, label: label }"
-        label="a"
-        [value]="round(rgb.a * 100)"
-        (onChange)="handleChange($event)"
-        [dragLabel]="true"
-        [dragMax]="100"
-      ></color-editable-input>
-    </div>
+    @if (disableAlpha === false) {
+      <div class="sketch-alpha">
+        <color-editable-input
+          [style]="{ input: input, label: label }"
+          label="a"
+          [value]="round(rgb.a * 100)"
+          (onChange)="handleChange($event)"
+          [dragLabel]="true"
+          [dragMax]="100"
+        ></color-editable-input>
+      </div>
+    }
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .sketch-fields {
       display: flex;
       padding-top: 4px;
@@ -91,9 +93,10 @@ import { TinyColor } from '@ctrl/tinycolor';
       padding-left: 0;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class SketchFieldsComponent {
   @Input() hsl!: HSLA;

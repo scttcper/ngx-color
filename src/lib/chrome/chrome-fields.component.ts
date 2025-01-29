@@ -11,11 +11,11 @@ import { isValidHex, HSLA, RGBA } from 'ngx-color';
 import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
-  selector: 'color-chrome-fields',
-  template: `
+    selector: 'color-chrome-fields',
+    template: `
     <div class="chrome-wrap">
       <div class="chrome-fields">
-        <ng-template [ngIf]="view === 'hex'">
+        @if (view === 'hex') {
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
@@ -23,8 +23,8 @@ import { TinyColor } from '@ctrl/tinycolor';
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
-        </ng-template>
-        <ng-template [ngIf]="view === 'rgb'">
+        }
+        @if (view === 'rgb') {
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
@@ -47,15 +47,17 @@ import { TinyColor } from '@ctrl/tinycolor';
             ></color-editable-input>
           </div>
           <div class="chrome-field">
-            <color-editable-input *ngIf="!disableAlpha"
-              [style]="{ input: input, label: label }"
-              label="a" [value]="rgb.a"
-              [arrowOffset]="0.01"
-              (onChange)="handleChange($event)"
-            ></color-editable-input>
+            @if (!disableAlpha) {
+              <color-editable-input
+                [style]="{ input: input, label: label }"
+                label="a" [value]="rgb.a"
+                [arrowOffset]="0.01"
+                (onChange)="handleChange($event)"
+              ></color-editable-input>
+            }
           </div>
-        </ng-template>
-        <ng-template [ngIf]="view === 'hsl'">
+        }
+        @if (view === 'hsl') {
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
@@ -79,32 +81,34 @@ import { TinyColor } from '@ctrl/tinycolor';
             ></color-editable-input>
           </div>
           <div class="chrome-field">
-            <color-editable-input *ngIf="!disableAlpha"
-              [style]="{ input: input, label: label }"
-              label="a" [value]="hsl.a"
-              [arrowOffset]="0.01"
-              (onChange)="handleChange($event)"
-            ></color-editable-input>
+            @if (!disableAlpha) {
+              <color-editable-input
+                [style]="{ input: input, label: label }"
+                label="a" [value]="hsl.a"
+                [arrowOffset]="0.01"
+                (onChange)="handleChange($event)"
+              ></color-editable-input>
+            }
           </div>
-        </ng-template>
+        }
       </div>
-
+    
       <div class="chrome-toggle">
         <div class="chrome-icon" (click)="toggleViews()" #icon>
           <svg class="chrome-toggle-svg" viewBox="0 0 24 24">
             <path #iconUp fill="#333"
               d="M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"
-            />
+              />
             <path #iconDown fill="#333"
               d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z"
-            />
+              />
           </svg>
         </div>
       </div>
     </div>
-  `,
-  styles: [
-    `
+    `,
+    styles: [
+        `
       .chrome-wrap {
         padding-top: 16px;
         display: flex;
@@ -139,9 +143,10 @@ import { TinyColor } from '@ctrl/tinycolor';
         background: #eee;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class ChromeFieldsComponent implements OnInit {
   @Input() disableAlpha!: boolean;

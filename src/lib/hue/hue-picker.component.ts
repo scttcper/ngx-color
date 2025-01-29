@@ -5,8 +5,8 @@ import { ColorWrap, HueModule, toState } from 'ngx-color';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-hue-picker',
-  template: `
+    selector: 'color-hue-picker',
+    template: `
   <div class="hue-picker {{ className }}"
     [style.width.px]="width" [style.height.px]="height"
   >
@@ -16,26 +16,27 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     ></color-hue>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .hue-picker {
       position: relative;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => HuePickerComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => HuePickerComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => HuePickerComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => HuePickerComponent),
+        },
+    ],
+    standalone: false
 })
 export class HuePickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */

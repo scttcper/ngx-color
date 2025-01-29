@@ -20,11 +20,12 @@ describe('HuePickerComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `
+    selector: 'test-app',
+    template: `
   <color-hue-picker [className]="className">
   </color-hue-picker>
   `,
+    standalone: false
 })
 class HueTestApp {
   className = 'classy';

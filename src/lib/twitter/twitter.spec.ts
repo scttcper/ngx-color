@@ -20,8 +20,9 @@ describe('TwitterComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `<color-twitter [className]="className"></color-twitter>`,
+    selector: 'test-app',
+    template: `<color-twitter [className]="className"></color-twitter>`,
+    standalone: false
 })
 class TwitterTestApp {
   className = 'classy';
