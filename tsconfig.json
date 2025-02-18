@@ -17,15 +17,10 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "es2022",
-      "dom"
-    ],
+    "lib": ["es2022", "dom"],
     "skipLibCheck": true,
     "paths": {
-      "ngx-color": [
-        "./src/lib/public_api"
-      ]
+      "ngx-color": ["./src/lib/public_api"]
     },
     "useDefineForClassFields": false
   },

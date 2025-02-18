@@ -1,13 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  NgModule,
+  OnChanges,
+} from '@angular/core';
 import { ColorWrap, ShadeModule, toState } from 'ngx-color';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-shade-picker',
-    template: `
-    <div class="shade-slider {{ className || '' }}"
-      [style.width.px]="width" [style.height.px]="height">
+  selector: 'color-shade-picker',
+  template: `
+    <div
+      class="shade-slider {{ className || '' }}"
+      [style.width.px]="width"
+      [style.height.px]="height"
+    >
       <color-shade
         [hsl]="hsl"
         [rgb]="rgb"
@@ -16,34 +26,34 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       ></color-shade>
     </div>
   `,
-    styles: [
-        `
-    .shade-slider {
-      position: relative;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ShadeSliderComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => ShadeSliderComponent),
-        },
-    ],
-    standalone: false
+  styles: [
+    `
+      .shade-slider {
+        position: relative;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ShadeSliderComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => ShadeSliderComponent),
+    },
+  ],
+  standalone: false,
 })
 export class ShadeSliderComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */
   @Input() width: string | number = 316;
   /** Pixel value for picker height */
   @Input() height: string | number = 16;
-  pointer: {[key: string]: string} = {
+  pointer: { [key: string]: string } = {
     width: '18px',
     height: '18px',
     borderRadius: '50%',

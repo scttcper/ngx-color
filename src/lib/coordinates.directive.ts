@@ -1,11 +1,20 @@
-import { Directive, ElementRef, HostListener, NgModule, OnDestroy, OnInit, Output, inject } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  NgModule,
+  OnDestroy,
+  OnInit,
+  Output,
+  inject,
+} from '@angular/core';
 
 import { Subject, Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 @Directive({
-    selector: '[ngx-color-coordinates]',
-    standalone: false
+  selector: '[ngx-color-coordinates]',
+  standalone: false,
 })
 export class CoordinatesDirective implements OnInit, OnDestroy {
   private el = inject(ElementRef);
@@ -76,9 +85,7 @@ export class CoordinatesDirective implements OnInit, OnDestroy {
   handleChange(x: number, y: number, $event: Event, isTouch: boolean) {
     const containerWidth = this.el.nativeElement.clientWidth;
     const containerHeight = this.el.nativeElement.clientHeight;
-    const left =
-      x -
-      (this.el.nativeElement.getBoundingClientRect().left + window.pageXOffset);
+    const left = x - (this.el.nativeElement.getBoundingClientRect().left + window.pageXOffset);
     let top = y - this.el.nativeElement.getBoundingClientRect().top;
 
     if (!isTouch) {

@@ -12,10 +12,9 @@ import { CoordinatesModule } from './coordinates.directive';
 import { HSLA, RGBA } from './helpers/color.interfaces';
 import { TinyColor } from '@ctrl/tinycolor';
 
-
 @Component({
-    selector: 'color-shade',
-    template: `
+  selector: 'color-shade',
+  template: `
     <div class="shade" [style.border-radius]="radius">
       <div
         class="shade-gradient"
@@ -23,59 +22,51 @@ import { TinyColor } from '@ctrl/tinycolor';
         [style.box-shadow]="shadow"
         [style.border-radius]="radius"
       ></div>
-      <div
-        ngx-color-coordinates
-        (coordinatesChange)="handleChange($event)"
-        class="shade-container"
-      >
-        <div
-          class="shade-pointer"
-          [style.left.%]="pointerLeft"
-          [style.top.%]="pointerTop"
-        >
+      <div ngx-color-coordinates (coordinatesChange)="handleChange($event)" class="shade-container">
+        <div class="shade-pointer" [style.left.%]="pointerLeft" [style.top.%]="pointerTop">
           <div class="shade-slider" [ngStyle]="pointer"></div>
         </div>
       </div>
     </div>
   `,
-    styles: [
-        `
-    .shade {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-    .shade-gradient {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-    .shade-container {
-      position: relative;
-      height: 100%;
-      margin: 0 3px;
-    }
-    .shade-pointer {
-      position: absolute;
-    }
-    .shade-slider {
-      width: 4px;
-      border-radius: 1px;
-      height: 8px;
-      box-shadow: 0 0 2px rgba(0, 0, 0, .6);
-      background: #fff;
-      margin-top: 1px;
-      transform: translateX(-2px);
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+  styles: [
+    `
+      .shade {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      .shade-gradient {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      .shade-container {
+        position: relative;
+        height: 100%;
+        margin: 0 3px;
+      }
+      .shade-pointer {
+        position: absolute;
+      }
+      .shade-slider {
+        width: 4px;
+        border-radius: 1px;
+        height: 8px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+        background: #fff;
+        margin-top: 1px;
+        transform: translateX(-2px);
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  standalone: false,
 })
 export class ShadeComponent implements OnChanges {
   @Input() hsl!: HSLA;
@@ -95,7 +86,7 @@ export class ShadeComponent implements OnChanges {
           #000)`,
     };
     const hsv = new TinyColor(this.hsl).toHsv();
-    this.pointerLeft = 100 - (hsv.v * 100);
+    this.pointerLeft = 100 - hsv.v * 100;
   }
 
   handleChange({ left, containerWidth, $event }): void {

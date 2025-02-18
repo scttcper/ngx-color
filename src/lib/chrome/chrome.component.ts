@@ -1,65 +1,77 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
-import { AlphaModule, CheckboardModule, ColorWrap, EditableInputModule, HueModule, SaturationModule } from 'ngx-color';
+import {
+  AlphaModule,
+  CheckboardModule,
+  ColorWrap,
+  EditableInputModule,
+  HueModule,
+  SaturationModule,
+} from 'ngx-color';
 import { ChromeFieldsComponent } from './chrome-fields.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-chrome',
-    template: `
-  <div class="chrome-picker {{ className }}">
-    <div class="saturation">
-      <color-saturation
-        [hsl]="hsl"
-        [hsv]="hsv"
-        [circle]="circle"
-        (onChange)="handleValueChange($event)"
-      ></color-saturation>
-    </div>
-    <div class="chrome-body">
-      <div class="chrome-controls">
-        <div class="chrome-color">
-          <div class="chrome-swatch">
-            <div class="chrome-active"
-              [style.background]="activeBackground"
-            ></div>
-            <color-checkboard></color-checkboard>
-          </div>
-        </div>
-        <div class="chrome-toggles">
-          <div class="chrome-hue">
-            <color-hue
-              [radius]="2"
-              [hsl]="hsl"
-              [pointer]="pointer"
-              (onChange)="handleValueChange($event)"
-            ></color-hue>
-          </div>
-          @if (!disableAlpha) {
-            <div class="chrome-alpha">
-              <color-alpha
-                [radius]="2" [rgb]="rgb" [hsl]="hsl"
-                [pointer]="pointer" (onChange)="handleValueChange($event)"
-              ></color-alpha>
-            </div>
-          }
-        </div>
+  selector: 'color-chrome',
+  template: `
+    <div class="chrome-picker {{ className }}">
+      <div class="saturation">
+        <color-saturation
+          [hsl]="hsl"
+          [hsv]="hsv"
+          [circle]="circle"
+          (onChange)="handleValueChange($event)"
+        ></color-saturation>
       </div>
-      <color-chrome-fields
-        [rgb]="rgb" [hsl]="hsl" [hex]="hex"
-        [disableAlpha]="disableAlpha"
-        (onChange)="handleValueChange($event)"
-      ></color-chrome-fields>
+      <div class="chrome-body">
+        <div class="chrome-controls">
+          <div class="chrome-color">
+            <div class="chrome-swatch">
+              <div class="chrome-active" [style.background]="activeBackground"></div>
+              <color-checkboard></color-checkboard>
+            </div>
+          </div>
+          <div class="chrome-toggles">
+            <div class="chrome-hue">
+              <color-hue
+                [radius]="2"
+                [hsl]="hsl"
+                [pointer]="pointer"
+                (onChange)="handleValueChange($event)"
+              ></color-hue>
+            </div>
+            @if (!disableAlpha) {
+              <div class="chrome-alpha">
+                <color-alpha
+                  [radius]="2"
+                  [rgb]="rgb"
+                  [hsl]="hsl"
+                  [pointer]="pointer"
+                  (onChange)="handleValueChange($event)"
+                ></color-alpha>
+              </div>
+            }
+          </div>
+        </div>
+        <color-chrome-fields
+          [rgb]="rgb"
+          [hsl]="hsl"
+          [hex]="hex"
+          [disableAlpha]="disableAlpha"
+          (onChange)="handleValueChange($event)"
+        ></color-chrome-fields>
+      </div>
     </div>
-  </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       .chrome-picker {
         background: #fff;
         border-radius: 2px;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
+        box-shadow:
+          0 0 2px rgba(0, 0, 0, 0.3),
+          0 4px 8px rgba(0, 0, 0, 0.3);
         box-sizing: initial;
         width: 225px;
         font-family: 'Menlo';
@@ -110,21 +122,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         position: relative;
       }
     `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ChromeComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => ChromeComponent),
-        },
-    ],
-    standalone: false
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ChromeComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => ChromeComponent),
+    },
+  ],
+  standalone: false,
 })
 export class ChromeComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */

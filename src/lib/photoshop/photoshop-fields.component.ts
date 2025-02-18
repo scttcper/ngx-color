@@ -1,95 +1,89 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { isValidHex, HSV, RGB } from 'ngx-color';
 
 @Component({
-    selector: 'color-photoshop-fields',
-    template: `
-  <div class="photoshop-fields">
-    <color-editable-input
-      [value]="round(hsv.h)"
-      label="h"
-      (onChange)="handleValueChange($event)"
-      [style]="{input: RGBinput, wrap: RGBwrap, label: RGBlabel}"
-    ></color-editable-input>
-    <color-editable-input
-      [value]="round(hsv.s * 100)"
-      label="s"
-      (onChange)="handleValueChange($event)"
-      [style]="{input: RGBinput, wrap: RGBwrap, label: RGBlabel}"
-    ></color-editable-input>
-    <color-editable-input
-      [value]="round(hsv.v * 100)"
-      label="v"
-      (onChange)="handleValueChange($event)"
-      [style]="{input: RGBinput, wrap: RGBwrap, label: RGBlabel}"
-    ></color-editable-input>
-    <div class="photoshop-divider"></div>
-    <color-editable-input
-      [value]="rgb.r"
-      label="r"
-      (onChange)="handleValueChange($event)"
-      [style]="{input: RGBinput, wrap: RGBwrap, label: RGBlabel}"
-    ></color-editable-input>
-    <color-editable-input
-      [value]="rgb.g"
-      label="g"
-      (onChange)="handleValueChange($event)"
-      [style]="{input: RGBinput, wrap: RGBwrap, label: RGBlabel}"
-    ></color-editable-input>
-    <color-editable-input
-      [value]="rgb.b"
-      label="b"
-      (onChange)="handleValueChange($event)"
-      [style]="{input: RGBinput, wrap: RGBwrap, label: RGBlabel}"
-    ></color-editable-input>
-    <div class="photoshop-divider"></div>
-    <color-editable-input
-      [value]="hex.replace('#', '')"
-      label="#"
-      (onChange)="handleValueChange($event)"
-      [style]="{input: HEXinput, wrap: HEXwrap, label: HEXlabel}"
-    ></color-editable-input>
-    <div class="photoshop-field-symbols">
-      <div class="photoshop-symbol">°</div>
-      <div class="photoshop-symbol">%</div>
-      <div class="photoshop-symbol">%</div>
+  selector: 'color-photoshop-fields',
+  template: `
+    <div class="photoshop-fields">
+      <color-editable-input
+        [value]="round(hsv.h)"
+        label="h"
+        (onChange)="handleValueChange($event)"
+        [style]="{ input: RGBinput, wrap: RGBwrap, label: RGBlabel }"
+      ></color-editable-input>
+      <color-editable-input
+        [value]="round(hsv.s * 100)"
+        label="s"
+        (onChange)="handleValueChange($event)"
+        [style]="{ input: RGBinput, wrap: RGBwrap, label: RGBlabel }"
+      ></color-editable-input>
+      <color-editable-input
+        [value]="round(hsv.v * 100)"
+        label="v"
+        (onChange)="handleValueChange($event)"
+        [style]="{ input: RGBinput, wrap: RGBwrap, label: RGBlabel }"
+      ></color-editable-input>
+      <div class="photoshop-divider"></div>
+      <color-editable-input
+        [value]="rgb.r"
+        label="r"
+        (onChange)="handleValueChange($event)"
+        [style]="{ input: RGBinput, wrap: RGBwrap, label: RGBlabel }"
+      ></color-editable-input>
+      <color-editable-input
+        [value]="rgb.g"
+        label="g"
+        (onChange)="handleValueChange($event)"
+        [style]="{ input: RGBinput, wrap: RGBwrap, label: RGBlabel }"
+      ></color-editable-input>
+      <color-editable-input
+        [value]="rgb.b"
+        label="b"
+        (onChange)="handleValueChange($event)"
+        [style]="{ input: RGBinput, wrap: RGBwrap, label: RGBlabel }"
+      ></color-editable-input>
+      <div class="photoshop-divider"></div>
+      <color-editable-input
+        [value]="hex.replace('#', '')"
+        label="#"
+        (onChange)="handleValueChange($event)"
+        [style]="{ input: HEXinput, wrap: HEXwrap, label: HEXlabel }"
+      ></color-editable-input>
+      <div class="photoshop-field-symbols">
+        <div class="photoshop-symbol">°</div>
+        <div class="photoshop-symbol">%</div>
+        <div class="photoshop-symbol">%</div>
+      </div>
     </div>
-  </div>
   `,
-    styles: [
-        `
-    .photoshop-fields {
-      padding-top: 5px;
-      padding-bottom: 9px;
-      width: 85px;
-      position: relative;
-    }
-    .photoshop-field-symbols {
-      position: absolute;
-      top: 5px;
-      right: -7px;
-      font-size: 13px;
-    }
-    .photoshop-symbol {
-      height: 24px;
-      line-height: 24px;
-      padding-bottom: 7px;
-    }
-    .photoshop-divider {
-      height: 5px;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+  styles: [
+    `
+      .photoshop-fields {
+        padding-top: 5px;
+        padding-bottom: 9px;
+        width: 85px;
+        position: relative;
+      }
+      .photoshop-field-symbols {
+        position: absolute;
+        top: 5px;
+        right: -7px;
+        font-size: 13px;
+      }
+      .photoshop-symbol {
+        height: 24px;
+        line-height: 24px;
+        padding-bottom: 7px;
+      }
+      .photoshop-divider {
+        height: 5px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  standalone: false,
 })
 export class PhotoshopFieldsComponent {
   @Input() rgb!: RGB;
@@ -101,8 +95,7 @@ export class PhotoshopFieldsComponent {
     width: '40%',
     height: '22px',
     border: '1px solid rgb(136, 136, 136)',
-    boxShadow:
-      'rgba(0, 0, 0, 0.1) 0px 1px 1px inset, rgb(236, 236, 236) 0px 1px 0px 0px',
+    boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 1px inset, rgb(236, 236, 236) 0px 1px 0px 0px',
     marginBottom: '2px',
     fontSize: '13px',
     paddingLeft: '3px',

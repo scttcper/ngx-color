@@ -10,39 +10,44 @@ import {
 import { getContrastingColor } from 'ngx-color';
 
 @Component({
-    selector: 'color-compact-color',
-    template: `
-  <div class="compact-color">
-    <color-swatch class="swatch"
-      [color]="color" [style]="swatchStyle"
-      [focusStyle]="swatchFocus"
-      (onClick)="handleClick($event)" (onHover)="onSwatchHover.emit($event)"
+  selector: 'color-compact-color',
+  template: `
+    <div class="compact-color">
+      <color-swatch
+        class="swatch"
+        [color]="color"
+        [style]="swatchStyle"
+        [focusStyle]="swatchFocus"
+        (onClick)="handleClick($event)"
+        (onHover)="onSwatchHover.emit($event)"
       >
-      <div class="compact-dot"
-        [class.active]="active" [style.background]="getContrastingColor(color)"
-      ></div>
-    </color-swatch>
-  </div>
+        <div
+          class="compact-dot"
+          [class.active]="active"
+          [style.background]="getContrastingColor(color)"
+        ></div>
+      </color-swatch>
+    </div>
   `,
-    styles: [
-        `
-  .compact-dot {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    bottom: 5px;
-    left: 5px;
-    border-radius: 50%;
-    opacity: 0;
-  }
-  .compact-dot.active {
-    opacity: 1;
-  }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+  styles: [
+    `
+      .compact-dot {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        bottom: 5px;
+        left: 5px;
+        border-radius: 50%;
+        opacity: 0;
+      }
+      .compact-dot.active {
+        opacity: 1;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  standalone: false,
 })
 export class CompactColorComponent implements OnChanges {
   @Input() color!: string;

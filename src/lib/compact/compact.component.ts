@@ -1,65 +1,77 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule } from '@angular/core';
 
-import { ColorWrap, EditableInputModule, isValidHex, RaisedModule, SwatchModule, zDepth } from 'ngx-color';
+import {
+  ColorWrap,
+  EditableInputModule,
+  isValidHex,
+  RaisedModule,
+  SwatchModule,
+  zDepth,
+} from 'ngx-color';
 import { CompactColorComponent } from './compact-color.component';
 import { CompactFieldsComponent } from './compact-fields.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-compact',
-    template: `
-  <color-raised class="color-compact" [zDepth]="zDepth" [background]="background" [radius]="radius">
-  <div class="compact-picker {{ className }}">
-    <div>
-      @for (color of colors; track color) {
-        <color-compact-color
-          [color]="color"
-          [active]="color.toLowerCase() === hex.toLowerCase()"
-          (onClick)="handleBlockChange($event)"
-        ></color-compact-color>
+  selector: 'color-compact',
+  template: `
+    <color-raised
+      class="color-compact"
+      [zDepth]="zDepth"
+      [background]="background"
+      [radius]="radius"
+    >
+      <div class="compact-picker {{ className }}">
+        <div>
+          @for (color of colors; track color) {
+            <color-compact-color
+              [color]="color"
+              [active]="color.toLowerCase() === hex.toLowerCase()"
+              (onClick)="handleBlockChange($event)"
+            ></color-compact-color>
+          }
+          <div class="compact-clear"></div>
+        </div>
+        <color-compact-fields
+          [hex]="hex"
+          [rgb]="rgb"
+          (onChange)="handleValueChange($event)"
+        ></color-compact-fields>
+      </div>
+    </color-raised>
+  `,
+  styles: [
+    `
+      .color-compact {
+        background: #f6f6f6;
+        radius: 4px;
       }
-      <div class="compact-clear"></div>
-    </div>
-    <color-compact-fields
-      [hex]="hex"
-      [rgb]="rgb"
-      (onChange)="handleValueChange($event)"
-    ></color-compact-fields>
-  </div>
-  </color-raised>
-  `,
-    styles: [
-        `
-    .color-compact {
-      background: #f6f6f6;
-      radius: 4px;
-    }
-    .compact-picker {
-      padding-top: 5px;
-      padding-left: 5px;
-      box-sizing: border-box;
-      width: 245px;
-    }
-    .compact-clear {
-      clear: both;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => CompactComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => CompactComponent),
-        },
-    ],
-    standalone: false
+      .compact-picker {
+        padding-top: 5px;
+        padding-left: 5px;
+        box-sizing: border-box;
+        width: 245px;
+      }
+      .compact-clear {
+        clear: both;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CompactComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => CompactComponent),
+    },
+  ],
+  standalone: false,
 })
 export class CompactComponent extends ColorWrap {
   /** Color squares to display */
@@ -120,11 +132,7 @@ export class CompactComponent extends ColorWrap {
 }
 
 @NgModule({
-  declarations: [
-    CompactComponent,
-    CompactColorComponent,
-    CompactFieldsComponent,
-  ],
+  declarations: [CompactComponent, CompactColorComponent, CompactFieldsComponent],
   exports: [CompactComponent, CompactColorComponent, CompactFieldsComponent],
   imports: [CommonModule, EditableInputModule, SwatchModule, RaisedModule],
 })

@@ -1,59 +1,53 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Shape } from 'ngx-color';
 
 @Component({
-    selector: 'color-sketch-preset-colors',
-    template: `
-  <div class="sketch-swatches">
-    @for (c of colors; track c) {
-      <div class="sketch-wrap">
-        <color-swatch
-          [color]="normalizeValue(c).color"
-          [style]="swatchStyle"
-          [focusStyle]="focusStyle(c)"
-          (onClick)="handleClick($event)"
-          (onHover)="onSwatchHover.emit($event)"
-          class="swatch"
-        ></color-swatch>
-      </div>
-    }
-  </div>
+  selector: 'color-sketch-preset-colors',
+  template: `
+    <div class="sketch-swatches">
+      @for (c of colors; track c) {
+        <div class="sketch-wrap">
+          <color-swatch
+            [color]="normalizeValue(c).color"
+            [style]="swatchStyle"
+            [focusStyle]="focusStyle(c)"
+            (onClick)="handleClick($event)"
+            (onHover)="onSwatchHover.emit($event)"
+            class="swatch"
+          ></color-swatch>
+        </div>
+      }
+    </div>
   `,
-    styles: [
-        `
-    .sketch-swatches {
-      position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0px -10px;
-      padding: 10px 0px 0px 10px;
-      border-top: 1px solid rgb(238, 238, 238);
-    }
-    .sketch-wrap {
-      width: 16px;
-      height: 16px;
-      margin: 0px 10px 10px 0px;
-    }
-    :host-context([dir=rtl]) .sketch-swatches {
-      padding-right: 10px;
-      padding-left: 0;
-    }
-    :host-context([dir=rtl]) .sketch-wrap {
-      margin-left: 10px;
-      margin-right: 0;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+  styles: [
+    `
+      .sketch-swatches {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0px -10px;
+        padding: 10px 0px 0px 10px;
+        border-top: 1px solid rgb(238, 238, 238);
+      }
+      .sketch-wrap {
+        width: 16px;
+        height: 16px;
+        margin: 0px 10px 10px 0px;
+      }
+      :host-context([dir='rtl']) .sketch-swatches {
+        padding-right: 10px;
+        padding-left: 0;
+      }
+      :host-context([dir='rtl']) .sketch-wrap {
+        margin-left: 10px;
+        margin-right: 0;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  standalone: false,
 })
 export class SketchPresetColorsComponent {
   @Input() colors!: string[];

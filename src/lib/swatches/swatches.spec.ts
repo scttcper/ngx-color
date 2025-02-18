@@ -19,9 +19,9 @@ describe('SwatchesComponent', () => {
 });
 
 @Component({
-    selector: 'test-app',
-    template: `<color-swatches [className]="className"></color-swatches>`,
-    standalone: false
+  selector: 'test-app',
+  template: `<color-swatches [className]="className"></color-swatches>`,
+  standalone: false,
 })
 class SwatchTestApp {
   className = 'classy';

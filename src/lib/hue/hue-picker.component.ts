@@ -1,42 +1,50 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  NgModule,
+  OnChanges,
+} from '@angular/core';
 
 import { ColorWrap, HueModule, toState } from 'ngx-color';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-hue-picker',
-    template: `
-  <div class="hue-picker {{ className }}"
-    [style.width.px]="width" [style.height.px]="height"
-  >
-    <color-hue [hsl]="hsl" [pointer]="pointer"
-      [direction]="direction" [radius]="radius"
-      (onChange)="handlePickerChange($event)"
-    ></color-hue>
-  </div>
+  selector: 'color-hue-picker',
+  template: `
+    <div class="hue-picker {{ className }}" [style.width.px]="width" [style.height.px]="height">
+      <color-hue
+        [hsl]="hsl"
+        [pointer]="pointer"
+        [direction]="direction"
+        [radius]="radius"
+        (onChange)="handlePickerChange($event)"
+      ></color-hue>
+    </div>
   `,
-    styles: [
-        `
-    .hue-picker {
-      position: relative;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => HuePickerComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => HuePickerComponent),
-        },
-    ],
-    standalone: false
+  styles: [
+    `
+      .hue-picker {
+        position: relative;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => HuePickerComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => HuePickerComponent),
+    },
+  ],
+  standalone: false,
 })
 export class HuePickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */
@@ -45,7 +53,7 @@ export class HuePickerComponent extends ColorWrap implements OnChanges {
   @Input() height: string | number = 16;
   @Input() radius = 2;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
-  pointer: {[key: string]: string} = {
+  pointer: { [key: string]: string } = {
     width: '18px',
     height: '18px',
     borderRadius: '50%',

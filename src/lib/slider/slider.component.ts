@@ -7,44 +7,47 @@ import { SliderSwatchesComponent } from './slider-swatches.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-slider',
-    template: `
-  <div class="slider-picker {{ className }}">
-    <div class="slider-hue">
-      <color-hue
-        [hsl]="hsl" [radius]="radius" [pointer]="pointer"
-        (onChange)="handlePickerChange($event)"
-      ></color-hue>
+  selector: 'color-slider',
+  template: `
+    <div class="slider-picker {{ className }}">
+      <div class="slider-hue">
+        <color-hue
+          [hsl]="hsl"
+          [radius]="radius"
+          [pointer]="pointer"
+          (onChange)="handlePickerChange($event)"
+        ></color-hue>
+      </div>
+      <div class="slider-swatches">
+        <color-slider-swatches
+          [hsl]="hsl"
+          (onClick)="handlePickerChange($event)"
+        ></color-slider-swatches>
+      </div>
     </div>
-    <div class="slider-swatches">
-      <color-slider-swatches [hsl]="hsl"
-        (onClick)="handlePickerChange($event)"
-      ></color-slider-swatches>
-    </div>
-  </div>
   `,
-    styles: [
-        `
-    .slider-hue {
-      height: 12px;
-      position: relative;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SliderComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => SliderComponent),
-        },
-    ],
-    standalone: false
+  styles: [
+    `
+      .slider-hue {
+        height: 12px;
+        position: relative;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SliderComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => SliderComponent),
+    },
+  ],
+  standalone: false,
 })
 export class SliderComponent extends ColorWrap {
   @Input()
@@ -68,11 +71,7 @@ export class SliderComponent extends ColorWrap {
 }
 
 @NgModule({
-  declarations: [
-    SliderComponent,
-    SliderSwatchComponent,
-    SliderSwatchesComponent,
-  ],
+  declarations: [SliderComponent, SliderSwatchComponent, SliderSwatchesComponent],
   exports: [SliderComponent, SliderSwatchComponent, SliderSwatchesComponent],
   imports: [CommonModule, HueModule, SwatchModule],
 })

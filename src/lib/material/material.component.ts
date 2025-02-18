@@ -5,73 +5,81 @@ import { ColorWrap, EditableInputModule, isValidHex, RaisedModule, zDepth } from
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-material',
-    template: `
-  <color-raised [zDepth]="zDepth" [background]="background" [radius]="radius">
-    <div class="material-picker {{ className }}">
-      <color-editable-input label="hex" [value]="hex"
-        (onChange)="handleValueChange($event)"
-        [style]="{input: HEXinput, label: HEXlabel}"
-      ></color-editable-input>
-      <div class="material-split">
-        <div class="material-third">
-          <color-editable-input label="r" [value]="rgb.r"
-            [style]="{ input: RGBinput, label: RGBlabel }"
-            (onChange)="handleInputChange($event)"
-          ></color-editable-input>
-        </div>
-        <div class="material-third">
-          <color-editable-input label="g" [value]="rgb.g"
-            [style]="{ input: RGBinput, label: RGBlabel }"
-            (onChange)="handleInputChange($event)"
-          ></color-editable-input>
-        </div>
-        <div class="material-third">
-          <color-editable-input label="b" [value]="rgb.b"
-            [style]="{ input: RGBinput, label: RGBlabel }"
-            (onChange)="handleInputChange($event)"
-          ></color-editable-input>
+  selector: 'color-material',
+  template: `
+    <color-raised [zDepth]="zDepth" [background]="background" [radius]="radius">
+      <div class="material-picker {{ className }}">
+        <color-editable-input
+          label="hex"
+          [value]="hex"
+          (onChange)="handleValueChange($event)"
+          [style]="{ input: HEXinput, label: HEXlabel }"
+        ></color-editable-input>
+        <div class="material-split">
+          <div class="material-third">
+            <color-editable-input
+              label="r"
+              [value]="rgb.r"
+              [style]="{ input: RGBinput, label: RGBlabel }"
+              (onChange)="handleInputChange($event)"
+            ></color-editable-input>
+          </div>
+          <div class="material-third">
+            <color-editable-input
+              label="g"
+              [value]="rgb.g"
+              [style]="{ input: RGBinput, label: RGBlabel }"
+              (onChange)="handleInputChange($event)"
+            ></color-editable-input>
+          </div>
+          <div class="material-third">
+            <color-editable-input
+              label="b"
+              [value]="rgb.b"
+              [style]="{ input: RGBinput, label: RGBlabel }"
+              (onChange)="handleInputChange($event)"
+            ></color-editable-input>
+          </div>
         </div>
       </div>
-    </div>
-  </color-raised>
+    </color-raised>
   `,
-    styles: [
-        `
-  .material-picker {
-    width: 130px;
-    height: 130px;
-    padding: 16px;
-    font-family: Roboto;
-  }
-  .material-split {
-    display: flex;
-    margin-right: -10px;
-    padding-top: 11px;
-  }
-  .material-third {
-    flex: 1 1 0%;
-    padding-right: 10px;
-  }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => MaterialComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => MaterialComponent),
-        },
-    ],
-    standalone: false
+  styles: [
+    `
+      .material-picker {
+        width: 130px;
+        height: 130px;
+        padding: 16px;
+        font-family: Roboto;
+      }
+      .material-split {
+        display: flex;
+        margin-right: -10px;
+        padding-top: 11px;
+      }
+      .material-third {
+        flex: 1 1 0%;
+        padding-right: 10px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => MaterialComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => MaterialComponent),
+    },
+  ],
+  standalone: false,
 })
 export class MaterialComponent extends ColorWrap {
-  HEXinput: {[key: string]: string} = {
+  HEXinput: { [key: string]: string } = {
     width: '100%',
     marginTop: '12px',
     fontSize: '15px',
@@ -81,7 +89,7 @@ export class MaterialComponent extends ColorWrap {
     outline: 'none',
     height: '30px',
   };
-  HEXlabel: {[key: string]: string} = {
+  HEXlabel: { [key: string]: string } = {
     position: 'absolute',
     top: '0px',
     left: '0px',
@@ -89,7 +97,7 @@ export class MaterialComponent extends ColorWrap {
     color: 'rgb(153, 153, 153)',
     'text-transform': 'capitalize',
   };
-  RGBinput: {[key: string]: string} = {
+  RGBinput: { [key: string]: string } = {
     width: '100%',
     marginTop: '12px',
     fontSize: '15px',
@@ -100,7 +108,7 @@ export class MaterialComponent extends ColorWrap {
     outline: 'none',
     height: '30px',
   };
-  RGBlabel: {[key: string]: string} = {
+  RGBlabel: { [key: string]: string } = {
     position: 'absolute',
     top: '0px',
     left: '0px',
@@ -155,4 +163,4 @@ export class MaterialComponent extends ColorWrap {
   declarations: [MaterialComponent],
   imports: [CommonModule, EditableInputModule, RaisedModule],
 })
-export class ColorMaterialModule { }
+export class ColorMaterialModule {}

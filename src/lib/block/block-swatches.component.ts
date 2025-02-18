@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
-    selector: 'color-block-swatches',
-    template: `
+  selector: 'color-block-swatches',
+  template: `
     <div class="block-swatches">
       @for (c of colors; track c) {
         <color-swatch
@@ -14,16 +14,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       }
       <div class="clear"></div>
     </div>
+  `,
+  styles: [
+    `
+      .block-swatches {
+        margin-right: -10px;
+      }
+      .clear {
+        clear: both;
+      }
     `,
-    styles: [`
-    .block-swatches {
-      margin-right: -10px;
-    }
-    .clear {
-      clear: both;
-    }
-  `],
-    standalone: false
+  ],
+  standalone: false,
 })
 export class BlockSwatchesComponent {
   @Input() colors!: string[];
@@ -39,13 +41,12 @@ export class BlockSwatchesComponent {
     borderRadius: '4px',
   };
 
-  handleClick({hex, $event}) {
-    this.onClick.emit({hex, $event});
+  handleClick({ hex, $event }) {
+    this.onClick.emit({ hex, $event });
   }
   focusStyle(c) {
     return {
-      boxShadow: `${ c } 0 0 4px`,
+      boxShadow: `${c} 0 0 4px`,
     };
   }
-
 }

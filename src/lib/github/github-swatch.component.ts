@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-    selector: 'color-github-swatch',
-    template: `
+  selector: 'color-github-swatch',
+  template: `
     <div class="github-swatch">
       <color-swatch
         [color]="color"
@@ -14,18 +14,18 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
       <div class="clear"></div>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       .github-swatch {
         width: 25px;
         height: 25px;
         font-size: 0;
       }
     `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  standalone: false,
 })
 export class GithubSwatchComponent {
   @Input() color!: string;

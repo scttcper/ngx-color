@@ -1,102 +1,96 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { isValidHex, HSLA, RGBA } from 'ngx-color';
 import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
-    selector: 'color-sketch-fields',
-    template: `
-  <div class="sketch-fields">
-    <div class="sketch-double">
-      <color-editable-input
-        [style]="{ input: input, label: label }"
-        label="hex"
-        [value]="hex.replace('#', '')"
-        (onChange)="handleChange($event)"
-      ></color-editable-input>
-    </div>
-    <div class="sketch-single">
-      <color-editable-input
-        [style]="{ input: input, label: label }"
-        label="r"
-        [value]="rgb.r"
-        (onChange)="handleChange($event)"
-        [dragLabel]="true"
-        [dragMax]="255"
-      ></color-editable-input>
-    </div>
-    <div class="sketch-single">
-      <color-editable-input
-        [style]="{ input: input, label: label }"
-        label="g"
-        [value]="rgb.g"
-        (onChange)="handleChange($event)"
-        [dragLabel]="true"
-        [dragMax]="255"
-      ></color-editable-input>
-    </div>
-    <div class="sketch-single">
-      <color-editable-input
-        [style]="{ input: input, label: label }"
-        label="b"
-        [value]="rgb.b"
-        (onChange)="handleChange($event)"
-        [dragLabel]="true"
-        [dragMax]="255"
-      ></color-editable-input>
-    </div>
-    @if (disableAlpha === false) {
-      <div class="sketch-alpha">
+  selector: 'color-sketch-fields',
+  template: `
+    <div class="sketch-fields">
+      <div class="sketch-double">
         <color-editable-input
           [style]="{ input: input, label: label }"
-          label="a"
-          [value]="round(rgb.a * 100)"
+          label="hex"
+          [value]="hex.replace('#', '')"
           (onChange)="handleChange($event)"
-          [dragLabel]="true"
-          [dragMax]="100"
         ></color-editable-input>
       </div>
-    }
-  </div>
+      <div class="sketch-single">
+        <color-editable-input
+          [style]="{ input: input, label: label }"
+          label="r"
+          [value]="rgb.r"
+          (onChange)="handleChange($event)"
+          [dragLabel]="true"
+          [dragMax]="255"
+        ></color-editable-input>
+      </div>
+      <div class="sketch-single">
+        <color-editable-input
+          [style]="{ input: input, label: label }"
+          label="g"
+          [value]="rgb.g"
+          (onChange)="handleChange($event)"
+          [dragLabel]="true"
+          [dragMax]="255"
+        ></color-editable-input>
+      </div>
+      <div class="sketch-single">
+        <color-editable-input
+          [style]="{ input: input, label: label }"
+          label="b"
+          [value]="rgb.b"
+          (onChange)="handleChange($event)"
+          [dragLabel]="true"
+          [dragMax]="255"
+        ></color-editable-input>
+      </div>
+      @if (disableAlpha === false) {
+        <div class="sketch-alpha">
+          <color-editable-input
+            [style]="{ input: input, label: label }"
+            label="a"
+            [value]="round(rgb.a * 100)"
+            (onChange)="handleChange($event)"
+            [dragLabel]="true"
+            [dragMax]="100"
+          ></color-editable-input>
+        </div>
+      }
+    </div>
   `,
-    styles: [
-        `
-    .sketch-fields {
-      display: flex;
-      padding-top: 4px;
-    }
-    .sketch-double {
-      -webkit-box-flex: 2;
-      flex: 2 1 0%;
-    }
-    .sketch-single {
-      flex: 1 1 0%;
-      padding-left: 6px;
-    }
-    .sketch-alpha {
-      -webkit-box-flex: 1;
-      flex: 1 1 0%;
-      padding-left: 6px;
-    }
-    :host-context([dir=rtl]) .sketch-single {
-      padding-right: 6px;
-      padding-left: 0;
-    }
-    :host-context([dir=rtl]) .sketch-alpha {
-      padding-right: 6px;
-      padding-left: 0;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+  styles: [
+    `
+      .sketch-fields {
+        display: flex;
+        padding-top: 4px;
+      }
+      .sketch-double {
+        -webkit-box-flex: 2;
+        flex: 2 1 0%;
+      }
+      .sketch-single {
+        flex: 1 1 0%;
+        padding-left: 6px;
+      }
+      .sketch-alpha {
+        -webkit-box-flex: 1;
+        flex: 1 1 0%;
+        padding-left: 6px;
+      }
+      :host-context([dir='rtl']) .sketch-single {
+        padding-right: 6px;
+        padding-left: 0;
+      }
+      :host-context([dir='rtl']) .sketch-alpha {
+        padding-right: 6px;
+        padding-left: 0;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  standalone: false,
 })
 export class SketchFieldsComponent {
   @Input() hsl!: HSLA;
@@ -104,7 +98,7 @@ export class SketchFieldsComponent {
   @Input() hex!: string;
   @Input() disableAlpha = false;
   @Output() onChange = new EventEmitter<any>();
-  input: {[key: string]: string} = {
+  input: { [key: string]: string } = {
     width: '100%',
     padding: '4px 10% 3px',
     border: 'none',
@@ -112,7 +106,7 @@ export class SketchFieldsComponent {
     boxShadow: 'inset 0 0 0 1px #ccc',
     fontSize: '11px',
   };
-  label: {[key: string]: string} = {
+  label: { [key: string]: string } = {
     display: 'block',
     textAlign: 'center',
     fontSize: '11px',

@@ -3,9 +3,6 @@
   "lib": {
     "entryFile": "public_api.ts"
   },
-  "allowedNonPeerDependencies": [
-    "@ctrl/tinycolor",
-    "material-colors"
-  ],
+  "allowedNonPeerDependencies": ["@ctrl/tinycolor", "material-colors"],
   "dest": "../../dist"
 }

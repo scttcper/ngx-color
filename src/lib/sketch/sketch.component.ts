@@ -16,131 +16,135 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-sketch',
-    template: `
-  <div class="sketch-picker {{ className }}" [style.width.px]="width">
-    <div class="sketch-saturation">
-      <color-saturation [hsl]="hsl" [hsv]="hsv"
-        (onChange)="handleValueChange($event)"
-        >
-    </color-saturation>
-  </div>
-  <div class="sketch-controls">
-    <div class="sketch-sliders">
-      <div class="sketch-hue">
-        <color-hue [hsl]="hsl"
-          (onChange)="handleValueChange($event)"
-        ></color-hue>
+  selector: 'color-sketch',
+  template: `
+    <div class="sketch-picker {{ className }}" [style.width.px]="width">
+      <div class="sketch-saturation">
+        <color-saturation [hsl]="hsl" [hsv]="hsv" (onChange)="handleValueChange($event)">
+        </color-saturation>
       </div>
-      @if (disableAlpha === false) {
-        <div class="sketch-alpha">
-          <color-alpha
-            [radius]="2" [rgb]="rgb" [hsl]="hsl"
-            (onChange)="handleValueChange($event)"
-          ></color-alpha>
+      <div class="sketch-controls">
+        <div class="sketch-sliders">
+          <div class="sketch-hue">
+            <color-hue [hsl]="hsl" (onChange)="handleValueChange($event)"></color-hue>
+          </div>
+          @if (disableAlpha === false) {
+            <div class="sketch-alpha">
+              <color-alpha
+                [radius]="2"
+                [rgb]="rgb"
+                [hsl]="hsl"
+                (onChange)="handleValueChange($event)"
+              ></color-alpha>
+            </div>
+          }
+        </div>
+        <div class="sketch-color">
+          <color-checkboard></color-checkboard>
+          <div class="sketch-active" [style.background]="activeBackground"></div>
+        </div>
+      </div>
+      <div class="sketch-fields-container">
+        <color-sketch-fields
+          [rgb]="rgb"
+          [hsl]="hsl"
+          [hex]="hex"
+          [disableAlpha]="disableAlpha"
+          (onChange)="handleValueChange($event)"
+        ></color-sketch-fields>
+      </div>
+      @if (presetColors && presetColors.length) {
+        <div class="sketch-swatches-container">
+          <color-sketch-preset-colors
+            [colors]="presetColors"
+            (onClick)="handleBlockChange($event)"
+            (onSwatchHover)="onSwatchHover.emit($event)"
+          ></color-sketch-preset-colors>
         </div>
       }
     </div>
-    <div class="sketch-color">
-      <color-checkboard></color-checkboard>
-      <div class="sketch-active" [style.background]="activeBackground"></div>
-    </div>
-  </div>
-  <div class="sketch-fields-container">
-    <color-sketch-fields
-      [rgb]="rgb" [hsl]="hsl" [hex]="hex"
-      [disableAlpha]="disableAlpha"
-      (onChange)="handleValueChange($event)"
-    ></color-sketch-fields>
-  </div>
-  @if (presetColors && presetColors.length) {
-    <div class="sketch-swatches-container">
-      <color-sketch-preset-colors
-        [colors]="presetColors"
-        (onClick)="handleBlockChange($event)"
-        (onSwatchHover)="onSwatchHover.emit($event)"
-      ></color-sketch-preset-colors>
-    </div>
-  }
-  </div>
   `,
-    styles: [
-        `
-    .sketch-picker {
-      padding: 10px 10px 3px;
-      box-sizing: initial;
-      background: #fff;
-      border-radius: 4px;
-      box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 8px 16px rgba(0,0,0,.15);
-    }
-    .sketch-saturation {
-      width: 100%;
-      padding-bottom: 75%;
-      position: relative;
-      overflow: hidden;
-    }
-    .sketch-fields-container {
-      display: block;
-    }
-    .sketch-swatches-container {
-      display: block;
-    }
-    .sketch-controls {
-      display: flex;
-    }
-    .sketch-sliders {
-      padding: 4px 0px;
-      -webkit-box-flex: 1;
-      flex: 1 1 0%;
-    }
-    .sketch-hue {
-      position: relative;
-      height: 10px;
-      overflow: hidden;
-    }
-    .sketch-alpha {
-      position: relative;
-      height: 10px;
-      margin-top: 4px;
-      overflow: hidden;
-    }
-    .sketch-color {
-      width: 24px;
-      height: 24px;
-      position: relative;
-      margin-top: 4px;
-      margin-left: 4px;
-      border-radius: 3px;
-    }
-    .sketch-active {
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      border-radius: 2px;
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
-    }
-    :host-context([dir=rtl]) .sketch-color {
-      margin-right: 4px;
-      margin-left: 0;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SketchComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => SketchComponent),
-        },
-    ],
-    standalone: false
+  styles: [
+    `
+      .sketch-picker {
+        padding: 10px 10px 3px;
+        box-sizing: initial;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow:
+          0 0 0 1px rgba(0, 0, 0, 0.15),
+          0 8px 16px rgba(0, 0, 0, 0.15);
+      }
+      .sketch-saturation {
+        width: 100%;
+        padding-bottom: 75%;
+        position: relative;
+        overflow: hidden;
+      }
+      .sketch-fields-container {
+        display: block;
+      }
+      .sketch-swatches-container {
+        display: block;
+      }
+      .sketch-controls {
+        display: flex;
+      }
+      .sketch-sliders {
+        padding: 4px 0px;
+        -webkit-box-flex: 1;
+        flex: 1 1 0%;
+      }
+      .sketch-hue {
+        position: relative;
+        height: 10px;
+        overflow: hidden;
+      }
+      .sketch-alpha {
+        position: relative;
+        height: 10px;
+        margin-top: 4px;
+        overflow: hidden;
+      }
+      .sketch-color {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        margin-top: 4px;
+        margin-left: 4px;
+        border-radius: 3px;
+      }
+      .sketch-active {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        border-radius: 2px;
+        box-shadow:
+          rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset,
+          rgba(0, 0, 0, 0.25) 0px 0px 4px inset;
+      }
+      :host-context([dir='rtl']) .sketch-color {
+        margin-right: 4px;
+        margin-left: 0;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SketchComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => SketchComponent),
+    },
+  ],
+  standalone: false,
 })
 export class SketchComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */
@@ -191,16 +195,8 @@ export class SketchComponent extends ColorWrap {
 }
 
 @NgModule({
-  declarations: [
-    SketchComponent,
-    SketchFieldsComponent,
-    SketchPresetColorsComponent,
-  ],
-  exports: [
-    SketchComponent,
-    SketchFieldsComponent,
-    SketchPresetColorsComponent,
-  ],
+  declarations: [SketchComponent, SketchFieldsComponent, SketchPresetColorsComponent],
+  exports: [SketchComponent, SketchFieldsComponent, SketchPresetColorsComponent],
   imports: [
     CommonModule,
     AlphaModule,

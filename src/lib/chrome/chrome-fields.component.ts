@@ -11,15 +11,16 @@ import { isValidHex, HSLA, RGBA } from 'ngx-color';
 import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
-    selector: 'color-chrome-fields',
-    template: `
+  selector: 'color-chrome-fields',
+  template: `
     <div class="chrome-wrap">
       <div class="chrome-fields">
         @if (view === 'hex') {
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="hex" [value]="hex"
+              label="hex"
+              [value]="hex"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
@@ -28,21 +29,24 @@ import { TinyColor } from '@ctrl/tinycolor';
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="r" [value]="rgb.r"
+              label="r"
+              [value]="rgb.r"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="g" [value]="rgb.g"
+              label="g"
+              [value]="rgb.g"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="b" [value]="rgb.b"
+              label="b"
+              [value]="rgb.b"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
@@ -50,7 +54,8 @@ import { TinyColor } from '@ctrl/tinycolor';
             @if (!disableAlpha) {
               <color-editable-input
                 [style]="{ input: input, label: label }"
-                label="a" [value]="rgb.a"
+                label="a"
+                [value]="rgb.a"
                 [arrowOffset]="0.01"
                 (onChange)="handleChange($event)"
               ></color-editable-input>
@@ -69,14 +74,16 @@ import { TinyColor } from '@ctrl/tinycolor';
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="s" [value]="round(hsl.s * 100) + '%'"
+              label="s"
+              [value]="round(hsl.s * 100) + '%'"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
           <div class="chrome-field">
             <color-editable-input
               [style]="{ input: input, label: label }"
-              label="l" [value]="round(hsl.l * 100) + '%'"
+              label="l"
+              [value]="round(hsl.l * 100) + '%'"
               (onChange)="handleChange($event)"
             ></color-editable-input>
           </div>
@@ -84,7 +91,8 @@ import { TinyColor } from '@ctrl/tinycolor';
             @if (!disableAlpha) {
               <color-editable-input
                 [style]="{ input: input, label: label }"
-                label="a" [value]="hsl.a"
+                label="a"
+                [value]="hsl.a"
                 [arrowOffset]="0.01"
                 (onChange)="handleChange($event)"
               ></color-editable-input>
@@ -92,23 +100,27 @@ import { TinyColor } from '@ctrl/tinycolor';
           </div>
         }
       </div>
-    
+
       <div class="chrome-toggle">
         <div class="chrome-icon" (click)="toggleViews()" #icon>
           <svg class="chrome-toggle-svg" viewBox="0 0 24 24">
-            <path #iconUp fill="#333"
+            <path
+              #iconUp
+              fill="#333"
               d="M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"
-              />
-            <path #iconDown fill="#333"
+            />
+            <path
+              #iconDown
+              fill="#333"
               d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z"
-              />
+            />
           </svg>
         </div>
       </div>
     </div>
-    `,
-    styles: [
-        `
+  `,
+  styles: [
+    `
       .chrome-wrap {
         padding-top: 16px;
         display: flex;
@@ -143,10 +155,10 @@ import { TinyColor } from '@ctrl/tinycolor';
         background: #eee;
       }
     `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    standalone: false
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  standalone: false,
 })
 export class ChromeFieldsComponent implements OnInit {
   @Input() disableAlpha!: boolean;

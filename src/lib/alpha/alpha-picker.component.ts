@@ -1,14 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, forwardRef, Input, NgModule, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  NgModule,
+  OnChanges,
+} from '@angular/core';
 
 import { AlphaModule, CheckboardModule, ColorWrap, toState } from 'ngx-color';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-alpha-picker',
-    template: `
-    <div class="alpha-picker {{ className }}"
-      [style.width.px]="width" [style.height.px]="height">
+  selector: 'color-alpha-picker',
+  template: `
+    <div class="alpha-picker {{ className }}" [style.width.px]="width" [style.height.px]="height">
       <color-alpha
         [hsl]="hsl"
         [rgb]="rgb"
@@ -18,30 +24,30 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       ></color-alpha>
     </div>
   `,
-    styles: [
-        `
-    .alpha-picker {
-      position: relative;
-    }
-    .color-alpha {
-      radius: 2px;
-    }
-  `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => AlphaPickerComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => AlphaPickerComponent)
-        }
-    ],
-    standalone: false
+  styles: [
+    `
+      .alpha-picker {
+        position: relative;
+      }
+      .color-alpha {
+        radius: 2px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => AlphaPickerComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => AlphaPickerComponent),
+    },
+  ],
+  standalone: false,
 })
 export class AlphaPickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker width */
@@ -49,7 +55,7 @@ export class AlphaPickerComponent extends ColorWrap implements OnChanges {
   /** Pixel value for picker height */
   @Input() height: string | number = 16;
   @Input() direction: 'horizontal' | 'vertical' = 'horizontal';
-  pointer: {[key: string]: string} = {
+  pointer: { [key: string]: string } = {
     width: '18px',
     height: '18px',
     borderRadius: '50%',

@@ -1,4 +1,4 @@
-const checkboardCache: {[key: string]: string} = {};
+const checkboardCache: { [key: string]: string } = {};
 
 export function render(c1: string, c2: string, size: number) {
   if (typeof document === 'undefined') {

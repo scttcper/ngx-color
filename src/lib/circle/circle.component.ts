@@ -27,14 +27,14 @@ import { CircleSwatchComponent } from './circle-swatch.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-    selector: 'color-circle',
-    template: `
+  selector: 'color-circle',
+  template: `
     <div
       class="circle-picker {{ className }}"
       [style.width.px]="width"
       [style.margin-right.px]="-circleSpacing"
       [style.margin-bottom.px]="-circleSpacing"
-      >
+    >
       @for (color of colors; track color) {
         <color-circle-swatch
           [circleSize]="circleSize"
@@ -46,29 +46,29 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
         ></color-circle-swatch>
       }
     </div>
-    `,
-    styles: [
-        `
+  `,
+  styles: [
+    `
       .circle-picker {
         display: flex;
         flex-wrap: wrap;
       }
     `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    preserveWhitespaces: false,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => CircleComponent),
-            multi: true,
-        },
-        {
-            provide: ColorWrap,
-            useExisting: forwardRef(() => CircleComponent),
-        },
-    ],
-    standalone: false
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CircleComponent),
+      multi: true,
+    },
+    {
+      provide: ColorWrap,
+      useExisting: forwardRef(() => CircleComponent),
+    },
+  ],
+  standalone: false,
 })
 export class CircleComponent extends ColorWrap {
   /** Pixel value for picker width */
@@ -106,7 +106,7 @@ export class CircleComponent extends ColorWrap {
   isActive(color: string) {
     return new TinyColor(this.hex).equals(color);
   }
-  handleBlockChange({ hex, $event }: { hex: string, $event: Event }) {
+  handleBlockChange({ hex, $event }: { hex: string; $event: Event }) {
     if (isValidHex(hex)) {
       this.handleChange({ hex, source: 'hex' }, $event);
     }

@@ -28,21 +28,21 @@ export enum ColorMode {
   HEX = 'hex',
   HSL = 'hsl',
   HSV = 'hsv',
-  RGB = 'rgb'
+  RGB = 'rgb',
 }
 
 @Component({
-    // create seletor base for test override property
-    selector: 'color-wrap',
-    template: ``,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ColorWrap),
-            multi: true,
-        }
-    ],
-    standalone: false
+  // create seletor base for test override property
+  selector: 'color-wrap',
+  template: ``,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ColorWrap),
+      multi: true,
+    },
+  ],
+  standalone: false,
 })
 export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAccessor {
   @Input() className?: string;
@@ -103,7 +103,7 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAcce
               }
               break;
           }
-        })
+        }),
       )
       .subscribe();
     this.setState(toState(this.color, 0));
@@ -148,15 +148,13 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAcce
   }
 
   registerOnChange(fn: (hex: string) => void): void {
-    this._onChangeCompleteSubscription.add(this.onChangeComplete.pipe(
-      tap(event => fn(event.color.hex)),
-    ).subscribe());
+    this._onChangeCompleteSubscription.add(
+      this.onChangeComplete.pipe(tap(event => fn(event.color.hex))).subscribe(),
+    );
   }
 
   registerOnTouched(fn: () => void): void {
-    this._onSwatchHoverSubscription.add(this.onSwatchHover.pipe(
-      tap(() => fn()),
-    ).subscribe());
+    this._onSwatchHoverSubscription.add(this.onSwatchHover.pipe(tap(() => fn())).subscribe());
   }
 
   setDisabledState(isDisabled: boolean): void {}
@@ -164,7 +162,6 @@ export class ColorWrap implements OnInit, OnChanges, OnDestroy, ControlValueAcce
   writeValue(hex: string): void {
     this.color = hex;
   }
-
 }
 
 @NgModule({

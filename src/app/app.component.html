@@ -1,4 +1,4 @@
-<div class="home" style="height: 580px; width: 100%;">
+<div class="home" style="height: 580px; width: 100%">
   <div class="cover" [style.background-color]="primaryColor"></div>
 </div>
 <div class="container">
@@ -6,28 +6,21 @@
     <div class="col-md-6 text-center text-md-left">
       <div class="title">Angular Color</div>
       <div class="description">
-        Port of <a href="https://github.com/casesandberg/react-color">react-color</a> by casesandberg
+        Port of <a href="https://github.com/casesandberg/react-color">react-color</a> by
+        casesandberg
       </div>
       <div class="description">
-        A Collection of Color Pickers from Sketch, Photoshop, Chrome, Github, Twitter, Material Design &amp; more
+        A Collection of Color Pickers from Sketch, Photoshop, Chrome, Github, Twitter, Material
+        Design &amp; more
       </div>
       <div class="mt-4">
-        <gh-button
-          [count]="true"
-          user="scttcper"
-          repo="ngx-color"
-          >
-        </gh-button>
+        <gh-button [count]="true" user="scttcper" repo="ngx-color"> </gh-button>
       </div>
     </div>
     <div class="col-md-6">
       <div class="d-flex justify-content-center justify-content-md-end mt-5">
         <div style="padding-top: 20px; display: block">
-          <color-chrome
-            [color]="state"
-            (onChangeComplete)="changeComplete($event)"
-          >
-          </color-chrome>
+          <color-chrome [color]="state" (onChangeComplete)="changeComplete($event)"> </color-chrome>
           <div class="text-center label">Chrome</div>
         </div>
       </div>
@@ -36,9 +29,8 @@
   <div class="row">
     <div class="col-md-4 mt-3">
       <div class="d-flex justify-content-center justify-content-md-start">
-        <div style="width: 220px; display: inline-block;">
-          <color-sketch [color]="state" (onChangeComplete)="changeComplete($event)">
-          </color-sketch>
+        <div style="width: 220px; display: inline-block">
+          <color-sketch [color]="state" (onChangeComplete)="changeComplete($event)"> </color-sketch>
           <div class="text-center label">Sketch</div>
         </div>
       </div>
@@ -132,7 +124,7 @@
   <div class="row">
     <div class="col-12 col-md-7 mb-3">
       <div class="d-flex justify-content-center justify-content-md-start">
-        <div style="width: 410px;display: inline-block">
+        <div style="width: 410px; display: inline-block">
           <color-slider
             [color]="state"
             (onChangeComplete)="changeComplete($event)"
@@ -170,7 +162,7 @@
     </div>
     <div class="col-md-5 d-md-inline d-none">
       <div class="d-flex justify-content-center justify-content-md-start">
-        <div style="width: 320px;display: inline-block">
+        <div style="width: 320px; display: inline-block">
           <color-swatches
             [color]="state"
             (onChangeComplete)="changeComplete($event)"
@@ -181,10 +173,10 @@
       </div>
     </div>
   </div>
-<div class="row">
+  <div class="row">
     <div class="col-12 col-md-7 mb-3">
       <div class="d-flex justify-content-center justify-content-md-start">
-        <div style="width: 320px;display: inline-block">
+        <div style="width: 320px; display: inline-block">
           <color-shade-picker
             [color]="state"
             (onChangeComplete)="changeComplete($event)"
@@ -193,7 +185,8 @@
           <div class="pt-3 text-center label">Shade Slider</div>
         </div>
       </div>
+    </div>
   </div>
-</div>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</div>
