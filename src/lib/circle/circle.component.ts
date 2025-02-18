@@ -27,46 +27,48 @@ import { CircleSwatchComponent } from './circle-swatch.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-circle',
-  template: `
+    selector: 'color-circle',
+    template: `
     <div
       class="circle-picker {{ className }}"
       [style.width.px]="width"
       [style.margin-right.px]="-circleSpacing"
       [style.margin-bottom.px]="-circleSpacing"
-    >
-      <color-circle-swatch
-        *ngFor="let color of colors"
-        [circleSize]="circleSize"
-        [circleSpacing]="circleSpacing"
-        [color]="color"
-        [focus]="isActive(color)"
-        (onClick)="handleBlockChange($event)"
-        (onSwatchHover)="onSwatchHover.emit($event)"
-      ></color-circle-swatch>
+      >
+      @for (color of colors; track color) {
+        <color-circle-swatch
+          [circleSize]="circleSize"
+          [circleSpacing]="circleSpacing"
+          [color]="color"
+          [focus]="isActive(color)"
+          (onClick)="handleBlockChange($event)"
+          (onSwatchHover)="onSwatchHover.emit($event)"
+        ></color-circle-swatch>
+      }
     </div>
-  `,
-  styles: [
-    `
+    `,
+    styles: [
+        `
       .circle-picker {
         display: flex;
         flex-wrap: wrap;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CircleComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => CircleComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => CircleComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => CircleComponent),
+        },
+    ],
+    standalone: false
 })
 export class CircleComponent extends ColorWrap {
   /** Pixel value for picker width */

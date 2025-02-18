@@ -1,20 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
-  selector: 'color-block-swatches',
-  template: `
+    selector: 'color-block-swatches',
+    template: `
     <div class="block-swatches">
-      <color-swatch
-        *ngFor="let c of colors"
-        [color]="c"
-        [style]="swatchStyle"
-        [focusStyle]="focusStyle(c)"
-        (onClick)="handleClick($event)"
-        (onHover)="onSwatchHover.emit($event)"
-      ></color-swatch>
+      @for (c of colors; track c) {
+        <color-swatch
+          [color]="c"
+          [style]="swatchStyle"
+          [focusStyle]="focusStyle(c)"
+          (onClick)="handleClick($event)"
+          (onHover)="onSwatchHover.emit($event)"
+        ></color-swatch>
+      }
       <div class="clear"></div>
     </div>
-  `,
-  styles: [`
+    `,
+    styles: [`
     .block-swatches {
       margin-right: -10px;
     }
@@ -22,6 +23,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       clear: both;
     }
   `],
+    standalone: false
 })
 export class BlockSwatchesComponent {
   @Input() colors!: string[];

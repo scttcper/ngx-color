@@ -5,18 +5,18 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
     "strict": true,
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "es2020",
+    "module": "ES2022",
     "lib": [
       "es2022",
       "dom"
@@ -32,6 +32,7 @@
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictTemplates": true,
-    "enableIvy": true,
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInputAccessModifiers": true
   }
 }

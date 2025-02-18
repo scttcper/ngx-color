@@ -13,22 +13,26 @@ import { BlockSwatchesComponent } from './block-swatches.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-block',
-  template: `
+    selector: 'color-block',
+    template: `
   <div class="block-card block-picker {{ className }}">
-    <div class="block-triangle" *ngIf="triangle !== 'hide'"
-      [style.border-color]="'transparent transparent ' + this.hex + ' transparent'"
-    ></div>
-
+    @if (triangle !== 'hide') {
+      <div class="block-triangle"
+        [style.border-color]="'transparent transparent ' + this.hex + ' transparent'"
+      ></div>
+    }
+  
     <div class="block-head" [style.background]="hex">
-      <color-checkboard *ngIf="hex === 'transparent'"
-        borderRadius="6px 6px 0 0"
-      ></color-checkboard>
+      @if (hex === 'transparent') {
+        <color-checkboard
+          borderRadius="6px 6px 0 0"
+        ></color-checkboard>
+      }
       <div class="block-label" [style.color]="getContrastingColor(hex)">
         {{ hex }}
       </div>
     </div>
-
+  
     <div class="block-body">
       <color-block-swatches [colors]="colors"
         (onClick)="handleBlockChange($event)"
@@ -41,8 +45,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .block-card {
       background: #fff;
       border-radius: 6px;
@@ -75,20 +79,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       width: 0;
     }
   `,
-  ],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => BlockComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => BlockComponent),
-    },
-  ]
+    ],
+    preserveWhitespaces: false,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => BlockComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => BlockComponent),
+        },
+    ],
+    standalone: false
 })
 export class BlockComponent extends ColorWrap {
   /** Pixel value for picker width */

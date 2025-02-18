@@ -9,8 +9,8 @@ import {
 import { isValidHex, HSV, RGB } from 'ngx-color';
 
 @Component({
-  selector: 'color-photoshop-fields',
-  template: `
+    selector: 'color-photoshop-fields',
+    template: `
   <div class="photoshop-fields">
     <color-editable-input
       [value]="round(hsv.h)"
@@ -63,8 +63,8 @@ import { isValidHex, HSV, RGB } from 'ngx-color';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .photoshop-fields {
       padding-top: 5px;
       padding-bottom: 9px;
@@ -86,9 +86,10 @@ import { isValidHex, HSV, RGB } from 'ngx-color';
       height: 5px;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class PhotoshopFieldsComponent {
   @Input() rgb!: RGB;

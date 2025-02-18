@@ -5,21 +5,23 @@ import { ColorWrap, EditableInputModule, isValidHex, SwatchModule } from 'ngx-co
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-twitter',
-  template: `
+    selector: 'color-twitter',
+    template: `
   <div class="twitter-picker {{ triangle }}-triangle {{ className }}" [style.width.px]="width">
     <div class="triangleShadow"></div>
     <div class="triangle"></div>
     <div class="twitter-body">
-      <div class="twitter-swatch" *ngFor="let color of colors">
-        <color-swatch
-          [color]="color"
-          [style]="swatchStyle"
-          [focusStyle]="focus(color)"
-          (onClick)="handleBlockChange($event)"
-          (onHover)="onSwatchHover.emit($event)"
-        ></color-swatch>
-      </div>
+      @for (color of colors; track color) {
+        <div class="twitter-swatch">
+          <color-swatch
+            [color]="color"
+            [style]="swatchStyle"
+            [focusStyle]="focus(color)"
+            (onClick)="handleBlockChange($event)"
+            (onHover)="onSwatchHover.emit($event)"
+          ></color-swatch>
+        </div>
+      }
       <div class="twitter-hash">
         <div>#</div>
       </div>
@@ -33,8 +35,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .twitter-picker {
       background: rgb(255, 255, 255);
       border: 0px solid rgba(0, 0, 0, 0.25);
@@ -122,20 +124,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       margin-left: -4px;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TwitterComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => TwitterComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => TwitterComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => TwitterComponent),
+        },
+    ],
+    standalone: false
 })
 export class TwitterComponent extends ColorWrap {
   /** Pixel value for picker width */

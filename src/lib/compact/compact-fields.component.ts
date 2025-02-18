@@ -9,8 +9,8 @@ import {
 import { isValidHex, RGBA } from 'ngx-color';
 
 @Component({
-  selector: 'color-compact-fields',
-  template: `
+    selector: 'color-compact-fields',
+    template: `
   <div class="compact-fields">
     <div class="compact-active" [style.background]="hex"></div>
     <div style="flex: 6 1 0%;">
@@ -47,8 +47,8 @@ import { isValidHex, RGBA } from 'ngx-color';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
   .compact-fields {
     display: flex;
     padding-bottom: 6px;
@@ -63,9 +63,10 @@ import { isValidHex, RGBA } from 'ngx-color';
     width: 9px;
   }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class CompactFieldsComponent {
   @Input() hex!: string;

@@ -10,8 +10,8 @@ import {
 import { getContrastingColor } from 'ngx-color';
 
 @Component({
-  selector: 'color-swatches-color',
-  template: `
+    selector: 'color-swatches-color',
+    template: `
     <color-swatch
       [color]="color"
       [style]="colorStyle"
@@ -21,20 +21,22 @@ import { getContrastingColor } from 'ngx-color';
       (click)="handleClick($event)"
       (keydown.enter)="handleClick($event)"
       (onHover)="onSwatchHover.emit($event)"
-    >
-      <div class="swatch-check" *ngIf="active" [class.first]="first" [class.last]="last">
+      >
+    @if (active) {
+      <div class="swatch-check" [class.first]="first" [class.last]="last">
         <svg
           style="width: 24px; height: 24px;"
           viewBox="0 0 24 24"
           [style.fill]="getContrastingColor(color)"
-        >
+          >
           <path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" />
         </svg>
       </div>
+    }
     </color-swatch>
-  `,
-  styles: [
-    `
+    `,
+    styles: [
+        `
       .swatches-group {
         padding-bottom: 10px;
         width: 40px;
@@ -46,9 +48,10 @@ import { getContrastingColor } from 'ngx-color';
         margin-left: 8px;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class SwatchesColorComponent implements OnInit {
   @Input() color!: string;

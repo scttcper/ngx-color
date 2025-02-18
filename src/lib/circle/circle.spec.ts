@@ -20,8 +20,9 @@ describe('BlockComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `<color-circle [className]="className"></color-circle>`,
+    selector: 'test-app',
+    template: `<color-circle [className]="className"></color-circle>`,
+    standalone: false
 })
 class CircleTestApp {
   className = 'classy';

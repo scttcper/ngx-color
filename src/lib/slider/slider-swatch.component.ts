@@ -10,15 +10,15 @@ import {
 import { HSL } from 'ngx-color';
 
 @Component({
-  selector: 'color-slider-swatch',
-  template: `
+    selector: 'color-slider-swatch',
+    template: `
   <div class="slider-swatch" [style.background]="background"
     [class.first]="first" [class.last]="last" [class.active]="active"
     (click)="handleClick($event)"
   ></div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .slider-swatch {
       height: 12px;
       background: rgb(121, 211, 166);
@@ -39,9 +39,10 @@ import { HSL } from 'ngx-color';
     }
 
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class SliderSwatchComponent implements OnChanges {
   @Input() hsl!: HSL;

@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'color-circle-swatch',
-  template: `
+    selector: 'color-circle-swatch',
+    template: `
   <div class="circle-swatch"
     [style.width.px]="circleSize" [style.height.px]="circleSize"
     [style.margin-right.px]="circleSpacing" [style.margin-bottom.px]="circleSpacing"
@@ -21,8 +21,8 @@ import {
     <div class="clear"></div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
   .circle-swatch {
     transform: scale(1);
     transition: transform 100ms ease;
@@ -31,9 +31,10 @@ import {
     transform: scale(1.2);
   }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class CircleSwatchComponent implements OnChanges {
   @Input() color!: string;

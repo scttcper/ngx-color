@@ -6,22 +6,24 @@ import { GithubSwatchComponent } from './github-swatch.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-github',
-  template: `
+    selector: 'color-github',
+    template: `
   <div class="github-picker {{ triangle }}-triangle {{ className }}"
     [style.width.px]="width"
-  >
+    >
     <div class="triangleShadow"></div>
     <div class="triangle"></div>
-    <color-github-swatch *ngFor="let color of colors"
-      [color]="color"
-      (onClick)="handleBlockChange($event)"
-      (onSwatchHover)="onSwatchHover.emit($event)"
-    ></color-github-swatch>
+    @for (color of colors; track color) {
+      <color-github-swatch
+        [color]="color"
+        (onClick)="handleBlockChange($event)"
+        (onSwatchHover)="onSwatchHover.emit($event)"
+      ></color-github-swatch>
+    }
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
   .github-picker {
     background: rgb(255, 255, 255);
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -80,20 +82,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     transform: rotate(180deg);
   }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => GithubComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => GithubComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => GithubComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => GithubComponent),
+        },
+    ],
+    standalone: false
 })
 export class GithubComponent extends ColorWrap {
   /** Pixel value for picker width */

@@ -4,8 +4,8 @@ import { ChangeDetectionStrategy, Component, Input, NgModule } from '@angular/co
 export type zDepth = 0 | 1 | 2 | 3 | 4 | 5;
 
 @Component({
-  selector: 'color-raised',
-  template: `
+    selector: 'color-raised',
+    template: `
   <div class="raised-wrap">
     <div class="raised-bg zDepth-{{zDepth}}" [style.background]="background"></div>
     <div class="raised-content">
@@ -13,7 +13,7 @@ export type zDepth = 0 | 1 | 2 | 3 | 4 | 5;
     </div>
   </div>
   `,
-  styles: [`
+    styles: [`
     .raised-wrap {
       position: relative;
       display: inline-block;
@@ -47,8 +47,9 @@ export type zDepth = 0 | 1 | 2 | 3 | 4 | 5;
       box-shadow: 0 40px 77px rgba(0,0,0,.22), 0 27px 24px rgba(0,0,0,.2);
     }
   `],
-  preserveWhitespaces: false,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RaisedComponent {
   @Input() zDepth: zDepth = 1;

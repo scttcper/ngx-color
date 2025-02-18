@@ -43,8 +43,9 @@ describe('BlockComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `<color-block [className]="className"></color-block>`,
+    selector: 'test-app',
+    template: `<color-block [className]="className"></color-block>`,
+    standalone: false
 })
 class BlockTestApp {
   className = 'classy';

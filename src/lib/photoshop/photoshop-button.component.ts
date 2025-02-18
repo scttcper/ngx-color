@@ -7,16 +7,16 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'color-photoshop-button',
-  template: `
+    selector: 'color-photoshop-button',
+    template: `
     <div class="photoshop-button"  [class.active]="active"
       (click)="onClick.emit($event)"
     >
       {{ label }}
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .photoshop-button {
       background-image: linear-gradient(
         -180deg,
@@ -38,9 +38,10 @@ import {
       box-shadow: 0 0 0 1px #878787;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class PhotoshopButtonComponent {
   @Input() label = '';

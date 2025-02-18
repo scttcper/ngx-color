@@ -21,7 +21,8 @@
       ],
       "rules": {
         "@angular-eslint/no-output-on-prefix": "off",
-        "@angular-eslint/component-class-suffix": "off"
+        "@angular-eslint/component-class-suffix": "off",
+        "@angular-eslint/prefer-standalone": "off"
       }
     },
     {

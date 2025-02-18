@@ -8,8 +8,8 @@ import { PhotoshopPreviewsComponent } from './photoshop-previews.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-photoshop',
-  template: `
+    selector: 'color-photoshop',
+    template: `
   <div class="photoshop-picker {{ className }}">
     <div class="photoshop-head">{{ header }}</div>
     <div class="photoshop-body">
@@ -50,8 +50,8 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     </div>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .photoshop-picker {
       background: rgb(220, 220, 220);
       border-radius: 4px;
@@ -114,20 +114,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       margin-left: 20px;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => PhotoshopComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => PhotoshopComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => PhotoshopComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => PhotoshopComponent),
+        },
+    ],
+    standalone: false
 })
 export class PhotoshopComponent extends ColorWrap {
   /** Title text */

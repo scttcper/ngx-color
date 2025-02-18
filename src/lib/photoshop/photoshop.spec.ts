@@ -20,10 +20,11 @@ describe('PhotoshopComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `
+    selector: 'test-app',
+    template: `
   <color-photoshop [className]="className"></color-photoshop>
   `,
+    standalone: false
 })
 class PhotoshopTestApp {
   className = 'classy';

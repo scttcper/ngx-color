@@ -20,11 +20,12 @@ describe('BlockComponent', () => {
 });
 
 @Component({
-  selector: 'test-app',
-  template: `
+    selector: 'test-app',
+    template: `
   <color-github [className]="className">
   </color-github>
   `,
+    standalone: false
 })
 class GithubTestApp {
   className = 'classy';

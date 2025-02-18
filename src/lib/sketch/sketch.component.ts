@@ -16,52 +16,56 @@ import { SketchPresetColorsComponent } from './sketch-preset-colors.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'color-sketch',
-  template: `
+    selector: 'color-sketch',
+    template: `
   <div class="sketch-picker {{ className }}" [style.width.px]="width">
     <div class="sketch-saturation">
       <color-saturation [hsl]="hsl" [hsv]="hsv"
         (onChange)="handleValueChange($event)"
-      >
-      </color-saturation>
-    </div>
-    <div class="sketch-controls">
-      <div class="sketch-sliders">
-        <div class="sketch-hue">
-          <color-hue [hsl]="hsl"
-            (onChange)="handleValueChange($event)"
-          ></color-hue>
-        </div>
-        <div class="sketch-alpha" *ngIf="disableAlpha === false">
+        >
+    </color-saturation>
+  </div>
+  <div class="sketch-controls">
+    <div class="sketch-sliders">
+      <div class="sketch-hue">
+        <color-hue [hsl]="hsl"
+          (onChange)="handleValueChange($event)"
+        ></color-hue>
+      </div>
+      @if (disableAlpha === false) {
+        <div class="sketch-alpha">
           <color-alpha
             [radius]="2" [rgb]="rgb" [hsl]="hsl"
             (onChange)="handleValueChange($event)"
           ></color-alpha>
         </div>
-      </div>
-      <div class="sketch-color">
-        <color-checkboard></color-checkboard>
-        <div class="sketch-active" [style.background]="activeBackground"></div>
-      </div>
+      }
     </div>
-    <div class="sketch-fields-container">
-      <color-sketch-fields
-        [rgb]="rgb" [hsl]="hsl" [hex]="hex"
-        [disableAlpha]="disableAlpha"
-        (onChange)="handleValueChange($event)"
-      ></color-sketch-fields>
+    <div class="sketch-color">
+      <color-checkboard></color-checkboard>
+      <div class="sketch-active" [style.background]="activeBackground"></div>
     </div>
-    <div class="sketch-swatches-container" *ngIf="presetColors && presetColors.length">
+  </div>
+  <div class="sketch-fields-container">
+    <color-sketch-fields
+      [rgb]="rgb" [hsl]="hsl" [hex]="hex"
+      [disableAlpha]="disableAlpha"
+      (onChange)="handleValueChange($event)"
+    ></color-sketch-fields>
+  </div>
+  @if (presetColors && presetColors.length) {
+    <div class="sketch-swatches-container">
       <color-sketch-preset-colors
         [colors]="presetColors"
         (onClick)="handleBlockChange($event)"
         (onSwatchHover)="onSwatchHover.emit($event)"
       ></color-sketch-preset-colors>
     </div>
+  }
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .sketch-picker {
       padding: 10px 10px 3px;
       box-sizing: initial;
@@ -122,20 +126,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
       margin-left: 0;
     }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SketchComponent),
-      multi: true,
-    },
-    {
-      provide: ColorWrap,
-      useExisting: forwardRef(() => SketchComponent),
-    },
-  ]
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SketchComponent),
+            multi: true,
+        },
+        {
+            provide: ColorWrap,
+            useExisting: forwardRef(() => SketchComponent),
+        },
+    ],
+    standalone: false
 })
 export class SketchComponent extends ColorWrap {
   /** Remove alpha slider and options from picker */

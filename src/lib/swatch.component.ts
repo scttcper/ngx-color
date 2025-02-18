@@ -12,8 +12,8 @@ import {
 import { CheckboardModule } from './checkboard.component';
 
 @Component({
-  selector: 'color-swatch',
-  template: `
+    selector: 'color-swatch',
+    template: `
     <div
       class="swatch"
       [ngStyle]="currentStyles()"
@@ -24,16 +24,17 @@ import { CheckboardModule } from './checkboard.component';
       (blur)="handleFocusOut()"
       (mouseover)="handleHover(color, $event)"
       tabindex="0"
-    >
+      >
       <ng-content></ng-content>
-      <color-checkboard
-        *ngIf="color === 'transparent'"
-        boxShadow="inset 0 0 0 1px rgba(0,0,0,0.1)"
-      ></color-checkboard>
+      @if (color === 'transparent') {
+        <color-checkboard
+          boxShadow="inset 0 0 0 1px rgba(0,0,0,0.1)"
+        ></color-checkboard>
+      }
     </div>
-  `,
-  styles: [
-    `
+    `,
+    styles: [
+        `
       .swatch {
         outline: none;
         height: 100%;
@@ -42,8 +43,9 @@ import { CheckboardModule } from './checkboard.component';
         position: relative;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SwatchComponent implements OnInit {
   @Input() color!: string;

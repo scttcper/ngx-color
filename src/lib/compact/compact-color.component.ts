@@ -10,8 +10,8 @@ import {
 import { getContrastingColor } from 'ngx-color';
 
 @Component({
-  selector: 'color-compact-color',
-  template: `
+    selector: 'color-compact-color',
+    template: `
   <div class="compact-color">
     <color-swatch class="swatch"
       [color]="color" [style]="swatchStyle"
@@ -24,8 +24,8 @@ import { getContrastingColor } from 'ngx-color';
     </color-swatch>
   </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
   .compact-dot {
     position: absolute;
     top: 5px;
@@ -39,9 +39,10 @@ import { getContrastingColor } from 'ngx-color';
     opacity: 1;
   }
   `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: false,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    preserveWhitespaces: false,
+    standalone: false
 })
 export class CompactColorComponent implements OnChanges {
   @Input() color!: string;

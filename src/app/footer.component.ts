@@ -1,8 +1,8 @@
 import { Component, VERSION } from '@angular/core';
 
 @Component({
-  selector: 'app-footer',
-  template: `
+    selector: 'app-footer',
+    template: `
     <footer class="footer mb-4 mt-5">
       Angular {{ version }}
       <br />
@@ -13,8 +13,8 @@ import { Component, VERSION } from '@angular/core';
       license
     </footer>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .footer {
         line-height: 2;
         text-align: center;
@@ -23,7 +23,8 @@ import { Component, VERSION } from '@angular/core';
         font-family: var(--font-family-monospace);
       }
     `,
-  ],
+    ],
+    standalone: false
 })
 export class FooterComponent {
   version = VERSION.full;
