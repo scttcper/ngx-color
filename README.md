@@ -13,6 +13,7 @@
 
 <br>
 <br>
+<br>
 
 DEMO: https://ngx-color.vercel.app
 
